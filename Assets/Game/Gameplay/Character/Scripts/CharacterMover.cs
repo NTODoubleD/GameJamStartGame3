@@ -32,17 +32,16 @@ public class CharacterMover : MonoBehaviour
 
     private void Rotate(Vector2 inputDir)
     {
-        Vector3 viewDir = _rigidbody.transform.position - new Vector3(_camera.transform.position.x, _rigidbody.transform.position.y, _camera.transform.position.z);
+        var rigidbodyPosition = _rigidbody.transform.position;
+        var cameraPosition = _camera.position;
+        var viewDir = rigidbodyPosition - new Vector3(cameraPosition.x, rigidbodyPosition.y, cameraPosition.z);
 
-        if (_useGlobalForward == false)
-            _orientation.forward = viewDir;
-        else
-            _orientation.forward = Vector3.forward;
+        _orientation.forward = _useGlobalForward ? Vector3.forward : viewDir;
 
         if (Mathf.Abs(inputDir.x) < _minimalRotationDelta)
             inputDir.x = 0;
 
-        Vector3 direction = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
+        var direction = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
 
         if (direction != Vector3.zero)
             _rigidbody.transform.forward = Vector3.Slerp(_rigidbody.transform.forward, direction.normalized, Time.fixedDeltaTime * _rotationSpeed);
@@ -50,22 +49,21 @@ public class CharacterMover : MonoBehaviour
 
     private void MoveRigidbody(Vector2 inputDir)
     {
-        Vector3 moveDirection = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
+        var moveDirection = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
 
         if (moveDirection != Vector3.zero)
-        {
-            _rigidbody.AddForce(moveDirection.normalized * _movementSpeed * 10, ForceMode.Force);
-        }
+            _rigidbody.AddForce(moveDirection.normalized * _movementSpeed * 10f, ForceMode.Force);
     }
 
     private void ControlSpeed()
     {
-        Vector3 flatVel = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+        var velocity = _rigidbody.velocity;
+        var flatVel = new Vector3(velocity.x, 0, velocity.z);
 
-        if (flatVel.magnitude > _movementSpeed)
-        {
-            Vector3 limitedVel = flatVel.normalized * _movementSpeed;
-            _rigidbody.velocity = limitedVel;
-        }
+        if (!(flatVel.magnitude > _movementSpeed))
+            return;
+        
+        var limitedVel = flatVel.normalized * _movementSpeed;
+        _rigidbody.velocity = limitedVel;
     }
 }
