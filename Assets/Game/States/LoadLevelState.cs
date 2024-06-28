@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace Game.States
 {
-    internal class LoadLevelState : IPayloadedState<string>
+    internal class LoadLevelState : IPayloadedState<int>
     {
-        public void Enter(string payload)
+        public void Enter(int payload)
         {
             SceneManager.LoadScene(payload);
         }

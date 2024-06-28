@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using DoubleDTeam.Containers.Base;
 using DoubleDTeam.StateMachine.Base;
 
 namespace DoubleDTeam.StateMachine
 {
-    public class GameStateMachine
+    public class StateMachine : IModule
     {
-        private readonly IStateFactory _stateFactory;
-        private Dictionary<Type, IExitableState> _states;
+        private readonly Dictionary<Type, IExitableState> _states = new();
+
         private IExitableState _currentState;
+        public IExitableState CurrentState => _currentState;
 
-        public GameStateMachine(IStateFactory stateFactory) =>
-            _stateFactory = stateFactory;
-
-        public void CreateStates()
+        public void BindState(IExitableState state)
         {
-            Dictionary<Type, IExitableState> states = _stateFactory.CreateStates();
-            _states = states;
+            _states.Add(state.GetType(), state);
         }
 
         public void Enter<TState>() where TState : class, IState
