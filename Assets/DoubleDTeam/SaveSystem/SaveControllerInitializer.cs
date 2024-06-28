@@ -9,7 +9,7 @@ namespace DoubleDTeam.SaveSystem
     {
         public override void Initialize()
         {
-            Services.ProjectContext.RegisterModule(new FileSaver() as ISaveController);
+            Services.ProjectContext.RegisterModule(new PlayerPrefsSaver() as ISaveController);
         }
 
         public override void Deinitialize()

@@ -32,10 +32,10 @@ namespace DoubleDTeam.Containers.Initializers
         {
             foreach (var module in modules)
             {
-                if (Services.ProjectContext.ContainsModule(module) == false)
+                if (Services.SceneContext.ContainsModule(module) == false)
                     continue;
 
-                Services.ProjectContext.RemoveModule(module);
+                Services.SceneContext.RemoveModule(module);
             }
 
             Services.SceneContext.Clear();

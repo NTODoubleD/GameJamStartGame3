@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DoubleDTeam.SaveSystem.Savers
 {
-    public class FileSaver : ISaveController
+    public class PlayerPrefsSaver : ISaveController
     {
         private const string SavePropertyName = "Data";
 
@@ -15,7 +15,7 @@ namespace DoubleDTeam.SaveSystem.Savers
 
         private readonly Dictionary<string, ISaveObject> _saveObjects = new();
 
-        public FileSaver()
+        public PlayerPrefsSaver()
         {
             string data = PlayerPrefs.GetString(SavePropertyName);
 
