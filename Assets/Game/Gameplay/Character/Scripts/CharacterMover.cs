@@ -12,6 +12,7 @@ public class CharacterMover : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _minimalRotationDelta;
+    [SerializeField] private bool _useGlobalForward;
 
     public event UnityAction<float> SpeedChanged;
 
@@ -32,7 +33,11 @@ public class CharacterMover : MonoBehaviour
     private void Rotate(Vector2 inputDir)
     {
         Vector3 viewDir = _rigidbody.transform.position - new Vector3(_camera.transform.position.x, _rigidbody.transform.position.y, _camera.transform.position.z);
-        _orientation.forward = viewDir;
+
+        if (_useGlobalForward == false)
+            _orientation.forward = viewDir;
+        else
+            _orientation.forward = Vector3.forward;
 
         if (Mathf.Abs(inputDir.x) < _minimalRotationDelta)
             inputDir.x = 0;
