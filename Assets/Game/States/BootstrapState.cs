@@ -1,24 +1,27 @@
-﻿using DoubleDTeam.StateMachine;
+﻿using DoubleDTeam.Containers;
+using DoubleDTeam.StateMachine;
 using DoubleDTeam.StateMachine.Base;
-using Game.Static;
 
 namespace Game.States
 {
-    public class BootstrapState : IState
+    public class BootstrapState : IPayloadedState<int>
     {
-        private GameStateMachine _stateMachine;
+        private StateMachine _stateMachine;
 
-        public void Enter()
+        public void Enter(int nextScene)
         {
+            _stateMachine ??= Services.ProjectContext.GetModule<StateMachine>();
+
+            EnterLoadLevel(nextScene);
         }
 
         public void Exit()
         {
         }
 
-        private void EnterLoadLevel()
+        private void EnterLoadLevel(int sceneIndex)
         {
-            _stateMachine.Enter<LoadLevelState, string>(SceneNames.Main);
+            _stateMachine.Enter<LoadLevelState, int>(sceneIndex);
         }
     }
 }

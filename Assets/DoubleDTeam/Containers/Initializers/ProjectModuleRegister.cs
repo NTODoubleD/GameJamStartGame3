@@ -8,8 +8,6 @@ namespace DoubleDTeam.Containers.Initializers
 {
     public sealed class ProjectModuleRegister : ModuleRegister
     {
-        [SerializeField] private int _nextSceneIndex = 1;
-
         protected override void Initialize(IEnumerable<MonoModule> modules)
         {
             DontDestroyOnLoad(this);
@@ -43,11 +41,6 @@ namespace DoubleDTeam.Containers.Initializers
             }
 
             Services.ProjectContext.Clear();
-        }
-
-        private void Start()
-        {
-            SceneManager.LoadScene(_nextSceneIndex, LoadSceneMode.Single);
         }
     }
 }
