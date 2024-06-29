@@ -2,6 +2,7 @@ using DoubleDTeam.SaveSystem.Base;
 using Sirenix.OdinInspector;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Gameplay.Buildings
 {
@@ -14,6 +15,8 @@ namespace Game.Gameplay.Buildings
 
         public int CurrentLevel { get; private set; } = 1;
 
+        public event UnityAction Upgraded;
+
         public string GetData()
         {
             return CurrentLevel.ToString();
@@ -23,7 +26,6 @@ namespace Game.Gameplay.Buildings
         {
             CurrentLevel = int.Parse(data);
             _viewUpgrader.SetView(CurrentLevel);
-            OnLoaded();
         }
 
         public bool IsMaximalLevel()
@@ -49,15 +51,12 @@ namespace Game.Gameplay.Buildings
 
                 CurrentLevel++;
                 _viewUpgrader.UpgradeTo(CurrentLevel);
-                OnUpgraded();
+                Upgraded?.Invoke();
             }
             else
             {
                 Debug.LogError("UPGRADE IS NOT POSSIBLE");
             }
         }
-
-        protected abstract void OnUpgraded();
-        protected abstract void OnLoaded();
     }
 }
