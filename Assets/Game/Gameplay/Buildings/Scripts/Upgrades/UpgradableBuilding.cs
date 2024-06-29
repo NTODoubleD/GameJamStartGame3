@@ -1,4 +1,5 @@
 using DoubleDTeam.SaveSystem.Base;
+using Sirenix.OdinInspector;
 using System.Linq;
 using UnityEngine;
 
@@ -9,8 +10,14 @@ namespace Game.Gameplay.Buildings
         private readonly ConditionResourcesSpender _resourcesSpender = new();
 
         [SerializeReference] private BuildingUpgradesConfig _upgradesConfig;
+        [SerializeField] private BuildingViewUpgrader _viewUpgrader;
 
         public int CurrentLevel { get; private set; } = 1;
+
+        private void Awake()
+        {
+            _viewUpgrader.SetView(CurrentLevel);
+        }
 
         public string GetData()
         {
@@ -20,6 +27,8 @@ namespace Game.Gameplay.Buildings
         public void OnLoad(string data)
         {
             CurrentLevel = int.Parse(data);
+            _viewUpgrader.SetView(CurrentLevel);
+            OnLoaded();
         }
 
         public bool IsMaximalLevel()
@@ -44,6 +53,7 @@ namespace Game.Gameplay.Buildings
                     condition.Accept(_resourcesSpender);
 
                 CurrentLevel++;
+                _viewUpgrader.UpgradeTo(CurrentLevel);
                 OnUpgraded();
             }
             else
@@ -53,5 +63,6 @@ namespace Game.Gameplay.Buildings
         }
 
         protected abstract void OnUpgraded();
+        protected abstract void OnLoaded();
     }
 }

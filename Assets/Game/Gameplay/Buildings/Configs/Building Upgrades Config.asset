@@ -13,7 +13,16 @@ MonoBehaviour:
   m_Name: Building Upgrades Config
   m_EditorClassIdentifier: 
   _levels:
-  - _upgradeConditions: []
+  - _upgradeConditions:
+    - rid: 2519371035595243528
+  - _upgradeConditions:
+    - rid: 2519371035595243527
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2519371035595243527
+      type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
+      data: 
+    - rid: 2519371035595243528
+      type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
+      data: 

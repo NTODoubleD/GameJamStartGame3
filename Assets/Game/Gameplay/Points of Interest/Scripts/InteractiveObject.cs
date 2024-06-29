@@ -1,19 +1,20 @@
-﻿using UnityEngine;
+﻿using Game.Gameplay.Buildings;
+using UnityEngine;
 
 namespace Game.Gameplay.Interaction
 {
     public abstract class InteractiveObject : MonoBehaviour
     {
-        [SerializeField] private GameObject _outlineCopy;
+        [SerializeField] private BuildingViewUpgrader _viewUpgrader;
 
         public void EnableHighlight()
         {
-            _outlineCopy.SetActive(true);
+            _viewUpgrader.CurrentView.Outline.SetActive(true);
         }
 
         public void DisableHighlight()
         {
-            _outlineCopy.SetActive(false);
+            _viewUpgrader.CurrentView.Outline.SetActive(false);
         }
 
         public abstract void Interact();
