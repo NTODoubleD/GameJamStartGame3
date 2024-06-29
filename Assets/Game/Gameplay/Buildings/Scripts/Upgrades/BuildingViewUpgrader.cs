@@ -10,6 +10,11 @@ namespace Game.Gameplay.Buildings
         
         public BuildingView CurrentView { get; private set; }
 
+        private void Awake()
+        {
+            CurrentView = _levelViews[0];
+        }
+
         public void UpgradeTo(int level)
         {
             _contructionAnimator.Animate(() => ChangeBuilding(level));

@@ -14,11 +14,6 @@ namespace Game.Gameplay.Buildings
 
         public int CurrentLevel { get; private set; } = 1;
 
-        private void Awake()
-        {
-            _viewUpgrader.SetView(CurrentLevel);
-        }
-
         public string GetData()
         {
             return CurrentLevel.ToString();
