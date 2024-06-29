@@ -1,59 +1,35 @@
-using DoubleDTeam.Extensions;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class HighlightInteractiveObjectsController : MonoBehaviour
+namespace Game.Gameplay.Interaction
 {
-    private readonly HashSet<InteractiveObject> _interactiveObjectsToCheck = new();
-    private readonly List<InteractiveObject> _objectsInRange = new();
-
-    [SerializeField] private DistancePlayerToObjectChecker _distanceChecker;
-    [SerializeField] private InteractiveObject[] _interactiveObjects;
-
-    private InteractiveObject _lastObject;
-
-    private void OnValidate()
+    public class HighlightInteractiveObjectsController : MonoBehaviour
     {
-        _interactiveObjects = FindObjectsOfType<InteractiveObject>();
-        _interactiveObjectsToCheck.AddRange(_interactiveObjects);
-    }
+        [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
 
-    public void AddObject(InteractiveObject obj)
-    {
-        _interactiveObjectsToCheck.Add(obj);
-    }
+        private InteractiveObject _lastObject;
 
-    private void Update()
-    {
-        _objectsInRange.Clear();
-
-        foreach (var interactiveObject in _interactiveObjects)
-            if (_distanceChecker.IsPlayerInRange(interactiveObject.transform))
-                _objectsInRange.Add(interactiveObject);
-
-        if (_objectsInRange.Count == 0)
+        private void OnEnable()
         {
-            DisabelLastObject();
-            return;
+            _objectsWatcher.CurrentChanged += OnCurrentObjectToInteractChanged;
         }
 
-        InteractiveObject closestObject = _objectsInRange.OrderBy(x => _distanceChecker.GetSqrDistanceToPlayer(x.transform)).First();
-
-        if (closestObject != _lastObject)
+        private void OnDisable()
         {
-            DisabelLastObject();
-            _lastObject = closestObject;
-            closestObject.EnableHighlight();
+            _objectsWatcher.CurrentChanged -= OnCurrentObjectToInteractChanged;
         }
-    }
 
-    private void DisabelLastObject()
-    {
-        if (_lastObject != null)
+        private void OnCurrentObjectToInteractChanged(InteractiveObject newObject)
         {
-            _lastObject.DisableHighlight();
-            _lastObject = null;
+            if (_lastObject == newObject)
+                return;
+
+            if (_lastObject != null)
+                _lastObject.DisableHighlight();
+
+            if (newObject != null)
+                newObject.EnableHighlight();
+
+            _lastObject = newObject;
         }
     }
 }

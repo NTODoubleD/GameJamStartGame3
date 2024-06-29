@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class DistancePlayerToObjectChecker : MonoBehaviour
+namespace Game.Gameplay.Interaction
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private float _rangeDistance;
-
-    public bool IsPlayerInRange(Transform objectToCheck)
+    public class DistancePlayerToObjectChecker : MonoBehaviour
     {
-        return Vector3.SqrMagnitude(_player.position - objectToCheck.position) <= _rangeDistance * _rangeDistance;
-    }
+        [SerializeField] private Transform _player;
+        [SerializeField] private float _rangeDistance;
 
-    public float GetSqrDistanceToPlayer(Transform obj)
-    {
-        return Vector3.SqrMagnitude(obj.position - _player.position);
+        public bool IsPlayerInRange(Transform objectToCheck)
+        {
+            return Vector3.Distance(_player.position, objectToCheck.position) <= _rangeDistance;
+        }
+
+        public float GetDistanceToPlayer(Transform obj)
+        {
+            return Vector3.Distance(obj.position, _player.position);
+        }
     }
 }
