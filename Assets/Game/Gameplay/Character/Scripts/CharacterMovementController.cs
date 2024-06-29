@@ -6,10 +6,11 @@ using UnityEngine;
 public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
+    [SerializeField] private CharacterAnimatorController _animatorController;
 
     private PlayerInputMap _inputMap;
-
     private Vector2 _inputDirection;
+    private bool _canMove = true;
 
     private void Awake()
     {
@@ -20,12 +21,22 @@ public class CharacterMovementController : MonoBehaviour
     {
         _inputMap.Move.Performed += OnMove;
         _inputMap.Move.Canceled += OnMove;
+        _animatorController.StartedInteraction += OnInteractionAnimationStarted;
+        _animatorController.EndedInteraction += OnInteractionAnimationEnded;
     }
 
     private void OnDisable()
     {
         _inputMap.Move.Performed -= OnMove;
         _inputMap.Move.Canceled -= OnMove;
+        _animatorController.StartedInteraction -= OnInteractionAnimationStarted;
+        _animatorController.EndedInteraction -= OnInteractionAnimationEnded;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_canMove)
+            _mover.Move(_inputDirection);
     }
 
     private void OnMove(Vector2 inputDirection)
@@ -33,8 +44,13 @@ public class CharacterMovementController : MonoBehaviour
         _inputDirection = inputDirection;
     }
 
-    private void FixedUpdate()
+    private void OnInteractionAnimationStarted()
     {
-        _mover.Move(_inputDirection);
+        _canMove = false;
+    }
+
+    private void OnInteractionAnimationEnded()
+    {
+        _canMove = true;
     }
 }

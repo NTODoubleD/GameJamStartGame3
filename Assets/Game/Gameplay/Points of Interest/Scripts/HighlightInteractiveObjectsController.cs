@@ -18,6 +18,14 @@ namespace Game.Gameplay.Interaction
             _objectsWatcher.CurrentChanged -= OnCurrentObjectToInteractChanged;
         }
 
+        public void DisableCurrentHighlight()
+        {
+            if (_lastObject != null)
+                _lastObject.DisableHighlight();
+
+            _lastObject = null;
+        }
+
         private void OnCurrentObjectToInteractChanged(InteractiveObject newObject)
         {
             if (_lastObject == newObject)

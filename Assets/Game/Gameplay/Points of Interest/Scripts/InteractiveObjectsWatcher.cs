@@ -19,6 +19,12 @@ namespace Game.Gameplay.Interaction
 
         public event UnityAction<InteractiveObject> CurrentChanged;
 
+        private void OnDisable()
+        {
+            CurrentObject = null;
+            CurrentChanged?.Invoke(CurrentObject);
+        }
+
         private void OnValidate()
         {
             _interactiveObjects = FindObjectsOfType<InteractiveObject>();
