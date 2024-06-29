@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using DoubleDTeam.Containers.Base;
+using DoubleDTeam.Extensions;
 using DoubleDTeam.StateMachine.Base;
+using UnityEngine;
 
 namespace DoubleDTeam.StateMachine
 {
@@ -19,12 +21,16 @@ namespace DoubleDTeam.StateMachine
 
         public void Enter<TState>() where TState : class, IState
         {
+            Debug.Log($"{typeof(TState).Name} state enter".Color(Color.yellow));
+
             IState state = LoadState<TState>();
             state.Enter();
         }
 
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
+            Debug.Log($"{typeof(TState).Name} state enter".Color(Color.yellow));
+
             TState state = LoadState<TState>();
             state.Enter(payload);
         }

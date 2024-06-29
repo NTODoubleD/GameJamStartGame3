@@ -1,12 +1,38 @@
+using DoubleDTeam.Containers;
+using DoubleDTeam.InputSystem;
+using Game.InputMaps;
 using UnityEngine;
 
 public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
 
+    private PlayerInputMap _inputMap;
+
+    private Vector2 _inputDirection;
+
+    private void Awake()
+    {
+        _inputMap = Services.ProjectContext.GetModule<InputController>().GetMap<PlayerInputMap>();
+    }
+
+    private void OnEnable()
+    {
+        _inputMap.Move.Performed += MoveOnPerformed;
+    }
+
+    private void OnDisable()
+    {
+        _inputMap.Move.Performed -= MoveOnPerformed;
+    }
+
+    private void MoveOnPerformed(Vector2 inputDirection)
+    {
+        _inputDirection = inputDirection;
+    }
+
     private void FixedUpdate()
     {
-        Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        _mover.Move(inputDirection);
+        _mover.Move(_inputDirection);
     }
 }
