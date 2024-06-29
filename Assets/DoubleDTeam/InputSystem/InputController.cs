@@ -43,6 +43,15 @@ namespace DoubleDTeam.InputSystem
             Debug.Log($"{mapType.Name} map enabled".Color(Color.green));
         }
 
+        public void DisableActiveMap()
+        {
+            if (CurrentMap == null)
+                return;
+
+            CurrentMap.Disable();
+            CurrentMap = null;
+        }
+
         public TMap GetMap<TMap>() where TMap : InputMap
         {
             var mapType = typeof(TMap);

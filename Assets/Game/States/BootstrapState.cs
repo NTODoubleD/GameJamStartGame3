@@ -1,5 +1,7 @@
-﻿using DoubleDTeam.StateMachine;
+﻿using Cysharp.Threading.Tasks;
+using DoubleDTeam.StateMachine;
 using DoubleDTeam.StateMachine.Base;
+using UnityEngine.SceneManagement;
 
 namespace Game.States
 {
@@ -12,18 +14,18 @@ namespace Game.States
             _stateMachine = gameStateMachine;
         }
 
-        public void Enter(int nextScene)
+        public async void Enter(int nextScene)
         {
-            EnterLoadLevel(nextScene);
+            SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+
+            await UniTask.NextFrame();
+
+            //_stateMachine.Enter<MainMenuState>();
+            _stateMachine.Enter<MainGameState>();
         }
 
         public void Exit()
         {
-        }
-
-        private void EnterLoadLevel(int sceneIndex)
-        {
-            _stateMachine.Enter<LoadLevelState, int>(sceneIndex);
         }
     }
 }
