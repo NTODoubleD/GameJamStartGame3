@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9bbcfd34cbe8149841891e46d416f3, type: 3}
   m_Name: Building Upgrades Config
   m_EditorClassIdentifier: 
+  _levels:
+  - _upgradeConditions: []
+  references:
+    version: 2
+    RefIds: []

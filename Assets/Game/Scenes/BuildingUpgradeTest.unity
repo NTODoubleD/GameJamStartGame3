@@ -201,6 +201,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5881458110316670594, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 63
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -264,10 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419cca8e417b0f94e92c13e76f86461f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conditions: []
-  references:
-    version: 2
-    RefIds: []
+  _upgradesConfig: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
