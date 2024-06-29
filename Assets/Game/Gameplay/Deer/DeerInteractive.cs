@@ -3,7 +3,7 @@ using Game.UI.Pages;
 
 namespace Game.Gameplay
 {
-    public class DeerInteractive : InteractRadialMenuObject
+    public class DeerInteractive : SimpleInteractiveObject
     {
         public override void Interact()
         {

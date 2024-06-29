@@ -10,11 +10,12 @@ namespace Game.Gameplay.Sleigh
     {
         [OdinSerialize] private ISleighSendView _sendView;
         [SerializeField] private SleighBuilding _sleigh;
+        [SerializeField] private PastureBuilding _pasture;
         [SerializeField] private SleighReceiveController _receiveController;
 
         private void Awake()
         {
-            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity);
+            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity, _pasture.DeerCount);
         }
 
         private void OnEnable()
@@ -31,7 +32,7 @@ namespace Game.Gameplay.Sleigh
 
         private void OnSleighUpgraded()
         {
-            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity);
+            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity, _pasture.DeerCount);
         }
 
         private void Send(IReadOnlyDictionary<ItemInfo, float> itemPercentages, int deerCount)

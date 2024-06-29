@@ -2,7 +2,7 @@ using Game.Gameplay.Buildings;
 using Game.Gameplay.Interaction;
 using UnityEngine;
 
-public class UpgradeTestInteractiveMock : InteractiveObject
+public class UpgradeTestInteractiveMock : UpgradingInteractiveObject
 {
     [SerializeField] private TownHallBuilding _townhall;
 

@@ -3,7 +3,7 @@ using Game.UI.Pages;
 
 namespace Game.Gameplay
 {
-    public class SleighInteractive : InteractRadialMenuObject
+    public class SleighInteractive : UpgradingInteractiveObject
     {
         public override void Interact()
         {
