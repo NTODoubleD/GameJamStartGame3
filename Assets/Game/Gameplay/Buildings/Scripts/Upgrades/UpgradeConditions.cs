@@ -7,6 +7,7 @@ namespace Game.Gameplay.Buildings
     public interface IUpgradeCondition
     {
         bool IsCompleted();
+        void Accept(IUpgradeConditionVisitor visitor);
     }
 
     [Serializable]
@@ -20,15 +21,20 @@ namespace Game.Gameplay.Buildings
             return _townHall.CurrentLevel >= _neccessaryLevel;
         }
 
-        public void Test()
+        void IUpgradeCondition.Accept(IUpgradeConditionVisitor visitor)
         {
-
+            visitor.Visit(this);
         }
     }
 
     [Serializable]
     public class ResourcesUpgradeCondition : IUpgradeCondition
     {
+        void IUpgradeCondition.Accept(IUpgradeConditionVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
         bool IUpgradeCondition.IsCompleted()
         {
             return true;
