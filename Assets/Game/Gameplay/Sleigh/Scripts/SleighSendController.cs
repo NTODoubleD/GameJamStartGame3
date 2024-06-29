@@ -1,5 +1,7 @@
 using Game.Gameplay.Buildings;
+using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
+using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,10 +10,11 @@ namespace Game.Gameplay.Sleigh
 {
     public class SleighSendController : MonoBehaviour
     {
-        [OdinSerialize] private ISleighSendView _sendView;
+        [SerializeField] private SleighSendViewMock _sendView;
         [SerializeField] private SleighBuilding _sleigh;
         [SerializeField] private PastureBuilding _pasture;
         [SerializeField] private SleighReceiveController _receiveController;
+        [SerializeField] private DayCycleController _dayCycleController;
 
         private void Awake()
         {
@@ -44,6 +47,7 @@ namespace Game.Gameplay.Sleigh
                 resultItemsCount.Add(keyPair.Key, (int)(keyPair.Value * totalCapacity));
 
             _receiveController.SetReceiveInfo(resultItemsCount);
+            _dayCycleController.EndDay();
         }
     }
 }
