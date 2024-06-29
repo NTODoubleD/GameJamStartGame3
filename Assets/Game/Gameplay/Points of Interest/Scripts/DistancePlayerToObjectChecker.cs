@@ -8,13 +8,20 @@ namespace Game.Gameplay.Interaction
         [SerializeField] private float _rangeDistance;
 
         public bool IsPlayerInRange(Transform objectToCheck)
-        {
-            return Vector3.Distance(_player.position, objectToCheck.position) <= _rangeDistance;
+        {          
+            return GetXZDistance(_player.position, objectToCheck.position) <= _rangeDistance;
         }
 
         public float GetDistanceToPlayer(Transform obj)
         {
-            return Vector3.Distance(obj.position, _player.position);
+            return GetXZDistance(_player.position, obj.position);
+        }
+
+        private float GetXZDistance(Vector3 obj1Position, Vector3 obj2Position)
+        {
+            var xzObj1Position = new Vector3(obj1Position.x, 0, obj1Position.z);
+            var xzObj2Position = new Vector3(obj2Position.x, 0, obj2Position.z);
+            return Vector3.Distance(xzObj1Position, xzObj2Position);
         }
     }
 }
