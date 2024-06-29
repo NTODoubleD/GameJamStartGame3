@@ -1,7 +1,7 @@
 ﻿using DoubleDTeam.Containers.Base;
 using Game.Infrastructure.Items;
 
-namespace Game.Infrastructure.ItemCreator
+namespace Game.ItemCreator
 {
     public interface IItemCreator : IModule
     {
