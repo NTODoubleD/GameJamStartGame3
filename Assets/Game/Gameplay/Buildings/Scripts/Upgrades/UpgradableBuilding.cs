@@ -1,4 +1,5 @@
 using DoubleDTeam.SaveSystem.Base;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,11 +23,13 @@ namespace Game.Gameplay.Buildings
 
         #region EDITOR_METHODS
 
+        [Button]
         public void AddTownHallCondition()
         {
             AddCondition(new TownHallUpgradeCondition());
         }
 
+        [Button]
         public void AddResourcesCondition()
         {
             AddCondition(new ResourcesUpgradeCondition());

@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -17,6 +18,11 @@ namespace Game.Gameplay.Buildings
         bool IUpgradeCondition.IsCompleted()
         {
             return _townHall.CurrentLevel >= _neccessaryLevel;
+        }
+
+        public void Test()
+        {
+
         }
     }
 
