@@ -16,12 +16,14 @@ namespace Game.UI.Pages
         private DeerInfo _currentInfo;
         private Camera _mainCamera;
 
+        private RectTransform _canvasRectTransform;
+
         private void Awake()
         {
             _mainCamera = Camera.main;
+            _canvasRectTransform = Canvas.GetComponent<RectTransform>();
 
-            var uiManager = Services.ProjectContext.GetModule<IUIManager>();
-            uiManager.ClosePage<DeerInfoPage>();
+            Close();
         }
 
         public void Open(DeerInfo context)
@@ -49,7 +51,12 @@ namespace Game.UI.Pages
             if (_currentInfo == null)
                 return;
 
-            _widgetRoot.anchoredPosition = _mainCamera.WorldToScreenPoint(_currentInfo.WorldPosition);
+            var viewPort = _mainCamera.WorldToViewportPoint(_currentInfo.WorldPosition);
+
+            viewPort.x *= _canvasRectTransform.sizeDelta.x;
+            viewPort.y *= _canvasRectTransform.sizeDelta.y;
+
+            _widgetRoot.anchoredPosition = viewPort;
             _widgetRoot.anchoredPosition += _offset;
         }
     }

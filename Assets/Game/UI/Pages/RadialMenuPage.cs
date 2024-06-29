@@ -30,8 +30,7 @@ namespace Game.UI.Pages
 
             CreateButtons();
 
-            var uiManager = Services.ProjectContext.GetModule<IUIManager>();
-            uiManager.ClosePage<RadialMenuPage>();
+            Close();
         }
 
         private void CreateButtons()
