@@ -247,7 +247,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 63
 --- !u!223 &872307122
 Canvas:
   m_ObjectHideFlags: 0
@@ -537,7 +537,7 @@ MonoBehaviour:
   AccentColor: {r: 0, g: 0.665, b: 0.07847002, a: 1}
   DisabledColor: {r: 0.5661765, g: 0.5661765, b: 0.5661765, a: 1}
   BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  UseSeparators: 0
+  UseSeparators: 1
   separatorPrefab: {fileID: 189742, guid: 2e2615ee84df825439884cdf68585644, type: 3}
   LerpAmount: 0.5
   OpenAnimation: 0
@@ -550,7 +550,7 @@ MonoBehaviour:
   RaiseOnSelection: 0
   flip: 1
   selectOnlyOnHover: 1
-  pieThickness: 85
+  pieThickness: 0
   snap: 1
   tiltTowardsMouse: 1
   tiltAmount: 0
