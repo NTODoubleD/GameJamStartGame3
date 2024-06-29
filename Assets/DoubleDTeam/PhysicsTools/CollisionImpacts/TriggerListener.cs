@@ -9,11 +9,6 @@ namespace DoubleDTeam.PhysicsTools.CollisionImpacts
         public event Action<TTargetType> TriggerEnter;
         public event Action<TTargetType> TriggerExit;
 
-        private void OnValidate()
-        {
-            GetComponent<Collider>().isTrigger = true;
-        }
-
         public void OnTriggerEnter(Collider other)
         {
             if (IsTarget(other, out var target) == false)
