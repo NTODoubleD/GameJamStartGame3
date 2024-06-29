@@ -21,8 +21,8 @@ namespace Game.UI
         [SerializeField] private int _maxButtons = 8;
         [SerializeField] private TextMeshProUGUI _label;
 
-        private InputController _inputController;
         private readonly List<Button> _buttons = new();
+        private InputController _inputController;
 
         private void Awake()
         {
@@ -57,8 +57,6 @@ namespace Game.UI
         public override void Close()
         {
             SetCanvasState(false);
-
-            _inputController.EnableMap<PlayerInputMap>();
 
             CleanMenu();
         }

@@ -20,7 +20,8 @@ namespace Game.States
 
             await UniTask.NextFrame();
 
-            _stateMachine.Enter<MainMenuState>();
+            //_stateMachine.Enter<MainMenuState>();
+            _stateMachine.Enter<MainGameState>();
         }
 
         public void Exit()
