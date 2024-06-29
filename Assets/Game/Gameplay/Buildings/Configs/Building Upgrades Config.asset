@@ -16,13 +16,23 @@ MonoBehaviour:
   - _upgradeConditions:
     - rid: 2519371035595243528
   - _upgradeConditions:
-    - rid: 2519371035595243527
+    - rid: 2519371035595243530
   references:
     version: 2
     RefIds:
-    - rid: 2519371035595243527
-      type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
-      data: 
     - rid: 2519371035595243528
       type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
-      data: 
+      data:
+        _neccessaryItems:
+        - _itemInfo: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
+          _count: 5
+        - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+          _count: 5
+    - rid: 2519371035595243530
+      type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
+      data:
+        _neccessaryItems:
+        - _itemInfo: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
+          _count: 1
+        - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+          _count: 10
