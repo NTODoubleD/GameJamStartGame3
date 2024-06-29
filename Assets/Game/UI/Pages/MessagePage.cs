@@ -4,7 +4,7 @@ using DoubleDTeam.UI.Base;
 using Game.Monologue;
 using UnityEngine;
 
-namespace Game.UI
+namespace Game.UI.Pages
 {
     public class MessagePage : MonoPage, IPayloadPage<MonologueGroupInfo>
     {

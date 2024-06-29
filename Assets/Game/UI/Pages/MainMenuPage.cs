@@ -1,7 +1,7 @@
 ﻿using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
 
-namespace Game.UI
+namespace Game.UI.Pages
 {
     public class MainMenuPage : MonoPage, IUIPage
     {

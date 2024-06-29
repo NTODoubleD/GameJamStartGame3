@@ -11,7 +11,7 @@ using UnityEngine.Events;
 using Xamin;
 using Button = Xamin.Button;
 
-namespace Game.UI
+namespace Game.UI.Pages
 {
     public class RadialMenuPage : MonoPage, IPayloadPage<RadialMenuArgument>
     {
@@ -29,6 +29,9 @@ namespace Game.UI
             _inputController = Services.ProjectContext.GetModule<InputController>();
 
             CreateButtons();
+
+            var uiManager = Services.ProjectContext.GetModule<IUIManager>();
+            uiManager.ClosePage<RadialMenuPage>();
         }
 
         private void CreateButtons()
