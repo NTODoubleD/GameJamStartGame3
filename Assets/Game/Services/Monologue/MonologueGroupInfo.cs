@@ -13,14 +13,14 @@ namespace Game.Monologue
         public IReadOnlyList<MonologueInfo> Monologues => _monologues;
 
         private readonly PropertyInfo _animationField =
-            typeof(MonologueInfo).GetProperty("AnimationDelay", BindingFlags.Instance | BindingFlags.Public);
+            typeof(MonologueInfo).GetProperty("Duration", BindingFlags.Instance | BindingFlags.Public);
 
         private void OnValidate()
         {
             foreach (var monologueInfo in Monologues)
             {
-                if (monologueInfo.Clip != null && monologueInfo.AnimationDelay == 0)
-                    _animationField.SetValue(monologueInfo, monologueInfo.Clip.length);
+                if (monologueInfo.VoiceClip != null && monologueInfo.Duration == 0)
+                    _animationField.SetValue(monologueInfo, monologueInfo.VoiceClip.length);
             }
         }
     }

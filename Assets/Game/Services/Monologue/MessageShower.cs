@@ -37,9 +37,17 @@ namespace Game.Monologue
             Printing(0, monologue);
         }
 
+        public void StopMessaging()
+        {
+            EndShowText();
+        }
+
         private void EndShowText()
         {
             IsPrintText = false;
+
+            _source.Stop();
+            _text.text = string.Empty;
 
             _endAction?.Invoke();
             Performed?.Invoke();
@@ -55,11 +63,11 @@ namespace Game.Monologue
 
             var monologueCharacter = monologue.Monologues[index];
 
-            _source.clip = monologueCharacter.Clip;
+            _source.clip = monologueCharacter.VoiceClip;
             _source.Play();
 
             _text.text = monologueCharacter.Text;
-            _text.StartRevealCharactersAnim(monologueCharacter.AnimationDelay,
+            _text.StartRevealCharactersAnim(monologueCharacter.CharacterInterval,
                 () => OnPrintingEnd(index, monologue));
         }
 
@@ -69,7 +77,7 @@ namespace Game.Monologue
 
             _source.Stop();
 
-            _timer.Start(monologueCharacter.WaitDuration, () => Printing(++currentIndex, monologue));
+            _timer.Start(monologueCharacter.AfterMessageDuration, () => Printing(++currentIndex, monologue));
         }
     }
 }

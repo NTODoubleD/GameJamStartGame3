@@ -13,7 +13,7 @@ namespace Game.Infrastructure
         {
             var stateMachine = Services.ProjectContext.GetModule<StateMachine>();
 
-            stateMachine.BindState(new BootstrapState());
+            stateMachine.BindState(new BootstrapState(stateMachine));
             stateMachine.BindState(new LoadLevelState());
 
             stateMachine.Enter<BootstrapState, int>(_nextSceneIndex);

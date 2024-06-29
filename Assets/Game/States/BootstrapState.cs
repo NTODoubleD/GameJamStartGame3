@@ -1,17 +1,19 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.StateMachine;
+﻿using DoubleDTeam.StateMachine;
 using DoubleDTeam.StateMachine.Base;
 
 namespace Game.States
 {
     public class BootstrapState : IPayloadedState<int>
     {
-        private StateMachine _stateMachine;
+        private readonly StateMachine _stateMachine;
+
+        public BootstrapState(StateMachine gameStateMachine)
+        {
+            _stateMachine = gameStateMachine;
+        }
 
         public void Enter(int nextScene)
         {
-            _stateMachine ??= Services.ProjectContext.GetModule<StateMachine>();
-
             EnterLoadLevel(nextScene);
         }
 
