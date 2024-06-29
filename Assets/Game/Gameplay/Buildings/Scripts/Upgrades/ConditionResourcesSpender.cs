@@ -1,4 +1,7 @@
-﻿namespace Game.Gameplay.Buildings
+﻿using DoubleDTeam.Containers;
+using Game.Infrastructure.Storage;
+
+namespace Game.Gameplay.Buildings
 {
     public class ConditionResourcesSpender : IUpgradeConditionVisitor
     {
@@ -9,7 +12,10 @@
 
         void IUpgradeConditionVisitor.Visit(ResourcesUpgradeCondition condition)
         {
-            //тратим ресурсы
+            var storage = Services.ProjectContext.GetModule<ItemStorage>();
+
+            foreach (var keyPair in condition.NeccessaryItems)
+                storage.RemoveItems(keyPair.Key, keyPair.Value);
         }
     }
 }

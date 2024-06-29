@@ -11,7 +11,7 @@ namespace Game.Infrastructure.Storage
 
         public EncryptItemStorage(ItemStorage storage)
         {
-            Items = new List<string>(storage.Items.Select(i => i.Info.ID));
+            //Items = new List<string>(storage.Items.Select(i => i.Info.ID));
         }
     }
 }

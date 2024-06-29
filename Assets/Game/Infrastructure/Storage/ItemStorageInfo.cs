@@ -9,24 +9,37 @@ namespace Game.Infrastructure.Storage
     [Serializable]
     public class ItemStorageInfo
     {
-        [SerializeField] private int _capacity;
+        [SerializeField] private StartItem[] _startItems;
 
-        [Space, SerializeField] private ItemInfo[] _whiteList;
-        [SerializeField] private ItemInfo[] _blackList;
+        private Dictionary<ItemInfo, int> _itemsDictionary;
 
-        public int Capacity => _capacity;
-        public IEnumerable<ItemInfo> WhiteList => _whiteList;
-        public IEnumerable<ItemInfo> BlackList => _blackList;
-
-        public ItemStorageInfo(int capacity, IEnumerable<ItemInfo> whiteList, IEnumerable<ItemInfo> blackList)
+        public IReadOnlyDictionary<ItemInfo, int> StartItems
         {
-            _capacity = capacity;
+            get
+            {
+                if (_itemsDictionary == null)
+                    InitializeDictionary();
 
-            if (whiteList != null)
-                _whiteList = whiteList.ToArray();
+                return _itemsDictionary;
+            }
+        }
 
-            if (blackList != null)
-                _blackList = blackList.ToArray();
+        private void InitializeDictionary()
+        {
+            _itemsDictionary = new();
+
+            foreach (var item in _startItems.ToHashSet())
+                _itemsDictionary.Add(item.ItemInfo, item.Count);
+        }
+
+        [Serializable]
+        private class StartItem
+        {
+            [SerializeField] private ItemInfo _itemInfo;
+            [SerializeField] private int _count;
+
+            public ItemInfo ItemInfo => _itemInfo;
+            public int Count => _count;
         }
     }
 }

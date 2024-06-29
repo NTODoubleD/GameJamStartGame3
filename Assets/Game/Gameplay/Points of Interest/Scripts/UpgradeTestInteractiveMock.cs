@@ -8,6 +8,14 @@ public class UpgradeTestInteractiveMock : InteractiveObject
 
     public override void Interact()
     {
-        _townhall.Upgrade();
+        if (_townhall.CanUpgrade())
+        {
+            _townhall.Upgrade();
+            Debug.Log($"Upgraded");
+        }
+        else
+        {
+            Debug.Log("Not Upgraded");
+        }
     }
 }

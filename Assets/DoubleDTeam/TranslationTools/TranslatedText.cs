@@ -23,6 +23,6 @@ namespace DoubleDTeam.TranslationTools
         };
 
         private string GetTranslationText() =>
-            Translation[Services.ProjectContext.GetModule<ILanguageProvider>().GetLanguage()];
+            Translation[/*Services.ProjectContext.GetModule<ILanguageProvider>().GetLanguage()*/LanguageType.Ru];
     }
 }
