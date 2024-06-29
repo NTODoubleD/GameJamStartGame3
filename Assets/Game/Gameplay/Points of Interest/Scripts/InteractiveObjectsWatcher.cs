@@ -46,7 +46,6 @@ namespace Game.Gameplay.Interaction
             }
 
             InteractiveObject closestObject = _objectsInRange.OrderBy(x => _distanceChecker.GetDistanceToPlayer(x.transform)).First();
-            Debug.Log(closestObject.name);
 
             if (closestObject != CurrentObject)
             {
