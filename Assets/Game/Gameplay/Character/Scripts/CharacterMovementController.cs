@@ -18,15 +18,17 @@ public class CharacterMovementController : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputMap.Move.Performed += MoveOnPerformed;
+        _inputMap.Move.Performed += OnMove;
+        _inputMap.Move.Canceled += OnMove;
     }
 
     private void OnDisable()
     {
-        _inputMap.Move.Performed -= MoveOnPerformed;
+        _inputMap.Move.Performed -= OnMove;
+        _inputMap.Move.Canceled -= OnMove;
     }
 
-    private void MoveOnPerformed(Vector2 inputDirection)
+    private void OnMove(Vector2 inputDirection)
     {
         _inputDirection = inputDirection;
     }

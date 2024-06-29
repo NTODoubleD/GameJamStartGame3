@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DoubleDTeam.Containers;
 using DoubleDTeam.UI.Base;
 using Game.Gameplay.Interaction;
@@ -9,6 +10,7 @@ namespace Game.Gameplay
     public class Sleigh : InteractiveObject
     {
         [SerializeField] private string _name;
+        [SerializeField] private List<RadialButtonInfo> _operations;
 
         private IUIManager _uiManager;
         private RadialMenuArgument _radialMenuArgument;
@@ -20,6 +22,7 @@ namespace Game.Gameplay
             _radialMenuArgument = new RadialMenuArgument
             {
                 Name = _name,
+                Buttons = _operations
             };
         }
 

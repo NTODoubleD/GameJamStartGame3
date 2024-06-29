@@ -15,6 +15,10 @@ namespace DoubleDTeam.InputSystem.Base
         {
         }
 
+        protected virtual void Cancel()
+        {
+        }
+
         public virtual void Enable()
         {
             _isActive = true;
@@ -24,10 +28,11 @@ namespace DoubleDTeam.InputSystem.Base
         public virtual void Disable()
         {
             _isActive = false;
+            Cancel();
             ActiveStateChanged?.Invoke(_isActive);
         }
 
-        public void Update()
+        private void Update()
         {
             if (_isActive)
                 Tick();

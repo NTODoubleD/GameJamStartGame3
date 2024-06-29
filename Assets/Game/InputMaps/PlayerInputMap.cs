@@ -14,11 +14,19 @@ namespace Game.InputMaps
 
         protected override void Tick()
         {
-            InteractHandler();
-
             MoveHandler();
 
             MouseHandler();
+
+            InteractHandler();
+        }
+
+        protected override void Cancel()
+        {
+            Interact.CallCancel();
+            Move.CallCancel(Vector2.zero);
+            LeftClick.CallCancel();
+            MousePosition.CallCancel(Vector2.zero);
         }
 
         private void InteractHandler()
