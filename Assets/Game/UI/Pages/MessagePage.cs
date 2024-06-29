@@ -14,8 +14,7 @@ namespace Game.UI.Pages
 
         private void Awake()
         {
-            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
-            _uiManager.ClosePage<MessagePage>();
+            Close();
         }
 
         public void Open(MonologueGroupInfo context)

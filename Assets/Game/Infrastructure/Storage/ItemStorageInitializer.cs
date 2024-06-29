@@ -11,7 +11,6 @@ namespace Game.Infrastructure.Storage
         public override void Deinitialize()
         {
             Services.ProjectContext.RemoveModule<ItemStorage>();
-
         }
 
         public override void Initialize()
