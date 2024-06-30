@@ -24,11 +24,17 @@ public class CharacterAnimatorController : MonoBehaviour
     public event UnityAction StartedInteraction;
     public event UnityAction EndedInteraction;
 
+    private SoundsManager SoundsManager => SoundsManager.Instance;
+    
     private void OnValidate() => 
         _animator = GetComponent<Animator>();
 
-    private void OnEnable() => 
+    private void OnEnable()
+    {
         _mover.SpeedChanged += ChangeAnimationSpeed;
+        
+        
+    }
 
     private void OnDisable() => 
         _mover.SpeedChanged -= ChangeAnimationSpeed;
@@ -46,6 +52,9 @@ public class CharacterAnimatorController : MonoBehaviour
         _animator.SetTrigger(Heal);
 
     #region ANIMATOR_EVENTS
+
+    public void OnFootstep() => 
+        SoundsManager.PlayFootstepSound(transform.position);
 
     public void OnStartedPickingUp() =>
         StartedPickingUp?.Invoke();

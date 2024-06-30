@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradesConfig: {fileID: 11400000, guid: 46f9a7a7abaebb643b1445a7c80263fb, type: 2}
   _viewUpgrader: {fileID: 4623591301819242227}
+  _itemInfos: []
 --- !u!114 &4623591301819242227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,8 +301,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0eb5f101fba3f49b55bfcff8793791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: 
+  _operations: []
   _viewUpgrader: {fileID: 4623591301819242227}
-  _townhall: {fileID: 6791884541890394272}
 --- !u!1 &8108118456713170708
 GameObject:
   m_ObjectHideFlags: 0
