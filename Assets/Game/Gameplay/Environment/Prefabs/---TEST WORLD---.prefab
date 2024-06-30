@@ -4028,6 +4028,7 @@ MonoBehaviour:
   _playerMoleView: {fileID: 5501074169555600049}
   _characterAnimatorController: {fileID: 2050901229831194536}
   _objectsWatcher: {fileID: 1143328946506485183}
+  _mossItem: {fileID: 0}
 --- !u!1 &4367140567166315961
 GameObject:
   m_ObjectHideFlags: 0
