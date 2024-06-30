@@ -12,7 +12,8 @@ namespace Game.Gameplay.AI
 
         public Vector3 GetRandomPointOnNavMesh()
         {
-            Vector3 randomPoint = Center + new Vector3(Random.Range(-_width / 2, _width / 2), 0, 0) + new Vector3(0, 0, Random.Range(-_width / 2, _width / 2));
+            Vector3 randomPoint = Center + new Vector3(Random.Range(-_width / 2, _width / 2), 0, 0) +
+                                  new Vector3(0, 0, Random.Range(-_width / 2, _width / 2));
 
             return NavMesh.SamplePosition(randomPoint, out var hit, _width, NavMesh.AllAreas)
                 ? hit.position

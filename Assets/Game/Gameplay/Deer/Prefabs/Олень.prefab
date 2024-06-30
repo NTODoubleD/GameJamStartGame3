@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\u041E\u043B\u0435\u043D\u044C"
+  _distanceToInteract: 1.5
   _operations:
   - Name: "\u0412\u044B\u0439\u0442\u0438"
     Image: {fileID: 0}
@@ -2325,7 +2326,7 @@ Transform:
   m_GameObject: {fileID: 8817670477337296771}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.42, y: 0, z: 10}
+  m_LocalPosition: {x: -9.42, y: 4.9, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2356,7 +2357,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8817670477337296771}
   m_Enabled: 1
   m_AgentTypeID: -334000983
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
