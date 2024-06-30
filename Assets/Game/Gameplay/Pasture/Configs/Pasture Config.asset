@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b87b4b3d5b99440af569a66d6fb20c, type: 3}
+  m_Name: Pasture Config
+  m_EditorClassIdentifier: 
+  _levelStats:
+  - _capacities:
+    - _deerAge: 0
+      _capacity: 3
+    - _deerAge: 1
+      _capacity: 5
+    - _deerAge: 2
+      _capacity: 3
+    _centerPoint: {x: -5.45, y: 0, z: -6.476}
+    _width: 14.4
+  - _capacities:
+    - _deerAge: 0
+      _capacity: 4
+    - _deerAge: 1
+      _capacity: 10
+    - _deerAge: 2
+      _capacity: 4
+    _centerPoint: {x: -5.45, y: 0, z: -9.088}
+    _width: 19
+  - _capacities:
+    - _deerAge: 0
+      _capacity: 5
+    - _deerAge: 1
+      _capacity: 18
+    - _deerAge: 2
+      _capacity: 8
+    _centerPoint: {x: -5.24, y: 0, z: -11.7}
+    _width: 24.5

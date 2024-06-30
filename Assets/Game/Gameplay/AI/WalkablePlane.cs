@@ -6,22 +6,22 @@ namespace Game.Gameplay.AI
 {
     public class WalkablePlane : MonoBehaviour
     {
-        [SerializeField] private float _radius;
+        [SerializeField] private float _width;
 
         private Vector3 Center => transform.position;
 
         public Vector3 GetRandomPointOnNavMesh()
         {
-            Vector3 randomPoint = Center + Random.insideUnitSphere * _radius;
+            Vector3 randomPoint = Center + new Vector3(Random.Range(-_width / 2, _width / 2), 0, 0) + new Vector3(0, 0, Random.Range(-_width / 2, _width / 2));
 
-            return NavMesh.SamplePosition(randomPoint, out var hit, _radius, NavMesh.AllAreas)
+            return NavMesh.SamplePosition(randomPoint, out var hit, _width, NavMesh.AllAreas)
                 ? hit.position
                 : Center;
         }
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.DrawSphere(Center, _radius);
+            Gizmos.DrawCube(Center, new Vector3(_width, 5, _width));
         }
     }
 }
