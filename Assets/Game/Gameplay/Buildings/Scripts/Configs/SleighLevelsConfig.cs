@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Game.Infrastructure.Items;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Gameplay.Buildings
@@ -12,9 +14,35 @@ namespace Game.Gameplay.Buildings
     public class SleightLevelStat
     {
         [SerializeField] private int _deerCapacity;
-        [SerializeField] private int _itemCapacity;
+        [SerializeField] ItemLevels[] _itemLevels;
+
+        private Dictionary<ItemInfo, int[]> _itemLevelsDictionary;
 
         public int DeerCapacity => _deerCapacity;
-        public int ItemCapacity => _itemCapacity;
+        public IReadOnlyDictionary<ItemInfo, int[]> ItemCountLevels
+        {
+            get
+            {
+                if (_itemLevelsDictionary == null)
+                {
+                    _itemLevelsDictionary = new();
+
+                    foreach (var itemLevel in _itemLevels)
+                        _itemLevelsDictionary.Add(itemLevel.Item, itemLevel.Levels);
+                }
+
+                return _itemLevelsDictionary;
+            }
+        }
+
+        [Serializable]
+        private class ItemLevels
+        {
+            [SerializeField] private ItemInfo _item;
+            [SerializeField] private int[] _levels;
+
+            public int[] Levels => _levels;
+            public ItemInfo Item => _item;
+        }
     }
 }

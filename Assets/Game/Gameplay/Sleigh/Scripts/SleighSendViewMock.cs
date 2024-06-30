@@ -1,6 +1,7 @@
 ﻿using Game.Infrastructure.Items;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,24 +11,23 @@ namespace Game.Gameplay.Sleigh
     {
         [SerializeField] private ItemInfo[] _infos;
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, float>, int> Sended;
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
 
-        public void Initialize(int deerCapacity, int resourcesCapacity, int currentDeerCount)
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources, int levelsToDistribute)
         {
-            Debug.Log($"INITIALIZED {deerCapacity} {resourcesCapacity} {currentDeerCount}");
+            Debug.Log($"INITIALIZED {deerCapacity} {currentDeerCount} {string.Join(", ", possibleResources.Select(x => x.Name))}");
         }
 
         [Button]
         private void SendTest()
         {
-            Dictionary<ItemInfo, float> test = new()
+            Dictionary<ItemInfo, int> test = new()
             {
-                { _infos[0], 0.4f },
-                { _infos[1], 0.6f }
+                { _infos[0], 2 },
+                { _infos[1], 1 },
+                { _infos[2], 1 }
             };
-            int chosenDeers = 2;
-            Debug.Log("TEST");
-            Sended?.Invoke(test, chosenDeers);
+            Sended?.Invoke(test);
         }
     }
 }

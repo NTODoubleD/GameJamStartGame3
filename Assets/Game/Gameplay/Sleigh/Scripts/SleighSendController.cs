@@ -1,8 +1,6 @@
 using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +13,12 @@ namespace Game.Gameplay.Sleigh
         [SerializeField] private PastureBuilding _pasture;
         [SerializeField] private SleighReceiveController _receiveController;
         [SerializeField] private DayCycleController _dayCycleController;
+        [SerializeField] private ItemInfo[] _possibleResources;
+        [SerializeField] private int _levelsToDistribute = 4;
 
         private void Awake()
         {
-            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity, _pasture.DeerCount);
+            _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
         }
 
         private void OnEnable()
@@ -33,18 +33,40 @@ namespace Game.Gameplay.Sleigh
             _sendView.Sended -= Send;
         }
 
-        private void OnSleighUpgraded()
+        public int GetResourcesLimitLevel(ItemInfo resource, int chosenDeerCount)
         {
-            _sendView.Initialize(_sleigh.DeerCapacity, _sleigh.ItemCapacity, _pasture.DeerCount);
+            float partOfTarget = (float)chosenDeerCount / _sleigh.DeerCapacity;
+            float partToFeel = (1 - partOfTarget) * 100;
+            int maxLevel = _sleigh.GetItemLevelCounts(resource).Length;
+
+            if (partToFeel <= 25)
+                return maxLevel - 1;
+            else if (partToFeel > 25)
+                return maxLevel - 2;
+
+            return maxLevel;
         }
 
-        private void Send(IReadOnlyDictionary<ItemInfo, float> itemPercentages, int deerCount)
+        private void OnSleighUpgraded()
         {
-            int totalCapacity = (int)(_sleigh.ItemCapacity * (deerCount/(float)_sleigh.DeerCapacity));
+            _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
+        }
+
+        private void Send(IReadOnlyDictionary<ItemInfo, int> itemLevels)
+        {
             Dictionary<ItemInfo, int> resultItemsCount = new Dictionary<ItemInfo, int>();
 
-            foreach (var keyPair in itemPercentages)
-                resultItemsCount.Add(keyPair.Key, (int)(keyPair.Value * totalCapacity));
+            foreach (var keyPair in itemLevels)
+            {
+                if (keyPair.Value == 0)
+                {
+                    resultItemsCount.Add(keyPair.Key, 0);
+                    continue;
+                }
+
+                int[] counts = _sleigh.GetItemLevelCounts(keyPair.Key);
+                resultItemsCount.Add(keyPair.Key, counts[keyPair.Value - 1]);
+            }    
 
             _receiveController.SetReceiveInfo(resultItemsCount);
             _dayCycleController.EndDay();

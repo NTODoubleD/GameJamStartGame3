@@ -13,6 +13,8 @@ namespace Game.UI.Pages
 {
     public class SortiePage : MonoPage, IUIPage, ISleighSendView
     {
+        [SerializeField] private SleighSendController _sleighSendController;
+
         private InputController _inputManager;
 
         private void Awake()
@@ -36,11 +38,12 @@ namespace Game.UI.Pages
             _inputManager.EnableMap<PlayerInputMap>();
         }
 
-        public void Initialize(int deerCapacity, int resourcesCapacity, int currentDeerCount)
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
+            int levelsToDistribute)
         {
-            Debug.Log($"INITIALIZED {deerCapacity} {resourcesCapacity} {currentDeerCount}");
+            //_sleighSendController
         }
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, float>, int> Sended;
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
     }
 }

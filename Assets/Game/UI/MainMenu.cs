@@ -26,10 +26,5 @@ namespace Game.UI
 
             _stateMachine.Enter<MainGameState>();
         }
-
-        public void CloseGame()
-        {
-            Application.Quit();
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DoubleDTeam.Containers;
 using DoubleDTeam.InputSystem.Base;
 using DoubleDTeam.UI;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game.InputMaps
@@ -9,9 +10,17 @@ namespace Game.InputMaps
     {
         private EventSystem _eventSystem;
 
+        public readonly InputCharacter Close = new();
+
         public override void Initialize()
         {
             _eventSystem = Services.ProjectContext.GetModule<EventSystemProvider>().EventSystem;
+        }
+
+        protected override void Tick()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Close.CallStart();
         }
 
         public override void Enable()
