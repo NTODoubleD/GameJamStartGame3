@@ -3,6 +3,7 @@ using DoubleDTeam.StateMachine;
 using DoubleDTeam.StateMachine.Base;
 using DoubleDTeam.UI.Base;
 using Game.Gameplay.AI;
+using Game.Gameplay.Scripts;
 using Game.Gameplay.States;
 using Game.UI.Pages;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Game.Gameplay
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private DeerInteractive _deerInteractive;
         [SerializeField] private DeerAnimatorController _animatorController;
+        [SerializeField] private DeerMeshing _deerMeshing;
 
         public DeerInfo DeerInfo { get; private set; }
         public DeerInteractive DeerInteractive => _deerInteractive;
@@ -45,6 +47,9 @@ namespace Game.Gameplay
         public void Initialize<TStartState>(DeerInfo deerInfo) where TStartState : class, IState
         {
             DeerInfo = deerInfo;
+
+            _deerMeshing.ChangeMesh(deerInfo.Age, deerInfo.Gender);
+
             _deerStateMachine.Enter<TStartState>();
         }
 
@@ -79,7 +84,7 @@ namespace Game.Gameplay
         public void Cut()
         {
             _deerStateMachine.Enter<DeerCutState>();
-        }    
+        }
 
         #endregion
     }
