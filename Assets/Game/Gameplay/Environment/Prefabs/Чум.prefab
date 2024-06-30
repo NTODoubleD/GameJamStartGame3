@@ -56,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradesConfig: {fileID: 11400000, guid: 46f9a7a7abaebb643b1445a7c80263fb, type: 2}
   _viewUpgrader: {fileID: 4623591301819242227}
-  _itemInfos: []
+  _dayCycleController: {fileID: 0}
 --- !u!114 &4623591301819242227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +442,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1918041091517086, guid: d0cec343765de0445ace37eb2a2f5ed3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4165236947267418696}
   m_SourcePrefab: {fileID: 100100000, guid: d0cec343765de0445ace37eb2a2f5ed3, type: 3}
 --- !u!1 &2903405168101245945 stripped
 GameObject:
@@ -450,6 +454,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2903739757238020455}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4165236947267418696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2903405168101245945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384d5b78126338848a3f397c6c80dc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowMaterial: {fileID: 2100000, guid: 6578f61b4df5c914fa4dab62d1cf6a61, type: 2}
+  angle: 71.8
+  isAuto: 1
+  intersectionOffset: 0.1
+  useIntersection: 1
+  useUpdatedRotation: 1
 --- !u!4 &2908384412826283321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4661768149451870, guid: d0cec343765de0445ace37eb2a2f5ed3,
