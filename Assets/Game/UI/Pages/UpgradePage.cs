@@ -46,7 +46,7 @@ namespace Game.UI.Pages
 
             _conditionText.text = GetText(context);
 
-            _townLevelText.text = $"Уровень юрты - {_townHallBuilding.CurrentLevel}";
+            _townLevelText.text = $"Текущий уровень - {context.UpgradableBuilding.CurrentLevel}";
 
             _upgradeButton.interactable = context.UpgradableBuilding.CanUpgrade();
 
@@ -82,8 +82,8 @@ namespace Game.UI.Pages
 
             if (conditionVisitor.TownLevel >= 0)
             {
-                result += "Уровень юрты - " + conditionVisitor.TownLevel.ToString()
-                    .Color(conditionVisitor.TownLevel >= conditionVisitor.CurrentTownLevel
+                result += "Уровень юрты - " + $"{conditionVisitor.CurrentTownLevel}/{conditionVisitor.TownLevel}\n"
+                    .Color(conditionVisitor.CurrentTownLevel >= conditionVisitor.TownLevel
                         ? Color.green
                         : Color.red);
                 result += "\n";
@@ -93,7 +93,7 @@ namespace Game.UI.Pages
             {
                 int amountInStorage = _itemStorage.GetCount(item);
 
-                string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
+                string text = $"{item.Name} - " + $"{amountInStorage}/{amount}\n"
                     .Color(amountInStorage >= amount ? Color.green : Color.red);
 
                 result += text;
@@ -112,7 +112,7 @@ namespace Game.UI.Pages
             public void Visit(TownHallUpgradeCondition condition)
             {
                 TownLevel = condition.NecessaryLevel;
-                CurrentTownLevel = condition.CurrentLevel;
+                CurrentTownLevel = TownHallLocator.Instance.TownHall.CurrentLevel;
             }
 
             public void Visit(ResourcesUpgradeCondition condition)

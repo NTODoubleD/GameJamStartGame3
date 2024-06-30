@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888105377341762000}
   - component: {fileID: 5486208311195577724}
+  - component: {fileID: 6892283061083626802}
   m_Layer: 0
   m_Name: InteractivePoint
   m_TagString: Untagged
@@ -44,9 +45,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3e08642a6c4322b927d292810e49b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  _operations: []
-  _viewUpgrader: {fileID: 0}
+  _name: "\u0421\u0430\u043D\u0438"
+  _distanceToInteract: 2.5
+  _operations:
+  - Name: "\u0412\u044B\u0439\u0442\u0438"
+    Image: {fileID: 21300000, guid: cf46862572e88a348927d8ac11fa7d54, type: 3}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6892283061083626802}
+          m_TargetAssemblyTypeName: Game.InputMaps.InputMapSwitcher, Assembly-CSharp
+          m_MethodName: EnablePlayerMap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Name: "\u041F\u043E\u0445\u043E\u0434"
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5486208311195577724}
+          m_TargetAssemblyTypeName: Game.Gameplay.SleighInteractive, Assembly-CSharp
+          m_MethodName: OpenSortiePage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Name: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4985271293720314679}
+          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.UpgradableBuilding, Assembly-CSharp
+          m_MethodName: OpenUpgradePage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _viewUpgrader: {fileID: 1023714989262515263}
+--- !u!114 &6892283061083626802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140480259386659725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13091758ca414d2182543892c15cb531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1366682787611697181
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3600544062369208961}
+  - component: {fileID: 4985271293720314679}
   - component: {fileID: 1023714989262515263}
   - component: {fileID: 2495124453592494201}
   m_Layer: 0
@@ -294,6 +360,23 @@ Transform:
   - {fileID: 1888105377341762000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4985271293720314679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5321587448185848283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413feabb37c2394408e67c0a125861da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradesConfig: {fileID: 11400000, guid: 1d70e3378eff9b94fad85e7e8848af6d, type: 2}
+  _viewUpgrader: {fileID: 1023714989262515263}
+  _dayCycleController: {fileID: 0}
+  _upgradeTitle: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u0441\u0430\u043D\u0438"
+  _levelsConfig: {fileID: 11400000, guid: c979f0b7aa3f5834aaefa12869f9abf2, type: 2}
 --- !u!114 &1023714989262515263
 MonoBehaviour:
   m_ObjectHideFlags: 0

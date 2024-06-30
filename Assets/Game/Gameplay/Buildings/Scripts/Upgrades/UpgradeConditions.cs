@@ -19,7 +19,6 @@ namespace Game.Gameplay.Buildings
         [SerializeField] private int _necessaryLevel;
 
         public int NecessaryLevel => _necessaryLevel;
-        public int CurrentLevel => TownHallLocator.Instance.TownHall.CurrentLevel;
 
         bool IUpgradeCondition.IsCompleted()
         {
