@@ -4,6 +4,7 @@ using DoubleDTeam.Extensions;
 using DoubleDTeam.InputSystem;
 using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
+using Game.Gameplay.Buildings;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using Game.InputMaps;
@@ -20,6 +21,7 @@ namespace Game.UI.Pages
         [SerializeField] private Button _upgradeButton;
 
         private ItemStorage _itemStorage;
+        private UpgradeMenuArgument _currentArgument;
 
         private void Awake()
         {
@@ -30,6 +32,8 @@ namespace Game.UI.Pages
 
         public void Open(UpgradeMenuArgument context)
         {
+            _currentArgument = context;
+
             SetCanvasState(true);
 
             _labelText.text = context.Label;
@@ -48,14 +52,21 @@ namespace Game.UI.Pages
 
             _conditionText.text = conditionText;
 
-            _upgradeButton.interactable = false;
+            _upgradeButton.interactable = context.UpgradableBuilding.CanUpgrade();
         }
 
         public override void Close()
         {
+            _currentArgument = null;
+
             SetCanvasState(false);
 
             Services.ProjectContext.GetModule<InputController>().EnableMap<PlayerInputMap>();
+        }
+
+        public void Upgrade()
+        {
+            _currentArgument.UpgradableBuilding.Upgrade();
         }
     }
 
@@ -63,5 +74,6 @@ namespace Game.UI.Pages
     {
         public string Label;
         public Dictionary<ItemInfo, int> ItemsDictionary;
+        public UpgradableBuilding UpgradableBuilding;
     }
 }

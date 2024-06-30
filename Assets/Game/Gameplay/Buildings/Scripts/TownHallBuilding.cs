@@ -33,7 +33,8 @@ namespace Game.Gameplay.Buildings
                     { _itemInfos[0], 10 },
                     { _itemInfos[1], 1 },
                     { _itemInfos[2], 30 }
-                }
+                },
+                UpgradableBuilding = this
             };
         }
     }
