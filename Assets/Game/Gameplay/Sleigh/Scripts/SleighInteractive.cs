@@ -9,5 +9,10 @@ namespace Game.Gameplay
         {
             UIManager.OpenPage<RadialMenuPage, RadialMenuArgument>(GetRadialMenuArgument());
         }
+
+        public void OpenSortiePage()
+        {
+            UIManager.OpenPage<SortiePage>();
+        }
     }
 }

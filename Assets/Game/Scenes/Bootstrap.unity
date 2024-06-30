@@ -447,13 +447,13 @@ MonoBehaviour:
   _testInfo:
     _startItems:
     - _itemInfo: {fileID: 11400000, guid: 9868b408a6f3c054193aa958fe2e6c29, type: 2}
-      _count: 5
+      _count: 99
     - _itemInfo: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
-      _count: 10
+      _count: 1099
     - _itemInfo: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
-      _count: 15
+      _count: 159
     - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-      _count: 5
+      _count: 59
 --- !u!1 &2001292478
 GameObject:
   m_ObjectHideFlags: 0
