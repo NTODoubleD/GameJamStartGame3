@@ -1,5 +1,8 @@
+using DoubleDTeam.Containers;
 using DoubleDTeam.SaveSystem.Base;
+using DoubleDTeam.UI.Base;
 using Game.Gameplay.DayCycle;
+using Game.UI.Pages;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,14 +16,20 @@ namespace Game.Gameplay.Buildings
         [SerializeReference] protected BuildingUpgradesConfig _upgradesConfig;
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
         [SerializeField] private DayCycleController _dayCycleController;
+        [SerializeField] private string _upgradeTitle;
 
         private int _daysLeftForUpgrade;
+        private IUIManager _uiManager;
 
         public int DaysLeftForUpgrade => _daysLeftForUpgrade;
-
         public int CurrentLevel { get; private set; } = 1;
 
         public event UnityAction Upgraded;
+
+        private void Awake()
+        {
+            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+        }
 
         private void OnEnable()
         {
@@ -41,6 +50,11 @@ namespace Game.Gameplay.Buildings
                 if (_daysLeftForUpgrade == 0)
                     DelayedUpgrade();
             }
+        }
+
+        public void OpenUpgradePage()
+        {
+            _uiManager.OpenPage<UpgradePage, UpgradeMenuArgument>(GetUpgradeMenuArgument());
         }
 
         public string GetData()
@@ -94,6 +108,17 @@ namespace Game.Gameplay.Buildings
         protected virtual void OnUpgraded()
         {
 
+        }
+
+        private UpgradeMenuArgument GetUpgradeMenuArgument()
+        {
+            return new UpgradeMenuArgument()
+            {
+                Label = _upgradeTitle,
+                DayDuration = _upgradesConfig.GetUpgradeDuration(CurrentLevel),
+                Conditions = _upgradesConfig.GetUpgradeConditions(CurrentLevel).ToList(),
+                UpgradableBuilding = this
+            };
         }
     }
 }

@@ -385,8 +385,9 @@ MonoBehaviour:
   _upgradesConfig: {fileID: 11400000, guid: 15ebbe64f7e3dff4f83a7c99447d4384, type: 2}
   _viewUpgrader: {fileID: 1903503227443288169}
   _dayCycleController: {fileID: 0}
-  _levelsConfig: {fileID: 0}
-  _walkablePlane: {fileID: 0}
+  _upgradeTitle: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C \u043F\u0430\u0441\u0442\u0431\u0438\u0449\u0435"
+  _levelsConfig: {fileID: 11400000, guid: c62fa2f6c0ee6a54db74c75a26a0896c, type: 2}
+  _walkablePlane: {fileID: 4393495660447922350}
   _testCount: 2
 --- !u!114 &1903503227443288169
 MonoBehaviour:
@@ -404,9 +405,9 @@ MonoBehaviour:
   - _view: {fileID: 4836330097613568334}
     _outline: {fileID: 5019498390381452880}
   - _view: {fileID: 5632164600609185959}
-    _outline: {fileID: 0}
-  - _view: {fileID: 0}
-    _outline: {fileID: 0}
+    _outline: {fileID: 4928479649304845871}
+  - _view: {fileID: 8764339164872084595}
+    _outline: {fileID: 1005063707699610964}
   _contructionAnimator: {fileID: 4356527511934499162}
 --- !u!114 &4356527511934499162
 MonoBehaviour:
@@ -664,7 +665,7 @@ GameObject:
   m_Layer: 0
   m_Name: InteractivePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -677,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 6405267530681699430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.63, y: 0, z: 2.61}
+  m_LocalPosition: {x: -5.52, y: 0, z: 1.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +721,7 @@ MonoBehaviour:
     Action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 4825066221919611882}
           m_TargetAssemblyTypeName: Game.InputMaps.InputMapSwitcher, Assembly-CSharp
           m_MethodName: EnablePlayerMap
           m_Mode: 1
@@ -1784,6 +1785,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6562435353144195841}
     m_Modifications:
+    - target: {fileID: 906126386077732935, guid: 64fc90099815bd24592e667a1271bb7f,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 2517153838965244697, guid: 64fc90099815bd24592e667a1271bb7f,
         type: 3}
       propertyPath: m_Name
@@ -1791,18 +1797,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.62
       objectReference: {fileID: 0}
     - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48
+      value: -6.44
       objectReference: {fileID: 0}
     - target: {fileID: 3824928133273439462, guid: 64fc90099815bd24592e667a1271bb7f,
         type: 3}
