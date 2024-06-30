@@ -576,7 +576,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253120788
 MonoBehaviour:
@@ -1947,6 +1947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 1176313997}
   _graphicRaycaster: {fileID: 1176313996}
+  _sleighSendController: {fileID: 0}
 --- !u!114 &1176313996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,7 +2252,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266202489
 MonoBehaviour:
@@ -3642,6 +3643,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---TEST WORLD---
       objectReference: {fileID: 0}
+    - target: {fileID: 1971825967672072721, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _dayCycleController
+      value: 
+      objectReference: {fileID: 2089670853}
     - target: {fileID: 2028479220773695049, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _monoPages.Array.size
@@ -3774,6 +3780,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 5322400594369925862, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _dayCycleController
+      value: 
+      objectReference: {fileID: 2089670853}
     - target: {fileID: 5322400594369925862, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _itemInfos.Array.size
@@ -4011,6 +4022,11 @@ PrefabInstance:
       propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8492483806132878630, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _dayCycleController
+      value: 
+      objectReference: {fileID: 2089670853}
     - target: {fileID: 8734160213176526107, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Speed
@@ -4403,6 +4419,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7487104a8b44cfc8ed65da99ba26810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089670853 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7584658767840806107, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0eff65b5a587c343a49118cfa43fdc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2142786087
