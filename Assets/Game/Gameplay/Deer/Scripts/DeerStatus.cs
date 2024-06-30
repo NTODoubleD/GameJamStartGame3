@@ -5,6 +5,7 @@
         None = 0,
         Standard = 1,
         Sick = 2,
-        VerySick = 3
+        VerySick = 3,
+        Dead = 4,
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DoubleDTeam.Attributes;
 using UnityEngine;
 using UnityEngine.AI;
