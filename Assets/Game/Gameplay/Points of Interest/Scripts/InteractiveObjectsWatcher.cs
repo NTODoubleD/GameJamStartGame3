@@ -19,6 +19,11 @@ namespace Game.Gameplay.Interaction
 
         public event UnityAction<InteractiveObject> CurrentChanged;
 
+        private void Awake()
+        {
+            _interactiveObjectsToCheck.AddRange(_interactiveObjects);
+        }
+
         private void OnDisable()
         {
             CurrentObject = null;
@@ -28,7 +33,6 @@ namespace Game.Gameplay.Interaction
         private void OnValidate()
         {
             _interactiveObjects = FindObjectsOfType<InteractiveObject>();
-            _interactiveObjectsToCheck.AddRange(_interactiveObjects);
         }
 
         public void AddObjectToWatch(InteractiveObject obj)
