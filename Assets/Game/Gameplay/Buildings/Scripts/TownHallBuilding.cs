@@ -1,16 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using DoubleDTeam.Containers;
 using DoubleDTeam.UI.Base;
-using Game.Infrastructure.Items;
 using Game.UI.Pages;
-using UnityEngine;
 
 namespace Game.Gameplay.Buildings
 {
     public class TownHallBuilding : UpgradableBuilding
     {
-        [SerializeField] private List<ItemInfo> _itemInfos;
-
         private IUIManager _uiManager;
 
         private void Awake()
@@ -28,12 +24,7 @@ namespace Game.Gameplay.Buildings
             return new UpgradeMenuArgument()
             {
                 Label = "Улучшить жилище",
-                ItemsDictionary = new Dictionary<ItemInfo, int>
-                {
-                    { _itemInfos[0], 10 },
-                    { _itemInfos[1], 1 },
-                    { _itemInfos[2], 30 }
-                },
+                Conditions = _upgradesConfig.GetUpgradeConditions(CurrentLevel).ToList(),
                 UpgradableBuilding = this
             };
         }

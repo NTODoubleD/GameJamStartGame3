@@ -22,10 +22,12 @@ namespace Game.UI.Pages
 
         private ItemStorage _itemStorage;
         private UpgradeMenuArgument _currentArgument;
+        private ConditionVisitor _conditionVisitor;
 
         private void Awake()
         {
             _itemStorage = Services.ProjectContext.GetModule<ItemStorage>();
+            _conditionVisitor = new ConditionVisitor();
 
             Close();
         }
@@ -38,19 +40,7 @@ namespace Game.UI.Pages
 
             _labelText.text = context.Label;
 
-            string conditionText = "";
-
-            foreach (var (item, amount) in context.ItemsDictionary)
-            {
-                int amountInStorage = _itemStorage.GetCount(item);
-
-                string text = $"{item.Name} - " + $"{amount}/{amountInStorage}\n"
-                    .Color(amountInStorage >= amount ? Color.green : Color.red);
-
-                conditionText += text;
-            }
-
-            _conditionText.text = conditionText;
+            _conditionText.text = GetText(context);
 
             _upgradeButton.interactable = context.UpgradableBuilding.CanUpgrade();
         }
@@ -68,12 +58,60 @@ namespace Game.UI.Pages
         {
             _currentArgument.UpgradableBuilding.Upgrade();
         }
+
+        private string GetText(UpgradeMenuArgument argument)
+        {
+            string result = "";
+
+            foreach (var condition in argument.Conditions)
+            {
+                condition.Accept(_conditionVisitor);
+
+                result += "Уровень юрты - " + _conditionVisitor.TownLevel.ToString()
+                    .Color(_conditionVisitor.TownLevel >= _conditionVisitor.CurrentTownLevel
+                        ? Color.green
+                        : Color.red);
+
+                result += "\n";
+
+                foreach (var (item, amount) in _conditionVisitor.Items)
+                {
+                    int amountInStorage = _itemStorage.GetCount(item);
+
+                    string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
+                        .Color(amountInStorage >= amount ? Color.green : Color.red);
+
+                    result += text;
+                }
+            }
+
+            return result;
+        }
+
+        private class ConditionVisitor : IUpgradeConditionVisitor
+        {
+            public int TownLevel { get; private set; }
+            public int CurrentTownLevel { get; private set; }
+
+            public IReadOnlyDictionary<ItemInfo, int> Items { get; private set; }
+
+            public void Visit(TownHallUpgradeCondition condition)
+            {
+                TownLevel = condition.NecessaryLevel;
+                CurrentTownLevel = condition.CurrentLevel;
+            }
+
+            public void Visit(ResourcesUpgradeCondition condition)
+            {
+                Items = condition.NeccessaryItems;
+            }
+        }
     }
 
     public class UpgradeMenuArgument
     {
         public string Label;
-        public Dictionary<ItemInfo, int> ItemsDictionary;
+        public List<IUpgradeCondition> Conditions;
         public UpgradableBuilding UpgradableBuilding;
     }
 }

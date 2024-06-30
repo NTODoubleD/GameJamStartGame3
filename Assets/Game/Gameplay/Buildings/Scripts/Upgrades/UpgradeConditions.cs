@@ -17,11 +17,14 @@ namespace Game.Gameplay.Buildings
     public class TownHallUpgradeCondition : IUpgradeCondition
     {
         [SerializeField] private UpgradableBuilding _townHall;
-        [SerializeField] private int _neccessaryLevel;
+        [SerializeField] private int _necessaryLevel;
+
+        public int NecessaryLevel => _necessaryLevel;
+        public int CurrentLevel => _townHall.CurrentLevel;
 
         bool IUpgradeCondition.IsCompleted()
         {
-            return _townHall.CurrentLevel >= _neccessaryLevel;
+            return _townHall.CurrentLevel >= _necessaryLevel;
         }
 
         void IUpgradeCondition.Accept(IUpgradeConditionVisitor visitor)

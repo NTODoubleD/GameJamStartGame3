@@ -1,5 +1,4 @@
 using DoubleDTeam.SaveSystem.Base;
-using Sirenix.OdinInspector;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +9,7 @@ namespace Game.Gameplay.Buildings
     {
         private readonly ConditionResourcesSpender _resourcesSpender = new();
 
-        [SerializeReference] private BuildingUpgradesConfig _upgradesConfig;
+        [SerializeReference] protected BuildingUpgradesConfig _upgradesConfig;
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
 
         public int CurrentLevel { get; private set; } = 1;
