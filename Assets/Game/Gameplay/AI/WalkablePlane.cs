@@ -20,6 +20,11 @@ namespace Game.Gameplay.AI
                 : Center;
         }
 
+        public void SetWidth(float width)
+        {
+            _width = width;
+        }
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.DrawCube(Center, new Vector3(_width, 5, _width));
