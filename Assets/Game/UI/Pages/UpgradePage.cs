@@ -18,16 +18,20 @@ namespace Game.UI.Pages
     {
         [SerializeField] private TextMeshProUGUI _labelText;
         [SerializeField] private TextMeshProUGUI _conditionText;
+        [SerializeField] private TextMeshProUGUI _townLevelText;
         [SerializeField] private Button _upgradeButton;
+
+        [Space, SerializeField] private TextMeshProUGUI _upgradeButtonText;
+        [SerializeField] private TextMeshProUGUI _remainUpgradeText;
+
+        [Space, SerializeField] private TownHallBuilding _townHallBuilding;
 
         private ItemStorage _itemStorage;
         private UpgradeMenuArgument _currentArgument;
-        private ConditionVisitor _conditionVisitor;
 
         private void Awake()
         {
             _itemStorage = Services.ProjectContext.GetModule<ItemStorage>();
-            _conditionVisitor = new ConditionVisitor();
 
             Close();
         }
@@ -42,7 +46,16 @@ namespace Game.UI.Pages
 
             _conditionText.text = GetText(context);
 
+            _townLevelText.text = $"Уровень юрты - {_townHallBuilding.CurrentLevel}";
+
             _upgradeButton.interactable = context.UpgradableBuilding.CanUpgrade();
+
+            _upgradeButtonText.text = _currentArgument.UpgradableBuilding.DaysLeftForUpgrade <= 0
+                ? "Улучшить"
+                : $"До улучшения осталось (дни) - {_currentArgument.UpgradableBuilding.DaysLeftForUpgrade}";
+
+            _remainUpgradeText.text = $"Время улучшения (дни) - {context.DayDuration}";
+            _remainUpgradeText.enabled = _currentArgument.UpgradableBuilding.DaysLeftForUpgrade <= 0;
         }
 
         public override void Close()
@@ -65,16 +78,20 @@ namespace Game.UI.Pages
 
             foreach (var condition in argument.Conditions)
             {
-                condition.Accept(_conditionVisitor);
+                var conditionVisitor = new ConditionVisitor();
 
-                result += "Уровень юрты - " + _conditionVisitor.TownLevel.ToString()
-                    .Color(_conditionVisitor.TownLevel >= _conditionVisitor.CurrentTownLevel
-                        ? Color.green
-                        : Color.red);
+                condition.Accept(conditionVisitor);
 
-                result += "\n";
+                if (conditionVisitor.TownLevel >= 0)
+                {
+                    result += "Уровень юрты - " + conditionVisitor.TownLevel.ToString()
+                        .Color(conditionVisitor.TownLevel >= conditionVisitor.CurrentTownLevel
+                            ? Color.green
+                            : Color.red);
+                    result += "\n";
+                }
 
-                foreach (var (item, amount) in _conditionVisitor.Items)
+                foreach (var (item, amount) in conditionVisitor.Items)
                 {
                     int amountInStorage = _itemStorage.GetCount(item);
 
@@ -90,8 +107,8 @@ namespace Game.UI.Pages
 
         private class ConditionVisitor : IUpgradeConditionVisitor
         {
-            public int TownLevel { get; private set; }
-            public int CurrentTownLevel { get; private set; }
+            public int TownLevel { get; private set; } = -1;
+            public int CurrentTownLevel { get; private set; } = -1;
 
             public IReadOnlyDictionary<ItemInfo, int> Items { get; private set; }
 
@@ -111,6 +128,7 @@ namespace Game.UI.Pages
     public class UpgradeMenuArgument
     {
         public string Label;
+        public int DayDuration;
         public List<IUpgradeCondition> Conditions;
         public UpgradableBuilding UpgradableBuilding;
     }
