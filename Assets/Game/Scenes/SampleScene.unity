@@ -1185,6 +1185,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.369
       objectReference: {fileID: 0}
+    - target: {fileID: 4600321173025057215, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4625290008878806815, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1285,6 +1290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168413715008828340, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5177938156750009359, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -1404,6 +1414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UgradeText (TMP)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955197027715008918, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5959268068221469412, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
