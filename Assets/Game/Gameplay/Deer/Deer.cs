@@ -1,5 +1,7 @@
 ﻿using DoubleDTeam.Containers;
+using DoubleDTeam.StateMachine;
 using DoubleDTeam.UI.Base;
+using Game.Gameplay.States;
 using Game.UI.Pages;
 using UnityEngine;
 
@@ -10,9 +12,22 @@ namespace Game.Gameplay
         public DeerInfo DeerInfo => GetDeerInfo();
         private IUIManager _uiManager;
 
+        private StateMachine _deerStateMachine;
+
         private void Awake()
         {
             _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+
+            _deerStateMachine = new StateMachine();
+
+            _deerStateMachine.BindState(new DeerEatsState());
+            _deerStateMachine.BindState(new DeerWalkState());
+            _deerStateMachine.BindState(new DeerInteractedByPlayerState());
+        }
+
+        private void Start()
+        {
+            _deerStateMachine.Enter<DeerWalkState>();
         }
 
         private DeerInfo GetDeerInfo()
