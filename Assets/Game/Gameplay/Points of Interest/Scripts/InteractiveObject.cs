@@ -13,7 +13,7 @@ namespace Game.Gameplay.Interaction
 
         protected IUIManager UIManager;
 
-        protected RadialMenuArgument GetRadialMenuArgument()
+        protected virtual RadialMenuArgument GetRadialMenuArgument()
         {
             return new RadialMenuArgument
             {
