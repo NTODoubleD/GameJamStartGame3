@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 1053513593713293034}
   - component: {fileID: 5399079536197391724}
   - component: {fileID: 8497983903205567268}
+  - component: {fileID: 422086990294421580}
+  - component: {fileID: 4151478092734953079}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -139,6 +141,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &422086990294421580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236043170778842703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -334000983
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.46
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: b40dcfe717fc99f4baf72191efd08ea8, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!114 &4151478092734953079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236043170778842703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea3baf9e93a4e4795be61ad8f48046c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 25
 --- !u!1 &289453537818917530
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +229,7 @@ GameObject:
   - component: {fileID: 2074924103058222134}
   - component: {fileID: 2646467652415675716}
   - component: {fileID: 3144678072333771413}
+  - component: {fileID: 3108971771002846722}
   m_Layer: 0
   m_Name: SimpleCanvas
   m_TagString: Untagged
@@ -273,6 +320,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 63
+--- !u!114 &3108971771002846722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771278137664901165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3a50f1748906a4084b616173febfcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 2074924103058222134}
+  _graphicRaycaster: {fileID: 3144678072333771413}
 --- !u!1 &1526937654465566037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1780,7 @@ GameObject:
   - component: {fileID: 5123426217063160820}
   - component: {fileID: 4214502093040699528}
   - component: {fileID: 1683991689802555937}
+  - component: {fileID: 6521576885628659062}
   m_Layer: 0
   m_Name: CycleChangeScreen
   m_TagString: Untagged
@@ -1804,6 +1866,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6521576885628659062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6883747367546829579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638ad47fb2a84df0bbb84162bd754b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _page: {fileID: 3108971771002846722}
 --- !u!1 &7053555520564421344
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,6 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _distanceChecker: {fileID: 5376232560934252452}
   _interactiveObjects:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
