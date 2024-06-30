@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/MainMenu.unity
     guid: 54fe44233ba8e6f45a3e719b67b46f23
-  - enabled: 0
+  - enabled: 1
     path: Assets/Game/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
     path: Assets/Game/Scenes/BuildingUpgradeTest.unity
     guid: a5ee6e8babe213f4d842ebb785618f47
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Scenes/TestSnow.unity
     guid: ec38353416f1b834eb7e1ab1874a1978
   m_configObjects: {}
