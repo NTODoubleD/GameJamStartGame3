@@ -505,6 +505,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23234147000285200, guid: d0cec343765de0445ace37eb2a2f5ed3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 707803dece342f34cb7db5c3ff81d7b6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -600,10 +605,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23718836717774418, guid: 536c770d03987fb4bb552eab4239a68d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ed5fd8781ab90ea4688df22e15db7dfd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1932430187875604, guid: 536c770d03987fb4bb552eab4239a68d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764552113799953878}
   m_SourcePrefab: {fileID: 100100000, guid: 536c770d03987fb4bb552eab4239a68d, type: 3}
 --- !u!4 &4985197375514732706 stripped
 Transform:
@@ -617,6 +631,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4989611840161197764}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &764552113799953878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987864133430076368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384d5b78126338848a3f397c6c80dc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowMaterial: {fileID: 2100000, guid: 6578f61b4df5c914fa4dab62d1cf6a61, type: 2}
+  angle: 71.8
+  isAuto: 1
+  intersectionOffset: 0.1
+  useIntersection: 1
+  useUpdatedRotation: 1
 --- !u!1001 &5775718125123665862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -676,7 +708,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1114693883455028, guid: 58ef710fba0d56d4da66ad6f94fb05e9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1103832587312638980}
   m_SourcePrefab: {fileID: 100100000, guid: 58ef710fba0d56d4da66ad6f94fb05e9, type: 3}
 --- !u!1 &5774895405404985842 stripped
 GameObject:
@@ -684,6 +720,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5775718125123665862}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1103832587312638980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774895405404985842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384d5b78126338848a3f397c6c80dc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowMaterial: {fileID: 2100000, guid: 6578f61b4df5c914fa4dab62d1cf6a61, type: 2}
+  angle: 71.8
+  isAuto: 1
+  intersectionOffset: 0.1
+  useIntersection: 1
+  useUpdatedRotation: 1
 --- !u!4 &5776211677628146316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4011990871366986, guid: 58ef710fba0d56d4da66ad6f94fb05e9,
