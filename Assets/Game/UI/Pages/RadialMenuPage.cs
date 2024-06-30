@@ -5,6 +5,7 @@ using DoubleDTeam.InputSystem;
 using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
 using Game.InputMaps;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -76,8 +77,12 @@ namespace Game.UI.Pages
                 var button = _buttons[i];
                 var buttonInfo = context.Buttons[i];
 
+                if (buttonInfo.IsUnlock())
+                    continue;
+
                 button.gameObject.SetActive(true);
                 _circleSelector.Buttons.Add(button.gameObject);
+
 
                 button.action.AddListener(() => buttonInfo.Action?.Invoke());
                 button.action.AddListener(Close);
@@ -111,5 +116,11 @@ namespace Game.UI.Pages
         public string Name;
         public Sprite Image;
         public UnityEvent Action;
+        public bool HasCondition;
+
+        [ShowIf("HasCondition")] public ConditionObject ShowCondition;
+
+        public bool IsUnlock()
+            => HasCondition && ShowCondition.ConditionIsDone() == false;
     }
 }

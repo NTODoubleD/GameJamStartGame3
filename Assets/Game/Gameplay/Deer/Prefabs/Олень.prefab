@@ -2309,6 +2309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5430778229503088296}
   - component: {fileID: 4924400245990448069}
+  - component: {fileID: 3274127858745415287}
   - component: {fileID: 8038603526445538412}
   m_Layer: 0
   m_Name: "\u041E\u043B\u0435\u043D\u044C"
@@ -2348,6 +2349,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 8038603526445538412}
   _deerInteractive: {fileID: 7842305226513972398}
+--- !u!114 &3274127858745415287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8817670477337296771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e314c7d15b7e4ef3a7aa65baa8d91878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &8038603526445538412
 NavMeshAgent:
   m_ObjectHideFlags: 0
