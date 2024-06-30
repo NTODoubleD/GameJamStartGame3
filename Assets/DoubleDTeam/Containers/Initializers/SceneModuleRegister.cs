@@ -24,7 +24,7 @@ namespace DoubleDTeam.Containers.Initializers
                 if (Services.SceneContext.ContainsModule(module))
                     continue;
 
-                Services.SceneContext.RegisterModule(module);
+                Services.SceneContext.RegisterModule((IModule)module);
             }
         }
 

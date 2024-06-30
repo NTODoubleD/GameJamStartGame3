@@ -1,4 +1,3 @@
-using DoubleDTeam.Containers;
 using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
 using Game.Monologue;
@@ -9,8 +8,6 @@ namespace Game.UI.Pages
     public class MessagePage : MonoPage, IPayloadPage<MonologueGroupInfo>
     {
         [SerializeField] private MessageShower _messageShower;
-
-        private IUIManager _uiManager;
 
         private void Awake()
         {
@@ -36,7 +33,7 @@ namespace Game.UI.Pages
 
         private void OnMessageEnd()
         {
-            _uiManager.ClosePage<MessagePage>();
+            Close();
         }
     }
 }

@@ -1,6 +1,7 @@
 using DoubleDTeam.Containers;
 using DoubleDTeam.TimeTools;
 using DoubleDTeam.UI.Base;
+using Game.Gameplay.Scripts;
 using Game.Monologue;
 using Game.UI;
 using Game.UI.Pages;
@@ -12,6 +13,8 @@ public class TEST : MonoBehaviour
 
     private void Start()
     {
+        var deerFab = Services.SceneContext.GetModule<DeerFabric>();
+        
         var timer = new Timer(this, TimeBindingType.ScaledTime);
 
         var uiManager = Services.ProjectContext.GetModule<IUIManager>();
