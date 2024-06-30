@@ -12,6 +12,8 @@ namespace Game.InputMaps
         public readonly InputCharacter LeftClick = new();
         public readonly PayloadedInputCharacter<Vector2> MousePosition = new();
 
+        public readonly InputCharacter Escape = new();
+
         protected override void Tick()
         {
             MoveHandler();
@@ -19,6 +21,8 @@ namespace Game.InputMaps
             MouseHandler();
 
             InteractHandler();
+
+            EscapeHandler();
         }
 
         protected override void Cancel()
@@ -27,6 +31,13 @@ namespace Game.InputMaps
             Move.CallCancel(Vector2.zero);
             LeftClick.CallCancel();
             MousePosition.CallCancel(Vector2.zero);
+            Escape.CallCancel();
+        }
+
+        private void EscapeHandler()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                Escape.CallStart();
         }
 
         private void InteractHandler()
