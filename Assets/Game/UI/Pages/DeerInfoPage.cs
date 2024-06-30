@@ -33,11 +33,11 @@ namespace Game.UI.Pages
 
             SetCanvasState(true);
 
-            _text.text = $"Name - {context.Info.Name}\n" +
-                         $"Gender - {context.Info.Gender}\n" +
-                         $"Age - {context.Info.Age}\n" +
-                         $"Hunger - {context.Info.HungerDegree * 100}%\n" +
-                         $"Status - {context.Info.Status}";
+            _text.text = $"Имя - {context.Info.Name}\n" +
+                         $"Пол - {context.Info.Gender.ToText()}\n" +
+                         $"Возраст - {context.Info.Age.ToText()}\n" +
+                         $"Сытость - {context.Info.HungerDegree * 100}%\n" +
+                         $"Статус - {context.Info.Status.ToText()}";
         }
 
         public override void Close()

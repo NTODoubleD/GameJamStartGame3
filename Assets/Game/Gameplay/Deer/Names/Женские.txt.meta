@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Game/Gameplay/Deer/Scripts/Menu.meta
+guid: 17412e6c48461bd48979a75e10cdfa4a
+folderAsset: yes
+DefaultImporter:
+========
 guid: 7683adb6fb1ed16459a9050ab251be1d
 TextScriptImporter:
+>>>>>>>> 2edc351eb57365db075b2649e18a332d947148fe:Assets/Game/Gameplay/Deer/Names/Женские.txt.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
