@@ -18,6 +18,8 @@ namespace Xamin
         [Tooltip("Can be used to reference the button via code.")]
         public string id;
 
+        private TMP_Text _text;
+        
         public Color customColor;
         public bool useCustomColor;
 
@@ -25,13 +27,16 @@ namespace Xamin
 
         private UnityEngine.UI.Image imageComponent;
         private bool _isimageComponentNotNull;
+        private bool _isTextComponentNotNull;
 
         void Start()
         {
             imageComponent = GetComponent<UnityEngine.UI.Image>();
+            _text = GetComponentInChildren<TMP_Text>();
             if (image)
                 imageComponent.sprite = image;
             _isimageComponentNotNull = imageComponent != null; // This check avoids expensive not null comparisons at runtime.
+            _isTextComponentNotNull = _text != null;
         }
 
         public Color currentColor
@@ -43,6 +48,8 @@ namespace Xamin
         {
             if (_isimageComponentNotNull)
                 imageComponent.color = c;
+            if (_isTextComponentNotNull)
+                _text.color = c;
         }
         
         /// <summary>
