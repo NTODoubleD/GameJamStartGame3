@@ -1,7 +1,9 @@
 ﻿using DoubleDTeam.Containers;
+using DoubleDTeam.InputSystem;
 using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
 using Game.Gameplay;
+using Game.InputMaps;
 using TMPro;
 using UnityEngine;
 
@@ -9,28 +11,22 @@ namespace Game.UI.Pages
 {
     public class DeerInfoPage : MonoPage, IPayloadPage<DeerInfo>
     {
-        [SerializeField] private RectTransform _widgetRoot;
-        [SerializeField] private Vector2 _offset;
         [SerializeField] private TextMeshProUGUI _text;
 
-        private DeerInfo _currentInfo;
-        private Camera _mainCamera;
-
-        private RectTransform _canvasRectTransform;
+        private InputController _inputController;
 
         private void Awake()
         {
-            _mainCamera = Camera.main;
-            _canvasRectTransform = Canvas.GetComponent<RectTransform>();
+            _inputController = Services.ProjectContext.GetModule<InputController>();
 
             Close();
         }
 
         public void Open(DeerInfo context)
         {
-            SetCanvasState(true);
+            _inputController.EnableMap<UIInputMap>();
 
-            _currentInfo = context;
+            SetCanvasState(true);
 
             _text.text = $"Name - {context.Name}\n" +
                          $"Gender - {context.Gender}\n" +
@@ -43,21 +39,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _currentInfo = null;
-        }
-
-        private void Update()
-        {
-            if (_currentInfo == null)
-                return;
-
-            var viewPort = _mainCamera.WorldToViewportPoint(_currentInfo.WorldPosition);
-
-            viewPort.x *= _canvasRectTransform.sizeDelta.x;
-            viewPort.y *= _canvasRectTransform.sizeDelta.y;
-
-            _widgetRoot.anchoredPosition = viewPort;
-            _widgetRoot.anchoredPosition += _offset;
+            _inputController.EnableMap<PlayerInputMap>();
         }
     }
 }
