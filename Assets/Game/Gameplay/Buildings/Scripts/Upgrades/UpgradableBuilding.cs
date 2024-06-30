@@ -16,6 +16,8 @@ namespace Game.Gameplay.Buildings
 
         private int _daysLeftForUpgrade;
 
+        public int DaysLeftForUpgrade => _daysLeftForUpgrade;
+
         public int CurrentLevel { get; private set; } = 1;
 
         public event UnityAction Upgraded;

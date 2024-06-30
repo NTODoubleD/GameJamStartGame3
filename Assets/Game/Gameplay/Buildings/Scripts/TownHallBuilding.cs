@@ -24,6 +24,7 @@ namespace Game.Gameplay.Buildings
             return new UpgradeMenuArgument()
             {
                 Label = "Улучшить жилище",
+                DayDuration = _upgradesConfig.GetUpgradeDuration(CurrentLevel),
                 Conditions = _upgradesConfig.GetUpgradeConditions(CurrentLevel).ToList(),
                 UpgradableBuilding = this
             };

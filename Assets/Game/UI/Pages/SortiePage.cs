@@ -26,6 +26,7 @@ namespace Game.UI.Pages
         private InputController _inputManager;
 
         private readonly List<UIResourceProperty> _resourceSliders = new();
+        private List<ItemInfo> _possibleResources;
 
         private void Awake()
         {
@@ -48,6 +49,18 @@ namespace Game.UI.Pages
             _inputManager.EnableMap<PlayerInputMap>();
         }
 
+        public void StartSortie()
+        {
+            Close();
+
+            var callback = new Dictionary<ItemInfo, int>();
+
+            for (int i = 0; i < _possibleResources.Count; i++)
+                callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+
+            Sended?.Invoke(callback);
+        }
+
         public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
             int levelsToDistribute)
         {
@@ -68,7 +81,9 @@ namespace Game.UI.Pages
 
         private void CreateSliders(IEnumerable<ItemInfo> possibleResources)
         {
-            foreach (var _ in possibleResources)
+            _possibleResources = new List<ItemInfo>(possibleResources);
+
+            foreach (var _ in _possibleResources)
             {
                 var inst =
                     Instantiate(_prefab, Vector3.one, Quaternion.identity, _resourcePropertyContainer);
