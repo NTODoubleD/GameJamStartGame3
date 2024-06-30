@@ -2,13 +2,14 @@ using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
 using System.Collections.Generic;
+using Game.UI.Pages;
 using UnityEngine;
 
 namespace Game.Gameplay.Sleigh
 {
     public class SleighSendController : MonoBehaviour
     {
-        [SerializeField] private SleighSendViewMock _sendView;
+        [SerializeField] private SortiePage _sendView;
         [SerializeField] private SleighBuilding _sleigh;
         [SerializeField] private PastureBuilding _pasture;
         [SerializeField] private SleighReceiveController _receiveController;
@@ -66,7 +67,7 @@ namespace Game.Gameplay.Sleigh
 
                 int[] counts = _sleigh.GetItemLevelCounts(keyPair.Key);
                 resultItemsCount.Add(keyPair.Key, counts[keyPair.Value - 1]);
-            }    
+            }
 
             _receiveController.SetReceiveInfo(resultItemsCount);
             _dayCycleController.EndDay();
