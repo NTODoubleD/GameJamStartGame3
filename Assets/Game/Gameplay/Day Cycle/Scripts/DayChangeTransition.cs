@@ -22,8 +22,6 @@ namespace Game.Gameplay.DayCycle
 
         public void Transit(UnityAction endCallback)
         {
-            _uiManager.OpenPage<SimplePage>();
-
             _dimmedScreenAnimator.SetTrigger(_animationTrigger);
             StartCoroutine(CallDelayed(endCallback));
         }

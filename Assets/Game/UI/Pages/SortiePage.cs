@@ -14,11 +14,11 @@ namespace Game.UI.Pages
             throw new System.NotImplementedException();
         }
 
-        public void Initialize(int deerCapacity, int resourcesCapacity, int currentDeerCount)
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources, int levelsToDistribute)
         {
             throw new System.NotImplementedException();
         }
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, float>, int> Sended;
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
     }
 }

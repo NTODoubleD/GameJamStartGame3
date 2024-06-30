@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Infrastructure.Items;
+using UnityEngine;
 
 namespace Game.Gameplay.Buildings
 {
@@ -7,6 +8,10 @@ namespace Game.Gameplay.Buildings
         [SerializeField] private SleighLevelsConfig _levelsConfig;
 
         public int DeerCapacity => _levelsConfig.GetStatsAt(CurrentLevel).DeerCapacity;
-        public int ItemCapacity => _levelsConfig.GetStatsAt(CurrentLevel).ItemCapacity;
+        
+        public int[] GetItemLevelCounts(ItemInfo item)
+        {
+            return _levelsConfig.GetStatsAt(CurrentLevel).ItemCountLevels[item];
+        }
     }
 }

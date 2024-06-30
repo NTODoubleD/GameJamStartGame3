@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 2074924103058222134}
   - component: {fileID: 2646467652415675716}
   - component: {fileID: 3144678072333771413}
-  - component: {fileID: 3108971771002846722}
   m_Layer: 0
   m_Name: SimpleCanvas
   m_TagString: Untagged
@@ -500,20 +499,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 63
---- !u!114 &3108971771002846722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 771278137664901165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb3a50f1748906a4084b616173febfcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 2074924103058222134}
-  _graphicRaycaster: {fileID: 3144678072333771413}
 --- !u!1 &836476117340291058
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +801,11 @@ MonoBehaviour:
   _pasture: {fileID: 8492483806132878630}
   _receiveController: {fileID: 7963921003413816927}
   _dayCycleController: {fileID: 7584658767840806107}
+  _possibleResources:
+  - {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+  - {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
+  - {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
+  _levelsToDistribute: 4
 --- !u!114 &7963921003413816927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +834,7 @@ MonoBehaviour:
   _infos:
   - {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
   - {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+  - {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
 --- !u!1 &1793005593478263549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,7 +3235,6 @@ GameObject:
   - component: {fileID: 5123426217063160820}
   - component: {fileID: 4214502093040699528}
   - component: {fileID: 1683991689802555937}
-  - component: {fileID: 6521576885628659062}
   m_Layer: 0
   m_Name: CycleChangeScreen
   m_TagString: Untagged
@@ -3330,19 +3320,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6521576885628659062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6883747367546829579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638ad47fb2a84df0bbb84162bd754b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _page: {fileID: 3108971771002846722}
 --- !u!1 &7053555520564421344
 GameObject:
   m_ObjectHideFlags: 0
