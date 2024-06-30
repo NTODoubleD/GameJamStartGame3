@@ -46,11 +46,13 @@ public class CharacterMovementController : MonoBehaviour
 
     private void OnInteractionAnimationStarted()
     {
-        _canMove = false;
+        _canMove = false;     
+        _mover.Move(Vector2.zero);
     }
 
     private void OnInteractionAnimationEnded()
     {
+        _mover.Move(Vector2.zero);
         _canMove = true;
     }
 }

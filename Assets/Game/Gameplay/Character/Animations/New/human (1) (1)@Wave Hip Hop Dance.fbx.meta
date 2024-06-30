@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36be1ec3b18be9945b4f146d31561de6
+guid: a2175f17afe422f4e9136ebcc8459cc9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,13 +33,13 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Looking Through Files Low
+      name: Wave Hip Hop Dance
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 432
+      lastFrame: 35
       wrapMode: 0
-      orientationOffsetY: 0
+      orientationOffsetY: 90
       level: 0
       cycleOffset: 0
       loop: 0
@@ -57,8 +57,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9858012
-        functionName: OnAnimationStopInteract
+      - time: 0
+        functionName: OnStartedInteraction
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: OnEndedInteraction
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.62916666
+        functionName: OnHealed
         data: 
         objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
           type: 3}
