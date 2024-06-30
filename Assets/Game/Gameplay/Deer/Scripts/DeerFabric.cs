@@ -53,18 +53,27 @@ namespace Game.Gameplay.Scripts
             inst.Initialize<DeerRandomWalkState>(deerInfo);
         }
 
-        private GenderType[] _genders = { GenderType.Female, GenderType.Male };
+        private bool _isMale = true;
 
         public void CreateDeer(string deerName = null, DeerAge age = DeerAge.None, float hungeredDegree = -1f,
             GenderType gender = GenderType.None, DeerStatus deerStatus = DeerStatus.None)
         {
             var deerInfo = new DeerInfo
             {
-                Gender = gender == GenderType.None ? _genders.Choose() : gender,
                 Age = age == DeerAge.None ? DeerAge.Young : age,
                 HungerDegree = hungeredDegree < 0 ? 1 : hungeredDegree,
                 Status = deerStatus == DeerStatus.None ? DeerStatus.Standard : deerStatus
             };
+
+            if (gender == GenderType.None)
+            {
+                deerInfo.Gender = _isMale ? GenderType.Male : GenderType.Female;
+                _isMale = !_isMale;
+            }
+            else
+            {
+                deerInfo.Gender = gender;
+            }
 
             deerInfo.Name = deerName ?? GetRandomName(deerInfo.Gender);
 
