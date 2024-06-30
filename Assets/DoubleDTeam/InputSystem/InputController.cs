@@ -13,6 +13,8 @@ namespace DoubleDTeam.InputSystem
 
         public InputMap CurrentMap { get; private set; }
 
+        public event Action<InputMap> InputMapChanged;
+
         public void BindMap(InputMap map)
         {
             map.Initialize();
@@ -40,6 +42,7 @@ namespace DoubleDTeam.InputSystem
 
             CurrentMap.Enable();
 
+            InputMapChanged?.Invoke(CurrentMap);
             Debug.Log($"{mapType.Name} map enabled".Color(Color.green));
         }
 

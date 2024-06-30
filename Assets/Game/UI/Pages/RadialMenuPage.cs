@@ -24,6 +24,8 @@ namespace Game.UI.Pages
         private readonly List<Button> _buttons = new();
         private InputController _inputController;
 
+        public event UnityAction Opened;
+
         private void Awake()
         {
             _inputController = Services.ProjectContext.GetModule<InputController>();
@@ -54,6 +56,8 @@ namespace Game.UI.Pages
             ConfigureMenu(context);
 
             _circleSelector.Open();
+
+            Opened?.Invoke();
         }
 
         public override void Close()

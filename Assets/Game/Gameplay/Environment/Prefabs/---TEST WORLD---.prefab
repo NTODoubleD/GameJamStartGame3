@@ -8019,6 +8019,7 @@ GameObject:
   - component: {fileID: 3350667167530622637}
   - component: {fileID: 3016159471727878334}
   - component: {fileID: 8888790929340494577}
+  - component: {fileID: 4436905047672153267}
   m_Layer: 0
   m_Name: '[INTERACTION SYSTEM]'
   m_TagString: Untagged
@@ -8113,6 +8114,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectsWatcher: {fileID: 1143328946506485183}
   _buttonRoot: {fileID: 6403027065414786935}
+--- !u!114 &4436905047672153267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256926591778832432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62772ec35762dfb48938a9106b677311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactiveObjectsWatcher: {fileID: 1143328946506485183}
 --- !u!1 &7289756766988013444
 GameObject:
   m_ObjectHideFlags: 0
