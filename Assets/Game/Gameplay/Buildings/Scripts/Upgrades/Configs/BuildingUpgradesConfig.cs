@@ -16,12 +16,19 @@ namespace Game.Gameplay.Buildings
             return _levels[currentLevel - 1].Conditions;
         }
 
+        public int GetUpgradeDuration(int currentLevel)
+        {
+            return _levels[currentLevel - 1].DayDuration;
+        }
+
         [Serializable]
         private class LevelData
         {
+            [SerializeField] private int _dayDuration;
             [SerializeReference] private List<IUpgradeCondition> _upgradeConditions = new();
 
             public IEnumerable<IUpgradeCondition> Conditions => _upgradeConditions;
+            public int DayDuration => _dayDuration;
         }
     }
 }

@@ -1,4 +1,5 @@
 using DoubleDTeam.SaveSystem.Base;
+using Game.Gameplay.DayCycle;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,10 +12,34 @@ namespace Game.Gameplay.Buildings
 
         [SerializeReference] protected BuildingUpgradesConfig _upgradesConfig;
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
+        [SerializeField] private DayCycleController _dayCycleController;
+
+        private int _daysLeftForUpgrade;
 
         public int CurrentLevel { get; private set; } = 1;
 
         public event UnityAction Upgraded;
+
+        private void OnEnable()
+        {
+            _dayCycleController.DayStarted += OnDayStarted;
+        }
+
+        private void OnDisable()
+        {
+            _dayCycleController.DayStarted -= OnDayStarted;
+        }
+
+        private void OnDayStarted()
+        {
+            if (_daysLeftForUpgrade > 0)
+            {
+                _daysLeftForUpgrade--;
+
+                if (_daysLeftForUpgrade == 0)
+                    DelayedUpgrade();
+            }
+        }
 
         public string GetData()
         {
@@ -34,7 +59,7 @@ namespace Game.Gameplay.Buildings
 
         public bool CanUpgrade()
         {
-            if (IsMaximalLevel())
+            if (IsMaximalLevel() || _daysLeftForUpgrade > 0)
                 return false;
 
             var conditions = _upgradesConfig.GetUpgradeConditions(CurrentLevel);
@@ -48,14 +73,19 @@ namespace Game.Gameplay.Buildings
                 foreach (var condition in _upgradesConfig.GetUpgradeConditions(CurrentLevel))
                     condition.Accept(_resourcesSpender);
 
-                CurrentLevel++;
-                _viewUpgrader.UpgradeTo(CurrentLevel);
-                Upgraded?.Invoke();
+                _daysLeftForUpgrade = _upgradesConfig.GetUpgradeDuration(CurrentLevel);
             }
             else
             {
                 Debug.LogError("UPGRADE IS NOT POSSIBLE");
             }
+        }
+
+        private void DelayedUpgrade()
+        {
+            CurrentLevel++;
+            _viewUpgrader.UpgradeTo(CurrentLevel);
+            Upgraded?.Invoke();
         }
     }
 }

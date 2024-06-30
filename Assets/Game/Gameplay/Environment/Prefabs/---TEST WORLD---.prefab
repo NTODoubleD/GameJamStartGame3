@@ -176,6 +176,7 @@ Transform:
   m_Children:
   - {fileID: 7964554666431680662}
   - {fileID: 7279375732418906891}
+  - {fileID: 530470126250661051}
   m_Father: {fileID: 4673804054438929746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &207051518591244257
@@ -1553,6 +1554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradesConfig: {fileID: 11400000, guid: 15ebbe64f7e3dff4f83a7c99447d4384, type: 2}
   _viewUpgrader: {fileID: 3479425783532538539}
+  _dayCycleController: {fileID: 0}
   _testCount: 2
 --- !u!114 &3479425783532538539
 MonoBehaviour:
@@ -3103,6 +3105,51 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &6674151877170455024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 530470126250661051}
+  - component: {fileID: 5284879517443989200}
+  m_Layer: 0
+  m_Name: TownHall Locator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &530470126250661051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674151877170455024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 311555184158371102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5284879517443989200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674151877170455024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42eb8fc36427414e8736ebfcd281c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _townHall: {fileID: 5322400594369925862}
 --- !u!1 &6742614663478025866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5366,6 +5413,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 291788c1b07d11f408f6443ea121995c, type: 3}
+--- !u!114 &5322400594369925862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6791884541890394272, guid: 291788c1b07d11f408f6443ea121995c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1701630745181203014}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6c37a7fa983554eb2f4760850012e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5631535338237666594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6465572196715564900, guid: 291788c1b07d11f408f6443ea121995c,
@@ -5931,6 +5990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradesConfig: {fileID: 11400000, guid: 1d70e3378eff9b94fad85e7e8848af6d, type: 2}
   _viewUpgrader: {fileID: 3663749544794446494}
+  _dayCycleController: {fileID: 0}
   _levelsConfig: {fileID: 11400000, guid: c979f0b7aa3f5834aaefa12869f9abf2, type: 2}
 --- !u!1001 &4786121261657011382
 PrefabInstance:
