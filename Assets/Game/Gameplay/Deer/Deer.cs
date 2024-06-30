@@ -25,6 +25,7 @@ namespace Game.Gameplay
 
             _deerStateMachine = new StateMachine();
 
+            _deerStateMachine.BindState(new DeerIdleState());
             _deerStateMachine.BindState(new DeerEatsState());
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
             _deerStateMachine.BindState(new DeerInteractedByPlayerState());
@@ -52,5 +53,15 @@ namespace Game.Gameplay
         {
             _uiManager.OpenPage<DeerInfoPage, DeerInfo>(DeerInfo);
         }
+
+        #region STATE_METHODS
+
+        public void EnterIdleState() =>
+            _deerStateMachine.Enter<DeerIdleState>();
+
+        public void EnterWalkingState() =>
+            _deerStateMachine.Enter<DeerRandomWalkState>();
+
+        #endregion
     }
 }

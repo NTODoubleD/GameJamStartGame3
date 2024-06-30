@@ -64,6 +64,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 4924400245990448069}
+          m_TargetAssemblyTypeName: Game.Gameplay.Deer, Assembly-CSharp
+          m_MethodName: EnterWalkingState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - Name: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F"
     Image: {fileID: 0}
     Action:
@@ -94,6 +106,22 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _outline: {fileID: 1213568376767170116}
+  _deer: {fileID: 4924400245990448069}
+  Interacted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4924400245990448069}
+        m_TargetAssemblyTypeName: Game.Gameplay.Deer, Assembly-CSharp
+        m_MethodName: EnterIdleState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5735673119900017644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da79112319ab43588cb0f8e711e7aa94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _walkablePlane: {fileID: 0}
+  _navMeshAgent: {fileID: 0}
 --- !u!195 &8038603526445538412
 NavMeshAgent:
   m_ObjectHideFlags: 0

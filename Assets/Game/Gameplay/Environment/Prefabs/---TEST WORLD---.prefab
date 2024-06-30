@@ -2494,6 +2494,7 @@ MonoBehaviour:
   _resourcePropertyContainer: {fileID: 507955932003526272}
   _sleighSendController: {fileID: 5967847325279805510}
   _chooseDeerAmountSlider: {fileID: 5184391555125508757}
+  _freePointsAmount: 4
 --- !u!1 &3621025300597281325
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3092,7 @@ Transform:
   m_GameObject: {fileID: 4847638211833540229}
   serializedVersion: 2
   m_LocalRotation: {x: 0.47265348, y: 0.00000003714184, z: -0.000000019920854, w: 0.8812484}
-  m_LocalPosition: {x: 0, y: 11.24, z: -6.8}
+  m_LocalPosition: {x: -0.00000047683716, y: 11.24, z: -4.8927255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3166,7 +3167,7 @@ Transform:
   m_GameObject: {fileID: 4930791174236434619}
   serializedVersion: 2
   m_LocalRotation: {x: 0.47265354, y: 0.000000037141852, z: -0.000000019920861, w: 0.88124835}
-  m_LocalPosition: {x: 0, y: 11.24, z: -6.8}
+  m_LocalPosition: {x: -0.00000047683716, y: 11.24, z: -4.8927255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7589,6 +7590,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7842305226513972398, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: _deer
+      value: 
+      objectReference: {fileID: 5975670668259943090}
     - target: {fileID: 8817670477337296771, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: m_Name
@@ -7599,6 +7605,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c863a120e954343a510518f0fcb60b, type: 3}
+--- !u!114 &5975670668259943090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4924400245990448069, guid: d2c863a120e954343a510518f0fcb60b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1637941514493606263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da79112319ab43588cb0f8e711e7aa94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6765852668309368799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430778229503088296, guid: d2c863a120e954343a510518f0fcb60b,
@@ -7707,7 +7725,7 @@ PrefabInstance:
     - target: {fileID: 8282781473227979367, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 8282781473227979367, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
@@ -7717,12 +7735,12 @@ PrefabInstance:
     - target: {fileID: 8282781473227979367, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.8
+      value: -4.8927255
       objectReference: {fileID: 0}
     - target: {fileID: 8282781473453269640, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 8282781473453269640, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
@@ -7732,7 +7750,7 @@ PrefabInstance:
     - target: {fileID: 8282781473453269640, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.8
+      value: -4.8927255
       objectReference: {fileID: 0}
     - target: {fileID: 8282781473453269653, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
