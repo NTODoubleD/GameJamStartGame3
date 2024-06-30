@@ -1,4 +1,5 @@
 ﻿using DoubleDTeam.Containers;
+using DoubleDTeam.Containers.Base;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerCutController : MonoBehaviour
+    public class DeerCutController : MonoModule
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private LootInfo[] _loot;

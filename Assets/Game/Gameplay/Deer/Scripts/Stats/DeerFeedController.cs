@@ -1,14 +1,14 @@
 ﻿using DoubleDTeam.Containers;
+using DoubleDTeam.Containers.Base;
 using Game.Gameplay.Feeding;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerFeedController : MonoBehaviour
+    public class DeerFeedController : MonoModule
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private PlayerMossPickController _mossController;

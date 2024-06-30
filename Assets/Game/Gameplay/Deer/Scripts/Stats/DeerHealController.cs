@@ -1,4 +1,5 @@
 using DoubleDTeam.Containers;
+using DoubleDTeam.Containers.Base;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
@@ -8,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerHealController : MonoBehaviour
+    public class DeerHealController : MonoModule
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private ItemInfo _healItem;

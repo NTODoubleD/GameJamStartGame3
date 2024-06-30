@@ -210,6 +210,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
   - Name: "\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F"
     Image: {fileID: 0}
     Action:
@@ -227,6 +229,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
   _outline: {fileID: 2341578563062337529}
   _deer: {fileID: 4924400245990448069}
   Interacted:
@@ -2716,7 +2720,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.85, y: 0.24, z: -7.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8463554738234404393}
   - {fileID: 7064269071996201537}
@@ -2737,6 +2741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 8038603526445538412}
   _deerInteractive: {fileID: 7842305226513972398}
+  _animatorController: {fileID: 298094297099803084}
+  _deerMeshing: {fileID: 3274127858745415287}
 --- !u!114 &3274127858745415287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2749,6 +2755,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e314c7d15b7e4ef3a7aa65baa8d91878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalScale: {x: 1, y: 1, z: 1}
+  _youngScale: {x: 0.5, y: 0.5, z: 0.5}
+  _meshRenderer: {fileID: 0}
+  _maleMeshingInfo: []
+  _femaleMeshingInfo: []
 --- !u!195 &8038603526445538412
 NavMeshAgent:
   m_ObjectHideFlags: 0
