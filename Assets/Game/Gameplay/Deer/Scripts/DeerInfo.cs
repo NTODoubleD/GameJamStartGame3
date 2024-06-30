@@ -1,4 +1,4 @@
-﻿using Game.UI.Pages;
+﻿using System;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -11,5 +11,7 @@ namespace Game.Gameplay
         public int Age;
         public float HungerDegree;
         public DeerStatus Status;
+
+        public Action OnEnd;
     }
 }

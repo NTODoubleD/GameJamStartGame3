@@ -10421,11 +10421,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7842305226513972398, guid: d2c863a120e954343a510518f0fcb60b,
-        type: 3}
-      propertyPath: _deer
-      value: 
-      objectReference: {fileID: 5975670668259943090}
     - target: {fileID: 8817670477337296771, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: m_Name
@@ -10436,18 +10431,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c863a120e954343a510518f0fcb60b, type: 3}
---- !u!114 &5975670668259943090 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4924400245990448069, guid: d2c863a120e954343a510518f0fcb60b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1637941514493606263}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da79112319ab43588cb0f8e711e7aa94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6765852668309368799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430778229503088296, guid: d2c863a120e954343a510518f0fcb60b,
