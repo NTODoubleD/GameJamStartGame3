@@ -8,10 +8,17 @@ namespace Game.Gameplay
         public Vector3 WorldPosition;
         public string Name;
         public GenderType Gender;
-        public int Age;
+        public DeerAge Age;
         public float HungerDegree;
         public DeerStatus Status;
 
         public Action OnEnd;
+    }
+
+    public enum DeerAge
+    {
+        Young,
+        Adult,
+        Old
     }
 }

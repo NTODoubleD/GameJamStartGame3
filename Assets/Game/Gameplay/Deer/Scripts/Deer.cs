@@ -41,7 +41,7 @@ namespace Game.Gameplay
             return new DeerInfo()
             {
                 Name = "Max",
-                Age = 2,
+                Age = DeerAge.Adult,
                 HungerDegree = 0.5f,
                 Gender = GenderType.Male,
                 Status = DeerStatus.Standard,
