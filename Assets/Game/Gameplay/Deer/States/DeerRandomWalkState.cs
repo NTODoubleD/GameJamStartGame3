@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace Game.Gameplay.States
 {
-    public class DeerrRandomWalkState : IState
+    public class DeerRandomWalkState : IState
     {
         private const float WalkPointsInterval = 5f;
 
@@ -14,7 +14,7 @@ namespace Game.Gameplay.States
         private readonly NavMeshAgent _agent;
         private readonly MonoBehaviour _coroutineRunner;
 
-        public DeerrRandomWalkState(NavMeshAgent agent, WalkablePlane walkablePlane, MonoBehaviour coroutineRunner)
+        public DeerRandomWalkState(NavMeshAgent agent, WalkablePlane walkablePlane, MonoBehaviour coroutineRunner)
         {
             _agent = agent;
             _walkablePlane = walkablePlane;

@@ -2,7 +2,7 @@
 
 namespace Game.Gameplay.States
 {
-    public class DeerEatsState : IState
+    public class DeerIdleState : IState
     {
         public void Enter()
         {

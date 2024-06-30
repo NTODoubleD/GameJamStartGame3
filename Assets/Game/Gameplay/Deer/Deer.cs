@@ -26,13 +26,13 @@ namespace Game.Gameplay
             _deerStateMachine = new StateMachine();
 
             _deerStateMachine.BindState(new DeerEatsState());
-            _deerStateMachine.BindState(new DeerrRandomWalkState(_navMeshAgent, _walkablePlane, this));
+            _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
             _deerStateMachine.BindState(new DeerInteractedByPlayerState());
         }
 
         private void Start()
         {
-            _deerStateMachine.Enter<DeerrRandomWalkState>();
+            _deerStateMachine.Enter<DeerRandomWalkState>();
         }
 
         private DeerInfo GetDeerInfo()
