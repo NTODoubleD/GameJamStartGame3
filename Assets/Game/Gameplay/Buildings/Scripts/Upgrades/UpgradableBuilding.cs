@@ -87,7 +87,13 @@ namespace Game.Gameplay.Buildings
         {
             CurrentLevel++;
             _viewUpgrader.UpgradeTo(CurrentLevel);
+            OnUpgraded();
             Upgraded?.Invoke();
+        }
+
+        protected virtual void OnUpgraded()
+        {
+
         }
     }
 }

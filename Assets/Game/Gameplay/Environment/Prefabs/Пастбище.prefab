@@ -385,6 +385,8 @@ MonoBehaviour:
   _upgradesConfig: {fileID: 11400000, guid: 15ebbe64f7e3dff4f83a7c99447d4384, type: 2}
   _viewUpgrader: {fileID: 1903503227443288169}
   _dayCycleController: {fileID: 0}
+  _levelsConfig: {fileID: 0}
+  _walkablePlane: {fileID: 0}
   _testCount: 2
 --- !u!114 &1903503227443288169
 MonoBehaviour:
@@ -658,6 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855431613616801884}
   - component: {fileID: 2156919372895946513}
+  - component: {fileID: 4825066221919611882}
   m_Layer: 0
   m_Name: InteractivePoint
   m_TagString: Untagged
@@ -701,8 +704,25 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6915453492481322980}
-          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.UpgradableBuilding, Assembly-CSharp
-          m_MethodName: Upgrade
+          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.PastureBuilding, Assembly-CSharp
+          m_MethodName: OpenUpgradePage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Name: "\u0412\u044B\u0439\u0442\u0438"
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: Game.InputMaps.InputMapSwitcher, Assembly-CSharp
+          m_MethodName: EnablePlayerMap
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -713,6 +733,18 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   _viewUpgrader: {fileID: 1903503227443288169}
+--- !u!114 &4825066221919611882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405267530681699430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13091758ca414d2182543892c15cb531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8764339164872084595
 GameObject:
   m_ObjectHideFlags: 0

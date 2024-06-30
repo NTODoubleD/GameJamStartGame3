@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using DoubleDTeam.Containers.Base;
+using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.AI
 {
-    public class WalkablePlane : MonoBehaviour
+    public class WalkablePlane : MonoModule
     {
         [SerializeField] private float _width;
 
@@ -18,6 +19,11 @@ namespace Game.Gameplay.AI
             return NavMesh.SamplePosition(randomPoint, out var hit, _width, NavMesh.AllAreas)
                 ? hit.position
                 : Center;
+        }
+
+        public void SetWidth(float width)
+        {
+            _width = width;
         }
 
         private void OnDrawGizmosSelected()

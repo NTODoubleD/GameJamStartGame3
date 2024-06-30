@@ -75,31 +75,28 @@ namespace Game.UI.Pages
         private string GetText(UpgradeMenuArgument argument)
         {
             string result = "";
+            var conditionVisitor = new ConditionVisitor();
 
             foreach (var condition in argument.Conditions)
+                condition.Accept(conditionVisitor);            
+
+            if (conditionVisitor.TownLevel >= 0)
             {
-                var conditionVisitor = new ConditionVisitor();
+                result += "Уровень юрты - " + conditionVisitor.TownLevel.ToString()
+                    .Color(conditionVisitor.TownLevel >= conditionVisitor.CurrentTownLevel
+                        ? Color.green
+                        : Color.red);
+                result += "\n";
+            }
 
-                condition.Accept(conditionVisitor);
+            foreach (var (item, amount) in conditionVisitor.Items)
+            {
+                int amountInStorage = _itemStorage.GetCount(item);
 
-                if (conditionVisitor.TownLevel >= 0)
-                {
-                    result += "Уровень юрты - " + conditionVisitor.TownLevel.ToString()
-                        .Color(conditionVisitor.TownLevel >= conditionVisitor.CurrentTownLevel
-                            ? Color.green
-                            : Color.red);
-                    result += "\n";
-                }
+                string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
+                    .Color(amountInStorage >= amount ? Color.green : Color.red);
 
-                foreach (var (item, amount) in conditionVisitor.Items)
-                {
-                    int amountInStorage = _itemStorage.GetCount(item);
-
-                    string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
-                        .Color(amountInStorage >= amount ? Color.green : Color.red);
-
-                    result += text;
-                }
+                result += text;
             }
 
             return result;
