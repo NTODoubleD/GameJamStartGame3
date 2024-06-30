@@ -5,11 +5,10 @@ namespace Game.Gameplay.Interaction
     public class DistancePlayerToObjectChecker : MonoBehaviour
     {
         [SerializeField] private Transform _player;
-        [SerializeField] private float _rangeDistance;
 
-        public bool IsPlayerInRange(Transform objectToCheck)
+        public bool IsPlayerInRange(InteractiveObject objectToCheck)
         {          
-            return GetXZDistance(_player.position, objectToCheck.position) <= _rangeDistance;
+            return GetXZDistance(_player.position, objectToCheck.transform.position) <= objectToCheck.DistanceToInteract;
         }
 
         public float GetDistanceToPlayer(Transform obj)

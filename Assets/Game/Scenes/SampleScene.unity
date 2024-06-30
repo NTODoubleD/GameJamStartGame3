@@ -988,6 +988,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 5093435794136932046, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5166844623629682890, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_LocalPosition.y

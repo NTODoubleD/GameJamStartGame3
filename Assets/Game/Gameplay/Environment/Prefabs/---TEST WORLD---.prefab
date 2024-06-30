@@ -8055,7 +8055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1623240390653416435}
-  _rangeDistance: 2
 --- !u!114 &1143328946506485183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8384,6 +8383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\u041C\u043E\u0445"
+  _distanceToInteract: 1.5
   _operations: []
   _outline: {fileID: 6166992102034860000}
   _pickController: {fileID: 1347615123839609870}
@@ -10435,6 +10435,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7842305226513972398, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8817670477337296771, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: m_Name
@@ -10513,6 +10518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329379947192735400, guid: 291788c1b07d11f408f6443ea121995c,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11048,6 +11058,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u0421\u0430\u043D\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5486208311195577724, guid: 86dfac09034890141b8152fc9f66a542,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
