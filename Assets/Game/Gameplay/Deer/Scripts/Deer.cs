@@ -14,7 +14,9 @@ namespace Game.Gameplay
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private DeerInteractive _deerInteractive;
+
         public DeerInfo DeerInfo { get; private set; }
+
         public DeerInteractive DeerInteractive => _deerInteractive;
 
         private IUIManager _uiManager;

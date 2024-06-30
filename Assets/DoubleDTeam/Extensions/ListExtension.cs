@@ -8,10 +8,11 @@ namespace DoubleDTeam.Extensions
     public static class ListExtension
     {
         private static readonly int DefaultSeed = (int)DateTime.Now.Ticks & 0x0000FFFF;
+        private static readonly Random DefaultRandom = new(DefaultSeed);
 
         public static void Shuffle<T>(this IList<T> list)
         {
-            list.Shuffle(DefaultSeed);
+            list.Shuffle(DefaultRandom.Next());
         }
 
         public static void Shuffle<T>(this IList<T> list, int seed)
@@ -29,7 +30,7 @@ namespace DoubleDTeam.Extensions
 
         public static T Choose<T>(this IList<T> list)
         {
-            return list.Choose(DefaultSeed);
+            return list.Choose(DefaultRandom.Next());
         }
 
         public static T Choose<T>(this IList<T> list, int seed)
@@ -45,7 +46,7 @@ namespace DoubleDTeam.Extensions
 
         public static IList<T> ChooseRange<T>(this IList<T> list, int countMembers)
         {
-            return list.ChooseRange(countMembers, DefaultSeed);
+            return list.ChooseRange(countMembers, DefaultRandom.Next());
         }
 
         public static IList<T> ChooseRange<T>(this IList<T> list, int countMembers, int seed)
@@ -71,7 +72,7 @@ namespace DoubleDTeam.Extensions
 
         public static IList<T> ChooseRange<T>(this IList<T> list, float percentage)
         {
-            return list.ChooseRange(percentage, DefaultSeed);
+            return list.ChooseRange(percentage, DefaultRandom.Next());
         }
 
         public static IList<T> ChooseRange<T>(this IList<T> list, float percentage, int seed)

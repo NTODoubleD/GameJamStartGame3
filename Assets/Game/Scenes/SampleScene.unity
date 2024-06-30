@@ -213,6 +213,8 @@ MonoBehaviour:
   _prefab: {fileID: 4924400245990448069, guid: d2c863a120e954343a510518f0fcb60b, type: 3}
   _interactiveObjectsWatcher: {fileID: 1271600452}
   _container: {fileID: 1082008021}
+  _maleNames: {fileID: 4900000, guid: 44ac90306a2aea84581b569dfacdd53a, type: 3}
+  _femaleNames: {fileID: 4900000, guid: 7683adb6fb1ed16459a9050ab251be1d, type: 3}
 --- !u!114 &301106042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1646954411159464556, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -763,6 +765,21 @@ PrefabInstance:
     - target: {fileID: 1393803128247024667, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522477653785895013, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522477653785895013, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522477653785895013, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
