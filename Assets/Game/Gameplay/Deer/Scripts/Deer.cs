@@ -45,7 +45,8 @@ namespace Game.Gameplay
                 HungerDegree = 0.5f,
                 Gender = GenderType.Male,
                 Status = DeerStatus.Standard,
-                WorldPosition = transform.position
+                WorldPosition = transform.position,
+                OnEnd = EnterWalkingState
             };
         }
 
