@@ -1,4 +1,5 @@
-﻿using DoubleDTeam.Containers;
+﻿using System;
+using DoubleDTeam.Containers;
 using DoubleDTeam.InputSystem;
 using DoubleDTeam.UI;
 using DoubleDTeam.UI.Base;
@@ -9,13 +10,13 @@ using UnityEngine;
 
 namespace Game.UI.Pages
 {
-    public class DeerInfoPage : MonoPage, IPayloadPage<DeerInfo>
+    public class DeerInfoPage : MonoPage, IPayloadPage<DeerInfoPageArgument>
     {
         [SerializeField] private TextMeshProUGUI _text;
 
         private InputController _inputController;
 
-        private DeerInfo _context;
+        private DeerInfoPageArgument _context;
 
         private void Awake()
         {
@@ -24,7 +25,7 @@ namespace Game.UI.Pages
             Close();
         }
 
-        public void Open(DeerInfo context)
+        public void Open(DeerInfoPageArgument context)
         {
             _context = context;
 
@@ -32,11 +33,11 @@ namespace Game.UI.Pages
 
             SetCanvasState(true);
 
-            _text.text = $"Name - {context.Name}\n" +
-                         $"Gender - {context.Gender}\n" +
-                         $"Age - {context.Age}\n" +
-                         $"Hunger - {context.HungerDegree * 100}%\n" +
-                         $"Status - {context.Status}";
+            _text.text = $"Name - {context.Info.Name}\n" +
+                         $"Gender - {context.Info.Gender}\n" +
+                         $"Age - {context.Info.Age}\n" +
+                         $"Hunger - {context.Info.HungerDegree * 100}%\n" +
+                         $"Status - {context.Info.Status}";
         }
 
         public override void Close()
@@ -45,9 +46,15 @@ namespace Game.UI.Pages
 
             _inputController.EnableMap<PlayerInputMap>();
 
-            _context?.OnEnd?.Invoke();
+            _context?.OnClose?.Invoke();
 
             _context = null;
         }
+    }
+
+    public class DeerInfoPageArgument
+    {
+        public DeerInfo Info;
+        public Action OnClose;
     }
 }

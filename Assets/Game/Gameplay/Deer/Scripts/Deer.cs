@@ -1,5 +1,6 @@
 ﻿using DoubleDTeam.Containers;
 using DoubleDTeam.StateMachine;
+using DoubleDTeam.StateMachine.Base;
 using DoubleDTeam.UI.Base;
 using Game.Gameplay.AI;
 using Game.Gameplay.States;
@@ -11,17 +12,20 @@ namespace Game.Gameplay
 {
     public class Deer : MonoBehaviour
     {
-        [SerializeField] private WalkablePlane _walkablePlane;
         [SerializeField] private NavMeshAgent _navMeshAgent;
+        [SerializeField] private DeerInteractive _deerInteractive;
+        public DeerInfo DeerInfo { get; private set; }
+        public DeerInteractive DeerInteractive => _deerInteractive;
 
-        public DeerInfo DeerInfo => GetDeerInfo();
         private IUIManager _uiManager;
 
+        private WalkablePlane _walkablePlane;
         private StateMachine _deerStateMachine;
 
         private void Awake()
         {
             _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+            _walkablePlane = Services.SceneContext.GetModule<WalkablePlane>();
 
             _deerStateMachine = new StateMachine();
 
@@ -31,28 +35,24 @@ namespace Game.Gameplay
             _deerStateMachine.BindState(new DeerInteractedByPlayerState());
         }
 
-        private void Start()
+        public void Initialize<TStartState>(DeerInfo deerInfo) where TStartState : class, IState
         {
-            _deerStateMachine.Enter<DeerRandomWalkState>();
+            DeerInfo = deerInfo;
+            _deerStateMachine.Enter<TStartState>();
         }
 
-        private DeerInfo GetDeerInfo()
+        private DeerInfoPageArgument GetDeerInfoPageArgument()
         {
-            return new DeerInfo()
+            return new DeerInfoPageArgument()
             {
-                Name = "Max",
-                Age = DeerAge.Adult,
-                HungerDegree = 0.5f,
-                Gender = GenderType.Male,
-                Status = DeerStatus.Standard,
-                WorldPosition = transform.position,
-                OnEnd = EnterWalkingState
+                Info = DeerInfo,
+                OnClose = EnterWalkingState
             };
         }
 
         public void OpenInfoPage()
         {
-            _uiManager.OpenPage<DeerInfoPage, DeerInfo>(DeerInfo);
+            _uiManager.OpenPage<DeerInfoPage, DeerInfoPageArgument>(GetDeerInfoPageArgument());
         }
 
         #region STATE_METHODS

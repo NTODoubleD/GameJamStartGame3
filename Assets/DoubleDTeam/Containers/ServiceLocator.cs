@@ -36,6 +36,16 @@ namespace DoubleDTeam.Containers
             _modules.Add(type, module);
         }
 
+        public void RegisterModule(IModule module)
+        {
+            var type = module.GetType();
+
+            if (ContainsModule(module))
+                throw new InvalidOperationException($"Attempt to register an existing module {type.Name}");
+
+            _modules.Add(type, module);
+        }
+
         public T GetModule<T>() where T : class, IModule
         {
             var type = typeof(T);

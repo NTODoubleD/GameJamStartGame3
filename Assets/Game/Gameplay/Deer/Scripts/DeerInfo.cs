@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Gameplay
 {
@@ -11,8 +10,6 @@ namespace Game.Gameplay
         public DeerAge Age;
         public float HungerDegree;
         public DeerStatus Status;
-
-        public Action OnEnd;
     }
 
     public enum DeerAge

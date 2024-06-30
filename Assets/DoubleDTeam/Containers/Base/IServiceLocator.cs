@@ -8,6 +8,8 @@
 
         public void RegisterModule<T>(T module) where T : class, IModule;
 
+        public void RegisterModule(IModule module);
+
         public T GetModule<T>() where T : class, IModule;
 
         public T RemoveModule<T>() where T : class, IModule;

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using DoubleDTeam.Containers.Base;
+using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.AI
 {
-    public class WalkablePlane : MonoBehaviour
+    public class WalkablePlane : MonoModule
     {
         [SerializeField] private float _width;
 
