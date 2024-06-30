@@ -1,8 +1,9 @@
+using DoubleDTeam.Containers.Base;
 using UnityEngine;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerKillController : MonoBehaviour
+    public class DeerKillController : MonoModule
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
 
