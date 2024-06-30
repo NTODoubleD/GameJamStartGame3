@@ -7,6 +7,8 @@ namespace Game.Gameplay.DayCycle
     {
         [SerializeField] private DayChangeTransition _changeTransition;
 
+        public int CurrentDay { get; private set; } = 1;
+
         public event UnityAction DayEnded;
         public event UnityAction DayStarted;
 
@@ -18,6 +20,7 @@ namespace Game.Gameplay.DayCycle
 
         public void StartDay()
         {
+            CurrentDay++;
             DayStarted?.Invoke();
         }
     }
