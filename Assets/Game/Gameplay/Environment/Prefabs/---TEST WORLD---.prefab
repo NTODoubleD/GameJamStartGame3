@@ -8399,6 +8399,7 @@ GameObject:
   - component: {fileID: 3350667167530622637}
   - component: {fileID: 3016159471727878334}
   - component: {fileID: 8888790929340494577}
+  - component: {fileID: 4436905047672153267}
   m_Layer: 0
   m_Name: '[INTERACTION SYSTEM]'
   m_TagString: Untagged
@@ -8434,7 +8435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1623240390653416435}
-  _rangeDistance: 2
 --- !u!114 &1143328946506485183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8493,6 +8493,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectsWatcher: {fileID: 1143328946506485183}
   _buttonRoot: {fileID: 6403027065414786935}
+--- !u!114 &4436905047672153267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256926591778832432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62772ec35762dfb48938a9106b677311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactiveObjectsWatcher: {fileID: 1143328946506485183}
 --- !u!1 &7289756766988013444
 GameObject:
   m_ObjectHideFlags: 0
@@ -8750,6 +8763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: "\u041C\u043E\u0445"
+  _distanceToInteract: 1.5
   _operations: []
   _outline: {fileID: 6166992102034860000}
   _pickController: {fileID: 1347615123839609870}
@@ -10803,9 +10817,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7842305226513972398, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
-      propertyPath: _deer
-      value: 
-      objectReference: {fileID: 5975670668259943090}
+      propertyPath: _distanceToInteract
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8817670477337296771, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: m_Name
@@ -10816,18 +10830,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c863a120e954343a510518f0fcb60b, type: 3}
---- !u!114 &5975670668259943090 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4924400245990448069, guid: d2c863a120e954343a510518f0fcb60b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1637941514493606263}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da79112319ab43588cb0f8e711e7aa94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6765852668309368799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5430778229503088296, guid: d2c863a120e954343a510518f0fcb60b,
@@ -10896,6 +10898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329379947192735400, guid: 291788c1b07d11f408f6443ea121995c,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11431,6 +11438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: "\u0421\u0430\u043D\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5486208311195577724, guid: 86dfac09034890141b8152fc9f66a542,
+        type: 3}
+      propertyPath: _distanceToInteract
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

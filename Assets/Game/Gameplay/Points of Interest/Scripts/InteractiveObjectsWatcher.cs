@@ -41,7 +41,7 @@ namespace Game.Gameplay.Interaction
             _objectsInRange.Clear();
 
             foreach (var interactiveObject in _interactiveObjectsToCheck)
-                if (_distanceChecker.IsPlayerInRange(interactiveObject.transform))
+                if (_distanceChecker.IsPlayerInRange(interactiveObject))
                     _objectsInRange.Add(interactiveObject);
 
             if (_objectsInRange.Count == 0)

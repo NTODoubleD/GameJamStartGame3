@@ -15,6 +15,8 @@ namespace Game.UI.Pages
 
         private InputController _inputController;
 
+        private DeerInfo _context;
+
         private void Awake()
         {
             _inputController = Services.ProjectContext.GetModule<InputController>();
@@ -24,6 +26,8 @@ namespace Game.UI.Pages
 
         public void Open(DeerInfo context)
         {
+            _context = context;
+
             _inputController.EnableMap<UIInputMap>();
 
             SetCanvasState(true);
@@ -40,6 +44,10 @@ namespace Game.UI.Pages
             SetCanvasState(false);
 
             _inputController.EnableMap<PlayerInputMap>();
+
+            _context?.OnEnd?.Invoke();
+
+            _context = null;
         }
     }
 }
