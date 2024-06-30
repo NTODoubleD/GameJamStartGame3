@@ -14,12 +14,15 @@ public class CharacterAnimatorController : MonoBehaviour
     private static readonly int Feed = Animator.StringToHash("Feed");
     private static readonly int Kill = Animator.StringToHash("Kill");
     private static readonly int Heal = Animator.StringToHash("Heal");
+    private static readonly int Cut = Animator.StringToHash("Cut");
+
+    private UnityAction _currentKillCallback;
+    private UnityAction _currentHealCallback;
+    private UnityAction _currentFeedCallback;
+    private UnityAction _currentCutCallback;
 
     public event UnityAction StartedPickingUp;
     public event UnityAction PickedUp;
-    public event UnityAction Feeded;
-    public event UnityAction Killed;
-    public event UnityAction Healed;
 
     public event UnityAction StartedInteraction;
     public event UnityAction EndedInteraction;
@@ -42,14 +45,29 @@ public class CharacterAnimatorController : MonoBehaviour
     public void AnimatePickingUp() =>
         _animator.SetTrigger(PickingUp);
 
-    public void AnimateFeeding() =>
+    public void AnimateFeeding(UnityAction endCallback = null)
+    {
+        _currentFeedCallback = endCallback;
         _animator.SetTrigger(Feed);
+    }
 
-    public void AnimateKilling() =>
+    public void AnimateKilling(UnityAction endCallback = null)
+    {
+        _currentKillCallback = endCallback;
         _animator.SetTrigger(Kill);
+    }
 
-    public void AnimateHealing() =>
+    public void AnimateHealing(UnityAction endCallback = null)
+    {
+        _currentHealCallback = endCallback;
         _animator.SetTrigger(Heal);
+    }
+
+    public void AnimateCutting(UnityAction endCallback = null)
+    {
+        _currentCutCallback = endCallback;
+        _animator.SetTrigger(Cut);
+    }
 
     #region ANIMATOR_EVENTS
 
@@ -62,14 +80,29 @@ public class CharacterAnimatorController : MonoBehaviour
     public void OnPickedUp() =>
         PickedUp?.Invoke();
 
-    public void OnFeeded() =>
-        Feeded?.Invoke();
+    public void OnFeeded()
+    {
+        _currentFeedCallback?.Invoke();
+        _currentFeedCallback = null;
+    }
 
-    public void OnKilled() =>
-        Killed?.Invoke();
+    public void OnKilled()
+    {
+        _currentKillCallback?.Invoke();
+        _currentKillCallback = null;
+    }
 
-    public void OnHealed() =>
-        Healed?.Invoke();
+    public void OnHealed()
+    {
+        _currentHealCallback?.Invoke();
+        _currentHealCallback = null;
+    }
+
+    public void OnCutted()
+    {
+        _currentCutCallback?.Invoke();
+        _currentCutCallback = null;
+    }
 
     public void OnStartedInteraction() =>
         StartedInteraction?.Invoke();
@@ -84,5 +117,4 @@ public class CharacterAnimatorController : MonoBehaviour
         speed *= _animationSpeedMultiplier;
         _animator.SetFloat(Speed, speed);
     }
-
 }

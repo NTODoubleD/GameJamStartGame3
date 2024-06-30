@@ -7,6 +7,7 @@ using Game.Gameplay.States;
 using Game.UI.Pages;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 namespace Game.Gameplay
 {
@@ -14,15 +15,17 @@ namespace Game.Gameplay
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private DeerInteractive _deerInteractive;
+        [SerializeField] private DeerAnimatorController _animatorController;
 
         public DeerInfo DeerInfo { get; private set; }
-
         public DeerInteractive DeerInteractive => _deerInteractive;
 
         private IUIManager _uiManager;
 
         private WalkablePlane _walkablePlane;
         private StateMachine _deerStateMachine;
+
+        public event UnityAction<Deer> Died;
 
         private void Awake()
         {
@@ -33,6 +36,8 @@ namespace Game.Gameplay
 
             _deerStateMachine.BindState(new DeerIdleState());
             _deerStateMachine.BindState(new DeerEatsState());
+            _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo));
+            _deerStateMachine.BindState(new DeerCutState(gameObject));
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
             _deerStateMachine.BindState(new DeerInteractedByPlayerState());
         }
@@ -64,6 +69,17 @@ namespace Game.Gameplay
 
         public void EnterWalkingState() =>
             _deerStateMachine.Enter<DeerRandomWalkState>();
+
+        public void Die()
+        {
+            _deerStateMachine.Enter<DeerDieState>();
+            Died?.Invoke(this);
+        }
+
+        public void Cut()
+        {
+            _deerStateMachine.Enter<DeerCutState>();
+        }    
 
         #endregion
     }

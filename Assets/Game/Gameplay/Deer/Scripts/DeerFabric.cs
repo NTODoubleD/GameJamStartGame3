@@ -8,6 +8,7 @@ using Game.Gameplay.AI;
 using Game.Gameplay.Interaction;
 using Game.Gameplay.States;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Gameplay.Scripts
 {
@@ -26,6 +27,8 @@ namespace Game.Gameplay.Scripts
         private List<string> _deerFemaleNames;
 
         private readonly List<string> _usedNames = new();
+
+        public event UnityAction<Deer> Created;
 
         private void Awake()
         {
@@ -47,10 +50,10 @@ namespace Game.Gameplay.Scripts
         public void CreateDeer(DeerInfo deerInfo)
         {
             var inst = Instantiate(_prefab, _walkablePlane.GetRandomPointOnNavMesh(), Quaternion.identity, _container);
-
             _interactiveObjectsWatcher.AddObjectToWatch(inst.DeerInteractive);
-
             inst.Initialize<DeerRandomWalkState>(deerInfo);
+
+            Created?.Invoke(inst);
         }
 
         private GenderType[] _genders = { GenderType.Female, GenderType.Male };
