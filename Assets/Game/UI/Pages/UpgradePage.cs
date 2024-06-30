@@ -82,7 +82,7 @@ namespace Game.UI.Pages
 
             if (conditionVisitor.TownLevel >= 0)
             {
-                result += "Уровень юрты - " + $"{conditionVisitor.CurrentTownLevel}/{conditionVisitor.TownLevel}\n"
+                result += "Уровень юрты - " + $"{conditionVisitor.CurrentTownLevel}/{conditionVisitor.TownLevel}"
                     .Color(conditionVisitor.CurrentTownLevel >= conditionVisitor.TownLevel
                         ? Color.green
                         : Color.red);
