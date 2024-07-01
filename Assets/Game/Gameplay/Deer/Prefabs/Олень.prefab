@@ -670,7 +670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _normalScale: {x: 1, y: 1, z: 1}
   _youngScale: {x: 0.5, y: 0.5, z: 0.5}
-  _meshRenderer: {fileID: 0}
+  _meshRenderer: {fileID: 7201579663476740101}
+  _dedMaterial: {fileID: 2100000, guid: b12faf2485ec672409c4b555adcfc068, type: 2}
   _maleMeshingInfo: []
   _femaleMeshingInfo: []
 --- !u!195 &8038603526445538412
@@ -843,6 +844,12 @@ MonoBehaviour:
 --- !u!4 &7064269071996201537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2573251893305986421, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+    type: 3}
+  m_PrefabInstance: {fileID: 4737599600570296116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7201579663476740101 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2472039896528926513, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
     type: 3}
   m_PrefabInstance: {fileID: 4737599600570296116}
   m_PrefabAsset: {fileID: 0}

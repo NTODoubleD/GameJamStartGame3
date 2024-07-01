@@ -10,6 +10,7 @@ namespace Game.Gameplay.Scripts
         [SerializeField] private Vector3 _youngScale;
 
         [SerializeField] private SkinnedMeshRenderer _meshRenderer;
+        [SerializeField] private Material _dedMaterial;
 
         [Space, SerializeField] private List<DeerMeshingInfo> _maleMeshingInfo;
         [SerializeField] private List<DeerMeshingInfo> _femaleMeshingInfo;
@@ -32,6 +33,9 @@ namespace Game.Gameplay.Scripts
         public void ChangeMesh(DeerAge deerAge, GenderType genderType)
         {
             transform.localScale = deerAge == DeerAge.Young ? _youngScale : _normalScale;
+
+            if (deerAge == DeerAge.Old)
+                _meshRenderer.material = _dedMaterial;
         }
 
         private void DisableAllOutlines()
