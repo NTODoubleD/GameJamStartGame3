@@ -8,7 +8,7 @@ public class VisualDeerDebuff : MonoBehaviour
     [SerializeField] private Deer _deer;
 
     public Image hungryImage, sickImage;
-    
+
     public Color light, medium, hard;
 
     private void OnEnable()
@@ -45,15 +45,15 @@ public class VisualDeerDebuff : MonoBehaviour
     {
         switch (value)
         {
-            case <= 0.5f :
+            case <= 0.5f:
                 hungryImage.gameObject.SetActive(true);
                 hungryImage.color = hard;
                 break;
-            case <= 0.7f :
+            case <= 0.7f:
                 hungryImage.gameObject.SetActive(true);
                 hungryImage.color = medium;
-                break;       
-            case <= 0.9f :
+                break;
+            case <= 0.9f:
                 hungryImage.gameObject.SetActive(true);
                 hungryImage.color = light;
                 break;
@@ -62,7 +62,7 @@ public class VisualDeerDebuff : MonoBehaviour
                 break;
         }
     }
-    
+
     private void SetSick(DeerStatus status) // 0 - notHungry, 3 very hungry 0-1
     {
         switch (status)
@@ -81,9 +81,10 @@ public class VisualDeerDebuff : MonoBehaviour
                 sickImage.gameObject.SetActive(true);
                 sickImage.color = hard;
                 break;
+            case DeerStatus.Killed:
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(status), status, null);
         }
-        
     }
 }

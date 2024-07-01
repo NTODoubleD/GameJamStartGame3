@@ -76,6 +76,9 @@ namespace Game.Gameplay.Deers
             var capacity = BuildLevelToCapacityTable[_pastureBuilding.CurrentLevel];
 
             var youngDeerAmount = Math.Clamp(capacity - currentYoung, 0, _pairs.Count);
+            
+            if (youngDeerAmount <= 0)
+                return;
 
             Debug.Log("New deers: " + youngDeerAmount);
 

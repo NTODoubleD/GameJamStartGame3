@@ -1,4 +1,5 @@
 using DoubleDTeam.Containers;
+using DoubleDTeam.Containers.Base;
 using DoubleDTeam.InputSystem;
 using Game.InputMaps;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Game.Gameplay.DayCycle
 {
-    public class DayCycleController : MonoBehaviour
+    public class DayCycleController : MonoModule
     {
         [SerializeField] private DayChangeTransition _changeTransition;
 
