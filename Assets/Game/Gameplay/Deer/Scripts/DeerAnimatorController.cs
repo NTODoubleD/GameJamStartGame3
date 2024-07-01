@@ -13,6 +13,7 @@ public class DeerAnimatorController : MonoBehaviour
     private static readonly int Dead = Animator.StringToHash("Death");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Eat = Animator.StringToHash("Eat");
+    private SoundsManager SoundsManager => SoundsManager.Instance;
 
     private void OnValidate()
     {
@@ -37,6 +38,11 @@ public class DeerAnimatorController : MonoBehaviour
     public void SetSpeed(float value)
     {
         _animator.SetFloat(Speed, value);
+    }
+
+    public void OnEat()
+    {
+        SoundsManager.PlayDeerEat(transform.position);
     }
     
 }

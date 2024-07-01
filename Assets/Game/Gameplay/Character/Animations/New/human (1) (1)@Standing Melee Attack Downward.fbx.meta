@@ -81,6 +81,30 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.0062499996
+        functionName: OnGetAxe
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.37083334
+        functionName: OnKillOlen
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.9916666
+        functionName: OnDissapearAxe
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -509,6 +509,7 @@ MonoBehaviour:
   _animator: {fileID: 505510822180471100}
   _mover: {fileID: 7421384628883391739}
   _animationSpeedMultiplier: 0.75
+  _axe: {fileID: 4439127339835554723}
 --- !u!4 &1149736404535521939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,

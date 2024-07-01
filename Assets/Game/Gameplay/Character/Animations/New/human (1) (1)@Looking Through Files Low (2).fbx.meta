@@ -81,6 +81,30 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.25833333
+        functionName: OnMeat1
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.43125
+        functionName: OnMeat2
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.51458335
+        functionName: OnMeat3
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
