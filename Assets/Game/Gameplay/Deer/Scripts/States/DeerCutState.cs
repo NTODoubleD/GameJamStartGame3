@@ -19,7 +19,6 @@ namespace Game.Gameplay.States
 
         public void Exit()
         {
-
         }
     }
 }

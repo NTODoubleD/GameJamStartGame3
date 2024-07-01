@@ -33,16 +33,15 @@ namespace Game.Gameplay.Deers
             else
             {
                 Debug.LogError("CAN'T CUT THIS DEER");
-            }    
+            }
         }
 
         private void ApplyCut(Deer deer)
         {
             deer.Cut();
 
-            if (deer.DeerInfo.Status == DeerStatus.Standard)
-                foreach (var lootInfo in _loot)
-                    _storage.AddItems(lootInfo.Item, lootInfo.Count);
+            foreach (var lootInfo in _loot)
+                _storage.AddItems(lootInfo.Item, lootInfo.Count);
         }
 
         [Serializable]

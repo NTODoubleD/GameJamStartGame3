@@ -9,7 +9,7 @@ namespace Game.Gameplay.States
         private readonly DeerInfo _deerInfo;
         private readonly NavMeshAgent _navMeshAgent;
 
-        public DeerDieState(DeerAnimatorController animatorController, DeerInfo deerInfo, NavMeshAgent navMeshAgent) 
+        public DeerDieState(DeerAnimatorController animatorController, DeerInfo deerInfo, NavMeshAgent navMeshAgent)
         {
             _animatorController = animatorController;
             _deerInfo = deerInfo;
@@ -25,7 +25,6 @@ namespace Game.Gameplay.States
 
         public void Exit()
         {
-            
         }
     }
 }
