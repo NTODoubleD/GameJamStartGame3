@@ -6588,7 +6588,6 @@ Transform:
   - {fileID: 73325481956829072}
   - {fileID: 1675368417485471946}
   - {fileID: 3183018735605806694}
-  - {fileID: 1951836484749112834}
   m_Father: {fileID: 4673804054438929746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6344974110633457097
@@ -9937,7 +9936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25727c99e3380684190930a1eb634ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deerFabric: {fileID: 5603614813192306812}
+  _deerFabric: {fileID: 0}
   _dayCycleController: {fileID: 7584658767840806107}
   _healController: {fileID: 6151683576349087589}
   _illnessChance: 0.2
@@ -9958,7 +9957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e002856ca91aa42bdda6b126ca83f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deerFabric: {fileID: 5603614813192306812}
+  _deerFabric: {fileID: 0}
   _dayCycleController: {fileID: 7584658767840806107}
   _hungerStep: 0.2
   _minimalHungerDegree: 0.4
