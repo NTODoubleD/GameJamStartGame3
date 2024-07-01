@@ -3,6 +3,7 @@ using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Game.UI.Pages;
 using UnityEngine;
 
@@ -18,8 +19,10 @@ namespace Game.Gameplay.Sleigh
         [SerializeField] private ItemInfo[] _possibleResources;
         [SerializeField] private int _levelsToDistribute = 4;
 
-        private void Awake()
+        private async void Start()
         {
+            await UniTask.NextFrame();
+
             _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
         }
 

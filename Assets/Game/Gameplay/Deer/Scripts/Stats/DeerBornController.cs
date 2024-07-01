@@ -58,7 +58,7 @@ namespace Game.Gameplay.Deers
         {
             for (int i = 0; i < deerAmount; i++)
             {
-                if (_suitableDeerRemains.Count >= 0)
+                if (_suitableDeerRemains.Count > 0)
                 {
                     _suitableDeerRemains.RemoveAt(0);
                     continue;
@@ -87,10 +87,7 @@ namespace Game.Gameplay.Deers
 
         private void OnDayEnded()
         {
-            _suitableDeerRemains = _herd.CurrentHerd
-                .Where(d => d.DeerInfo.Age == DeerAge.Adult)
-                .Where(d => d.DeerInfo.Status == DeerStatus.Standard)
-                .ToList();
+            _suitableDeerRemains = _herd.SuitableDeer;
 
             var males = _suitableDeerRemains.Where(d => d.DeerInfo.Gender == GenderType.Male).ToList();
             var females = _suitableDeerRemains.Where(d => d.DeerInfo.Gender == GenderType.Female).ToList();
