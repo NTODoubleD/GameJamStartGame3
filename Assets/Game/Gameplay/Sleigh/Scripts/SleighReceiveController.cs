@@ -3,6 +3,8 @@ using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System.Collections.Generic;
+using DoubleDTeam.UI.Base;
+using Game.UI.Pages;
 using UnityEngine;
 
 namespace Game.Gameplay.Sleigh
@@ -12,6 +14,13 @@ namespace Game.Gameplay.Sleigh
         [SerializeField] private DayCycleController _dayCycleController;
 
         private IReadOnlyDictionary<ItemInfo, int> _currentResult;
+
+        private IUIManager _uiManager;
+
+        private void Awake()
+        {
+            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+        }
 
         private void OnEnable()
         {
@@ -35,6 +44,13 @@ namespace Game.Gameplay.Sleigh
                 storage.AddItems(keyPair.Key, keyPair.Value);
                 Debug.Log($"RECEIVED {keyPair.Key.Name} {keyPair.Value}");
             }
+
+            _uiManager.OpenPage<ResourceWatcherPage, ResourcePageArgument>(new ResourcePageArgument()
+            {
+                Label = "Результат вылазки",
+                TextHeading = "Получено ресурсов:",
+                Resource = new Dictionary<ItemInfo, int>(_currentResult)
+            });
 
             _currentResult = null;
         }

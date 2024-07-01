@@ -10,9 +10,10 @@ namespace Game.Infrastructure.Storage
     {
         private readonly Dictionary<ItemInfo, int> _items = new();
 
+        public IReadOnlyDictionary<ItemInfo, int> Resources => _items;
+
         public ItemStorage()
         {
-
         }
 
         public ItemStorage(ItemStorageInfo info)
@@ -52,7 +53,7 @@ namespace Game.Infrastructure.Storage
         {
             if (_items.ContainsKey(item) == false)
                 return 0;
-            
+
             return _items[item];
         }
     }

@@ -32,10 +32,10 @@ namespace Game.Gameplay.DayCycle
 
         public void StartDay()
         {
+            _inputManager.EnableMap<PlayerInputMap>();
+
             CurrentDay++;
             DayStarted?.Invoke();
-
-            _inputManager.EnableMap<PlayerInputMap>();
         }
     }
 }
