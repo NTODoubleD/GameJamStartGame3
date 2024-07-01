@@ -862,6 +862,36 @@ PrefabInstance:
       propertyPath: _radius
       value: 5.67
       objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5618876
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5618876
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5618876
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.3719
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2149
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938964727402317880, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.465
+      objectReference: {fileID: 0}
     - target: {fileID: 1971825967672072721, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _dayCycleController
@@ -1358,6 +1388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967102928715677939, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5068165435231610944, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -1962,6 +1997,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1187642126}
+    - targetCorrespondingSourceObject: {fileID: 9165232245853669057, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 4718823646381322526, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
