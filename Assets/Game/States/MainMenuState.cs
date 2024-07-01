@@ -2,7 +2,6 @@
 using DoubleDTeam.StateMachine.Base;
 using DoubleDTeam.UI.Base;
 using Game.InputMaps;
-using Game.UI;
 using Game.UI.Pages;
 
 namespace Game.States
