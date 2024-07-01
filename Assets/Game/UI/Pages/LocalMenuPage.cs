@@ -59,5 +59,10 @@ namespace Game.UI.Pages
 
             _timer.Start(OpenDelay);
         }
+
+        public void OpenTutorial()
+        {
+            Services.ProjectContext.GetModule<IUIManager>().OpenPage<TutorialPage>();
+        }
     }
 }
