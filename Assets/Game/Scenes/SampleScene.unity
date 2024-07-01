@@ -1164,6 +1164,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998355381}
   m_CullTransparentMesh: 1
+--- !u!1 &1061933514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7416989605552820613, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1061933515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061933514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e7e7c428224b24893cd231c00302ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _history:
+  - {fileID: 11400000, guid: 79d84f118a24b80419d0b3897fa69f7a, type: 2}
+  - {fileID: 11400000, guid: 700d4e03490ae1a42b58bea38aa9e90d, type: 2}
+  - {fileID: 11400000, guid: c98ff4ae8a9c87d4083028e3250aa1a6, type: 2}
+  - {fileID: 11400000, guid: 077ff1cf3fc34cc4ea8b868c2db54796, type: 2}
 --- !u!1 &1081820660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,6 +2931,11 @@ PrefabInstance:
       propertyPath: _walkablePlane
       value: 
       objectReference: {fileID: 301106042}
+    - target: {fileID: 6042961796209564114, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_Name
+      value: TriggrGameObject
+      objectReference: {fileID: 0}
     - target: {fileID: 6166992102034860000, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_IsActive
@@ -2962,10 +2990,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0eae4e0bb3e01f547b5e670b1fa11d4f,
         type: 3}
+    - target: {fileID: 6605781260816869979, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 6605781260816869979, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320
+      objectReference: {fileID: 0}
     - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _startCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846666223240332307, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6966400794819002665, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -3293,6 +3336,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.369
       objectReference: {fileID: 0}
+    - target: {fileID: 8346697073095470074, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8346697073095470074, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.44
+      objectReference: {fileID: 0}
     - target: {fileID: 8360916279481529636, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Pivot.y
@@ -3463,6 +3516,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 7416989605552820613, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1061933515}
     - targetCorrespondingSourceObject: {fileID: 4718823646381322526, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
