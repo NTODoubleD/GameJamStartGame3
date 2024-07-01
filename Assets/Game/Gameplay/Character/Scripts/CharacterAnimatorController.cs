@@ -8,6 +8,8 @@ public class CharacterAnimatorController : MonoBehaviour
     [SerializeField, ReadOnlyProperty] private Animator _animator;
     [SerializeField] private CharacterMover _mover;
     [SerializeField] private float _animationSpeedMultiplier;
+
+    [SerializeField] private GameObject _axe;
     
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int PickingUp = Animator.StringToHash("PickingUp");
@@ -109,6 +111,23 @@ public class CharacterAnimatorController : MonoBehaviour
 
     public void OnEndedInteraction() =>
         EndedInteraction?.Invoke();
+    public void OnMeat1() =>
+        SoundsManager.PlayMeat1(transform.position);
+    public void OnMeat2() =>
+        SoundsManager.PlayMeat2(transform.position);
+    public void OnMeat3() =>
+        SoundsManager.PlayMeat3(transform.position);
+    
+    public void OnGetMoch() =>
+        SoundsManager.PlayMeat3(transform.position);
+
+    public void OnKillOlen() => 
+        SoundsManager.PlayKillOlen(transform.position);
+
+    public void OnGetAxe() =>
+        _axe.gameObject.SetActive(true);
+    public void OnDissapearAxe() => 
+        _axe.gameObject.SetActive(false);
 
     #endregion
 

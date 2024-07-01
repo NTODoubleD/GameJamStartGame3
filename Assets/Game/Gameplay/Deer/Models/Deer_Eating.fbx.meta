@@ -407,7 +407,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.083333336
+        functionName: PlayDeerEat
+        data: 
+        objectReferenceParameter: {fileID: 2567764458354126533, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
