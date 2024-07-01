@@ -93,7 +93,7 @@ namespace Game.UI.Pages
             {
                 int amountInStorage = _itemStorage.GetCount(item);
 
-                string text = $"{item.Name} - " + $"{amountInStorage}/{amount}\n"
+                string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
                     .Color(amountInStorage >= amount ? Color.green : Color.red);
 
                 result += text;

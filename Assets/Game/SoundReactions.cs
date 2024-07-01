@@ -11,11 +11,11 @@ namespace Game
 
         public void Play()
         {
-            if (_isFirst == false)
-                return;
-
-            AudioSource.PlayClipAtPoint(_monologueInfo.VoiceClip, Camera.main.transform.position);
-            _isFirst = false;
+            // if (_isFirst == false)
+            //     return;
+            //
+            // AudioSource.PlayClipAtPoint(_monologueInfo.VoiceClip, Camera.main.transform.position);
+            // _isFirst = false;
         }
     }
 }
