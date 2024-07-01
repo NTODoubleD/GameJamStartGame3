@@ -53,7 +53,7 @@ namespace Game.Gameplay.Feeding
         private void PickMoss()
         {
             IsMossPicked = true;
-            _objectsWatcher.enabled = false;
+            //_objectsWatcher.enabled = false;
             _characterAnimatorController.AnimatePickingUp();
         }
 
@@ -64,7 +64,7 @@ namespace Game.Gameplay.Feeding
 
         private void OnPicked()
         {
-            _objectsWatcher.enabled = true;
+            //_objectsWatcher.enabled = true;
         }
 
         private void OnItemRemovedFromStorage(ItemInfo item, int count)

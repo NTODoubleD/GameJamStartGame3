@@ -9,7 +9,7 @@ namespace Game.Gameplay.Interaction
 {
     public class InteractiveObjectsWatcher : MonoBehaviour
     {
-        private readonly HashSet<InteractiveObject> _interactiveObjectsToCheck = new();
+        private List<InteractiveObject> _interactiveObjectsToCheck = new();
         private readonly List<InteractiveObject> _objectsInRange = new();
 
         [SerializeField] private DistancePlayerToObjectChecker _distanceChecker;
@@ -42,6 +42,7 @@ namespace Game.Gameplay.Interaction
 
         private void Update()
         {
+            RefreshWatchList();
             _objectsInRange.Clear();
 
             foreach (var interactiveObject in _interactiveObjectsToCheck)
@@ -62,6 +63,11 @@ namespace Game.Gameplay.Interaction
                 CurrentObject = closestObject;
                 CurrentChanged?.Invoke(closestObject);
             }
+        }
+
+        private void RefreshWatchList()
+        {
+            _interactiveObjectsToCheck = _interactiveObjectsToCheck.Where(x => x != null).ToList();
         }
     }
 }

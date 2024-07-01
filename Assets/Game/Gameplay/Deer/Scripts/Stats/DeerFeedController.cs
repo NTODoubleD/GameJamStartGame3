@@ -15,11 +15,7 @@ namespace Game.Gameplay.Deers
         [SerializeField] private ItemInfo _feedItem;
         [SerializeField] private float _hungerRegenerationPerItem = 0.1f;
 
-        [Header("Settings")]
-        [SerializeField] private FeedStat[] _feedStats;
-
         private ItemStorage _storage;
-        private Deer _lastDeer;
 
         private void Awake()
         {
@@ -28,10 +24,10 @@ namespace Game.Gameplay.Deers
 
         public bool CanFeed(Deer deer)
         {
-            if (deer.DeerInfo.Status == DeerStatus.Dead)
+            if (deer.DeerInfo.IsDead)
                 return false;
 
-            if (_storage.GetCount(_feedItem) > 0)
+            if (_storage.GetCount(_feedItem) == 0)
                 return false;
 
             if (_mossController.IsMossPicked == false)
@@ -49,10 +45,11 @@ namespace Game.Gameplay.Deers
             {
                 int totalFeedItemCount = _storage.GetCount(_feedItem);
                 float hungerNeed = 1 - deer.DeerInfo.HungerDegree;
-                int maximumItemsToFeed = (int)(hungerNeed / _hungerRegenerationPerItem);
+                int maximumItemsToFeed = Mathf.RoundToInt(hungerNeed / _hungerRegenerationPerItem);
                 int resultItemsCount = Mathf.Min(totalFeedItemCount, maximumItemsToFeed);
 
                 _storage.RemoveItems(_feedItem, resultItemsCount);
+                deer.AnimatorController.StartEat();
                 _characterAnimatorController.AnimateFeeding(() => ApplyFeed(deer, resultItemsCount));
             }
             else
@@ -63,7 +60,7 @@ namespace Game.Gameplay.Deers
 
         private void ApplyFeed(Deer deer, int count)
         {
-            deer.DeerInfo.HungerDegree = Mathf.Min(1, count * _hungerRegenerationPerItem);
+            deer.DeerInfo.HungerDegree = Mathf.Min(1, deer.DeerInfo.HungerDegree + count * _hungerRegenerationPerItem);
         }
 
         [Serializable]

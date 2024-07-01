@@ -21,7 +21,7 @@ namespace Game.Gameplay.Deers
 
         public bool CanCut(Deer deer)
         {
-            return deer.DeerInfo.Status == DeerStatus.Dead;
+            return deer.DeerInfo.IsDead;
         }
 
         public void Cut(Deer deer)
@@ -40,8 +40,9 @@ namespace Game.Gameplay.Deers
         {
             deer.Cut();
 
-            foreach (var lootInfo in _loot)
-                _storage.AddItems(lootInfo.Item, lootInfo.Count);
+            if (deer.DeerInfo.Status == DeerStatus.Standard)
+                foreach (var lootInfo in _loot)
+                    _storage.AddItems(lootInfo.Item, lootInfo.Count);
         }
 
         [Serializable]

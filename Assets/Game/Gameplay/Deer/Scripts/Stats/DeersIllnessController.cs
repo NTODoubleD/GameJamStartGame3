@@ -56,18 +56,18 @@ namespace Game.Gameplay.Deers
             List<Deer> possibleTargets = _currentDeers.Where(deer => deer.DeerInfo.Age != DeerAge.Young).ToList();
             int targetsToCastIllnessCount = possibleTargets.Count >= _bigFlockCount ? _bigFlockIllnessesCount : _smallFlockIllnessesCount;
 
-            possibleTargets = possibleTargets.Where(deer => deer.DeerInfo.Status != DeerStatus.Sick).ToList();
+            possibleTargets = possibleTargets.Where(deer => deer.DeerInfo.Status == DeerStatus.Standard).ToList();
             int sickedCount = 0;
 
             for (int i = 0; i < targetsToCastIllnessCount; i++)
             {
-                if (sickedCount == targetsToCastIllnessCount)
+                if (sickedCount == targetsToCastIllnessCount || possibleTargets.Count == 0)
                     break;
 
                 Deer deer = possibleTargets[Random.Range(0, possibleTargets.Count)];
                 possibleTargets.Remove(deer);
 
-                float castedChance = Random.Range(0, 1);
+                float castedChance = Random.Range(0f, 1f);
 
                 if (castedChance <= _illnessChance)
                 {

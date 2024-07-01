@@ -7,8 +7,41 @@ namespace Game.Gameplay
         public string Name;
         public GenderType Gender;
         public DeerAge Age;
-        public float HungerDegree;
-        public DeerStatus Status;
+        public bool IsDead;
+
+        private float _hungerDegree;
+        private DeerStatus _status;
+
+        public float HungerDegree
+        {
+            get
+            {
+                return _hungerDegree;
+            }
+
+            set 
+            { 
+                _hungerDegree = value;
+                HungerChanged?.Invoke(value);
+            }
+        }
+
+        public DeerStatus Status
+        {
+            get
+            {
+                return _status;
+            }
+
+            set
+            {
+                _status = value;
+                StatusChanged?.Invoke(value);
+            }
+        }
+
+        public event Action<float> HungerChanged;
+        public event Action<DeerStatus> StatusChanged;
     }
 
     public static class DeerInfoExtensions

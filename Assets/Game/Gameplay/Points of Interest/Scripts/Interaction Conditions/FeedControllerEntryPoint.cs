@@ -3,7 +3,7 @@ using Game.Gameplay.Deers;
 
 namespace Game.Gameplay.Interaction
 {
-    public class FeedInteractionCondition : DeerInteractionCondition
+    public class FeedControllerEntryPoint : DeerInteractionCondition
     {
         private DeerFeedController _feedController;
 
@@ -15,6 +15,11 @@ namespace Game.Gameplay.Interaction
         public override bool ConditionIsDone()
         {
             return _feedController.CanFeed(Deer);
+        }
+
+        public void Feed()
+        {
+            _feedController.Feed(Deer);
         }
     }
 }

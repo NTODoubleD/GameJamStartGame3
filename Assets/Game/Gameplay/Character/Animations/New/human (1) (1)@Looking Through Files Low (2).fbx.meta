@@ -65,7 +65,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9958333
+      - time: 0.99788135
+        functionName: OnCutted
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
         functionName: OnEndedInteraction
         data: 
         objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
