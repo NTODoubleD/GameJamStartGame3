@@ -14,7 +14,7 @@ namespace Game
             if (_isFirst == false)
                 return;
 
-            SoundsManager.Instance.PlaySound(_monologueInfo.VoiceClip);
+            SoundsManager.Instance.PlaySound(_monologueInfo.VoiceClip, Camera.main.transform.position);
             _isFirst = false;
         }
     }
