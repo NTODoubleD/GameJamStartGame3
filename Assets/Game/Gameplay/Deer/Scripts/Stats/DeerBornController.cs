@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DoubleDTeam.Containers;
+using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
 using Game.Gameplay.Sleigh;
@@ -14,15 +15,22 @@ namespace Game.Gameplay.Deers
         [SerializeField] private DayCycleController _dayCycleController;
         [SerializeField] private SleighSendController _sleighSendController;
 
+        [Space, SerializeField] private PastureBuilding _pastureBuilding;
+
         private Herd _herd;
         private DeerFabric _fabric;
 
         private List<Deer> _suitableDeerRemains;
         private readonly Stack<Tuple<Deer, Deer>> _pairs = new();
 
-        public event Action DeerIsBorn;
+        private Dictionary<int, int> BuildLevelToCapacityTable = new()
+        {
+            { 1, 3 },
+            { 2, 4 },
+            { 3, 5 }
+        };
 
-        private int YoungDeerAmount => _pairs.Count;
+        public event Action DeerIsBorn;
 
         private void Awake()
         {
@@ -64,9 +72,14 @@ namespace Game.Gameplay.Deers
 
         private void OnDayStarted()
         {
-            Debug.Log("New deers: " + YoungDeerAmount);
+            var currentYoung = _herd.CurrentHerd.Count(d => d.DeerInfo.Age == DeerAge.Young);
+            var capacity = BuildLevelToCapacityTable[_pastureBuilding.CurrentLevel];
 
-            for (int i = 0; i < YoungDeerAmount; i++)
+            var youngDeerAmount = Math.Clamp(capacity - currentYoung, 0, _pairs.Count);
+
+            Debug.Log("New deers: " + youngDeerAmount);
+
+            for (int i = 0; i < youngDeerAmount; i++)
                 _fabric.CreateDeer();
 
             DeerIsBorn?.Invoke();

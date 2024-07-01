@@ -1787,6 +1787,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4.8927255
       objectReference: {fileID: 0}
+    - target: {fileID: 3461151597664731305, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _pastureBuilding
+      value: 
+      objectReference: {fileID: 979235563}
     - target: {fileID: 3479425783532538539, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _levelViews.Array.data[2]._view
