@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Game/Gameplay/Deer/Scripts/New Folder.meta
+guid: 07ed286baa78190409c49379c3284162
+========
 guid: b549a22e08ebc5f4d835f2eff0732981
+>>>>>>>> 405ffb69e9620515a956d6c5a50e89fcb1a9328f:Assets/Game/Gameplay/Points of Interest/Scripts/Interaction Conditions.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
