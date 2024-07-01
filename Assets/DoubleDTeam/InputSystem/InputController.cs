@@ -53,6 +53,8 @@ namespace DoubleDTeam.InputSystem
 
             CurrentMap.Disable();
             CurrentMap = null;
+
+            Debug.Log("Disabled all maps".Color(Color.red));
         }
 
         public TMap GetMap<TMap>() where TMap : InputMap

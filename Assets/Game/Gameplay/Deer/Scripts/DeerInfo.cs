@@ -14,13 +14,10 @@ namespace Game.Gameplay
 
         public float HungerDegree
         {
-            get
-            {
-                return _hungerDegree;
-            }
+            get { return _hungerDegree; }
 
-            set 
-            { 
+            set
+            {
                 _hungerDegree = value;
                 HungerChanged?.Invoke(value);
             }
@@ -28,10 +25,7 @@ namespace Game.Gameplay
 
         public DeerStatus Status
         {
-            get
-            {
-                return _status;
-            }
+            get { return _status; }
 
             set
             {
@@ -54,6 +48,7 @@ namespace Game.Gameplay
                 DeerStatus.Standard => "Норма",
                 DeerStatus.Sick => "Болеет",
                 DeerStatus.VerySick => "Сильно болеет",
+                DeerStatus.Killed => "Мертв",
                 _ => throw new ArgumentOutOfRangeException(nameof(status), status, null)
             };
         }

@@ -1,6 +1,6 @@
 ﻿using DoubleDTeam.Containers;
-using DoubleDTeam.UI.Base;
 using Game.Gameplay.AI;
+using Game.Gameplay.Scripts;
 using UnityEngine;
 
 namespace Game.Gameplay.Buildings
@@ -9,9 +9,8 @@ namespace Game.Gameplay.Buildings
     {
         [SerializeField] private PastureLevelsConfig _levelsConfig;
         [SerializeField] private WalkablePlane _walkablePlane;
-        [SerializeField] private int _testCount;
 
-        public int DeerCount => _testCount;
+        public int DeerCount => Services.SceneContext.GetModule<Herd>().SuitableDeer.Count;
 
         public int GetDeerCapacity(DeerAge deerAge)
         {

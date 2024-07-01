@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DoubleDTeam.Containers;
 using DoubleDTeam.Containers.Base;
 
@@ -11,6 +12,11 @@ namespace Game.Gameplay.Scripts
         private readonly List<Deer> _currentHerd = new();
 
         public IEnumerable<Deer> CurrentHerd => _currentHerd;
+
+        public List<Deer> SuitableDeer => CurrentHerd
+            .Where(d => d.DeerInfo.Age == DeerAge.Adult)
+            .Where(d => d.DeerInfo.Status == DeerStatus.Standard)
+            .ToList();
 
         private void Awake()
         {

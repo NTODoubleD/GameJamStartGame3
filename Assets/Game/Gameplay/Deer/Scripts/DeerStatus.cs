@@ -6,5 +6,6 @@
         Standard = 1,
         Sick = 2,
         VerySick = 3,
+        Killed = 4
     }
 }
