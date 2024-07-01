@@ -1,3 +1,4 @@
+using System;
 using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
@@ -21,6 +22,8 @@ namespace Game.Gameplay.Sleigh
         {
             _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
         }
+
+        public event Action<int> SleighStarted;
 
         private void OnEnable()
         {
@@ -53,7 +56,7 @@ namespace Game.Gameplay.Sleigh
             _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
         }
 
-        private void Send(IReadOnlyDictionary<ItemInfo, int> itemLevels)
+        private void Send(IReadOnlyDictionary<ItemInfo, int> itemLevels, int amountDeer)
         {
             Dictionary<ItemInfo, int> resultItemsCount = new Dictionary<ItemInfo, int>();
 
@@ -71,6 +74,8 @@ namespace Game.Gameplay.Sleigh
 
             _receiveController.SetReceiveInfo(resultItemsCount);
             _dayCycleController.EndDay();
+
+            SleighStarted?.Invoke(amountDeer);
         }
     }
 }

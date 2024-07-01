@@ -58,7 +58,7 @@ namespace Game.UI.Pages
             for (int i = 0; i < _possibleResources.Count; i++)
                 callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
 
-            Sended?.Invoke(callback);
+            Sended?.Invoke(callback, _chooseDeerAmountSlider.GetResourceAmount());
         }
 
         public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
@@ -110,6 +110,6 @@ namespace Game.UI.Pages
         }
 
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
     }
 }
