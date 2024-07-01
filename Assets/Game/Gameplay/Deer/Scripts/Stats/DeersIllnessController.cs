@@ -2,46 +2,53 @@
 using Game.Gameplay.Scripts;
 using System.Collections.Generic;
 using System.Linq;
+using DoubleDTeam.Containers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Deers
 {
     public class DeersIllnessController : MonoBehaviour
     {
-        private readonly HashSet<Deer> _currentDeers = new();
         private readonly Dictionary<Deer, int> _deersIllnesses = new();
 
         [SerializeField] private DeerFabric _deerFabric;
         [SerializeField] private DayCycleController _dayCycleController;
         [SerializeField] private DeerHealController _healController;
 
-        [Header("Cast Ill Settings")]
-        [SerializeField] private float _illnessChance = 0.2f;
+        [Header("Cast Ill Settings")] [SerializeField]
+        private float _illnessChance = 0.2f;
+
         [SerializeField] private int _bigFlockIllnessesCount = 2;
         [SerializeField] private int _smallFlockIllnessesCount = 1;
         [SerializeField] private int _bigFlockCount = 4;
 
-        [Header("Continue Ill Settings")]
-        [SerializeField] private int _easySickDays = 1;
+        [Header("Continue Ill Settings")] [SerializeField]
+        private int _easySickDays = 1;
+
         [SerializeField] private int _deathSickDays = 3;
+
+        private Herd _herd;
+
+        private void Awake()
+        {
+            _herd = Services.SceneContext.GetModule<Herd>();
+        }
 
         private void OnEnable()
         {
-            _deerFabric.Created += OnDeerCreated;
             _dayCycleController.DayStarted += OnDayStarted;
             _healController.Healed += OnDeerHealed;
         }
 
         private void OnDisable()
         {
-            _deerFabric.Created -= OnDeerCreated;
             _dayCycleController.DayStarted -= OnDayStarted;
             _healController.Healed -= OnDeerHealed;
         }
 
         private void OnDeerCreated(Deer deer)
         {
-            _currentDeers.Add(deer);
             deer.Died += OnDeerDied;
         }
 
@@ -53,8 +60,10 @@ namespace Game.Gameplay.Deers
 
         private void CastIllnesses()
         {
-            List<Deer> possibleTargets = _currentDeers.Where(deer => deer.DeerInfo.Age != DeerAge.Young).ToList();
-            int targetsToCastIllnessCount = possibleTargets.Count >= _bigFlockCount ? _bigFlockIllnessesCount : _smallFlockIllnessesCount;
+            List<Deer> possibleTargets = _herd.CurrentHerd.Where(deer => deer.DeerInfo.Age != DeerAge.Young).ToList();
+            int targetsToCastIllnessCount = possibleTargets.Count >= _bigFlockCount
+                ? _bigFlockIllnessesCount
+                : _smallFlockIllnessesCount;
 
             possibleTargets = possibleTargets.Where(deer => deer.DeerInfo.Status == DeerStatus.Standard).ToList();
             int sickedCount = 0;
@@ -96,7 +105,6 @@ namespace Game.Gameplay.Deers
         {
             deer.Died -= OnDeerDied;
             _deersIllnesses.Remove(deer);
-            _currentDeers.Remove(deer);
         }
 
         private void OnDeerHealed(Deer deer)
