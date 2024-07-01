@@ -7,6 +7,6 @@ namespace Game.Gameplay.Sleigh
     public interface ISleighSendView
     {
         void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources, int levelsToDistribute);
-        event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
+        event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
     }
 }

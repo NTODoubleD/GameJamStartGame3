@@ -11,11 +11,13 @@ namespace Game.Gameplay.Sleigh
     {
         [SerializeField] private ItemInfo[] _infos;
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>> Sended;
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
 
-        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources, int levelsToDistribute)
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
+            int levelsToDistribute)
         {
-            Debug.Log($"INITIALIZED {deerCapacity} {currentDeerCount} {string.Join(", ", possibleResources.Select(x => x.Name))}");
+            Debug.Log(
+                $"INITIALIZED {deerCapacity} {currentDeerCount} {string.Join(", ", possibleResources.Select(x => x.Name))}");
         }
 
         [Button]
@@ -27,7 +29,7 @@ namespace Game.Gameplay.Sleigh
                 { _infos[1], 1 },
                 { _infos[2], 1 }
             };
-            Sended?.Invoke(test);
+            Sended?.Invoke(test, 0);
         }
     }
 }
