@@ -409,7 +409,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.083333336
-        functionName: PlayDeerEat
+        functionName: OnEat
         data: 
         objectReferenceParameter: {fileID: 2567764458354126533, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
           type: 3}

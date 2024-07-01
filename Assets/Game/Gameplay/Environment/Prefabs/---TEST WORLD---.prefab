@@ -3389,7 +3389,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765e51f287ac46840b0fdd3870fb37f9, type: 3}
   - {fileID: 8300000, guid: 4b46e0ed867c7b844846338300d0fcb2, type: 3}
   - {fileID: 8300000, guid: bb175863fa61f454d9c52124cb0cf010, type: 3}
-  - {fileID: 8300000, guid: b3d43add7b191c04c95315d80d35f3b1, type: 3}
+  - {fileID: 8300000, guid: d875ba6b6be0e494bb98e2c76d68191f, type: 3}
   randSound: []
   audioSrc: {fileID: 3020706312985901193}
   _soundsVolume: 1
@@ -10047,6 +10047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dayCycleController: {fileID: 7584658767840806107}
   _sleighSendController: {fileID: 5967847325279805510}
+  _pastureBuilding: {fileID: 0}
 --- !u!1 &9153050517367970700
 GameObject:
   m_ObjectHideFlags: 0
