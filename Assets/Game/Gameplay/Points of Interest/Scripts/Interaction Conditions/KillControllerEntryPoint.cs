@@ -3,7 +3,7 @@ using Game.Gameplay.Deers;
 
 namespace Game.Gameplay.Interaction
 {
-    public class KillInteractionCondition : DeerInteractionCondition
+    public class KillControllerEntryPoint : DeerInteractionCondition
     {
         private DeerKillController _killController;
 
@@ -15,6 +15,11 @@ namespace Game.Gameplay.Interaction
         public override bool ConditionIsDone()
         {
             return _killController.CanKill(Deer);
+        }
+
+        public void Kill()
+        {
+            _killController.Kill(Deer);
         }
     }
 }

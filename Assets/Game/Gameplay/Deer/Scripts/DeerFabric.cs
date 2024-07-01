@@ -21,6 +21,9 @@ namespace Game.Gameplay.Scripts
         [Space, SerializeField] private TextAsset _maleNames;
         [SerializeField] private TextAsset _femaleNames;
 
+        [Header("Start Spawn Settings")]
+        [SerializeField] private int _startCount;
+
         private WalkablePlane _walkablePlane;
 
         private List<string> _deerMaleNames;
@@ -40,11 +43,8 @@ namespace Game.Gameplay.Scripts
 
         private void Start()
         {
-            CreateDeer();
-            CreateDeer();
-            CreateDeer();
-            CreateDeer();
-            CreateDeer();
+            for (int i = 0; i < _startCount; i++)
+                CreateDeer(age: DeerAge.Adult);
         }
 
         public void CreateDeer(DeerInfo deerInfo)

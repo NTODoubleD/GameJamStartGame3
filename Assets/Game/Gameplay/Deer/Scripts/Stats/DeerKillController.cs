@@ -9,7 +9,7 @@ namespace Game.Gameplay.Deers
 
         public bool CanKill(Deer deer)
         {
-            return deer.DeerInfo.Age != DeerAge.Young && deer.DeerInfo.Status != DeerStatus.Dead;
+            return deer.DeerInfo.Age != DeerAge.Young && deer.DeerInfo.IsDead == false;
         }
 
         public void Kill(Deer deer)

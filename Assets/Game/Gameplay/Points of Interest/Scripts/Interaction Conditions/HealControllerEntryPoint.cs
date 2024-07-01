@@ -3,7 +3,7 @@ using Game.Gameplay.Deers;
 
 namespace Game.Gameplay.Interaction
 {
-    public class HealInteractionCondition : DeerInteractionCondition
+    public class HealControllerEntryPoint : DeerInteractionCondition
     {
         private DeerHealController _healController;
 
@@ -15,6 +15,11 @@ namespace Game.Gameplay.Interaction
         public override bool ConditionIsDone()
         {
             return _healController.CanHeal(Deer);
+        }
+
+        public void Heal()
+        {
+            _healController.Heal(Deer);
         }
     }
 }

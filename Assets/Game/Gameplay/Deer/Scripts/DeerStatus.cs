@@ -6,6 +6,5 @@
         Standard = 1,
         Sick = 2,
         VerySick = 3,
-        Dead = 4,
     }
 }

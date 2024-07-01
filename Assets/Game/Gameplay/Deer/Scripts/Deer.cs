@@ -21,6 +21,7 @@ namespace Game.Gameplay
 
         public DeerInfo DeerInfo { get; private set; }
         public DeerInteractive DeerInteractive => _deerInteractive;
+        public DeerAnimatorController AnimatorController => _animatorController;
 
         private IUIManager _uiManager;
 
@@ -28,29 +29,31 @@ namespace Game.Gameplay
         private StateMachine _deerStateMachine;
 
         public event UnityAction<Deer> Died;
+        public event UnityAction<Deer> Initialized;
 
         private void Awake()
         {
             _uiManager = Services.ProjectContext.GetModule<IUIManager>();
             _walkablePlane = Services.SceneContext.GetModule<WalkablePlane>();
-
-            _deerStateMachine = new StateMachine();
-
-            _deerStateMachine.BindState(new DeerIdleState());
-            _deerStateMachine.BindState(new DeerEatsState());
-            _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo));
-            _deerStateMachine.BindState(new DeerCutState(gameObject));
-            _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
-            _deerStateMachine.BindState(new DeerInteractedByPlayerState());
         }
 
         public void Initialize<TStartState>(DeerInfo deerInfo) where TStartState : class, IState
         {
             DeerInfo = deerInfo;
-
             _deerMeshing.ChangeMesh(deerInfo.Age, deerInfo.Gender);
 
+            _deerStateMachine = new StateMachine();
+
+            _deerStateMachine.BindState(new DeerIdleState());
+            _deerStateMachine.BindState(new DeerEatsState());
+            _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
+            _deerStateMachine.BindState(new DeerCutState(gameObject));
+            _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
+            _deerStateMachine.BindState(new DeerInteractedByPlayerState());
+
             _deerStateMachine.Enter<TStartState>();
+
+            Initialized?.Invoke(this);
         }
 
         private DeerInfoPageArgument GetDeerInfoPageArgument()

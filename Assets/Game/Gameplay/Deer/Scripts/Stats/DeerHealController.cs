@@ -26,7 +26,7 @@ namespace Game.Gameplay.Deers
 
         public bool CanHeal(Deer deer)
         {
-            if (deer.DeerInfo.Status == DeerStatus.Standard || deer.DeerInfo.Status == DeerStatus.Dead)
+            if (deer.DeerInfo.Status == DeerStatus.Standard || deer.DeerInfo.IsDead)
                 return false;
 
             return _sickItems.First(x => x.Status == deer.DeerInfo.Status).NeccessaryItemCount <= _storage.GetCount(_healItem);

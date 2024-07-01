@@ -58,15 +58,23 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: OnEndedInteraction
+        functionName: OnStartedInteraction
         data: 
         objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
           type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.67291665
+      - time: 0.9970692
         functionName: OnFeeded
+        data: 
+        objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: OnEndedInteraction
         data: 
         objectReferenceParameter: {fileID: 919132149155446097, guid: 5eeaab39aac8f594e9efcdc79dd3ee5a,
           type: 3}

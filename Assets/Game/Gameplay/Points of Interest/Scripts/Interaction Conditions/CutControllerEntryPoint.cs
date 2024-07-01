@@ -3,7 +3,7 @@ using Game.Gameplay.Deers;
 
 namespace Game.Gameplay.Interaction
 {
-    public class CutInteractionCondition : DeerInteractionCondition
+    public class CutControllerEntryPoint : DeerInteractionCondition
     {
         private DeerCutController _cutController;
 
@@ -15,6 +15,11 @@ namespace Game.Gameplay.Interaction
         public override bool ConditionIsDone()
         {
             return _cutController.CanCut(Deer);
+        }
+
+        public void Cut()
+        {
+            _cutController.Cut(Deer);
         }
     }
 }
