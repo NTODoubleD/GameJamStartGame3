@@ -17,7 +17,7 @@ namespace Game.Gameplay.Buildings
 
         protected override void OnUpgraded()
         {
-            _soundReactions.Play();
+            //_soundReactions.Play();
         }
     }
 }
