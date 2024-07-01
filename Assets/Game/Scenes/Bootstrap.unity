@@ -577,15 +577,15 @@ MonoBehaviour:
   _testInfo:
     _startItems:
     - _itemInfo: {fileID: 11400000, guid: 9868b408a6f3c054193aa958fe2e6c29, type: 2}
-      _count: 1000
+      _count: 0
     - _itemInfo: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
-      _count: 1000
+      _count: 8
     - _itemInfo: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
-      _count: 1000
+      _count: 2
     - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-      _count: 1000
+      _count: 0
     - _itemInfo: {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
-      _count: 1000
+      _count: 2
 --- !u!1 &2001292478
 GameObject:
   m_ObjectHideFlags: 0
