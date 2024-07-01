@@ -849,7 +849,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1890921514}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 413feabb37c2394408e67c0a125861da, type: 3}
@@ -3368,6 +3368,11 @@ PrefabInstance:
       propertyPath: _upgradeButtonText
       value: 
       objectReference: {fileID: 1759453400}
+    - target: {fileID: 8774008521401447830, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _soundReactions
+      value: 
+      objectReference: {fileID: 1890921515}
     - target: {fileID: 8822081270315763161, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.size
@@ -3437,6 +3442,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1890921520}
+    - targetCorrespondingSourceObject: {fileID: 8446118478587328378, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1890921515}
     - targetCorrespondingSourceObject: {fileID: 4404416644931560748, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
@@ -3484,6 +3493,30 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1890921514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8446118478587328378, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1890921515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890921514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4a01dddcda47ce8d33b59ca35ce204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monologueInfo:
+    <Text>k__BackingField: 
+    <VoiceClip>k__BackingField: {fileID: 8300000, guid: 9f790fc50ee90394985d54cb0df2f08d,
+      type: 3}
+    <Duration>k__BackingField: 0
+    <AfterMessageDuration>k__BackingField: 2
 --- !u!114 &1890921516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5058916622712661586, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,

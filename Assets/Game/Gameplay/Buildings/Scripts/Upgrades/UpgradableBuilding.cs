@@ -17,7 +17,6 @@ namespace Game.Gameplay.Buildings
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
         [SerializeField] private DayCycleController _dayCycleController;
         [SerializeField] private string _upgradeTitle;
-
         private int _daysLeftForUpgrade;
         private IUIManager _uiManager;
 
