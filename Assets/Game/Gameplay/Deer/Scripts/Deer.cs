@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DoubleDCore.Automat;
 using DoubleDCore.Automat.Base;
+using DoubleDCore.Configuration;
+using DoubleDCore.GameResources.Base;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.AI;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
+using Game.Gameplay.Scripts.Configs;
 using Game.Gameplay.States;
 using Game.UI.Pages;
 using UnityEngine;
@@ -30,16 +34,21 @@ namespace Game.Gameplay
         private WalkablePlane _walkablePlane;
         private StateMachine _deerStateMachine;
         private DayCycleController _dayCycleController;
+        private ConfigsResource _configsResource;
+        private Transform _player;
 
         public event UnityAction<Deer> Died;
         public event UnityAction<Deer> Initialized;
 
         [Inject]
-        private void Init(IUIManager uiManager, WalkablePlane walkablePlane, DayCycleController dayCycleController)
+        private void Init(IUIManager uiManager, WalkablePlane walkablePlane, DayCycleController dayCycleController, IResourcesContainer resourcesContainer, CharacterMover player)
         {
             _uiManager = uiManager;
             _walkablePlane = walkablePlane;
             _dayCycleController = dayCycleController;
+            _player = player.transform;
+
+            _configsResource = resourcesContainer.GetResource<ConfigsResource>();
         }
 
         public void Initialize<TStartState>(DeerInfo deerInfo) where TStartState : class, IState
@@ -52,16 +61,28 @@ namespace Game.Gameplay
 
             _deerStateMachine = new StateMachine();
 
-            _deerStateMachine.BindState(new DeerIdleState());
+            var randomWalkConfig = _configsResource.GetConfig<RandomWalkConfig>();
+            var randomIdleConfig = _configsResource.GetConfig<RandomIdleConfig>();
+
+            _deerStateMachine.BindState(new DeerIdleState(this, randomIdleConfig));
             _deerStateMachine.BindState(new DeerEatsState());
             _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
             _deerStateMachine.BindState(new DeerCutState(gameObject));
-            _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this));
-            _deerStateMachine.BindState(new DeerInteractedByPlayerState());
+            _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this, randomWalkConfig));
+            _deerStateMachine.BindState(new DeerInteractedByPlayerState(_player, transform));
+
+            _deerStateMachine.GetState<DeerIdleState>().Completed += OnIdleCompleted;
+            _deerStateMachine.GetState<DeerRandomWalkState>().Completed += OnWalkCompleted;
 
             _deerStateMachine.Enter<TStartState>();
 
             Initialized?.Invoke(this);
+        }
+
+        private void OnDestroy()
+        {
+            _deerStateMachine.GetState<DeerIdleState>().Completed -= OnIdleCompleted;
+            _deerStateMachine.GetState<DeerRandomWalkState>().Completed -= OnWalkCompleted;
         }
 
         private DeerInfoPageArgument GetDeerInfoPageArgument()
@@ -122,6 +143,9 @@ namespace Game.Gameplay
         public void EnterWalkingState() =>
             _deerStateMachine.Enter<DeerRandomWalkState>();
 
+        public void EnterUserInteractionState() =>
+            _deerStateMachine.Enter<DeerInteractedByPlayerState>();
+
         public void Die()
         {
             _deerStateMachine.Enter<DeerDieState>();
@@ -135,6 +159,16 @@ namespace Game.Gameplay
         {
             _deerStateMachine.Enter<DeerCutState>();
         }
+
+        #endregion
+        
+        #region STATE_HANDLERS
+
+        private void OnWalkCompleted() => 
+            _deerStateMachine.Enter<DeerIdleState>();
+
+        private void OnIdleCompleted() => 
+            _deerStateMachine.Enter<DeerRandomWalkState>();
 
         #endregion
     }
