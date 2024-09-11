@@ -31,6 +31,7 @@ namespace Game.UI.Pages
         {
             _context = context;
 
+            _inputController.Player.Disable();
             _inputController.UI.Enable();
 
             SetCanvasState(true);
@@ -47,6 +48,7 @@ namespace Game.UI.Pages
             SetCanvasState(false);
 
             _inputController.UI.Disable();
+            _inputController.Player.Enable();
 
             _context?.OnClose?.Invoke();
 

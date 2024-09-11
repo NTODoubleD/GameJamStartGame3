@@ -1,14 +1,13 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
-using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Infrastructure;
 using Infrastructure.States;
 using Zenject;
 
-namespace Game.UI.Pages
+namespace Game.UI
 {
-    public class MainMenuPage : MonoPage, IUIPage
+    public class ToMainMenuButton : ButtonListener
     {
         private GameStateMachine _stateMachine;
         private GlobalConfig _config;
@@ -20,22 +19,11 @@ namespace Game.UI.Pages
             _config = resourcesContainer.GetResource<ConfigsResource>().GetConfig<GlobalConfig>();
         }
 
-        public override void Initialize()
+        protected override void OnButtonClicked()
         {
-            SetCanvasState(true);
-        }
-
-        public void Open()
-        {
-            SetCanvasState(true);
-        }
-
-        public void StartNewGame()
-        {
-            var payload = new LoadScenePayload(_config.LyricsSceneName,
-                AfterLoad: () => _stateMachine.Enter<LyricsState>());
-
-            _stateMachine.Enter<LoadSceneState, LoadScenePayload>(payload);
+            _stateMachine.Enter<LoadSceneState, LoadScenePayload>(
+                new LoadScenePayload(_config.MainMenuSceneName,
+                    AfterLoad: () => _stateMachine.Enter<MainMenuState>()));
         }
     }
 }

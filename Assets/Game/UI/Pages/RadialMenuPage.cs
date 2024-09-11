@@ -54,6 +54,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(true);
 
+            _inputController.Player.Disable();
             _inputController.UI.Enable();
 
             ConfigureMenu(context);

@@ -15,6 +15,8 @@ namespace Game.UI
         private Timer _timer;
         private IUIManager _uiManager;
 
+        private bool _isOpen;
+
         [Inject]
         private void Init(GameInput inputController, ITimersFactory timersFactory, IUIManager uiManager)
         {
@@ -43,16 +45,20 @@ namespace Game.UI
             _uiManager.OpenPage<LocalMenuPage>();
 
             _timer.Start(OpenDelay);
+
+            _isOpen = true;
         }
 
         private void Close(InputAction.CallbackContext callbackContext)
         {
-            if (_timer.IsWorked)
+            if (_timer.IsWorked || _isOpen == false)
                 return;
 
             _uiManager.ClosePage<LocalMenuPage>();
 
             _timer.Start(OpenDelay);
+
+            _isOpen = false;
         }
     }
 }
