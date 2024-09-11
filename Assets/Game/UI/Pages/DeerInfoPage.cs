@@ -1,12 +1,10 @@
 ﻿using System;
-using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Game.Gameplay;
-using Game.InputMaps;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Game.UI.Pages
 {
@@ -14,22 +12,26 @@ namespace Game.UI.Pages
     {
         [SerializeField] private TextMeshProUGUI _text;
 
-        private InputController _inputController;
+        private GameInput _inputController;
 
         private DeerInfoPageArgument _context;
 
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputController = Services.ProjectContext.GetModule<InputController>();
+            _inputController = inputController;
+        }
 
-            Close();
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open(DeerInfoPageArgument context)
         {
             _context = context;
 
-            _inputController.EnableMap<UIInputMap>();
+            _inputController.UI.Enable();
 
             SetCanvasState(true);
 
@@ -44,7 +46,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _inputController.EnableMap<PlayerInputMap>();
+            _inputController.UI.Disable();
 
             _context?.OnClose?.Invoke();
 

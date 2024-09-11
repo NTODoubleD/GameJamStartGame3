@@ -1,33 +1,38 @@
-using DoubleDTeam.Containers;
-using DoubleDTeam.SaveSystem.Base;
-using DoubleDTeam.UI.Base;
 using Game.Gameplay.DayCycle;
 using Game.UI.Pages;
 using System.Linq;
+using DoubleDCore.SaveSystem.Base;
+using DoubleDCore.UI.Base;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay.Buildings
 {
     public abstract class UpgradableBuilding : MonoBehaviour, ISaveObject
     {
-        private readonly ConditionResourcesSpender _resourcesSpender = new();
+        private ConditionResourcesSpender _resourcesSpender;
 
         [SerializeReference] protected BuildingUpgradesConfig _upgradesConfig;
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
         [SerializeField] private DayCycleController _dayCycleController;
         [SerializeField] private string _upgradeTitle;
+
         private int _daysLeftForUpgrade;
-        private IUIManager _uiManager;
+        protected IUIManager UIManager;
 
         public int DaysLeftForUpgrade => _daysLeftForUpgrade;
         public int CurrentLevel { get; private set; } = 1;
 
         public event UnityAction Upgraded;
 
-        private void Awake()
+        [Inject]
+        private void Init(IUIManager uiManager, DiContainer container)
         {
-            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+            UIManager = uiManager;
+
+            _resourcesSpender = new ConditionResourcesSpender();
+            container.Inject(_resourcesSpender);
         }
 
         private void OnEnable()
@@ -53,12 +58,19 @@ namespace Game.Gameplay.Buildings
 
         public void OpenUpgradePage()
         {
-            _uiManager.OpenPage<UpgradePage, UpgradeMenuArgument>(GetUpgradeMenuArgument());
+            UIManager.OpenPage<UpgradePage, UpgradeMenuArgument>(GetUpgradeMenuArgument());
         }
+
+        public string Key => "UpgradableBuilding";
 
         public string GetData()
         {
             return CurrentLevel.ToString();
+        }
+
+        public string GetDefaultData()
+        {
+            return 0.ToString();
         }
 
         public void OnLoad(string data)
@@ -106,7 +118,6 @@ namespace Game.Gameplay.Buildings
 
         protected virtual void OnUpgraded()
         {
-
         }
 
         private UpgradeMenuArgument GetUpgradeMenuArgument()

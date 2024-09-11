@@ -1,5 +1,5 @@
-﻿using DoubleDTeam.Containers;
-using Game.Gameplay.Deers;
+﻿using Game.Gameplay.Deers;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
@@ -7,9 +7,10 @@ namespace Game.Gameplay.Interaction
     {
         private DeerFeedController _feedController;
 
-        private void Awake()
+        [Inject]
+        private void Init(DeerFeedController deerFeedController)
         {
-            _feedController = Services.SceneContext.GetModule<DeerFeedController>();
+            _feedController = deerFeedController;
         }
 
         public override bool ConditionIsDone()

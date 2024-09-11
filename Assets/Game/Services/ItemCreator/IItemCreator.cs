@@ -1,9 +1,8 @@
-﻿using DoubleDTeam.Containers.Base;
-using Game.Infrastructure.Items;
+﻿using Game.Infrastructure.Items;
 
 namespace Game.ItemCreator
 {
-    public interface IItemCreator : IModule
+    public interface IItemCreator
     {
         public Item CreateItem(ItemInfo itemInfo);
         public Item CreateItem(string id);

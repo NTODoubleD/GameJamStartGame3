@@ -1,8 +1,9 @@
 ﻿using System.Linq;
-using DoubleDTeam.Attributes;
-using DoubleDTeam.Extensions;
-using DoubleDTeam.GameResources.Base;
-using DoubleDTeam.TranslationTools;
+using DoubleDCore.Attributes;
+using DoubleDCore.Extensions;
+using DoubleDCore.GameResources.Base;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using UnityEngine;
 
 namespace Game.Infrastructure.Items
@@ -10,11 +11,11 @@ namespace Game.Infrastructure.Items
     public abstract class ItemInfo : ScriptableObject, IResource
     {
         [ReadOnlyProperty, SerializeField] private string _id;
-
         [Space, SerializeField] private TranslatedText _name;
 
         public string ID => _id;
-        public string Name => _name.Text;
+
+        public string Name => _name.GetText();
 
         private void OnValidate()
         {
@@ -58,7 +59,7 @@ namespace Game.Infrastructure.Items
         {
         }
 
-        public void Dispose()
+        public void Release()
         {
         }
     }

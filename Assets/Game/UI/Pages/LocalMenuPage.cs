@@ -1,68 +1,39 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.TimeTools;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
-using Game.InputMaps;
+﻿using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
+using Zenject;
+
 
 namespace Game.UI.Pages
 {
     public class LocalMenuPage : MonoPage, IUIPage
     {
-        private const float OpenDelay = 0.1f;
+        private GameInput _inputController;
 
-        private InputController _inputManager;
-
-        private UIInputMap _uiInputMap;
-        private PlayerInputMap _playerInputMap;
-
-        private Timer _timer;
-
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputManager = Services.ProjectContext.GetModule<InputController>();
-            _uiInputMap = _inputManager.GetMap<UIInputMap>();
-            _playerInputMap = _inputManager.GetMap<PlayerInputMap>();
+            _inputController = inputController;
+        }
 
-            _timer = new Timer(this, TimeBindingType.RealTime);
-
-            Close();
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open()
         {
-            if (_timer.IsWorked)
-                return;
+            _inputController.Player.Disable();
+            _inputController.UI.Enable();
 
-            _playerInputMap.Escape.Started -= Open;
-
-            _inputManager.EnableMap<UIInputMap>();
             SetCanvasState(true);
-
-
-            _uiInputMap.Close.Started += Close;
-
-            _timer.Start(OpenDelay);
         }
 
         public override void Close()
         {
-            if (_timer.IsWorked)
-                return;
-
-            _uiInputMap.Close.Started -= Close;
+            _inputController.UI.Disable();
+            _inputController.Player.Enable();
 
             SetCanvasState(false);
-            _inputManager.EnableMap<PlayerInputMap>();
-
-            _playerInputMap.Escape.Started += Open;
-
-            _timer.Start(OpenDelay);
-        }
-
-        public void OpenTutorial()
-        {
-            Services.ProjectContext.GetModule<IUIManager>().OpenPage<TutorialPage>();
         }
     }
 }

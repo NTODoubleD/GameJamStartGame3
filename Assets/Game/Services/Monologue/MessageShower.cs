@@ -1,13 +1,14 @@
 using System;
-using DoubleDTeam.Containers.Base;
-using DoubleDTeam.Extensions;
-using DoubleDTeam.TimeTools;
+using DoubleDCore.Extensions;
+using DoubleDCore.Service;
+using DoubleDCore.TimeTools;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Monologue
 {
-    public class MessageShower : MonoModule
+    public class MessageShower : MonoService
     {
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private AudioSource _source;
@@ -20,9 +21,10 @@ namespace Game.Monologue
         private Action _endAction;
         private Timer _timer;
 
-        private void Awake()
+        [Inject]
+        private void Init(ITimersFactory timersFactory)
         {
-            _timer = new Timer(this, TimeBindingType.ScaledTime);
+            _timer = timersFactory.Create(TimeBindingType.ScaledTime);
         }
 
         public void ShowText(MonologueGroupInfo monologue, Action endAction = null)

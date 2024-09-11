@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using DoubleDTeam.Containers;
-using DoubleDTeam.PhysicsTools.CollisionImpacts;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.PhysicsTools.CollisionImpacts;
+using DoubleDCore.UI.Base;
 using Game.Gameplay.DayCycle;
 using Game.Monologue;
 using Game.UI.Pages;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Messand
 {
@@ -13,15 +13,20 @@ namespace Game.Gameplay.Messand
     {
         [SerializeField] private List<MonologueGroupInfo> _history;
 
+        private IUIManager _uiManager;
         private DayCycleController _dayController;
 
         private readonly Queue<MonologueGroupInfo> _historyQueue = new();
 
+        [Inject]
+        private void Init(DayCycleController dayCycleController, IUIManager uiManager)
+        {
+            _dayController = dayCycleController;
+            _uiManager = uiManager;
+        }
+
         private void Awake()
         {
-            _dayController = Services.SceneContext.GetModule<DayCycleController>();
-            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
-
             foreach (var monologueInfo in _history)
                 _historyQueue.Enqueue(monologueInfo);
         }
@@ -42,7 +47,6 @@ namespace Game.Gameplay.Messand
         }
 
         private bool _canPlay = true;
-        private IUIManager _uiManager;
 
         protected override bool IsTarget(Collider col, out MonologueTrigger target)
         {

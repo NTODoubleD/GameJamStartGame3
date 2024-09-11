@@ -1,14 +1,14 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
-using Game.Gameplay.Feeding;
+﻿using Game.Gameplay.Feeding;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
+using DoubleDCore.Service;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerFeedController : MonoModule
+    public class DeerFeedController : MonoService
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private PlayerMossPickController _mossController;
@@ -17,9 +17,10 @@ namespace Game.Gameplay.Deers
 
         private ItemStorage _storage;
 
-        private void Awake()
+        [Inject]
+        private void Init(ItemStorage storage)
         {
-            _storage = Services.ProjectContext.GetModule<ItemStorage>();
+            _storage = storage;
         }
 
         public bool CanFeed(Deer deer)

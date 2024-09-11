@@ -1,4 +1,4 @@
-﻿using DoubleDTeam.StateMachine.Base;
+﻿using DoubleDCore.Automat.Base;
 
 namespace Game.Gameplay.States
 {

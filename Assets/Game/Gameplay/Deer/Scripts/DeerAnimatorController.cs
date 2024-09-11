@@ -1,15 +1,14 @@
-using DoubleDTeam.Attributes;
+using DoubleDCore.Attributes;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Animator))]
 public class DeerAnimatorController : MonoBehaviour
 {
-    [SerializeField, ReadOnlyProperty]
-    private Animator _animator;
+    [SerializeField, ReadOnlyProperty] private Animator _animator;
 
     [SerializeField] private NavMeshAgent _agent;
-    
+
     private static readonly int Dead = Animator.StringToHash("Death");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Eat = Animator.StringToHash("Eat");
@@ -29,12 +28,12 @@ public class DeerAnimatorController : MonoBehaviour
     {
         _animator.SetTrigger(Dead);
     }
-    
+
     public void StartEat()
     {
         _animator.SetTrigger(Eat);
     }
-    
+
     public void SetSpeed(float value)
     {
         _animator.SetFloat(Speed, value);
@@ -44,5 +43,4 @@ public class DeerAnimatorController : MonoBehaviour
     {
         SoundsManager.PlayDeerEat(transform.position);
     }
-    
 }

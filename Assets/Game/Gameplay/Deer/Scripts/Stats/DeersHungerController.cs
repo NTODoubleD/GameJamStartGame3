@@ -1,10 +1,8 @@
-using System;
-using Game.Gameplay;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
 using System.Collections.Generic;
-using DoubleDTeam.Containers;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Deers
 {
@@ -17,9 +15,10 @@ namespace Game.Gameplay.Deers
 
         private Herd _herd;
 
-        private void Awake()
+        [Inject]
+        private void Init(Herd herd)
         {
-            _herd = Services.SceneContext.GetModule<Herd>();
+            _herd = herd;
         }
 
         private void OnEnable()

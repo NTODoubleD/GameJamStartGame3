@@ -1,31 +1,30 @@
-using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
-using DoubleDTeam.InputSystem;
-using Game.InputMaps;
+using DoubleDCore.Service;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay.DayCycle
 {
-    public class DayCycleController : MonoModule
+    public class DayCycleController : MonoService
     {
         [SerializeField] private DayChangeTransition _changeTransition;
 
-        private InputController _inputManager;
+        private GameInput _inputController;
 
         public int CurrentDay { get; private set; } = 1;
 
         public event UnityAction DayEnded;
         public event UnityAction DayStarted;
 
-        public void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputManager = Services.ProjectContext.GetModule<InputController>();
+            _inputController = inputController;
         }
 
         public void EndDay()
         {
-            _inputManager.DisableActiveMap();
+            _inputController.Disable();
 
             DayEnded?.Invoke();
             _changeTransition.Transit(StartDay);
@@ -33,7 +32,7 @@ namespace Game.Gameplay.DayCycle
 
         public void StartDay()
         {
-            _inputManager.EnableMap<PlayerInputMap>();
+            _inputController.Enable();
 
             CurrentDay++;
             DayStarted?.Invoke();

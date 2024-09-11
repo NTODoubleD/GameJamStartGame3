@@ -1,18 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
-using DoubleDTeam.Extensions;
+using DoubleDCore.Extensions;
+using DoubleDCore.Service;
 using Game.Gameplay.AI;
 using Game.Gameplay.Interaction;
 using Game.Gameplay.States;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay.Scripts
 {
-    public class DeerFabric : MonoModule
+    public class DeerFabric : MonoService
     {
         [SerializeField] private Deer _prefab;
         [SerializeField] private InteractiveObjectsWatcher _interactiveObjectsWatcher;
@@ -21,10 +21,11 @@ namespace Game.Gameplay.Scripts
         [Space, SerializeField] private TextAsset _maleNames;
         [SerializeField] private TextAsset _femaleNames;
 
-        [Header("Start Spawn Settings")]
-        [SerializeField] private int _startCount;
+        [Header("Start Spawn Settings")] [SerializeField]
+        private int _startCount;
 
         private WalkablePlane _walkablePlane;
+        private DiContainer _diContainer;
 
         private List<string> _deerMaleNames;
         private List<string> _deerFemaleNames;
@@ -33,9 +34,12 @@ namespace Game.Gameplay.Scripts
 
         public event UnityAction<Deer> Created;
 
-        private void Awake()
+        [Inject]
+        private void Init(WalkablePlane walkablePlane, DiContainer container)
         {
-            _walkablePlane = Services.SceneContext.GetModule<WalkablePlane>();
+            _walkablePlane = walkablePlane;
+
+            _diContainer = container;
 
             _deerMaleNames = new List<string>(_maleNames.text.Split(",").Select(n => n.Trim()));
             _deerFemaleNames = new List<string>(_femaleNames.text.Split(",").Select(n => n.Trim()));
@@ -49,7 +53,11 @@ namespace Game.Gameplay.Scripts
 
         public void CreateDeer(DeerInfo deerInfo)
         {
-            var inst = Instantiate(_prefab, _walkablePlane.GetRandomPointOnNavMesh(), Quaternion.identity, _container);
+            var inst = _diContainer.InstantiatePrefabForComponent<Deer>(_prefab,
+                _walkablePlane.GetRandomPointOnNavMesh(),
+                Quaternion.identity,
+                _container);
+
             _interactiveObjectsWatcher.AddObjectToWatch(inst.DeerInteractive);
             inst.Initialize<DeerRandomWalkState>(deerInfo);
 

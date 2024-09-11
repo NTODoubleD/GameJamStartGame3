@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DoubleDTeam.Containers;
-using DoubleDTeam.StateMachine;
-using DoubleDTeam.StateMachine.Base;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.Automat;
+using DoubleDCore.Automat.Base;
+using DoubleDCore.UI.Base;
 using Game.Gameplay.AI;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
@@ -11,6 +10,7 @@ using Game.UI.Pages;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay
 {
@@ -34,11 +34,12 @@ namespace Game.Gameplay
         public event UnityAction<Deer> Died;
         public event UnityAction<Deer> Initialized;
 
-        private void Awake()
+        [Inject]
+        private void Init(IUIManager uiManager, WalkablePlane walkablePlane, DayCycleController dayCycleController)
         {
-            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
-            _walkablePlane = Services.SceneContext.GetModule<WalkablePlane>();
-            _dayCycleController = Services.SceneContext.GetModule<DayCycleController>();
+            _uiManager = uiManager;
+            _walkablePlane = walkablePlane;
+            _dayCycleController = dayCycleController;
         }
 
         public void Initialize<TStartState>(DeerInfo deerInfo) where TStartState : class, IState

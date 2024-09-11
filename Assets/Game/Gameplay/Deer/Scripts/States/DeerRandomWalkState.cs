@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using DoubleDTeam.StateMachine.Base;
+using DoubleDCore.Automat.Base;
 using Game.Gameplay.AI;
 using UnityEngine;
 using UnityEngine.AI;

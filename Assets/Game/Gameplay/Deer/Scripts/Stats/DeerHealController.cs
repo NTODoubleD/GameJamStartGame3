@@ -1,15 +1,15 @@
-using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
 using System.Linq;
+using DoubleDCore.Service;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerHealController : MonoModule
+    public class DeerHealController : MonoService
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private ItemInfo _healItem;
@@ -19,9 +19,10 @@ namespace Game.Gameplay.Deers
 
         public event UnityAction<Deer> Healed;
 
-        private void Awake()
+        [Inject]
+        private void Init(ItemStorage storage)
         {
-            _storage = Services.ProjectContext.GetModule<ItemStorage>();
+            _storage = storage;
         }
 
         public bool CanHeal(Deer deer)
@@ -29,7 +30,8 @@ namespace Game.Gameplay.Deers
             if (deer.DeerInfo.Status == DeerStatus.Standard || deer.DeerInfo.IsDead)
                 return false;
 
-            return _sickItems.First(x => x.Status == deer.DeerInfo.Status).NeccessaryItemCount <= _storage.GetCount(_healItem);
+            return _sickItems.First(x => x.Status == deer.DeerInfo.Status).NeccessaryItemCount <=
+                   _storage.GetCount(_healItem);
         }
 
         public void Heal(Deer deer)

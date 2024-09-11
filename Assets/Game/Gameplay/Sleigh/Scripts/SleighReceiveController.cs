@@ -1,11 +1,11 @@
-﻿using DoubleDTeam.Containers;
-using Game.Gameplay.DayCycle;
+﻿using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System.Collections.Generic;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.UI.Base;
 using Game.UI.Pages;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Sleigh
 {
@@ -16,10 +16,13 @@ namespace Game.Gameplay.Sleigh
         private IReadOnlyDictionary<ItemInfo, int> _currentResult;
 
         private IUIManager _uiManager;
+        private ItemStorage _itemStorage;
 
-        private void Awake()
+        [Inject]
+        private void Init(IUIManager uiManager, ItemStorage itemStorage)
         {
-            _uiManager = Services.ProjectContext.GetModule<IUIManager>();
+            _uiManager = uiManager;
+            _itemStorage = itemStorage;
         }
 
         private void OnEnable()
@@ -37,11 +40,9 @@ namespace Game.Gameplay.Sleigh
             if (_currentResult == null)
                 return;
 
-            var storage = Services.ProjectContext.GetModule<ItemStorage>();
-
             foreach (var keyPair in _currentResult)
             {
-                storage.AddItems(keyPair.Key, keyPair.Value);
+                _itemStorage.AddItems(keyPair.Key, keyPair.Value);
                 Debug.Log($"RECEIVED {keyPair.Key.Name} {keyPair.Value}");
             }
 

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoubleDTeam.Containers;
 using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
 using Game.Gameplay.Sleigh;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Deers
 {
@@ -32,10 +32,11 @@ namespace Game.Gameplay.Deers
 
         public event Action DeerIsBorn;
 
-        private void Awake()
+        [Inject]
+        private void Init(Herd herd, DeerFabric fabric)
         {
-            _herd = Services.SceneContext.GetModule<Herd>();
-            _fabric = Services.SceneContext.GetModule<DeerFabric>();
+            _herd = herd;
+            _fabric = fabric;
         }
 
         private void OnEnable()
@@ -76,7 +77,7 @@ namespace Game.Gameplay.Deers
             var capacity = BuildLevelToCapacityTable[_pastureBuilding.CurrentLevel];
 
             var youngDeerAmount = Math.Clamp(capacity - currentYoung, 0, _pairs.Count);
-            
+
             if (youngDeerAmount <= 0)
                 return;
 

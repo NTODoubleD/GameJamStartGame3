@@ -1,9 +1,9 @@
-using DoubleDTeam.Containers;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Buildings
 {
@@ -38,6 +38,14 @@ namespace Game.Gameplay.Buildings
 
         private Dictionary<ItemInfo, int> _itemsDictionary;
 
+        private ItemStorage _itemStorage;
+
+        [Inject]
+        private void Init(ItemStorage itemStorage)
+        {
+            _itemStorage = itemStorage;
+        }
+
         public IReadOnlyDictionary<ItemInfo, int> NeccessaryItems
         {
             get
@@ -61,10 +69,8 @@ namespace Game.Gameplay.Buildings
 
         bool IUpgradeCondition.IsCompleted()
         {
-            ItemStorage storage = Services.ProjectContext.GetModule<ItemStorage>();
-
             foreach (var neccessaryItem in NeccessaryItems)
-                if (storage.CanRemoveItems(neccessaryItem.Key, neccessaryItem.Value) == false)
+                if (_itemStorage.CanRemoveItems(neccessaryItem.Key, neccessaryItem.Value) == false)
                     return false;
 
             return true;

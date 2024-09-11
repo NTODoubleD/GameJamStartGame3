@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
+using DoubleDCore.Service;
+using Zenject;
 
 namespace Game.Gameplay.Scripts
 {
-    public class Herd : MonoModule
+    public class Herd : MonoService
     {
         private DeerFabric _fabric;
 
@@ -18,9 +18,10 @@ namespace Game.Gameplay.Scripts
             .Where(d => d.DeerInfo.Status == DeerStatus.Standard)
             .ToList();
 
-        private void Awake()
+        [Inject]
+        private void Init(DeerFabric deerFabric)
         {
-            _fabric = Services.SceneContext.GetModule<DeerFabric>();
+            _fabric = deerFabric;
         }
 
         private void OnEnable()

@@ -1,4 +1,4 @@
-﻿using DoubleDTeam.StateMachine.Base;
+﻿using DoubleDCore.Automat.Base;
 using UnityEngine.AI;
 
 namespace Game.Gameplay.States

@@ -1,5 +1,5 @@
-using DoubleDTeam.Containers;
 using Game.Gameplay.Deers;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
@@ -7,9 +7,10 @@ namespace Game.Gameplay.Interaction
     {
         private DeerHealController _healController;
 
-        private void Awake()
+        [Inject]
+        private void Init(DeerHealController deerHealController)
         {
-            _healController = Services.SceneContext.GetModule<DeerHealController>();
+            _healController = deerHealController;
         }
 
         public override bool ConditionIsDone()

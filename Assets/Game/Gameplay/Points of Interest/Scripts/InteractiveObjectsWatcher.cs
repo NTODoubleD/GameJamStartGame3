@@ -1,7 +1,6 @@
-﻿using DoubleDTeam.Attributes;
-using DoubleDTeam.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DoubleDCore.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -56,7 +55,8 @@ namespace Game.Gameplay.Interaction
                 return;
             }
 
-            InteractiveObject closestObject = _objectsInRange.OrderBy(x => _distanceChecker.GetDistanceToPlayer(x.transform)).First();
+            InteractiveObject closestObject =
+                _objectsInRange.OrderBy(x => _distanceChecker.GetDistanceToPlayer(x.transform)).First();
 
             if (closestObject != CurrentObject)
             {
