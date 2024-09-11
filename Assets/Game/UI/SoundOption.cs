@@ -17,8 +17,14 @@ public class SoundOption : MonoBehaviour
 
     private void Awake()
     {
-        _musicSlider.value = PlayerPrefs.GetFloat(MusicPrefKey, 0.3f);
-        _soundSlider.value = PlayerPrefs.GetFloat(SoundPrefKey, 0.3f);
+        var musicVolume = PlayerPrefs.GetFloat(MusicPrefKey, 0.3f);
+        var soundVolume = PlayerPrefs.GetFloat(SoundPrefKey, 0.3f);
+
+        _musicSlider.value = musicVolume;
+        _soundSlider.value = soundVolume;
+        
+        OnMusicValueChanged(musicVolume);
+        OnSoundValueChanged(soundVolume);
     }
 
     private void OnEnable()
