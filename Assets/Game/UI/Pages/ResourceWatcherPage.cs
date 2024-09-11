@@ -31,6 +31,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(true);
 
+            _inputController.Player.Disable();
             _inputController.UI.Enable();
 
             _labelText.text = context.Label;
@@ -54,6 +55,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
+            _inputController.UI.Disable();
             _inputController.Player.Enable();
         }
     }

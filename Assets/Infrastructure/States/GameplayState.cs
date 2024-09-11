@@ -24,13 +24,15 @@ namespace Infrastructure.States
         {
             var config = _resourcesContainer.GetResource<ConfigsResource>().GetConfig<GlobalConfig>();
 
-            _container.Bind<ItemStorage>().FromInstance(new ItemStorage(config.TestInfo)).AsSingle();
+            _container.Bind<ItemStorage>().FromInstance(new ItemStorage(config.TestInfo)).AsCached();
 
             _gameInput.Player.Enable();
+            _gameInput.UI.Disable();
         }
 
         public void Exit()
         {
+            _container.Unbind<ItemStorage>();
         }
     }
 }
