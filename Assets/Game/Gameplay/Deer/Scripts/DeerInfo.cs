@@ -7,6 +7,7 @@ namespace Game.Gameplay
         public string Name;
         public GenderType Gender;
         public DeerAge Age;
+        public int AgeDays;
         public bool IsDead;
 
         private float _hungerDegree;

@@ -58,6 +58,8 @@ namespace Game.Gameplay
 
             if (deerInfo.Age == DeerAge.Adult)
                 _age = 2;
+            
+            deerInfo.AgeDays = _age;
 
             _deerStateMachine = new StateMachine();
 
@@ -132,6 +134,7 @@ namespace Game.Gameplay
             }
 
             DeerInfo.Age = _ageTable[_age];
+            DeerInfo.AgeDays = _age;
             _deerMeshing.ChangeMesh(DeerInfo.Age, DeerInfo.Gender);
         }
 
