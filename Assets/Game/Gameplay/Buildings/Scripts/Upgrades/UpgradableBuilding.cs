@@ -33,6 +33,9 @@ namespace Game.Gameplay.Buildings
 
             _resourcesSpender = new ConditionResourcesSpender();
             container.Inject(_resourcesSpender);
+
+            foreach (var upgradeCondition in _upgradesConfig.GetAllUpgradeConditions())
+                container.Inject(upgradeCondition);
         }
 
         private void OnEnable()

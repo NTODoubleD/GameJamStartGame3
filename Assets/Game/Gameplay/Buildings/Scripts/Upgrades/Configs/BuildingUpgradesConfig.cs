@@ -16,6 +16,16 @@ namespace Game.Gameplay.Buildings
             return _levels[currentLevel - 1].Conditions;
         }
 
+        public IEnumerable<IUpgradeCondition> GetAllUpgradeConditions()
+        {
+            List<IUpgradeCondition> result = new List<IUpgradeCondition>();
+            
+            foreach (var level in _levels)
+                result.AddRange(level.Conditions);
+
+            return result;
+        }
+
         public int GetUpgradeDuration(int currentLevel)
         {
             return _levels[currentLevel - 1].DayDuration;
