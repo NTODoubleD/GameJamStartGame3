@@ -7,14 +7,18 @@ public class SoundOption : MonoBehaviour
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundSlider;
     [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private AudioMixerGroup group;
 
     private const string MusicVolumeCode = "MusicVolume";
     private const string SoundVolumeCode = "SoundVolume";
 
+    private const string MusicPrefKey = "MusicVolumePref";
+    private const string SoundPrefKey = "SoundVolumePref";
+
     private void Awake()
     {
-        _musicSlider.value = 0.3f;
-        _soundSlider.value = 0.3f;
+        _musicSlider.value = PlayerPrefs.GetFloat(MusicPrefKey, 0.3f);
+        _soundSlider.value = PlayerPrefs.GetFloat(SoundPrefKey, 0.3f);
     }
 
     private void OnEnable()
@@ -32,14 +36,19 @@ public class SoundOption : MonoBehaviour
     private float ToMixerValue(float value)
         => Mathf.Log10(value) * 20;
 
-
     private void OnSoundValueChanged(float newValue)
     {
-        _audioMixer.SetFloat(SoundVolumeCode, ToMixerValue(newValue));
+        var calculatedValue = newValue == _soundSlider.minValue ? -80 : newValue;
+        _audioMixer.SetFloat(SoundVolumeCode, ToMixerValue(calculatedValue));
+
+        PlayerPrefs.SetFloat(SoundPrefKey, newValue);
     }
 
     private void OnMusicValueChanged(float newValue)
     {
-        _audioMixer.SetFloat(MusicVolumeCode, ToMixerValue(newValue));
+        var calculatedValue = newValue == _musicSlider.minValue ? -80 : newValue;
+        _audioMixer.SetFloat(MusicVolumeCode, ToMixerValue(calculatedValue));
+
+        PlayerPrefs.SetFloat(MusicPrefKey, newValue);
     }
 }
