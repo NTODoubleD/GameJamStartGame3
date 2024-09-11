@@ -39,7 +39,7 @@ namespace Game.UI.Pages
             _text.text = $"Имя - {context.Info.Name}\n" +
                          $"Пол - {context.Info.Gender.ToText()}\n" +
                          $"Возраст - {context.Info.Age.ToText()}\n" +
-                         $"Сытость - {context.Info.HungerDegree * 100}%\n" +
+                         $"Сытость - {Mathf.RoundToInt(context.Info.HungerDegree * 100)}%\n" +
                          $"Статус - {context.Info.Status.ToText()}";
         }
 
