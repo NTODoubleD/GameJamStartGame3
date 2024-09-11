@@ -53,6 +53,9 @@ namespace Game.Gameplay.Feeding
 
         private void PickMoss()
         {
+            if (_storage.GetCount(_mossItem) == 0)
+                return;
+            
             IsMossPicked = true;
             //_objectsWatcher.enabled = false;
             _characterAnimatorController.AnimatePickingUp();

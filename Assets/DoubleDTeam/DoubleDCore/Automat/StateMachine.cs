@@ -10,7 +10,7 @@ namespace DoubleDCore.Automat
 
         private IExitableState _currentState;
         public IExitableState CurrentState => _currentState;
-
+        
         public void BindState(IExitableState state)
         {
             _states.Add(state.GetType(), state);

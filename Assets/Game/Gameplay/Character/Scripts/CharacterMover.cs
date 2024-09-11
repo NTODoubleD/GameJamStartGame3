@@ -1,7 +1,8 @@
+using DoubleDCore.Service;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterMover : MonoBehaviour
+public class CharacterMover : MonoService
 {
     [Header("References")]
     [SerializeField] private Rigidbody _rigidbody;

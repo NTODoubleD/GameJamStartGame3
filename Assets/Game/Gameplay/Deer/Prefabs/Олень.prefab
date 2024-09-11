@@ -841,6 +841,11 @@ PrefabInstance:
       objectReference: {fileID: 4924400245990448069}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
+      propertyPath: Interacted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EnterUserInteractionState
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
       propertyPath: _operations.Array.data[5].Action.m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
