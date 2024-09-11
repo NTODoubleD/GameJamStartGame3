@@ -22,10 +22,12 @@ public class CharacterMover : MonoService
         SpeedChanged?.Invoke(0);
     }
 
-    public void Move(Vector2 inputDirection)
+    public void Move(Vector2 inputDirection, bool isSprint)
     {
+        Debug.Log(isSprint);
+        
         Rotate(inputDirection);
-        MoveRigidbody(inputDirection);
+        MoveRigidbody(inputDirection, isSprint);
         ControlSpeed();
 
         SpeedChanged?.Invoke(_rigidbody.velocity.magnitude);
@@ -48,12 +50,12 @@ public class CharacterMover : MonoService
             _rigidbody.transform.forward = Vector3.Slerp(_rigidbody.transform.forward, direction.normalized, Time.fixedDeltaTime * _rotationSpeed);
     }
 
-    private void MoveRigidbody(Vector2 inputDir)
+    private void MoveRigidbody(Vector2 inputDir, bool isSprint)
     {
         var moveDirection = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
-
+        var sprintMultiplier = isSprint? 2f: 1f;
         if (moveDirection != Vector3.zero)
-            _rigidbody.AddForce(moveDirection.normalized * _movementSpeed * 10f, ForceMode.Force);
+            _rigidbody.AddForce(moveDirection.normalized * (_movementSpeed * sprintMultiplier * 10f), ForceMode.Force);
     }
 
     private void ControlSpeed()

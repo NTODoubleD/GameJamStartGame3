@@ -11,6 +11,7 @@ public class CharacterMovementController : MonoBehaviour
 
     private Vector2 _inputDirection;
     private bool _canMove = true;
+    private bool _isSprint;
 
     [Inject]
     private void Init(GameInput inputController)
@@ -22,6 +23,8 @@ public class CharacterMovementController : MonoBehaviour
     {
         _inputController.Player.Move.performed += OnMove;
         _inputController.Player.Move.canceled += OnMove;
+        _inputController.Player.Sprint.started += OnSprintStart;
+        _inputController.Player.Sprint.canceled += OnSprintStop;
         _animatorController.StartedInteraction += OnInteractionAnimationStarted;
         _animatorController.EndedInteraction += OnInteractionAnimationEnded;
     }
@@ -30,16 +33,23 @@ public class CharacterMovementController : MonoBehaviour
     {
         _inputController.Player.Move.performed -= OnMove;
         _inputController.Player.Move.canceled -= OnMove;
+        _inputController.Player.Sprint.started -= OnSprintStart;
+        _inputController.Player.Sprint.canceled -= OnSprintStop;
         _animatorController.StartedInteraction -= OnInteractionAnimationStarted;
         _animatorController.EndedInteraction -= OnInteractionAnimationEnded;
     }
 
+    private void OnSprintStart(InputAction.CallbackContext callbackContext) => 
+        _isSprint = true;
+    private void OnSprintStop(InputAction.CallbackContext callbackContext) => 
+        _isSprint = false;
+
     private void FixedUpdate()
     {
         if (_canMove)
-            _mover.Move(_inputDirection);
+            _mover.Move(_inputDirection, _isSprint);
     }
-
+    
     private void OnMove(InputAction.CallbackContext callbackContext)
     {
         _inputDirection = callbackContext.ReadValue<Vector2>();
@@ -48,12 +58,12 @@ public class CharacterMovementController : MonoBehaviour
     private void OnInteractionAnimationStarted()
     {
         _canMove = false;
-        _mover.Move(Vector2.zero);
+        _mover.Move(Vector2.zero, false);
     }
 
     private void OnInteractionAnimationEnded()
     {
-        _mover.Move(Vector2.zero);
+        _mover.Move(Vector2.zero, false);
         _canMove = true;
     }
 }
