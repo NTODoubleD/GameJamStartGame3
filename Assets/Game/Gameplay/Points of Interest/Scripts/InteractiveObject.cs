@@ -1,8 +1,9 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.UI.Base;
-using Game.UI.Pages;
+﻿using Game.UI.Pages;
 using System.Collections.Generic;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
@@ -25,9 +26,10 @@ namespace Game.Gameplay.Interaction
             };
         }
 
-        protected virtual void Awake()
+        [Inject]
+        private void Init(IUIManager uiManager)
         {
-            UIManager = Services.ProjectContext.GetModule<IUIManager>();
+            UIManager = uiManager;
         }
 
         public abstract void EnableHighlight();

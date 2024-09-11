@@ -1,34 +1,35 @@
-using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using Game.InputMaps;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Zenject;
 
 public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
     [SerializeField] private CharacterAnimatorController _animatorController;
 
-    private PlayerInputMap _inputMap;
+    private GameInput _inputController;
+
     private Vector2 _inputDirection;
     private bool _canMove = true;
 
-    private void Awake()
+    [Inject]
+    private void Init(GameInput inputController)
     {
-        _inputMap = Services.ProjectContext.GetModule<InputController>().GetMap<PlayerInputMap>();
+        _inputController = inputController;
     }
 
     private void OnEnable()
     {
-        _inputMap.Move.Performed += OnMove;
-        _inputMap.Move.Canceled += OnMove;
+        _inputController.Player.Move.performed += OnMove;
+        _inputController.Player.Move.canceled += OnMove;
         _animatorController.StartedInteraction += OnInteractionAnimationStarted;
         _animatorController.EndedInteraction += OnInteractionAnimationEnded;
     }
 
     private void OnDisable()
     {
-        _inputMap.Move.Performed -= OnMove;
-        _inputMap.Move.Canceled -= OnMove;
+        _inputController.Player.Move.performed -= OnMove;
+        _inputController.Player.Move.canceled -= OnMove;
         _animatorController.StartedInteraction -= OnInteractionAnimationStarted;
         _animatorController.EndedInteraction -= OnInteractionAnimationEnded;
     }
@@ -39,14 +40,14 @@ public class CharacterMovementController : MonoBehaviour
             _mover.Move(_inputDirection);
     }
 
-    private void OnMove(Vector2 inputDirection)
+    private void OnMove(InputAction.CallbackContext callbackContext)
     {
-        _inputDirection = inputDirection;
+        _inputDirection = callbackContext.ReadValue<Vector2>();
     }
 
     private void OnInteractionAnimationStarted()
     {
-        _canMove = false;     
+        _canMove = false;
         _mover.Move(Vector2.zero);
     }
 

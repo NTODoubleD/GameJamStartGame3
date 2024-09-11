@@ -1,16 +1,25 @@
-﻿using DoubleDTeam.Containers;
-using Game.Gameplay.AI;
+﻿using Game.Gameplay.AI;
 using Game.Gameplay.Scripts;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Buildings
 {
     public class PastureBuilding : UpgradableBuilding
     {
         [SerializeField] private PastureLevelsConfig _levelsConfig;
-        [SerializeField] private WalkablePlane _walkablePlane;
 
-        public int DeerCount => Services.SceneContext.GetModule<Herd>().SuitableDeer.Count;
+        private Herd _herd;
+        private WalkablePlane _walkablePlane;
+
+        [Inject]
+        private void Init(Herd herd, WalkablePlane walkablePlane)
+        {
+            _herd = herd;
+            _walkablePlane = walkablePlane;
+        }
+
+        public int DeerCount => _herd.SuitableDeer.Count;
 
         public int GetDeerCapacity(DeerAge deerAge)
         {

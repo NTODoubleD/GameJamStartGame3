@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using DoubleDTeam.Containers.Base;
 using Game.Infrastructure.Items;
 using UnityEngine;
 
 namespace Game.Infrastructure.Storage
 {
-    public class ItemStorage : IModule
+    public class ItemStorage
     {
         private readonly Dictionary<ItemInfo, int> _items = new();
 
@@ -27,10 +26,8 @@ namespace Game.Infrastructure.Storage
 
         public void AddItems(ItemInfo item, int count)
         {
-            if (_items.ContainsKey(item))
+            if (_items.TryAdd(item, count) == false)
                 _items[item] += count;
-            else
-                _items.Add(item, count);
 
             ItemAdded?.Invoke(item, count);
         }

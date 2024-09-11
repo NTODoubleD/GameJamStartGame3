@@ -1,24 +1,28 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
-using Game.InputMaps;
+﻿using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
+using Zenject;
 
 namespace Game.UI.Pages
 {
     public class EndGamePage : MonoPage, IUIPage
     {
-        private InputController _inputController;
+        private GameInput _inputController;
 
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputController = Services.ProjectContext.GetModule<InputController>();
-            Close();
+            _inputController = inputController;
+        }
+
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open()
         {
-            _inputController.EnableMap<UIInputMap>();
+            _inputController.UI.Enable();
+
             SetCanvasState(true);
         }
 

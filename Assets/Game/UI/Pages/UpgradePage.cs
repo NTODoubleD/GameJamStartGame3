@@ -1,16 +1,14 @@
 using System.Collections.Generic;
-using DoubleDTeam.Containers;
-using DoubleDTeam.Extensions;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.Extensions;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Game.Gameplay.Buildings;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
-using Game.InputMaps;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Game.UI.Pages
 {
@@ -27,13 +25,19 @@ namespace Game.UI.Pages
         [Space, SerializeField] private TownHallBuilding _townHallBuilding;
 
         private ItemStorage _itemStorage;
+        private GameInput _inputController;
         private UpgradeMenuArgument _currentArgument;
 
-        private void Awake()
+        [Inject]
+        private void Init(ItemStorage itemStorage, GameInput inputController)
         {
-            _itemStorage = Services.ProjectContext.GetModule<ItemStorage>();
+            _itemStorage = itemStorage;
+            _inputController = inputController;
+        }
 
-            Close();
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open(UpgradeMenuArgument context)
@@ -64,7 +68,7 @@ namespace Game.UI.Pages
 
             SetCanvasState(false);
 
-            Services.ProjectContext.GetModule<InputController>().EnableMap<PlayerInputMap>();
+            _inputController.Player.Enable();
         }
 
         public void Upgrade()
@@ -78,7 +82,7 @@ namespace Game.UI.Pages
             var conditionVisitor = new ConditionVisitor();
 
             foreach (var condition in argument.Conditions)
-                condition.Accept(conditionVisitor);            
+                condition.Accept(conditionVisitor);
 
             if (conditionVisitor.TownLevel >= 0)
             {

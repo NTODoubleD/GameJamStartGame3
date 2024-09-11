@@ -1,13 +1,13 @@
-﻿using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+﻿using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 
 namespace Game.UI.Pages
 {
     public class TutorialPage : MonoPage, IUIPage
     {
-        private void Awake()
+        public override void Initialize()
         {
-            Close();
+            SetCanvasState(false);
         }
 
         public void Open()

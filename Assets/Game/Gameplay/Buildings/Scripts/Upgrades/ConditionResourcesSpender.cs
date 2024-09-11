@@ -1,21 +1,26 @@
-﻿using DoubleDTeam.Containers;
-using Game.Infrastructure.Storage;
+﻿using Game.Infrastructure.Storage;
+using Zenject;
 
 namespace Game.Gameplay.Buildings
 {
     public class ConditionResourcesSpender : IUpgradeConditionVisitor
     {
+        private ItemStorage _itemStorage;
+
+        [Inject]
+        private void Init(ItemStorage itemStorage)
+        {
+            _itemStorage = itemStorage;
+        }
+
         void IUpgradeConditionVisitor.Visit(TownHallUpgradeCondition condition)
         {
-            
         }
 
         void IUpgradeConditionVisitor.Visit(ResourcesUpgradeCondition condition)
         {
-            var storage = Services.ProjectContext.GetModule<ItemStorage>();
-
             foreach (var keyPair in condition.NeccessaryItems)
-                storage.RemoveItems(keyPair.Key, keyPair.Value);
+                _itemStorage.RemoveItems(keyPair.Key, keyPair.Value);
         }
     }
 }

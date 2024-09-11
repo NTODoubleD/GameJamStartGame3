@@ -1,22 +1,23 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.Containers.Base;
-using Game.Infrastructure.Items;
+﻿using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
+using DoubleDCore.Service;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerCutController : MonoModule
+    public class DeerCutController : MonoService
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
         [SerializeField] private LootInfo[] _loot;
 
         private ItemStorage _storage;
 
-        private void Awake()
+        [Inject]
+        private void Init(ItemStorage storage)
         {
-            _storage = Services.ProjectContext.GetModule<ItemStorage>();
+            _storage = storage;
         }
 
         public bool CanCut(Deer deer)

@@ -1,8 +1,8 @@
-using DoubleDTeam.Containers;
 using Game.Gameplay.Interaction;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Feeding
 {
@@ -17,9 +17,10 @@ namespace Game.Gameplay.Feeding
 
         public bool IsMossPicked { get; private set; }
 
-        private void Awake()
+        [Inject]
+        private void Init(ItemStorage storage)
         {
-            _storage = Services.ProjectContext.GetModule<ItemStorage>();
+            _storage = storage;
         }
 
         private void OnEnable()

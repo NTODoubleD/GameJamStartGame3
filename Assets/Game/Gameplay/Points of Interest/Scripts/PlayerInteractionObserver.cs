@@ -1,7 +1,6 @@
-﻿using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using Game.InputMaps;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
@@ -10,23 +9,25 @@ namespace Game.Gameplay.Interaction
         [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
 
         private InteractiveObject _current;
-        private PlayerInputMap _input;
 
-        private void Awake()
+        private GameInput _inputController;
+
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _input = Services.ProjectContext.GetModule<InputController>().GetMap<PlayerInputMap>();
+            _inputController = inputController;
         }
 
         private void OnEnable()
         {
             _objectsWatcher.CurrentChanged += ChangeCurrentObject;
-            _input.Interact.Started += InteractWithCurrentObject;
+            _inputController.Player.Interact.started += InteractWithCurrentObject;
         }
 
         private void OnDisable()
         {
             _objectsWatcher.CurrentChanged -= ChangeCurrentObject;
-            _input.Interact.Started -= InteractWithCurrentObject;
+            _inputController.Player.Interact.started -= InteractWithCurrentObject;
         }
 
         private void ChangeCurrentObject(InteractiveObject newObject)
@@ -34,7 +35,7 @@ namespace Game.Gameplay.Interaction
             _current = newObject;
         }
 
-        private void InteractWithCurrentObject()
+        private void InteractWithCurrentObject(InputAction.CallbackContext callbackContext)
         {
             if (_current != null)
                 _current.Interact();

@@ -1,9 +1,9 @@
-using DoubleDTeam.Containers.Base;
+using DoubleDCore.Service;
 using UnityEngine;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerKillController : MonoModule
+    public class DeerKillController : MonoService
     {
         [SerializeField] private CharacterAnimatorController _characterAnimatorController;
 

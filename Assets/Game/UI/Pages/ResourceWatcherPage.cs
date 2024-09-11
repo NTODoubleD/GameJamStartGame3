@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
-using DoubleDTeam.Containers;
-using DoubleDTeam.Extensions;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.Extensions;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Game.Infrastructure.Items;
-using Game.InputMaps;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace Game.UI.Pages
 {
@@ -16,20 +14,24 @@ namespace Game.UI.Pages
         [SerializeField] private TextMeshProUGUI _labelText;
         [SerializeField] private TextMeshProUGUI _text;
 
-        private InputController _inputController;
+        private GameInput _inputController;
 
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputController = Services.ProjectContext.GetModule<InputController>();
+            _inputController = inputController;
+        }
 
-            Close();
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open(ResourcePageArgument context)
         {
             SetCanvasState(true);
 
-            _inputController.EnableMap<UIInputMap>();
+            _inputController.UI.Enable();
 
             _labelText.text = context.Label;
 
@@ -52,7 +54,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _inputController.EnableMap<PlayerInputMap>();
+            _inputController.Player.Enable();
         }
     }
 

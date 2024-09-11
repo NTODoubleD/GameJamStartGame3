@@ -2,8 +2,8 @@
 using Game.Gameplay.Scripts;
 using System.Collections.Generic;
 using System.Linq;
-using DoubleDTeam.Containers;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Deers
@@ -30,9 +30,10 @@ namespace Game.Gameplay.Deers
 
         private Herd _herd;
 
-        private void Awake()
+        [Inject]
+        private void Init(Herd herd)
         {
-            _herd = Services.SceneContext.GetModule<Herd>();
+            _herd = herd;
         }
 
         private void OnEnable()

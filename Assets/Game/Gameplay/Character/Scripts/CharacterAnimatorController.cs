@@ -1,4 +1,4 @@
-using DoubleDTeam.Attributes;
+using DoubleDCore.Attributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +10,7 @@ public class CharacterAnimatorController : MonoBehaviour
     [SerializeField] private float _animationSpeedMultiplier;
 
     [SerializeField] private GameObject _axe;
-    
+
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int PickingUp = Animator.StringToHash("PickingUp");
     private static readonly int Feed = Animator.StringToHash("Feed");
@@ -30,18 +30,16 @@ public class CharacterAnimatorController : MonoBehaviour
     public event UnityAction EndedInteraction;
 
     private SoundsManager SoundsManager => SoundsManager.Instance;
-    
-    private void OnValidate() => 
+
+    private void OnValidate() =>
         _animator = GetComponent<Animator>();
 
     private void OnEnable()
     {
         _mover.SpeedChanged += ChangeAnimationSpeed;
-        
-        
     }
 
-    private void OnDisable() => 
+    private void OnDisable() =>
         _mover.SpeedChanged -= ChangeAnimationSpeed;
 
     public void AnimatePickingUp() =>
@@ -73,7 +71,7 @@ public class CharacterAnimatorController : MonoBehaviour
 
     #region ANIMATOR_EVENTS
 
-    public void OnFootstep() => 
+    public void OnFootstep() =>
         SoundsManager.PlayFootstepSound(transform.position);
 
     public void OnStartedPickingUp() =>
@@ -111,22 +109,26 @@ public class CharacterAnimatorController : MonoBehaviour
 
     public void OnEndedInteraction() =>
         EndedInteraction?.Invoke();
+
     public void OnMeat1() =>
         SoundsManager.PlayMeat1(transform.position);
+
     public void OnMeat2() =>
         SoundsManager.PlayMeat2(transform.position);
+
     public void OnMeat3() =>
         SoundsManager.PlayMeat3(transform.position);
-    
+
     public void OnGetMoch() =>
         SoundsManager.PlayMeat3(transform.position);
 
-    public void OnKillOlen() => 
+    public void OnKillOlen() =>
         SoundsManager.PlayKillOlen(transform.position);
 
     public void OnGetAxe() =>
         _axe.gameObject.SetActive(true);
-    public void OnDissapearAxe() => 
+
+    public void OnDissapearAxe() =>
         _axe.gameObject.SetActive(false);
 
     #endregion

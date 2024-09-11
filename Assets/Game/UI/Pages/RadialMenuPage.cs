@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using DoubleDTeam.Containers;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
-using Game.InputMaps;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using Xamin;
+using Zenject;
 using Button = Xamin.Button;
 
 namespace Game.UI.Pages
@@ -23,17 +21,21 @@ namespace Game.UI.Pages
         [SerializeField] private TextMeshProUGUI _label;
 
         private readonly List<Button> _buttons = new();
-        private InputController _inputController;
+        private GameInput _inputController;
 
         public event UnityAction Opened;
 
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputController = Services.ProjectContext.GetModule<InputController>();
+            _inputController = inputController;
+        }
+
+        public override void Initialize()
+        {
+            SetCanvasState(false);
 
             CreateButtons();
-
-            Close();
         }
 
         private void CreateButtons()
@@ -52,7 +54,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(true);
 
-            _inputController.EnableMap<UIInputMap>();
+            _inputController.UI.Enable();
 
             ConfigureMenu(context);
 

@@ -1,4 +1,4 @@
-using DoubleDTeam.Attributes;
+using DoubleDCore.Attributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,20 +55,25 @@ public class SoundsManager : MonoBehaviour
 
     public void PlayFootstepSound(Vector3 pos) =>
         PlaySound(0, pos);
+
     public void PlayMeat1(Vector3 pos) =>
         PlaySound(1, pos);
+
     public void PlayMeat2(Vector3 pos) =>
         PlaySound(2, pos);
+
     public void PlayMeat3(Vector3 pos) =>
         PlaySound(3, pos);
+
     public void PlayGetMoch(Vector3 pos) =>
         PlaySound(4, pos);
-    
+
     public void PlayNewbornOlen(Vector3 pos) =>
         PlaySound(5, pos);
+
     public void PlayKillOlen(Vector3 pos) =>
         PlaySound(6, pos);
-    
+
     public void PlayDeerEat(Vector3 pos) =>
         PlaySound(7, pos);
 

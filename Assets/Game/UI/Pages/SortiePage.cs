@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DoubleDTeam.Containers;
-using DoubleDTeam.Extensions;
-using DoubleDTeam.InputSystem;
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.Extensions;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
-using Game.InputMaps;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.UI.Pages
 {
@@ -23,21 +21,25 @@ namespace Game.UI.Pages
 
         [Space, SerializeField] private int _freePointsAmount = 4;
 
-        private InputController _inputManager;
+        private GameInput _inputController;
 
         private readonly List<UIResourceProperty> _resourceSliders = new();
         private List<ItemInfo> _possibleResources;
 
-        private void Awake()
+        [Inject]
+        private void Init(GameInput inputController)
         {
-            _inputManager = Services.ProjectContext.GetModule<InputController>();
+            _inputController = inputController;
+        }
 
-            Close();
+        public override void Initialize()
+        {
+            SetCanvasState(false);
         }
 
         public void Open()
         {
-            _inputManager.EnableMap<UIInputMap>();
+            _inputController.UI.Enable();
 
             SetCanvasState(true);
         }
@@ -46,7 +48,7 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _inputManager.EnableMap<PlayerInputMap>();
+            _inputController.Player.Enable();
         }
 
         public void StartSortie()

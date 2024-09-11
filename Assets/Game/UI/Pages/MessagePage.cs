@@ -1,5 +1,5 @@
-using DoubleDTeam.UI;
-using DoubleDTeam.UI.Base;
+using DoubleDCore.UI;
+using DoubleDCore.UI.Base;
 using Game.Monologue;
 using UnityEngine;
 
@@ -9,9 +9,9 @@ namespace Game.UI.Pages
     {
         [SerializeField] private MessageShower _messageShower;
 
-        private void Awake()
+        public override void Initialize()
         {
-            Close();
+            SetCanvasState(false);
         }
 
         public void Open(MonologueGroupInfo context)
