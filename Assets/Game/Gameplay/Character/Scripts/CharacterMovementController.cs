@@ -23,8 +23,10 @@ public class CharacterMovementController : MonoBehaviour
     {
         _inputController.Player.Move.performed += OnMove;
         _inputController.Player.Move.canceled += OnMove;
+
         _inputController.Player.Sprint.started += OnSprintStart;
         _inputController.Player.Sprint.canceled += OnSprintStop;
+
         _animatorController.StartedInteraction += OnInteractionAnimationStarted;
         _animatorController.EndedInteraction += OnInteractionAnimationEnded;
     }
@@ -33,15 +35,18 @@ public class CharacterMovementController : MonoBehaviour
     {
         _inputController.Player.Move.performed -= OnMove;
         _inputController.Player.Move.canceled -= OnMove;
+
         _inputController.Player.Sprint.started -= OnSprintStart;
         _inputController.Player.Sprint.canceled -= OnSprintStop;
+
         _animatorController.StartedInteraction -= OnInteractionAnimationStarted;
         _animatorController.EndedInteraction -= OnInteractionAnimationEnded;
     }
 
-    private void OnSprintStart(InputAction.CallbackContext callbackContext) => 
+    private void OnSprintStart(InputAction.CallbackContext callbackContext) =>
         _isSprint = true;
-    private void OnSprintStop(InputAction.CallbackContext callbackContext) => 
+
+    private void OnSprintStop(InputAction.CallbackContext callbackContext) =>
         _isSprint = false;
 
     private void FixedUpdate()
@@ -49,7 +54,7 @@ public class CharacterMovementController : MonoBehaviour
         if (_canMove)
             _mover.Move(_inputDirection, _isSprint);
     }
-    
+
     private void OnMove(InputAction.CallbackContext callbackContext)
     {
         _inputDirection = callbackContext.ReadValue<Vector2>();
