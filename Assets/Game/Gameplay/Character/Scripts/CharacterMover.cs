@@ -24,8 +24,6 @@ public class CharacterMover : MonoService
 
     public void Move(Vector2 inputDirection, bool isSprint)
     {
-        Debug.Log(isSprint);
-        
         Rotate(inputDirection);
         MoveRigidbody(inputDirection, isSprint);
         ControlSpeed();

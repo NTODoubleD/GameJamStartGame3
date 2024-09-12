@@ -16,6 +16,7 @@ namespace Game.Lyrics
         [SerializeField] private float _appearanceDuration = 1f;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private TMP_Text _textHolder;
+        [SerializeField] private GameObject _mouseIcon;
 
         private bool _isClick;
 
@@ -34,12 +35,14 @@ namespace Game.Lyrics
             foreach (var lyricsText in _texts)
             {
                 _textHolder.text = lyricsText;
+                _mouseIcon.SetActive(false);
 
                 StartCoroutine(AppearanceAnimation(_appearanceDuration));
 
-                await UniTask.WaitForSeconds(_appearanceDuration + 0.5f);
+                await UniTask.WaitForSeconds(_appearanceDuration + 1f);
 
                 _isClick = false;
+                _mouseIcon.SetActive(true);
 
                 await UniTask.WaitUntil(() => _isClick);
             }
