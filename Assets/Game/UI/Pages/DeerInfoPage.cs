@@ -1,4 +1,6 @@
 ﻿using System;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay;
@@ -27,6 +29,12 @@ namespace Game.UI.Pages
             SetCanvasState(false);
         }
 
+        private readonly TranslatedText _nameTranslate = new("Имя", "Name");
+        private readonly TranslatedText _genderTranslate = new("Пол", "Gender");
+        private readonly TranslatedText _ageTranslate = new("Возраст", "Age");
+        private readonly TranslatedText _satietyTranslate = new("Сытость", "Satiety");
+        private readonly TranslatedText _statusTranslate = new("Статус", "Status");
+
         public void Open(DeerInfoPageArgument context)
         {
             _context = context;
@@ -36,11 +44,11 @@ namespace Game.UI.Pages
 
             SetCanvasState(true);
 
-            _text.text = $"Имя - {context.Info.Name}\n" +
-                         $"Пол - {context.Info.Gender.ToText()}\n" +
-                         $"Возраст - {context.Info.Age.ToText()} ({context.Info.AgeDays})\n" +
-                         $"Сытость - {Mathf.RoundToInt(context.Info.HungerDegree * 100)}%\n" +
-                         $"Статус - {context.Info.Status.ToText()}";
+            _text.text = $"{_nameTranslate.GetText()} - {context.Info.Name}\n" +
+                         $"{_genderTranslate.GetText()} - {context.Info.Gender.ToText()}\n" +
+                         $"{_ageTranslate.GetText()} - {context.Info.Age.ToText()} ({context.Info.AgeDays})\n" +
+                         $"{_satietyTranslate.GetText()} - {Mathf.RoundToInt(context.Info.HungerDegree * 100)}%\n" +
+                         $"{_statusTranslate.GetText()} - {context.Info.Status.ToText()}";
         }
 
         public override void Close()

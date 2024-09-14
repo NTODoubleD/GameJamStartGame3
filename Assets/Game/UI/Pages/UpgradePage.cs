@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using DoubleDCore.Extensions;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Buildings;
@@ -40,6 +42,18 @@ namespace Game.UI.Pages
             SetCanvasState(false);
         }
 
+        private readonly TranslatedText _thisLevelText =
+            new("Текущий уровень - {0}", "The current level is {0}");
+
+        private readonly TranslatedText _upgradeText =
+            new("Улучшить", "Improve");
+
+        private readonly TranslatedText _stillImprovementText =
+            new("До улучшения осталось (дни) - {0}", "There are still {0} to improve");
+
+        private readonly TranslatedText _upgradeTimeText =
+            new("Время улучшения (дни) - {0}", "Improvement time - {0}");
+
         public void Open(UpgradeMenuArgument context)
         {
             _currentArgument = context;
@@ -53,15 +67,16 @@ namespace Game.UI.Pages
 
             _conditionText.text = GetText(context);
 
-            _townLevelText.text = $"Текущий уровень - {context.UpgradableBuilding.CurrentLevel}";
+            _townLevelText.text = string.Format(_thisLevelText.GetText(), context.UpgradableBuilding.CurrentLevel);
 
             _upgradeButton.interactable = context.UpgradableBuilding.CanUpgrade();
 
             _upgradeButtonText.text = _currentArgument.UpgradableBuilding.DaysLeftForUpgrade <= 0
-                ? "Улучшить"
-                : $"До улучшения осталось (дни) - {_currentArgument.UpgradableBuilding.DaysLeftForUpgrade}";
+                ? _upgradeText.GetText()
+                : string.Format(_stillImprovementText.GetText(),
+                    _currentArgument.UpgradableBuilding.DaysLeftForUpgrade);
 
-            _remainUpgradeText.text = $"Время улучшения (дни) - {context.DayDuration}";
+            _remainUpgradeText.text = string.Format(_upgradeTimeText.GetText(), context.DayDuration);
             _remainUpgradeText.enabled = _currentArgument.UpgradableBuilding.DaysLeftForUpgrade <= 0;
         }
 
@@ -80,6 +95,8 @@ namespace Game.UI.Pages
             _currentArgument.UpgradableBuilding.Upgrade();
         }
 
+        private readonly TranslatedText _urtLevel = new("Уровень юрты - ", "Yurt level -");
+
         private string GetText(UpgradeMenuArgument argument)
         {
             string result = "";
@@ -90,7 +107,7 @@ namespace Game.UI.Pages
 
             if (conditionVisitor.TownLevel >= 0)
             {
-                result += "Уровень юрты - " + $"{conditionVisitor.CurrentTownLevel} / {conditionVisitor.TownLevel}"
+                result += _urtLevel.GetText() + $"{conditionVisitor.CurrentTownLevel} / {conditionVisitor.TownLevel}"
                     .Color(conditionVisitor.CurrentTownLevel >= conditionVisitor.TownLevel
                         ? Color.green
                         : Color.red);

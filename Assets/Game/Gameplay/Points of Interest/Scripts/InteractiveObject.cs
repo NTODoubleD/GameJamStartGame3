@@ -1,5 +1,6 @@
 ﻿using Game.UI.Pages;
 using System.Collections.Generic;
+using DoubleDCore.TranslationTools.Data;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Game.Gameplay.Interaction
     public abstract class InteractiveObject : MonoBehaviour
     {
         [SerializeField] protected string _name;
+        [SerializeField] protected string _enName;
         [SerializeField] private float _distanceToInteract = 1.5f;
         [SerializeField] private bool _interactedByTrigger = false;
         [SerializeField] protected List<RadialButtonInfo> _operations;
@@ -23,7 +25,7 @@ namespace Game.Gameplay.Interaction
         {
             return new RadialMenuArgument
             {
-                Name = _name,
+                Name = StaticLanguageProvider.GetLanguage() == LanguageType.Ru ? _name : _enName,
                 Buttons = _operations
             };
         }

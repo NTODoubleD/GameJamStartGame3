@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DoubleDCore.TranslationTools.Data;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Sirenix.OdinInspector;
@@ -91,7 +92,9 @@ namespace Game.UI.Pages
                 button.action.AddListener(Close);
 
                 button.image = buttonInfo.Image;
-                button.optionsName.text = buttonInfo.Name;
+                button.optionsName.text = StaticLanguageProvider.GetLanguage() == LanguageType.Ru
+                    ? buttonInfo.Name
+                    : buttonInfo.EnName;
             }
         }
 
@@ -117,6 +120,7 @@ namespace Game.UI.Pages
     public class RadialButtonInfo
     {
         public string Name;
+        public string EnName;
         public Sprite Image;
         public UnityEvent Action;
         public bool HasCondition;
