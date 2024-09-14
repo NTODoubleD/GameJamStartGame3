@@ -88,7 +88,7 @@ namespace Infrastructure
             Container.Bind<ICoroutineRunner>().To<CoroutineRunner>().FromInstance(_coroutineRunner).AsSingle();
 
             Container.Bind<IUIManager>().To<UIManager>().AsSingle();
-            Container.Bind<ILanguageProvider>().To<MockLanguageProvider>().AsSingle();
+            Container.Bind<ILanguageProvider>().To<PCLanguageProvider>().AsSingle();
             Container.Bind<IQuestController>().To<QuestController>().AsSingle();
             Container.Bind<IRayCaster>().To<RayCaster>().AsSingle();
             Container.Bind<IObjectPooler>().To<ObjectPooler>().AsSingle();
