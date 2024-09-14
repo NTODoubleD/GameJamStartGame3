@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd1dfc71d8a307449ff15aea65f8d98, type: 3}
+  m_Name: Fact List en
+  m_EditorClassIdentifier: 
+  _facts:
+  - 'TIP: You can get skin and horns from dead reindeer.'
+  - 'TIP: A reindeer can be healed with herbs.'
+  - 'TIP: In extreme cases, you can kill the reindeer.'
+  - 'TIP: Upgrade the sled to bring back more resources from the forest.'
+  - 'TIP: Upgrade the pasture to increase the number of reindeer.'
+  - 'TIP: Upgrade the yurt to improve other structures.'
+  - 'TIP: Young reindeer cannot be harnessed to the sled.'
+  - 'TIP: You can bring back wood, medicinal herbs, and moss from the forest.'
+  - 'TIP: Moss is food for reindeer, and you can collect it in a pile near the shelter.'
+  - 'FACT: If a reindeer is not healed, it will not be able to produce offspring.'
+  - 'FACT: Calves do not get sick.'
+  - 'FACT: If a reindeer dies from illness, it cannot be butchered.'
+  - 'FACT: Sick reindeer cannot be harnessed to the sled.'
+  - 'FACT: A pair of reindeer produces one calf overnight.'
+  - 'TIP: Load the sled with the correct number of reindeer, or you will incur a
+    penalty.'
+  - 'TIP: Feed the reindeer moss, or they will die.'

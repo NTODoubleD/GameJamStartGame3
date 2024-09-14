@@ -8,24 +8,20 @@ namespace Game.Gameplay.DayCycle
 {
     public class FactDisplayer : MonoBehaviour
     {
-        [SerializeField] private FactsListConfig _config;
+        [SerializeField] private FactsListConfig _enConfig, _ruConfig;
+        
         [SerializeField] private TMP_Text _fact;
 
         private List<string> _factsLeft = new();
+        private FactsListConfig CurConfig => StaticLanguageProvider.GetLanguage() == LanguageType.Ru ? _ruConfig : _enConfig;
 
         private void RefreshFactList()
         {
-            _factsLeft = _config.Facts.ToList();
+            _factsLeft = CurConfig.Facts.ToList();
         }
 
         public void DisplayRandomFact()
         {
-            if (StaticLanguageProvider.GetLanguage() != LanguageType.Ru)
-            {
-                _fact.gameObject.SetActive(false);
-                return;
-            }
-
             if (_factsLeft.Count == 0)
                 RefreshFactList();
 

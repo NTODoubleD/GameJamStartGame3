@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DoubleDCore.TranslationTools.Data;
+using Game;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -63,12 +65,21 @@ public class TutorialMenu : MonoBehaviour
     {
         TutorPanel.SetActive(true);
         Image.gameObject.SetActive(true);
-        Image.sprite = Tutorials[_idCurrentTutorial].Sprites[_idCurrentList];
+        Image.sprite = Tutorials[_idCurrentTutorial].Sprites[_idCurrentList].GetSprite();
     }
 }
 
 [Serializable]
 public class Tutorial
 {
-    public List<Sprite> Sprites;
+    public List<TranslatableTutorialPart> Sprites;
+}
+[Serializable]
+public class TranslatableTutorialPart
+{
+    public Sprite en;
+    public Sprite ru;
+
+    public Sprite GetSprite() => 
+        StaticLanguageProvider.GetLanguage() == LanguageType.Ru ? ru : en;
 }

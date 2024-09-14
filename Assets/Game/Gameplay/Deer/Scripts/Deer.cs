@@ -125,6 +125,7 @@ namespace Game.Gameplay
         {
             _age++;
 
+            DeerInfo.AgeDays = _age;
             if (_ageTable.ContainsKey(_age) == false)
                 return;
 
@@ -135,7 +136,6 @@ namespace Game.Gameplay
             }
 
             DeerInfo.Age = _ageTable[_age];
-            DeerInfo.AgeDays = _age;
             _deerMeshing.ChangeMesh(DeerInfo.Age, DeerInfo.Gender);
         }
 

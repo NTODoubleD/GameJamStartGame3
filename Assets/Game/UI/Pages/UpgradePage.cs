@@ -95,7 +95,7 @@ namespace Game.UI.Pages
             _currentArgument.UpgradableBuilding.Upgrade();
         }
 
-        private readonly TranslatedText _urtLevel = new("Уровень юрты - ", "Yurt level -");
+        private readonly TranslatedText _urtLevel = new("Уровень юрты - ", "Yurt level - ");
 
         private string GetText(UpgradeMenuArgument argument)
         {

@@ -34,6 +34,7 @@ namespace Game.UI.Pages
         private readonly TranslatedText _ageTranslate = new("Возраст", "Age");
         private readonly TranslatedText _satietyTranslate = new("Сытость", "Satiety");
         private readonly TranslatedText _statusTranslate = new("Статус", "Status");
+        private readonly TranslatedText _dayTranslate = new("день", "day");
 
         public void Open(DeerInfoPageArgument context)
         {
@@ -46,7 +47,7 @@ namespace Game.UI.Pages
 
             _text.text = $"{_nameTranslate.GetText()} - {context.Info.Name}\n" +
                          $"{_genderTranslate.GetText()} - {context.Info.Gender.ToText()}\n" +
-                         $"{_ageTranslate.GetText()} - {context.Info.Age.ToText()} ({context.Info.AgeDays})\n" +
+                         $"{_ageTranslate.GetText()} - {context.Info.Age.ToText()} ({context.Info.AgeDays} {_dayTranslate.GetText()})\n" +
                          $"{_satietyTranslate.GetText()} - {Mathf.RoundToInt(context.Info.HungerDegree * 100)}%\n" +
                          $"{_statusTranslate.GetText()} - {context.Info.Status.ToText()}";
         }
