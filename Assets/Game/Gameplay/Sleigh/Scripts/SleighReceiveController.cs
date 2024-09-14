@@ -2,6 +2,8 @@
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System.Collections.Generic;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI.Base;
 using Game.UI.Pages;
 using UnityEngine;
@@ -18,6 +20,10 @@ namespace Game.Gameplay.Sleigh
         private IUIManager _uiManager;
         private ItemStorage _itemStorage;
 
+        
+        private readonly TranslatedText _labelText = new("Результат вылазки", "Expedition Result");
+        private readonly TranslatedText _headingText = new("Получено ресурсов:", "Resources Obtained:");
+        
         [Inject]
         private void Init(IUIManager uiManager, ItemStorage itemStorage)
         {
@@ -48,8 +54,8 @@ namespace Game.Gameplay.Sleigh
 
             _uiManager.OpenPage<ResourceWatcherPage, ResourcePageArgument>(new ResourcePageArgument()
             {
-                Label = "Результат вылазки",
-                TextHeading = "Получено ресурсов:",
+                Label = _labelText.GetText(),
+                TextHeading = _headingText.GetText(),
                 Resource = new Dictionary<ItemInfo, int>(_currentResult)
             });
 

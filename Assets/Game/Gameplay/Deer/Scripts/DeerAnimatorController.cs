@@ -1,3 +1,4 @@
+using System;
 using DoubleDCore.Attributes;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ public class DeerAnimatorController : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
 
     private static readonly int Dead = Animator.StringToHash("Death");
+    private static readonly int DeathBool = Animator.StringToHash("DeathBool");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Eat = Animator.StringToHash("Eat");
     private SoundsManager SoundsManager => SoundsManager.Instance;
@@ -17,6 +19,11 @@ public class DeerAnimatorController : MonoBehaviour
     private void OnValidate()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private void Awake()
+    {
+        _animator.SetBool(DeathBool, false);
     }
 
     private void Update()
@@ -27,6 +34,7 @@ public class DeerAnimatorController : MonoBehaviour
     public void StartDead()
     {
         _animator.SetTrigger(Dead);
+        _animator.SetBool(DeathBool, true);
     }
 
     public void StartEat()
