@@ -234,7 +234,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -50, y: 50}
-  m_SizeDelta: {x: 90, y: 90}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &1100061092
 GameObject:
@@ -269,10 +269,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 594690835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.217, y: 20.775}
-  m_SizeDelta: {x: -63.553, y: -43.506}
+  m_AnchorMin: {x: 0.2, y: 0.47777778}
+  m_AnchorMax: {x: 0.5, y: 0.98888886}
+  m_AnchoredPosition: {x: 0.28300476, y: -0.224823}
+  m_SizeDelta: {x: -0.5530014, y: 0.49399948}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100061094
 MonoBehaviour:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -326,8 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playOnAwake: 1
   _duration: 2
-  _fromColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 0}
-  _toColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+  _fromColor: {r: 1, g: 1, b: 1, a: 0}
+  _toColor: {r: 1, g: 1, b: 1, a: 1}
   _curve:
     serializedVersion: 2
     m_Curve:
