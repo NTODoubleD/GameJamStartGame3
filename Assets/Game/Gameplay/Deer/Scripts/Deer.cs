@@ -140,14 +140,29 @@ namespace Game.Gameplay
 
         #region STATE_METHODS
 
-        public void EnterIdleState() =>
+        public void EnterIdleState()
+        {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+            
             _deerStateMachine.Enter<DeerIdleState>();
+        }
 
-        public void EnterWalkingState() =>
+        public void EnterWalkingState()
+        {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+            
             _deerStateMachine.Enter<DeerRandomWalkState>();
+        }
 
-        public void EnterUserInteractionState() =>
+        public void EnterUserInteractionState()
+        {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+            
             _deerStateMachine.Enter<DeerInteractedByPlayerState>();
+        }
 
         public void Die()
         {
