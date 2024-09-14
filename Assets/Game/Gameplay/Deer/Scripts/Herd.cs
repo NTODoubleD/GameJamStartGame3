@@ -34,7 +34,6 @@ namespace Game.Gameplay.Scripts
             _fabric.Created -= OnCreated;
         }
 
-
         private void OnCreated(Deer deer)
         {
             _currentHerd.Add(deer);
