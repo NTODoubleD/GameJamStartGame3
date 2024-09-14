@@ -7,6 +7,7 @@ namespace Game
     {
         public static LanguageType GetLanguage()
         {
+            return LanguageType.En;
             switch (Application.systemLanguage)
             {
                 case SystemLanguage.English:
