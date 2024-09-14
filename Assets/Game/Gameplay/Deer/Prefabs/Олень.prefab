@@ -816,8 +816,38 @@ PrefabInstance:
       objectReference: {fileID: 4924400245990448069}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
+      propertyPath: _enName
+      value: Deer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
       propertyPath: _operations.Array.data[0].EnName
       value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[1].EnName
+      value: Information
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[2].EnName
+      value: Feed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[3].EnName
+      value: Kill
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[4].EnName
+      value: Butcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[5].EnName
+      value: Heal
       objectReference: {fileID: 0}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
