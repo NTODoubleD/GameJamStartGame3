@@ -3468,6 +3468,26 @@ PrefabInstance:
       propertyPath: _startCount
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _en.<Male>k__BackingField
+      value: 
+      objectReference: {fileID: 4900000, guid: 8660429ea10972d49940f14bb15fd512, type: 3}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _ru.<Male>k__BackingField
+      value: 
+      objectReference: {fileID: 4900000, guid: 9f27cda0f9afacf4fbd66bdc6ca631a1, type: 3}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _en.<Female>k__BackingField
+      value: 
+      objectReference: {fileID: 4900000, guid: 4b9e3ee1bd99a9f4483089246e1dc8e0, type: 3}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _ru.<Female>k__BackingField
+      value: 
+      objectReference: {fileID: 4900000, guid: 17412e6c48461bd48979a75e10cdfa4a, type: 3}
     - target: {fileID: 6667638573962445099, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_text

@@ -1,4 +1,5 @@
-﻿using Game.Gameplay.Interaction;
+﻿using DoubleDCore.TranslationTools.Data;
+using Game.Gameplay.Interaction;
 using Game.UI.Pages;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +16,9 @@ namespace Game.Gameplay
         {
             return new RadialMenuArgument()
             {
-                Name = _name + "\n" + _deer.DeerInfo.Name,
+                Name = StaticLanguageProvider.GetLanguage() == LanguageType.Ru
+                    ? _name
+                    : _enName + "\n" + _deer.DeerInfo.Name,
                 Buttons = _operations
             };
         }

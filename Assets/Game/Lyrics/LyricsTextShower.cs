@@ -2,6 +2,8 @@
 using System.Collections;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using Infrastructure;
 using Infrastructure.States;
 using TMPro;
@@ -13,7 +15,7 @@ namespace Game.Lyrics
 {
     public class LyricsTextShower : MonoBehaviour
     {
-        [TextArea, SerializeField] private string[] _texts;
+        [SerializeField] private TranslatedText[] _texts;
         [SerializeField] private float _appearanceDuration = 1f;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private TMP_Text _textHolder;
@@ -35,7 +37,7 @@ namespace Game.Lyrics
         {
             foreach (var lyricsText in _texts)
             {
-                _textHolder.text = lyricsText;
+                _textHolder.text = lyricsText.GetText();
                 _mouseIcon.alpha = 0;
 
                 StartCoroutine(AppearanceAnimation(_appearanceDuration));
@@ -47,7 +49,7 @@ namespace Game.Lyrics
                 var tween = _mouseIcon.DOFade(1, _appearanceDuration);
 
                 await UniTask.WaitUntil(() => _isClick);
-                
+
                 tween.Kill();
             }
 

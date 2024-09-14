@@ -2,6 +2,7 @@ using Game.Gameplay.DayCycle;
 using Game.UI.Pages;
 using System.Linq;
 using DoubleDCore.SaveSystem.Base;
+using DoubleDCore.TranslationTools.Data;
 using DoubleDCore.UI.Base;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,6 +18,7 @@ namespace Game.Gameplay.Buildings
         [SerializeField] private BuildingViewUpgrader _viewUpgrader;
         [SerializeField] private DayCycleController _dayCycleController;
         [SerializeField] private string _upgradeTitle;
+        [SerializeField] private string _upgradeTitleEn;
 
         private int _daysLeftForUpgrade;
         protected IUIManager UIManager;
@@ -127,7 +129,7 @@ namespace Game.Gameplay.Buildings
         {
             return new UpgradeMenuArgument()
             {
-                Label = _upgradeTitle,
+                Label = StaticLanguageProvider.GetLanguage() == LanguageType.Ru ? _upgradeTitle : _upgradeTitleEn,
                 DayDuration = _upgradesConfig.GetUpgradeDuration(CurrentLevel),
                 Conditions = _upgradesConfig.GetUpgradeConditions(CurrentLevel).ToList(),
                 UpgradableBuilding = this
