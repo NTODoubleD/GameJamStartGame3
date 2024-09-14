@@ -1,5 +1,6 @@
 using Game.Gameplay.Interaction;
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Character
 {
@@ -7,6 +8,14 @@ namespace Game.Gameplay.Character
     {
         [SerializeField] private CharacterAnimatorController _animatorController;
         [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
+
+        private SceneInteractionData _sceneInteractionData;
+
+        [Inject]
+        private void Construct(SceneInteractionData data)
+        {
+            _sceneInteractionData = data;
+        }
 
         private void OnEnable()
         {
@@ -23,6 +32,7 @@ namespace Game.Gameplay.Character
         private void OnStartedInteraction()
         {
             _objectsWatcher.enabled = false;
+            _sceneInteractionData.CurrentObject = null;
         }
 
         private void OnEndedInteraction()
