@@ -40,7 +40,7 @@ namespace Game.Lyrics
 
                 StartCoroutine(AppearanceAnimation(_appearanceDuration));
 
-                await UniTask.WaitForSeconds(_appearanceDuration + 1f);
+                await UniTask.WaitForSeconds(_appearanceDuration + 0.5f);
 
                 _isClick = false;
 
