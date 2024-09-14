@@ -92,7 +92,9 @@ namespace Game.Gameplay.Deers
 
         private void OnDayEnded()
         {
-            _suitableDeerRemains = _herd.SuitableDeer;
+            _suitableDeerRemains = _herd.CurrentHerd
+                .Where(d => d.DeerInfo.Age != DeerAge.Young)
+                .Where(d => d.DeerInfo.Status == DeerStatus.Standard).ToList();
 
             var males = _suitableDeerRemains.Where(d => d.DeerInfo.Gender == GenderType.Male).ToList();
             var females = _suitableDeerRemains.Where(d => d.DeerInfo.Gender == GenderType.Female).ToList();
