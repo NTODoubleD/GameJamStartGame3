@@ -11,11 +11,13 @@ namespace Game.Gameplay.Interaction
     {
         [SerializeField] protected string _name;
         [SerializeField] private float _distanceToInteract = 1.5f;
+        [SerializeField] private bool _interactedByTrigger = false;
         [SerializeField] protected List<RadialButtonInfo> _operations;
 
         protected IUIManager UIManager;
 
         public float DistanceToInteract => _distanceToInteract;
+        public bool InteractedByTrigger => _interactedByTrigger;
 
         protected virtual RadialMenuArgument GetRadialMenuArgument()
         {
