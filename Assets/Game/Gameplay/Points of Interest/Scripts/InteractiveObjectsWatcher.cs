@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DoubleDCore.Attributes;
+using DoubleDCore.Service;
 using UnityEngine;
-using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
-    public class InteractiveObjectsWatcher : MonoBehaviour
+    public class InteractiveObjectsWatcher : MonoService
     {
         private List<InteractiveObject> _interactiveObjectsToCheck = new();
         private readonly List<InteractiveObject> _objectsInRange = new();
@@ -14,19 +15,17 @@ namespace Game.Gameplay.Interaction
         [SerializeField] private DistancePlayerToObjectChecker _distanceChecker;
         [SerializeField, ReadOnlyProperty] private InteractiveObject[] _interactiveObjects;
 
-        public InteractiveObject CurrentObject { get; private set; }
-
-        public event UnityAction<InteractiveObject> CurrentChanged;
+        private SceneInteractionData _sceneInteractionData;
+        
+        [Inject]
+        private void Construct(SceneInteractionData sceneInteractionData)
+        {
+            _sceneInteractionData = sceneInteractionData;
+        }
 
         private void Awake()
         {
-            _interactiveObjectsToCheck.AddRange(_interactiveObjects);
-        }
-
-        private void OnDisable()
-        {
-            CurrentObject = null;
-            CurrentChanged?.Invoke(CurrentObject);
+            _interactiveObjectsToCheck.AddRange(_interactiveObjects.Where(x => x.InteractedByTrigger == false));
         }
 
         private void OnValidate()
@@ -50,18 +49,16 @@ namespace Game.Gameplay.Interaction
 
             if (_objectsInRange.Count == 0)
             {
-                CurrentObject = null;
-                CurrentChanged?.Invoke(CurrentObject);
+                _sceneInteractionData.CurrentObject = null;
                 return;
             }
 
             InteractiveObject closestObject =
                 _objectsInRange.OrderBy(x => _distanceChecker.GetDistanceToPlayer(x.transform)).First();
 
-            if (closestObject != CurrentObject)
+            if (closestObject != _sceneInteractionData.CurrentObject)
             {
-                CurrentObject = closestObject;
-                CurrentChanged?.Invoke(closestObject);
+                _sceneInteractionData.CurrentObject = closestObject;
             }
         }
 
