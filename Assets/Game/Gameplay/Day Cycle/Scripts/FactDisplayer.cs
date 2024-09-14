@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DoubleDCore.TranslationTools.Data;
 using TMPro;
 using UnityEngine;
 
@@ -19,6 +20,12 @@ namespace Game.Gameplay.DayCycle
 
         public void DisplayRandomFact()
         {
+            if (StaticLanguageProvider.GetLanguage() != LanguageType.Ru)
+            {
+                _fact.gameObject.SetActive(false);
+                return;
+            }
+
             if (_factsLeft.Count == 0)
                 RefreshFactList();
 

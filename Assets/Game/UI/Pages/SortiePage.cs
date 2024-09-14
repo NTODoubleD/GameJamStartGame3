@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DoubleDCore.Extensions;
+using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -23,6 +26,7 @@ namespace Game.UI.Pages
         [Space, SerializeField] private SleighSendController _sleighSendController;
 
         [Space, SerializeField] private int _freePointsAmount = 4;
+        [SerializeField] private TMP_Text _dearAmountText;
 
         public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
 
@@ -53,6 +57,8 @@ namespace Game.UI.Pages
             _herdExplorer.ChosenChanged += OnUserChosenChanged;
 
             _startSortieButton.interactable = false;
+
+            OnUserChosenChanged();
 
             SetCanvasState(true);
         }
@@ -95,9 +101,16 @@ namespace Game.UI.Pages
             }
         }
 
+        private readonly TranslatedText _dearAmountTranslate = new("{0} из {1}", "{0} of {1}");
+
         private void OnUserChosenChanged()
         {
             int chosenAmount = _herdExplorer.GetChosenDeerAmount();
+
+            _dearAmountText.text = string.Format(_dearAmountTranslate.GetText(), chosenAmount, _deerCapacity);
+
+            if (chosenAmount == _deerCapacity)
+                _dearAmountText.text = _dearAmountText.text.Color(Color.green);
 
             if (chosenAmount == _deerCapacity)
                 _herdExplorer.DisableAllActive();
