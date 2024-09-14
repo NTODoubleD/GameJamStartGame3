@@ -6,27 +6,26 @@ namespace Game.Gameplay.Interaction
 {
     public class PlayerInteractionObserver : MonoBehaviour
     {
-        [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
-
+        private SceneInteractionData _sceneInteractionData;
         private InteractiveObject _current;
-
         private GameInput _inputController;
 
         [Inject]
-        private void Init(GameInput inputController)
+        private void Init(GameInput inputController, SceneInteractionData data)
         {
             _inputController = inputController;
+            _sceneInteractionData = data;
         }
 
         private void OnEnable()
         {
-            _objectsWatcher.CurrentChanged += ChangeCurrentObject;
+            _sceneInteractionData.ObjectChanged += ChangeCurrentObject;
             _inputController.Player.Interact.started += InteractWithCurrentObject;
         }
 
         private void OnDisable()
         {
-            _objectsWatcher.CurrentChanged -= ChangeCurrentObject;
+            _sceneInteractionData.ObjectChanged -= ChangeCurrentObject;
             _inputController.Player.Interact.started -= InteractWithCurrentObject;
         }
 

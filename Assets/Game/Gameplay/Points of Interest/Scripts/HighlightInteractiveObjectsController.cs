@@ -1,21 +1,27 @@
 using UnityEngine;
+using Zenject;
 
 namespace Game.Gameplay.Interaction
 {
     public class HighlightInteractiveObjectsController : MonoBehaviour
     {
-        [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
-
+        private SceneInteractionData _sceneInteractionData;
         private InteractiveObject _lastObject;
+
+        [Inject]
+        private void Construct(SceneInteractionData data)
+        {
+            _sceneInteractionData = data;
+        }
 
         private void OnEnable()
         {
-            _objectsWatcher.CurrentChanged += OnCurrentObjectToInteractChanged;
+            _sceneInteractionData.ObjectChanged += OnCurrentObjectToInteractChanged;
         }
 
         private void OnDisable()
         {
-            _objectsWatcher.CurrentChanged -= OnCurrentObjectToInteractChanged;
+            _sceneInteractionData.ObjectChanged -= OnCurrentObjectToInteractChanged;
         }
 
         public void DisableCurrentHighlight()
