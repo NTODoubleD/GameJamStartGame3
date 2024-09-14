@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using DoubleDCore.Extensions;
 using DoubleDCore.Service;
+using DoubleDCore.TranslationTools.Base;
+using DoubleDCore.TranslationTools.Data;
 using Game.Gameplay.AI;
 using Game.Gameplay.Interaction;
 using Game.Gameplay.States;
@@ -18,8 +20,8 @@ namespace Game.Gameplay.Scripts
         [SerializeField] private InteractiveObjectsWatcher _interactiveObjectsWatcher;
         [SerializeField] private Transform _container;
 
-        [Space, SerializeField] private TextAsset _maleNames;
-        [SerializeField] private TextAsset _femaleNames;
+        [Space, SerializeField] private DeerNames _ru;
+        [SerializeField] private DeerNames _en;
 
         [Header("Start Spawn Settings")] [SerializeField]
         private int _startCount;
@@ -35,14 +37,17 @@ namespace Game.Gameplay.Scripts
         public event UnityAction<Deer> Created;
 
         [Inject]
-        private void Init(WalkablePlane walkablePlane, DiContainer container)
+        private void Init(WalkablePlane walkablePlane, DiContainer container, ILanguageProvider languageProvider)
         {
             _walkablePlane = walkablePlane;
 
             _diContainer = container;
 
-            _deerMaleNames = new List<string>(_maleNames.text.Split(",").Select(n => n.Trim()));
-            _deerFemaleNames = new List<string>(_femaleNames.text.Split(",").Select(n => n.Trim()));
+            var maleNames = languageProvider.GetLanguage() == LanguageType.Ru ? _ru.Male : _en.Male;
+            var femaleNames = languageProvider.GetLanguage() == LanguageType.Ru ? _ru.Female : _en.Female;
+
+            _deerMaleNames = new List<string>(maleNames.text.Split(",").Select(n => n.Trim()));
+            _deerFemaleNames = new List<string>(femaleNames.text.Split(",").Select(n => n.Trim()));
         }
 
         private void Start()
@@ -109,6 +114,13 @@ namespace Game.Gameplay.Scripts
             _usedNames.Add(randomName);
 
             return randomName;
+        }
+
+        [Serializable]
+        private class DeerNames
+        {
+            [field: SerializeField] public TextAsset Male { get; private set; }
+            [field: SerializeField] public TextAsset Female { get; private set; }
         }
     }
 }
