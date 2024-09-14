@@ -41,7 +41,8 @@ namespace Game.Gameplay
         public event UnityAction<Deer> Initialized;
 
         [Inject]
-        private void Init(IUIManager uiManager, WalkablePlane walkablePlane, DayCycleController dayCycleController, IResourcesContainer resourcesContainer, CharacterMover player)
+        private void Init(IUIManager uiManager, WalkablePlane walkablePlane, DayCycleController dayCycleController,
+            IResourcesContainer resourcesContainer, CharacterMover player)
         {
             _uiManager = uiManager;
             _walkablePlane = walkablePlane;
@@ -58,7 +59,7 @@ namespace Game.Gameplay
 
             if (deerInfo.Age == DeerAge.Adult)
                 _age = 2;
-            
+
             deerInfo.AgeDays = _age;
 
             _deerStateMachine = new StateMachine();
@@ -67,7 +68,7 @@ namespace Game.Gameplay
             var randomIdleConfig = _configsResource.GetConfig<RandomIdleConfig>();
 
             _deerStateMachine.BindState(new DeerIdleState(this, randomIdleConfig));
-            _deerStateMachine.BindState(new DeerEatsState());
+            _deerStateMachine.BindState(new DeerEatsState(_deerStateMachine));
             _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
             _deerStateMachine.BindState(new DeerCutState(gameObject));
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this, randomWalkConfig));
@@ -144,7 +145,7 @@ namespace Game.Gameplay
         {
             if (DeerInfo.Status == DeerStatus.Killed)
                 return;
-            
+
             _deerStateMachine.Enter<DeerIdleState>();
         }
 
@@ -152,7 +153,7 @@ namespace Game.Gameplay
         {
             if (DeerInfo.Status == DeerStatus.Killed)
                 return;
-            
+
             _deerStateMachine.Enter<DeerRandomWalkState>();
         }
 
@@ -160,8 +161,16 @@ namespace Game.Gameplay
         {
             if (DeerInfo.Status == DeerStatus.Killed)
                 return;
-            
+
             _deerStateMachine.Enter<DeerInteractedByPlayerState>();
+        }
+
+        public void EnterEatState()
+        {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+
+            _deerStateMachine.Enter<DeerEatsState>();
         }
 
         public void Die()
@@ -179,13 +188,13 @@ namespace Game.Gameplay
         }
 
         #endregion
-        
+
         #region STATE_HANDLERS
 
-        private void OnWalkCompleted() => 
+        private void OnWalkCompleted() =>
             _deerStateMachine.Enter<DeerIdleState>();
 
-        private void OnIdleCompleted() => 
+        private void OnIdleCompleted() =>
             _deerStateMachine.Enter<DeerRandomWalkState>();
 
         #endregion

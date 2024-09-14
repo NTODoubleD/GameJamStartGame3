@@ -99,8 +99,6 @@ namespace Game.UI.Pages
         {
             int chosenAmount = _herdExplorer.GetChosenDeerAmount();
 
-            Debug.Log(chosenAmount);
-
             if (chosenAmount == _deerCapacity)
                 _herdExplorer.DisableAllActive();
             else
