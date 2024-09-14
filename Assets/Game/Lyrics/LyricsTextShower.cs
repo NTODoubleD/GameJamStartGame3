@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Infrastructure;
 using Infrastructure.States;
 using TMPro;
@@ -16,7 +17,7 @@ namespace Game.Lyrics
         [SerializeField] private float _appearanceDuration = 1f;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private TMP_Text _textHolder;
-        [SerializeField] private GameObject _mouseIcon;
+        [SerializeField] private CanvasGroup _mouseIcon;
 
         private bool _isClick;
 
@@ -35,16 +36,19 @@ namespace Game.Lyrics
             foreach (var lyricsText in _texts)
             {
                 _textHolder.text = lyricsText;
-                _mouseIcon.SetActive(false);
+                _mouseIcon.alpha = 0;
 
                 StartCoroutine(AppearanceAnimation(_appearanceDuration));
 
                 await UniTask.WaitForSeconds(_appearanceDuration + 1f);
 
                 _isClick = false;
-                _mouseIcon.SetActive(true);
+
+                var tween = _mouseIcon.DOFade(1, _appearanceDuration);
 
                 await UniTask.WaitUntil(() => _isClick);
+                
+                tween.Kill();
             }
 
             if (_stateMachine.CurrentState is LyricsState lyricsState == false)

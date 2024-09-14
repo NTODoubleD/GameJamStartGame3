@@ -7,6 +7,7 @@ using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Game.UI.Pages
@@ -16,14 +17,20 @@ namespace Game.UI.Pages
         [SerializeField] private UIResourceProperty _prefab;
         [SerializeField] private Transform _resourcePropertyContainer;
 
+        [SerializeField] private HerdExplorer _herdExplorer;
+        [SerializeField] private Button _startSortieButton;
+
         [Space, SerializeField] private SleighSendController _sleighSendController;
-        [SerializeField] private UIResourceProperty _chooseDeerAmountSlider;
 
         [Space, SerializeField] private int _freePointsAmount = 4;
+
+        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
 
         private GameInput _inputController;
 
         private readonly List<UIResourceProperty> _resourceSliders = new();
+
+        private int _deerCapacity;
         private List<ItemInfo> _possibleResources;
 
         [Inject]
@@ -42,12 +49,19 @@ namespace Game.UI.Pages
             _inputController.Player.Disable();
             _inputController.UI.Enable();
 
+            _herdExplorer.Reset();
+            _herdExplorer.ChosenChanged += OnUserChosenChanged;
+
+            _startSortieButton.interactable = false;
+
             SetCanvasState(true);
         }
 
         public override void Close()
         {
             SetCanvasState(false);
+
+            _herdExplorer.ChosenChanged -= OnUserChosenChanged;
 
             _inputController.UI.Disable();
             _inputController.Player.Enable();
@@ -62,31 +76,48 @@ namespace Game.UI.Pages
             for (int i = 0; i < _possibleResources.Count; i++)
                 callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
 
-            Sended?.Invoke(callback, _chooseDeerAmountSlider.GetResourceAmount());
+            Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }
 
         public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
             int levelsToDistribute)
         {
-            _chooseDeerAmountSlider.Refresh("", Mathf.Min(deerCapacity, currentDeerCount));
-
-            var itemInfos = possibleResources as ItemInfo[] ?? possibleResources.ToArray();
+            _deerCapacity = deerCapacity;
+            _possibleResources = new List<ItemInfo>(possibleResources as ItemInfo[] ?? possibleResources.ToArray());
 
             if (_resourceSliders.Count <= 0)
-                CreateSliders(itemInfos);
+                CreateSliders();
 
             for (int i = 0; i < _resourceSliders.Count; i++)
             {
-                var item = itemInfos[i];
-                _resourceSliders[i].Refresh(item.Name,
-                    _sleighSendController.GetResourcesLimitLevel(item, _chooseDeerAmountSlider.GetResourceAmount()));
+                var item = _possibleResources[i];
+                _resourceSliders[i].Refresh(item.Name, _sleighSendController.GetResourcesLimitLevel(item, 0));
             }
         }
 
-        private void CreateSliders(IEnumerable<ItemInfo> possibleResources)
+        private void OnUserChosenChanged()
         {
-            _possibleResources = new List<ItemInfo>(possibleResources);
+            int chosenAmount = _herdExplorer.GetChosenDeerAmount();
 
+            Debug.Log(chosenAmount);
+
+            if (chosenAmount == _deerCapacity)
+                _herdExplorer.DisableAllActive();
+            else
+                _herdExplorer.UpdateDeerAvailability();
+
+            _startSortieButton.interactable = chosenAmount > 0;
+
+            for (int i = 0; i < _resourceSliders.Count; i++)
+            {
+                var item = _possibleResources[i];
+                _resourceSliders[i].Refresh(item.Name,
+                    _sleighSendController.GetResourcesLimitLevel(item, _herdExplorer.GetChosenDeerAmount()));
+            }
+        }
+
+        private void CreateSliders()
+        {
             foreach (var _ in _possibleResources)
             {
                 var inst =
@@ -112,8 +143,5 @@ namespace Game.UI.Pages
 
             randomResource.ChangeValue(randomResource.GetResourceAmount() - 1);
         }
-
-
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
     }
 }
