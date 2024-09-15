@@ -8,7 +8,7 @@ namespace DoubleDCore.TranslationTools
     {
         public LanguageType GetLanguage()
         {
-            return LanguageType.En;
+            return LanguageType.Ru;
             switch (Application.systemLanguage)
             {
                 case SystemLanguage.Russian:

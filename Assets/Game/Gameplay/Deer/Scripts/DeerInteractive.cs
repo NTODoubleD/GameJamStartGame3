@@ -17,7 +17,7 @@ namespace Game.Gameplay
             return new RadialMenuArgument()
             {
                 Name = StaticLanguageProvider.GetLanguage() == LanguageType.Ru
-                    ? _name
+                    ? _name + "\n" + _deer.DeerInfo.Name
                     : _enName + "\n" + _deer.DeerInfo.Name,
                 Buttons = _operations
             };
