@@ -117,7 +117,7 @@ namespace Game.UI.Pages
             else
                 _herdExplorer.UpdateDeerAvailability();
 
-            _startSortieButton.interactable = chosenAmount > 0;
+            UpdateSortieButtonState();
 
             for (int i = 0; i < _resourceSliders.Count; i++)
             {
@@ -125,6 +125,14 @@ namespace Game.UI.Pages
                 _resourceSliders[i].Refresh(item.Name,
                     _sleighSendController.GetResourcesLimitLevel(item, _herdExplorer.GetChosenDeerAmount()));
             }
+        }
+
+        private void UpdateSortieButtonState()
+        {
+            int chosenDeerAmount = _herdExplorer.GetChosenDeerAmount();
+            int chosenResourceAmount = _resourceSliders.Sum(r => r.GetResourceAmount());
+
+            _startSortieButton.interactable = chosenDeerAmount > 0 && chosenResourceAmount == _freePointsAmount;
         }
 
         private void CreateSliders()
@@ -142,6 +150,8 @@ namespace Game.UI.Pages
 
         private void SliderOnValueChanged(UIResourceProperty uiResourceProperty)
         {
+            UpdateSortieButtonState();
+            
             if (_resourceSliders.Sum(r => r.GetResourceAmount()) <= _freePointsAmount)
                 return;
 
