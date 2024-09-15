@@ -24,7 +24,7 @@ namespace Game.Gameplay.States
             
             Vector3 dir = playerXZ - deerXZ;
             _deer.forward = dir.normalized;
-            _player.forward = -dir.normalized;
+            // _player.forward = -dir.normalized;
         }
 
         public void Exit()

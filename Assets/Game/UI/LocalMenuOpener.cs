@@ -54,6 +54,9 @@ namespace Game.UI
             if (_timer.IsWorked || _isOpen == false)
                 return;
 
+            if (_uiManager.ContainsPage<TutorialPage>())
+                _uiManager.ClosePage<TutorialPage>();
+            
             _uiManager.ClosePage<LocalMenuPage>();
 
             _timer.Start(OpenDelay);
