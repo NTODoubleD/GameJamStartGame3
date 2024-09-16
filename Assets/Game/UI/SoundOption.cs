@@ -7,7 +7,6 @@ public class SoundOption : MonoBehaviour
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _soundSlider;
     [SerializeField] private AudioMixer _audioMixer;
-    [SerializeField] private AudioMixerGroup group;
 
     private const string MusicVolumeCode = "MusicVolume";
     private const string SoundVolumeCode = "SoundVolume";
