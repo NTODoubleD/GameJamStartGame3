@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deerImages:
   - Age: 1
-    Image: {fileID: 21300062, guid: 8a6abc2d357c9ec49a20e27b8907de9a, type: 3}
+    Image: {fileID: 21300000, guid: 0123d11dc2c2f46478799304e80a2d15, type: 3}
   - Age: 2
-    Image: {fileID: 21300000, guid: 6b43e43cecbcc924ca9ad9e332a8de15, type: 3}
+    Image: {fileID: 21300000, guid: f13a7191d75407c469c04a505a803bc1, type: 3}
   - Age: 3
-    Image: {fileID: 21300058, guid: 8a6abc2d357c9ec49a20e27b8907de9a, type: 3}
-  _maleFrameColor: {r: 0.12615699, g: 0.342114, b: 0.764151, a: 1}
-  _femaleFrameColor: {r: 1, g: 0.3915094, b: 0.95652467, a: 1}
+    Image: {fileID: 21300000, guid: 97aeb4bbc88c08447b541a8f7bc4345a, type: 3}
+  _maleFrameColor: {r: 0.2784314, g: 0.6509804, b: 0.8156863, a: 1}
+  _femaleFrameColor: {r: 1, g: 0.5411765, b: 0.72156864, a: 1}
