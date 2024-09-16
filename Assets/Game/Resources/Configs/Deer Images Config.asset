@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250d90612edc46e9a373766aec29ca16, type: 3}
+  m_Name: Deer Images Config
+  m_EditorClassIdentifier: 
+  _deerImages:
+  - Age: 1
+    Image: {fileID: 21300062, guid: 8a6abc2d357c9ec49a20e27b8907de9a, type: 3}
+  - Age: 2
+    Image: {fileID: 21300000, guid: 6b43e43cecbcc924ca9ad9e332a8de15, type: 3}
+  - Age: 3
+    Image: {fileID: 21300058, guid: 8a6abc2d357c9ec49a20e27b8907de9a, type: 3}
+  _maleFrameColor: {r: 0.12615699, g: 0.342114, b: 0.764151, a: 1}
+  _femaleFrameColor: {r: 1, g: 0.3915094, b: 0.95652467, a: 1}
