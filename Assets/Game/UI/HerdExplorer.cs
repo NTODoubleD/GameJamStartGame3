@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using DoubleDCore.Configuration;
+using DoubleDCore.GameResources.Base;
 using DoubleDCore.ObjectPooling;
 using Game.Gameplay;
 using Game.Gameplay.Scripts;
+using Game.Gameplay.Scripts.Configs;
 using UnityEngine;
 using Zenject;
 
@@ -21,10 +24,12 @@ namespace Game.UI
         private int _selectAmount;
 
         private Herd _herd;
+        private DeerImagesConfig _deerImagesConfig;
 
         [Inject]
-        private void Init(Herd herd)
+        private void Init(Herd herd, IResourcesContainer resourcesContainer)
         {
+            _deerImagesConfig = resourcesContainer.GetResource<ConfigsResource>().GetConfig<DeerImagesConfig>();
             _herd = herd;
         }
 
@@ -56,7 +61,7 @@ namespace Game.UI
                 var uiDeer = _pool.Get();
                 uiDeer.gameObject.SetActive(true);
 
-                uiDeer.Initialize(deer.DeerInfo);
+                uiDeer.Initialize(deer.DeerInfo, _deerImagesConfig);
                 _activeUI.Add(uiDeer);
 
                 uiDeer.Selected += OnSelected;
