@@ -123,6 +123,9 @@ namespace Game.Gameplay
 
         public void AddAge()
         {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+            
             _age++;
 
             DeerInfo.AgeDays = _age;
