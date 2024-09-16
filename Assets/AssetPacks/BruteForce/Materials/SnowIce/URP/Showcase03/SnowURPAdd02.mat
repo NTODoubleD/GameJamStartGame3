@@ -14,6 +14,7 @@ Material:
   m_ValidKeywords:
   - IS_ADD
   - USE_AL
+  - USE_DECAL
   - USE_FOG
   - USE_LS
   - USE_RT
@@ -347,7 +348,7 @@ Material:
     - _TransitionPower: 0.1
     - _TransitionScale: 0.65
     - _TransparencyValue: 1
-    - _USEDECAL: 0
+    - _USEDECAL: 1
     - _USEFOG: 1
     - _USEINTER: 0
     - _USELOW: 0
