@@ -13314,7 +13314,6 @@ MonoBehaviour:
   _musicSlider: {fileID: 846772390}
   _soundSlider: {fileID: 2102724533}
   _audioMixer: {fileID: 24100000, guid: df2a221f92fa1d34d9ce4ba6b54eea66, type: 2}
-  group: {fileID: 0}
 --- !u!114 &1167994884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23484,7 +23483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.1"
+  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23574,8 +23573,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text:
-    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.2.1"
-    _en: Alpha v0.2.1
+    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.2.2"
+    _en: Alpha v0.2.2
 --- !u!1 &2079946402
 GameObject:
   m_ObjectHideFlags: 0
