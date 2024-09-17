@@ -22,6 +22,15 @@ namespace Game.UI.Pages
         [SerializeField] private Image _deerFrame;
         [SerializeField] private TMP_InputField _name;
 
+        [Header("Status Sliders")] 
+        [SerializeField] private GameObject _sliders;
+        [SerializeField] private HungerSliderController _hungerSliderController;
+        [SerializeField] private HealthSliderController _healthSliderController;
+
+        [Header("Death Objects")] 
+        [SerializeField] private GameObject _deathCover;
+        [SerializeField] private TextMeshProUGUI _deathText;
+
         private GameInput _inputController;
         private DeerInfoPageArgument _context;
         private DeerImagesConfig _deerImagesConfig;
@@ -58,13 +67,10 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
         }
-
-        private readonly TranslatedText _nameTranslate = new("Имя", "Name");
-        private readonly TranslatedText _genderTranslate = new("Пол", "Gender");
-        private readonly TranslatedText _ageTranslate = new("Возраст", "Age");
-        private readonly TranslatedText _satietyTranslate = new("Сытость", "Satiety");
+        
         private readonly TranslatedText _statusTranslate = new("Статус", "Status");
         private readonly TranslatedText _dayTranslate = new("день", "day");
+        private readonly TranslatedText _deadTranslate = new("Мёртв", "Dead");
 
         public void Open(DeerInfoPageArgument context)
         {
@@ -81,9 +87,21 @@ namespace Game.UI.Pages
                 : _deerImagesConfig.MaleFrameColor;
 
             _name.text = $"{context.Info.Name}";
-            _text.text = $"{_ageTranslate.GetText()} - {context.Info.Age.ToText()} ({context.Info.AgeDays} {_dayTranslate.GetText()})\n" +
-                         $"{_satietyTranslate.GetText()} - {Mathf.RoundToInt(context.Info.HungerDegree * 100)}%\n" +
-                         $"{_statusTranslate.GetText()} - {context.Info.Status.ToText()}";
+            _text.text = $"{context.Info.Age.ToText()}\n ({context.Info.AgeDays} {_dayTranslate.GetText()})";
+            
+            if (context.Info.Status != DeerStatus.Killed)
+            {
+                _hungerSliderController.UpdateState(_context.Info);
+                _healthSliderController.UpdateState(_context.Info);
+                _sliders.SetActive(true);
+                _deathCover.SetActive(false);
+            }
+            else
+            {
+                _deathText.text = _deadTranslate.GetText();
+                _sliders.SetActive(false);
+                _deathCover.SetActive(true);
+            }
         }
 
         public override void Close()
