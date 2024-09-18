@@ -87,7 +87,7 @@ namespace Game.UI.Pages
                 : _deerImagesConfig.MaleFrameColor;
 
             _name.text = $"{context.Info.Name}";
-            _text.text = $"{context.Info.Age.ToText()}\n ({context.Info.AgeDays} {_dayTranslate.GetText()})";
+            _text.text = $"{context.Info.Age.ToText()} ({context.Info.AgeDays} {_dayTranslate.GetText()})";
             
             if (context.Info.Status != DeerStatus.Killed)
             {
