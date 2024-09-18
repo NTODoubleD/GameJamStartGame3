@@ -27,6 +27,11 @@ namespace Game.UI.Pages
 
         [Space, SerializeField] private int _freePointsAmount = 4;
         [SerializeField] private TMP_Text _dearAmountText;
+        [SerializeField] private TMP_Text _freePointText;
+        [SerializeField] private Button _continueClickButton;
+
+        [Space, SerializeField] private RectTransform _herdUI;
+        [SerializeField] private RectTransform _sliderUI;
 
         public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
 
@@ -50,13 +55,18 @@ namespace Game.UI.Pages
 
         public void Open()
         {
+            SwitchSubMenu(false);
+
             _inputController.Player.Disable();
             _inputController.UI.Enable();
+
+            _continueClickButton.onClick.AddListener(ContinueOnClicked);
 
             _herdExplorer.Reset();
             _herdExplorer.ChosenChanged += OnUserChosenChanged;
 
-            _startSortieButton.interactable = false;
+            foreach (var resourceProperty in _resourceSliders)
+                resourceProperty.ChangeValue(0);
 
             OnUserChosenChanged();
 
@@ -66,6 +76,8 @@ namespace Game.UI.Pages
         public override void Close()
         {
             SetCanvasState(false);
+
+            _continueClickButton.onClick.RemoveListener(ContinueOnClicked);
 
             _herdExplorer.ChosenChanged -= OnUserChosenChanged;
 
@@ -112,6 +124,9 @@ namespace Game.UI.Pages
             if (chosenAmount == _deerCapacity)
                 _dearAmountText.text = _dearAmountText.text.Color(Color.green);
 
+            if (chosenAmount == 0)
+                _dearAmountText.text = _dearAmountText.text.Color(Color.red);
+
             if (chosenAmount == _deerCapacity)
                 _herdExplorer.DisableAllActive();
             else
@@ -127,12 +142,25 @@ namespace Game.UI.Pages
             }
         }
 
+        private readonly TranslatedText _freePointTranslate = new("Свободные очки: {0}", "Free points: {0}");
+
         private void UpdateSortieButtonState()
         {
             int chosenDeerAmount = _herdExplorer.GetChosenDeerAmount();
             int chosenResourceAmount = _resourceSliders.Sum(r => r.GetResourceAmount());
 
-            _startSortieButton.interactable = chosenDeerAmount > 0 && chosenResourceAmount == _freePointsAmount;
+            bool completeDeerCondition = chosenDeerAmount > 0;
+            bool completeResourceCondition = chosenResourceAmount == _freePointsAmount;
+
+            _continueClickButton.interactable = completeDeerCondition;
+            _startSortieButton.interactable = completeDeerCondition && completeResourceCondition;
+
+            string freePointText =
+                string.Format(_freePointTranslate.GetText(), _freePointsAmount - chosenResourceAmount);
+
+            _freePointText.text = completeResourceCondition
+                ? freePointText.Color(Color.green)
+                : freePointText.Color(Color.red);
         }
 
         private void CreateSliders()
@@ -151,7 +179,7 @@ namespace Game.UI.Pages
         private void SliderOnValueChanged(UIResourceProperty uiResourceProperty)
         {
             UpdateSortieButtonState();
-            
+
             if (_resourceSliders.Sum(r => r.GetResourceAmount()) <= _freePointsAmount)
                 return;
 
@@ -163,6 +191,20 @@ namespace Game.UI.Pages
             var randomResource = temp.Choose();
 
             randomResource.ChangeValue(randomResource.GetResourceAmount() - 1);
+        }
+
+        private void ContinueOnClicked()
+        {
+            SwitchSubMenu(true);
+        }
+
+        private void SwitchSubMenu(bool isSlider)
+        {
+            _herdUI.gameObject.SetActive(isSlider == false);
+            _continueClickButton.gameObject.SetActive(isSlider == false);
+
+            _sliderUI.gameObject.SetActive(isSlider);
+            _startSortieButton.gameObject.SetActive(isSlider);
         }
     }
 }
