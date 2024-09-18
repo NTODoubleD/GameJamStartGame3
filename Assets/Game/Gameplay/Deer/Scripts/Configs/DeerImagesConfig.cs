@@ -14,15 +14,16 @@ namespace Game.Gameplay.Scripts.Configs
         public Color MaleFrameColor => _maleFrameColor;
         public Color FemaleFrameColor => _femaleFrameColor;
 
-        public Sprite GetDeerImage(DeerAge age)
+        public Sprite GetDeerImage(DeerAge age, GenderType gender)
         {
-            return _deerImages.First(x => x.Age == age).Image;
+            return _deerImages.First(x => x.Age == age && x.Gender == gender).Image;
         }
         
         [Serializable]
         private struct DeerImage
         {
             public DeerAge Age;
+            public GenderType Gender;
             public Sprite Image;
         }
     }

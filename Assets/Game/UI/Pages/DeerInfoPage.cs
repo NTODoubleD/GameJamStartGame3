@@ -81,7 +81,7 @@ namespace Game.UI.Pages
 
             SetCanvasState(true);
 
-            _deerIcon.sprite = _deerImagesConfig.GetDeerImage(context.Info.Age);
+            _deerIcon.sprite = _deerImagesConfig.GetDeerImage(context.Info.Age, context.Info.Gender);
             _deerFrame.color = context.Info.Gender == GenderType.Female
                 ? _deerImagesConfig.FemaleFrameColor
                 : _deerImagesConfig.MaleFrameColor;

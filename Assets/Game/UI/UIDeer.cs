@@ -30,7 +30,7 @@ namespace Game.UI
             _deerImagesConfig = imagesConfig;
             _deer = deer;
             
-            _image.sprite = _deerImagesConfig.GetDeerImage(deer.Age);
+            _image.sprite = _deerImagesConfig.GetDeerImage(deer.Age, deer.Gender);
             _frame.color = _deer.Gender == GenderType.Female
                 ? _deerImagesConfig.FemaleFrameColor
                 : _deerImagesConfig.MaleFrameColor;

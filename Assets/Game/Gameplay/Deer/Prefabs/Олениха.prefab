@@ -255,8 +255,8 @@ MonoBehaviour:
           m_CallState: 2
     HasCondition: 1
     ShowCondition: {fileID: 2768385546236646945}
-  - Name: "\u0423\u0431\u0438\u0442\u044C"
-    EnName: Kill
+  - Name: "\u0417\u0430\u0431\u0438\u0442\u044C"
+    EnName: Dispatch
     Image: {fileID: 0}
     Action:
       m_PersistentCalls:
@@ -288,8 +288,8 @@ MonoBehaviour:
           m_CallState: 2
     HasCondition: 1
     ShowCondition: {fileID: 5653760184292125144}
-  - Name: "\u0420\u0430\u0437\u0434\u0435\u043B\u0430\u0442\u044C"
-    EnName: Butcher
+  - Name: "\u041E\u0441\u0432\u0435\u0436\u0435\u0432\u0430\u0442\u044C"
+    EnName: Skin
     Image: {fileID: 0}
     Action:
       m_PersistentCalls:

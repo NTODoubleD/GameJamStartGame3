@@ -14,10 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deerImages:
   - Age: 1
-    Image: {fileID: 21300000, guid: 0123d11dc2c2f46478799304e80a2d15, type: 3}
+    Gender: 1
+    Image: {fileID: 21300000, guid: 5c2e9ae883b05634d91f3e016e6a70da, type: 3}
+  - Age: 1
+    Gender: 2
+    Image: {fileID: 21300000, guid: e2adcbe92f596704e9c89a306f0d99db, type: 3}
   - Age: 2
-    Image: {fileID: 21300000, guid: f13a7191d75407c469c04a505a803bc1, type: 3}
+    Gender: 1
+    Image: {fileID: 21300000, guid: a1905811f80ab634ab7d8a5f64273515, type: 3}
+  - Age: 2
+    Gender: 2
+    Image: {fileID: 21300000, guid: 572ce87fe04fedd4ca8f8d12441a81d3, type: 3}
   - Age: 3
-    Image: {fileID: 21300000, guid: 97aeb4bbc88c08447b541a8f7bc4345a, type: 3}
+    Gender: 1
+    Image: {fileID: 21300000, guid: 25e9ed96a7853944e90e554c31f263b3, type: 3}
+  - Age: 3
+    Gender: 2
+    Image: {fileID: 21300000, guid: 31632a28d7ccb454597a115304df3421, type: 3}
   _maleFrameColor: {r: 0.2784314, g: 0.6509804, b: 0.8156863, a: 1}
   _femaleFrameColor: {r: 1, g: 0.5411765, b: 0.72156864, a: 1}

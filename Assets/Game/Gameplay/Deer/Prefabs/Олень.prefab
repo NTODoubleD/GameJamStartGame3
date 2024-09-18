@@ -721,7 +721,7 @@ MonoBehaviour:
   _normalScale: {x: 1, y: 1, z: 1}
   _youngScale: {x: 0.5, y: 0.5, z: 0.5}
   _meshRenderer: {fileID: 7005009545259424311}
-  _dedMaterial: {fileID: 2100000, guid: b12faf2485ec672409c4b555adcfc068, type: 2}
+  _dedMaterial: {fileID: 2100000, guid: 07dff52bcfebc7347a3d283c6ad19f98, type: 2}
   _maleMeshingInfo: []
   _femaleMeshingInfo: []
 --- !u!195 &8038603526445538412
@@ -851,6 +851,16 @@ PrefabInstance:
       objectReference: {fileID: 4751893639737140125}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
+      propertyPath: _operations.Array.data[3].Name
+      value: "\u0417\u0430\u0431\u0438\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[4].Name
+      value: "\u041E\u0441\u0432\u0435\u0436\u0435\u0432\u0430\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
       propertyPath: _operations.Array.data[0].EnName
       value: Exit
       objectReference: {fileID: 0}
@@ -867,12 +877,12 @@ PrefabInstance:
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
       propertyPath: _operations.Array.data[3].EnName
-      value: Kill
+      value: Dispatch
       objectReference: {fileID: 0}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
       propertyPath: _operations.Array.data[4].EnName
-      value: Butcher
+      value: Skin
       objectReference: {fileID: 0}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
