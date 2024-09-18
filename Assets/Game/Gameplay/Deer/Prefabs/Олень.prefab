@@ -770,6 +770,31 @@ PrefabInstance:
       objectReference: {fileID: 4924400245990448069}
     - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
         type: 3}
+      propertyPath: _operations.Array.data[1].Name
+      value: "\u0421\u0432\u0435\u0434\u0435\u043D\u0438\u044F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[2].Name
+      value: "\u041A\u043E\u0440\u043C\u0438\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[4].Name
+      value: "\u0421\u043D\u044F\u0442\u044C \u0448\u043A\u0443\u0440\u0443"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[1].EnName
+      value: Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
+      propertyPath: _operations.Array.data[4].EnName
+      value: To skin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3272466227113204634, guid: f6ce9b6b732fcc34f91e2e2cfba0be33,
+        type: 3}
       propertyPath: _operations.Array.data[2].ShowCondition
       value: 
       objectReference: {fileID: 6602939864787810870}
