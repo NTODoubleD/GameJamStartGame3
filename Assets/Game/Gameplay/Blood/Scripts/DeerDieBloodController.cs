@@ -17,28 +17,33 @@ namespace Game.Gameplay.Blood.Scripts
         private DeerFabric _fabric;
         private DayCycleController _dayCycleController;
         private DeerBloodConfig _config;
+        private BloodOption _bloodOption;
 
         private readonly List<GameObject> _bloodToClear = new();
-        private readonly Dictionary<Deer, GameObject> _deersBlood = new();
+        private readonly Dictionary<Deer, BloodAppearAnimation> _deersBlood = new();
         
         [Inject]
-        private void Init(DeerFabric deerFabric, DayCycleController dayCycleController, IResourcesContainer resourcesContainer)
+        private void Init(DeerFabric deerFabric, DayCycleController dayCycleController,
+            IResourcesContainer resourcesContainer, BloodOption bloodOption)
         {
             _fabric = deerFabric;
             _dayCycleController = dayCycleController;
             _config = resourcesContainer.GetResource<ConfigsResource>().GetConfig<DeerBloodConfig>();
+            _bloodOption = bloodOption;
         }
 
         private void OnEnable()
         {
             _fabric.Created += OnDeerCreated;
             _dayCycleController.DayEnded += ClearBlood;
+            _bloodOption.ValueChanged += OnBloodActiveChanged;
         }
 
         private void OnDisable()
         {
             _fabric.Created -= OnDeerCreated;
             _dayCycleController.DayEnded -= ClearBlood;
+            _bloodOption.ValueChanged -= OnBloodActiveChanged;
         }
 
         private void OnDeerCreated(Deer deer)
@@ -52,7 +57,14 @@ namespace Game.Gameplay.Blood.Scripts
             deer.Killed -= OnDeerKilled;
             
             Vector3 bloodPosition = deer.transform.position;
-            GameObject bloodPrefab = Instantiate(_config.BloodDecalPrefab, _bloodRoot);
+            BloodAppearAnimation bloodPrefab = Instantiate(_config.BloodDecalPrefab, _bloodRoot);
+            bool isBloodActive = _bloodOption.IsActive;
+            
+            bloodPrefab.gameObject.SetActive(isBloodActive);
+            
+            if (isBloodActive)
+                bloodPrefab.StartAnimation();
+                
             
             bloodPosition.y = bloodPrefab.transform.position.y;
             bloodPrefab.transform.position = bloodPosition;
@@ -64,9 +76,9 @@ namespace Game.Gameplay.Blood.Scripts
         {
             deer.Cutted -= OnDeerCutted;
             
-            if (_deersBlood.TryGetValue(deer, out GameObject blood))
+            if (_deersBlood.TryGetValue(deer, out BloodAppearAnimation blood))
             {
-                _bloodToClear.Add(blood);
+                _bloodToClear.Add(blood.gameObject);
                 _deersBlood.Remove(deer);
             }
         }
@@ -77,6 +89,12 @@ namespace Game.Gameplay.Blood.Scripts
                 Destroy(_bloodToClear[i]);
             
             _bloodToClear.Clear();
+        }
+
+        private void OnBloodActiveChanged(bool isActive)
+        {
+            foreach (var blood in _deersBlood.Values)
+                blood.gameObject.SetActive(isActive);
         }
     }
 }
