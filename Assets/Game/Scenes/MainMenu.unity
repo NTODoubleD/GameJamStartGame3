@@ -665,6 +665,11 @@ PrefabInstance:
       propertyPath: _deer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: Deer
@@ -1146,6 +1151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _deer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
@@ -2243,6 +2253,11 @@ PrefabInstance:
       propertyPath: _deer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: Deer
@@ -2574,6 +2589,11 @@ PrefabInstance:
       propertyPath: _deer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: Deer
@@ -2721,6 +2741,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _deer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
@@ -3049,6 +3074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _deer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
@@ -5263,6 +5293,11 @@ PrefabInstance:
       propertyPath: _deer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8038603526445538412, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: Deer
@@ -6266,6 +6301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241730390533437673, guid: febebf028b2caf145b5b663d3349fa56,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8191969305097345798, guid: febebf028b2caf145b5b663d3349fa56,
         type: 3}
