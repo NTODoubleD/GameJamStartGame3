@@ -11,14 +11,17 @@ using Game.Gameplay.States;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Scripts
 {
     public class DeerFabric : MonoService
     {
-        [SerializeField] private Deer _prefab;
+        [SerializeField] private DeerPrefabSelector _prefabSelector;
         [SerializeField] private InteractiveObjectsWatcher _interactiveObjectsWatcher;
         [SerializeField] private Transform _container;
+
+        [Space, SerializeField] private Material[] _deerMaterials;
 
         [Space, SerializeField] private DeerNames _ru;
         [SerializeField] private DeerNames _en;
@@ -58,13 +61,14 @@ namespace Game.Gameplay.Scripts
 
         public void CreateDeer(DeerInfo deerInfo)
         {
-            var inst = _diContainer.InstantiatePrefabForComponent<Deer>(_prefab,
+            var inst = _diContainer.InstantiatePrefabForComponent<Deer>(_prefabSelector.GetPrefab(deerInfo),
                 _walkablePlane.GetRandomPointOnNavMesh(),
                 Quaternion.identity,
                 _container);
 
             _interactiveObjectsWatcher.AddObjectToWatch(inst.DeerInteractive);
             inst.Initialize<DeerRandomWalkState>(deerInfo);
+            inst.DeerMeshing.SetMaterial(_deerMaterials[Random.Range(0, _deerMaterials.Length)]);
 
             Created?.Invoke(inst);
         }

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Game.Gameplay
 {
-    public class DeerInteractive : SimpleInteractiveObject
+    public class DeerInteractive : MultipleInteractiveObject
     {
         [SerializeField] private Deer _deer;
 

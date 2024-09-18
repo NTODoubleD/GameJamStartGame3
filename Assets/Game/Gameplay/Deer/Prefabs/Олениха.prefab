@@ -378,7 +378,8 @@ MonoBehaviour:
           m_CallState: 2
     HasCondition: 1
     ShowCondition: {fileID: 4453041742389616488}
-  _outline: {fileID: 1921813294953060070}
+  _outlines:
+  - {fileID: 1921813294953060070}
   _deer: {fileID: 4152291097108346834}
   Interacted:
     m_PersistentCalls:
@@ -4026,6 +4027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274127858745415287, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: _horns
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3274127858745415287, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}

@@ -25,9 +25,14 @@ namespace Game.Gameplay
         [SerializeField] private DeerAnimatorController _animatorController;
         [SerializeField] private DeerMeshing _deerMeshing;
 
+        [Header("Movement Speed")] 
+        [SerializeField] private float _normalSpeed;
+        [SerializeField] private float _childSpeed;
+
         public DeerInfo DeerInfo { get; private set; }
         public DeerInteractive DeerInteractive => _deerInteractive;
         public DeerAnimatorController AnimatorController => _animatorController;
+        public DeerMeshing DeerMeshing => _deerMeshing;
 
         private IUIManager _uiManager;
 
@@ -58,6 +63,8 @@ namespace Game.Gameplay
         {
             DeerInfo = deerInfo;
             _deerMeshing.ChangeMesh(deerInfo.Age, deerInfo.Gender);
+
+            _navMeshAgent.speed = deerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
 
             if (deerInfo.Age == DeerAge.Adult)
                 _age = 2;
@@ -142,6 +149,7 @@ namespace Game.Gameplay
 
             DeerInfo.Age = _ageTable[_age];
             _deerMeshing.ChangeMesh(DeerInfo.Age, DeerInfo.Gender);
+            _navMeshAgent.speed = DeerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
         }
 
         #region STATE_METHODS

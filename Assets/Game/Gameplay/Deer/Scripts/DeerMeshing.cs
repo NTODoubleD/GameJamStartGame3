@@ -10,7 +10,9 @@ namespace Game.Gameplay.Scripts
         [SerializeField] private Vector3 _youngScale;
 
         [SerializeField] private SkinnedMeshRenderer _meshRenderer;
+        [SerializeField] private MeshRenderer _hornsRenderer;
         [SerializeField] private Material _dedMaterial;
+        [SerializeField] private GameObject _horns;
 
         [Space, SerializeField] private List<DeerMeshingInfo> _maleMeshingInfo;
         [SerializeField] private List<DeerMeshingInfo> _femaleMeshingInfo;
@@ -30,9 +32,20 @@ namespace Game.Gameplay.Scripts
                 _meshingTable[GenderType.Female].Add(meshingInfo.Age, meshingInfo);
         }
 
+        public void SetMaterial(Material mat)
+        {
+            _meshRenderer.material = mat;
+            
+            if (_hornsRenderer)
+                _hornsRenderer.material = mat;
+        }
+
         public void ChangeMesh(DeerAge deerAge, GenderType genderType)
         {
             transform.localScale = deerAge == DeerAge.Young ? _youngScale : _normalScale;
+            
+            if (genderType == GenderType.Male)
+                _horns.SetActive(deerAge != DeerAge.Young);
 
             if (deerAge == DeerAge.Old)
                 _meshRenderer.material = _dedMaterial;

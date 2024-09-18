@@ -5406,7 +5406,7 @@ PrefabInstance:
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Name
-      value: '---TEST WORLD---'
+      value: ---TEST WORLD---
       objectReference: {fileID: 0}
     - target: {fileID: 1582540542896697077, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -5549,6 +5549,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2064881103542954692, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _characterMover
+      value: 
+      objectReference: {fileID: 380015397}
     - target: {fileID: 2074924103058222134, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Enabled
@@ -6507,6 +6512,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5369045503233044636, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _characterMover
+      value: 
+      objectReference: {fileID: 380015397}
     - target: {fileID: 5376232560934252452, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _rangeDistance
@@ -6696,6 +6706,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
+      propertyPath: _deerMaterials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
       propertyPath: _en.<Male>k__BackingField
       value: 
       objectReference: {fileID: 4900000, guid: 8660429ea10972d49940f14bb15fd512, type: 3}
@@ -6714,6 +6729,43 @@ PrefabInstance:
       propertyPath: _ru.<Female>k__BackingField
       value: 
       objectReference: {fileID: 4900000, guid: 17412e6c48461bd48979a75e10cdfa4a, type: 3}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _deerMaterials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c9fc0b8834aedf4d885452fc240d9ce, type: 2}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _deerMaterials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37c40a431290f6b47af36d2d15b377ac, type: 2}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _prefabSelector._prefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _prefabSelector._prefabs.Array.data[0].Gender
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _prefabSelector._prefabs.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 4924400245990448069, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _prefabSelector._prefabs.Array.data[1].Gender
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662980169789879462, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _prefabSelector._prefabs.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 4152291097108346834, guid: be533f1b6d4562044bd7d5e9ae4a85fe,
+        type: 3}
     - target: {fileID: 6667638573962445099, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_text
@@ -8187,7 +8239,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 54276239}
   m_HandleRect: {fileID: 54276238}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
