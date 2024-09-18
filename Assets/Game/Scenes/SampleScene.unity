@@ -296,6 +296,7 @@ MonoBehaviour:
   - {fileID: 1890921515}
   - {fileID: 1890921514}
   - {fileID: 1442707020}
+  - {fileID: 1721345985}
 --- !u!114 &69701618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +571,37 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &132147877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132147878}
+  m_Layer: 0
+  m_Name: Blood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &132147878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132147877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1304115991}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &144831015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2668,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!4 &1304115991 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4452397543049347936, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1338536535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5710980338622683042, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -3304,6 +3342,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9805ee957cfff34f885b5e2e094acc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1721345983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721345984}
+  - component: {fileID: 1721345985}
+  m_Layer: 0
+  m_Name: '[BLOOD SYSTEM]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721345984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721345983}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752491430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1721345985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721345983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ebe9913b254744b08d105620ef2dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodRoot: {fileID: 132147878}
 --- !u!114 &1759453400 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 599874437397709934, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -6197,6 +6280,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 601709477}
+    - targetCorrespondingSourceObject: {fileID: 4452397543049347936, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 132147878}
     - targetCorrespondingSourceObject: {fileID: 5013334146976893858, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: 0
@@ -6229,6 +6316,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1400754683}
+    - targetCorrespondingSourceObject: {fileID: 1367227022721814767, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1721345984}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5068165435231610944, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}

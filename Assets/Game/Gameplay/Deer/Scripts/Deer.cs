@@ -38,6 +38,8 @@ namespace Game.Gameplay
         private Transform _player;
 
         public event UnityAction<Deer> Died;
+        public event UnityAction<Deer> Killed;
+        public event UnityAction<Deer> Cutted; 
         public event UnityAction<Deer> Initialized;
 
         [Inject]
@@ -185,8 +187,15 @@ namespace Game.Gameplay
             Died?.Invoke(this);
         }
 
+        public void Kill()
+        {
+            Killed?.Invoke(this);
+            Die();
+        }
+
         public void Cut()
         {
+            Cutted?.Invoke(this);
             _deerStateMachine.Enter<DeerCutState>();
         }
 
