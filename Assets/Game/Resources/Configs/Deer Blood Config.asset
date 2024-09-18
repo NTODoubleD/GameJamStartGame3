@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baddff2e2c10422db2f87416e82e86dd, type: 3}
   m_Name: Deer Blood Config
   m_EditorClassIdentifier: 
-  _bloodDecalPrefab: {fileID: 1739739316549562554, guid: be9b17e5d5a61984c87903736f26a7f3,
+  _bloodDecalPrefab: {fileID: 6713135332724197050, guid: be9b17e5d5a61984c87903736f26a7f3,
     type: 3}

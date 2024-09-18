@@ -10,7 +10,7 @@ namespace Game.Gameplay.Blood.Scripts
         [SerializeField] private float _duration = 0.2f;
         [SerializeField] private Ease _ease = Ease.Linear;
 
-        private void OnEnable()
+        public void StartAnimation()
         {
             Vector3 targetSize = _decalProjector.size;
             _decalProjector.size = new Vector3(0, 0, _decalProjector.size.z);
