@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +12,16 @@ namespace Game.UI
         [SerializeField] private Image _highValueIcon;
         [SerializeField] private Slider _slider;
         [SerializeField] private Image _sliderImage;
-        
-        [Header("Slider Colors")]
-        [SerializeField] private Color _badColor = Color.red;
-        [SerializeField] private Color _goodColor = Color.green;
+
+        [Header("Slider Colors")] 
+        [SerializeField]
+        private SliderColor[] _colors = new[]
+        {
+            new SliderColor(0, Color.clear),
+            new SliderColor(1, Color.clear),
+            new SliderColor(2, Color.clear),
+            new SliderColor(3, Color.clear),
+        };
 
         public void SetTitle(string title)
         {
@@ -23,12 +30,24 @@ namespace Game.UI
 
         public void SetSliderState(float value)
         {
-            Debug.Log($"Slider = {value} Color = {value}");
-            
             _slider.value = Mathf.Lerp(_slider.minValue, _slider.maxValue, value);
-            
-            Color newColor = Color.Lerp(_badColor, _goodColor, value);
-            _sliderImage.color = newColor;
+
+            foreach (var color in _colors)
+                if ((int)_slider.value == color.Value)
+                    _sliderImage.color = color.Color;
+        }
+
+        [Serializable]
+        private struct SliderColor
+        {
+            public int Value;
+            public Color Color;
+
+            public SliderColor(int val, Color color)
+            {
+                Value = val;
+                Color = color;
+            }
         }
     }
 }
