@@ -26,7 +26,7 @@ namespace Game.Gameplay.Deers
 
         private void ApplyKill(Deer deer)
         {
-            deer.Die();
+            deer.Kill();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
 using DoubleDCore.ObjectPooling;
@@ -56,16 +58,9 @@ namespace Game.UI
 
             _activeUI.Clear();
 
-            foreach (var deer in _herd.CurrentHerd)
+            foreach (var deer in _herd.CurrentHerd.OrderBy(x => x.DeerInfo, new DeerAgeComparer()))
             {
-                var uiDeer = _pool.Get();
-                uiDeer.gameObject.SetActive(true);
-
-                uiDeer.Initialize(deer.DeerInfo, _deerImagesConfig);
-                _activeUI.Add(uiDeer);
-
-                uiDeer.Selected += OnSelected;
-                uiDeer.Deselected += OnDeselected;
+                InitializeUIDeer(deer);
             }
 
             foreach (var uiDeer in _activeUI)
@@ -77,6 +72,18 @@ namespace Game.UI
             _selectAmount = 0;
 
             ChosenChanged?.Invoke();
+        }
+
+        private void InitializeUIDeer(Deer deer)
+        {
+            var uiDeer = _pool.Get();
+            uiDeer.gameObject.SetActive(true);
+
+            uiDeer.Initialize(deer.DeerInfo, _deerImagesConfig);
+            _activeUI.Add(uiDeer);
+
+            uiDeer.Selected += OnSelected;
+            uiDeer.Deselected += OnDeselected;
         }
 
         public void DisableAllActive()
@@ -111,6 +118,28 @@ namespace Game.UI
             _selectAmount--;
 
             ChosenChanged?.Invoke();
+        }
+        
+        private class DeerAgeComparer : IComparer<DeerInfo>
+        {
+            public int Compare(DeerInfo x, DeerInfo y)
+            {
+                var nameComparer = new CaseInsensitiveComparer();
+                
+                if (x.Age == y.Age)
+                    return nameComparer.Compare(x.Name, y.Name);
+
+                if (x.Age == DeerAge.Adult)
+                    return -1;
+
+                if (y.Age == DeerAge.Adult)
+                    return 1;
+
+                if (x.Age > y.Age)
+                    return -1;
+                
+                return 1;
+            }
         }
     }
 }
