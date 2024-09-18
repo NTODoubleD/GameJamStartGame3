@@ -54,7 +54,7 @@ public class SoundsManager : MonoBehaviour
     }
 
     public void PlayFootstepSound(Vector3 pos) =>
-        PlaySound(0, pos);
+        PlaySound(0, pos, destroyed: true);
 
     public void PlayMeat1(Vector3 pos) =>
         PlaySound(1, pos);
