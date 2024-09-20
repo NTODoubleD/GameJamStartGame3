@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DoubleDCore.Extensions;
 using DoubleDCore.QuestsSystem.Base;
-using DoubleDCore.QuestsSystem.Data;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Quests.Base;
@@ -87,13 +86,13 @@ namespace Game.UI.Pages
 
             foreach (var subTask in quest.SubTasks)
             {
-                string text = $"- {subTask.TaskName}";
+                string text = $"• {subTask.TaskName}";
 
                 if (subTask.MaxProgress != 1)
                     text += $" — {subTask.Progress}/{subTask.MaxProgress}";
 
                 if (subTask.Progress >= subTask.MaxProgress)
-                    text = text.Color(Color.green);
+                    text = text.Color("00B1FF");
 
                 subTaskTexts.Add(text);
             }
