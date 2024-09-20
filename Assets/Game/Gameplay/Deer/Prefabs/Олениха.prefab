@@ -196,18 +196,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 4152291097108346834}
-          m_TargetAssemblyTypeName: Game.Gameplay.Deer, Assembly-CSharp
-          m_MethodName: EnterIdleState
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     HasCondition: 0
     ShowCondition: {fileID: 0}
   - Name: "\u041A\u043E\u0440\u043C\u0438\u0442\u044C"
@@ -4038,6 +4026,11 @@ PrefabInstance:
       propertyPath: _meshRenderer
       value: 
       objectReference: {fileID: 7997483441503458113}
+    - target: {fileID: 3274127858745415287, guid: d2c863a120e954343a510518f0fcb60b,
+        type: 3}
+      propertyPath: _hornsRenderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3343996879242704543, guid: d2c863a120e954343a510518f0fcb60b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

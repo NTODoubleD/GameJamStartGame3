@@ -64,7 +64,6 @@ namespace Game.Gameplay.Blood.Scripts
             
             if (isBloodActive)
                 bloodPrefab.StartAnimation();
-                
             
             bloodPosition.y = bloodPrefab.transform.position.y;
             bloodPrefab.transform.position = bloodPosition;
@@ -95,6 +94,9 @@ namespace Game.Gameplay.Blood.Scripts
         {
             foreach (var blood in _deersBlood.Values)
                 blood.gameObject.SetActive(isActive);
+
+            foreach (var bloodToClear in _bloodToClear)
+                bloodToClear.SetActive(isActive);
         }
     }
 }
