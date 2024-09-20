@@ -25,7 +25,7 @@ namespace DoubleDCore.QuestsSystem
 
         public void IssueQuest(IQuest quest)
         {
-            if (_questList.TryAdd(quest.ID, quest) == false)
+            if (_questList.ContainsKey(quest.ID) == false)
                 return;
 
             if (quest.Status is QuestStatus.Completed or QuestStatus.Failed or QuestStatus.Blocked)
