@@ -6,7 +6,9 @@ namespace Game.Gameplay.Scripts.Configs
     public class RandomWalkConfig : ScriptableObject
     {
         [SerializeField] private float _distanceAccuracy = .1f;
+        [SerializeField] private float _maxWalkDuration = 13;
 
         public float DistanceAccuracy => _distanceAccuracy;
+        public float MaxWalkDuration => _maxWalkDuration;
     }
 }

@@ -50,14 +50,18 @@ namespace Game.Gameplay.States
 
         private IEnumerator StartRandomWalk()
         {
+            float passedTime = 0;
             _agent.destination = _walkablePlane.GetRandomPointOnNavMesh();
 
             while (_agent.pathPending)
                 yield return null;
-            
-            while (_agent.remainingDistance > _config.DistanceAccuracy)
+
+            while (_agent.remainingDistance > _config.DistanceAccuracy && passedTime < _config.MaxWalkDuration)
+            {
                 yield return null;
-            
+                passedTime += Time.deltaTime;
+            }
+
             Completed?.Invoke();
             Exit();
         }
