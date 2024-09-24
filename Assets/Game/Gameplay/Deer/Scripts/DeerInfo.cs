@@ -11,11 +11,10 @@ namespace Game.Gameplay
         public DeerAge Age;
         public int AgeDays;
         public bool IsDead;
+        public int DieDay;
 
         private float _hungerDegree;
         private DeerStatus _status;
-
-
         
         public float HungerDegree
         {
