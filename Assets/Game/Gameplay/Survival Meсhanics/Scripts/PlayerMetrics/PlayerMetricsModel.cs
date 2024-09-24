@@ -1,8 +1,7 @@
 ﻿using System;
 using Game.Gameplay.Survival_Metrics.Configs;
-using UnityEngine;
 
-namespace Game.Gameplay.Survival_Metrics
+namespace Game.Gameplay.SurvivalMechanics
 {
     public class PlayerMetricsModel
     {
@@ -26,7 +25,11 @@ namespace Game.Gameplay.Survival_Metrics
             get => _health;
             set
             {
-                _health = value;
+                if (value < 0)
+                    _health = 0;
+                else
+                    _health = value;
+                
                 HealthChanged?.Invoke(_health);
             }
         }
@@ -36,7 +39,11 @@ namespace Game.Gameplay.Survival_Metrics
             get => _heatResistance;
             set
             {
-                _heatResistance = value;
+                if (value < 0)
+                    _heatResistance = 0;
+                else
+                    _heatResistance = value;
+                
                 HeatResistanceChanged?.Invoke(_heatResistance);
             }
         }
@@ -46,7 +53,11 @@ namespace Game.Gameplay.Survival_Metrics
             get => _hunger;
             set
             {
-                _hunger = value;
+                if (value < 0)
+                    _hunger = 0;
+                else
+                    _hunger = value;
+                
                 HungerChanged?.Invoke(_hunger);
             }
         }
@@ -56,7 +67,11 @@ namespace Game.Gameplay.Survival_Metrics
             get => _thirst;
             set
             {
-                _thirst = value;
+                if (value < 0)
+                    _thirst = 0;
+                else
+                    _thirst = value;
+                
                 ThirstChanged?.Invoke(_thirst);
             }
         }
@@ -66,7 +81,11 @@ namespace Game.Gameplay.Survival_Metrics
             get => _endurance;
             set
             {
-                _endurance = value;
+                if (value < 0)
+                    _endurance = 0;
+                else
+                    _endurance = value;
+                
                 EnduranceChanged?.Invoke(_endurance);
             }
         }
