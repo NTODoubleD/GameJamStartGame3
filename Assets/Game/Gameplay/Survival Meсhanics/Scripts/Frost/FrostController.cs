@@ -9,6 +9,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private readonly FrostConfig _frostConfig;
 
         private CancellationTokenSource _cts;
+        private bool _isEffectEnabled = false;
 
         public FrostController(PlayerMetricsModel model, FrostConfig frostConfig)
         {
@@ -18,8 +19,10 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
 
         public void Enable(FrostLevel effectLevel)
         {
-            Disable();
-            
+            if (_isEffectEnabled)
+                Disable();
+
+            _isEffectEnabled = true;
             _cts = new CancellationTokenSource();
             DoFrostEffect(effectLevel, _cts.Token).Forget();
         }
@@ -28,6 +31,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         {
             _cts?.Cancel();
             _cts?.Dispose();
+            _isEffectEnabled = false;
         }
         
         private async UniTask DoFrostEffect(FrostLevel effectLevel, CancellationToken token)
@@ -43,7 +47,8 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         
         ~FrostController()
         {
-            _cts?.Dispose();
+            if (_isEffectEnabled)
+                Disable();
         }
     }
 }

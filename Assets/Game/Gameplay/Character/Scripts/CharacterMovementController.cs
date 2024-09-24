@@ -1,3 +1,4 @@
+using Game.Gameplay.Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -6,17 +7,19 @@ public class CharacterMovementController : MonoBehaviour
 {
     [SerializeField] private CharacterMover _mover;
     [SerializeField] private CharacterAnimatorController _animatorController;
-
+    
     private GameInput _inputController;
+    private CharacterMovementSettings _movementSettings;
 
     private Vector2 _inputDirection;
     private bool _canMove = true;
     private bool _isSprint;
 
     [Inject]
-    private void Init(GameInput inputController)
+    private void Init(GameInput inputController, CharacterMovementSettings movementSettings)
     {
         _inputController = inputController;
+        _movementSettings = movementSettings;
     }
 
     private void OnEnable()
@@ -52,7 +55,7 @@ public class CharacterMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_canMove)
-            _mover.Move(_inputDirection, _isSprint);
+            _mover.Move(_inputDirection, _movementSettings.CanSprint && _isSprint);
     }
 
     private void OnMove(InputAction.CallbackContext callbackContext)
