@@ -55,7 +55,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         
         private async UniTask DoFrostEffect(FrostLevel effectLevel, CancellationToken token)
         {
-            int effectValue = _frostConfig.GetConsumptionValue(effectLevel);
+            float effectValue = _frostConfig.GetConsumptionValue(effectLevel);
             
             while (!token.IsCancellationRequested)
             {

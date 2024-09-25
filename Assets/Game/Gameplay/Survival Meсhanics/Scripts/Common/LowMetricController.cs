@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Threading;
-using Game.Gameplay.SurvivalMeсhanics.Frostbite;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
 
 namespace Game.Gameplay.SurvivalMechanics
 {
     public abstract class LowMetricController
     {
-        private readonly int _damage;
+        private readonly float _damage;
         private readonly LowMetricEffectController _lowMetricEffectController;
 
         private CancellationTokenSource _cts;
         private bool _isEffectActive;
 
-        public LowMetricController(int damage, LowMetricEffectController lowMetricEffectController)
+        public LowMetricController(float damage, LowMetricEffectController lowMetricEffectController)
         {
             _damage = damage;
             _lowMetricEffectController = lowMetricEffectController;
@@ -21,7 +20,7 @@ namespace Game.Gameplay.SurvivalMechanics
             SubscribeOnMetric(OnMetricChanged);
         }
         
-        private void OnMetricChanged(int newValue)
+        private void OnMetricChanged(float newValue)
         {
             if (newValue <= 0 && _isEffectActive == false)
                 ActivateEffect();
@@ -41,8 +40,8 @@ namespace Game.Gameplay.SurvivalMechanics
             _lowMetricEffectController.RemoveEffect(GetName());
         }
         
-        protected abstract void SubscribeOnMetric(Action<int> handler);
-        protected abstract void UnsubscribeFromMetric(Action<int> handler);
+        protected abstract void SubscribeOnMetric(Action<float> handler);
+        protected abstract void UnsubscribeFromMetric(Action<float> handler);
         protected abstract string GetName();
         
         ~LowMetricController()

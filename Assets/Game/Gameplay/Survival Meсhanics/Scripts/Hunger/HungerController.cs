@@ -14,7 +14,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
         private readonly PlayerMetricsModel _playerMetricsModel;
 
         private CancellationTokenSource _cts;
-        private int _currentConsumption;
+        private float _currentConsumption;
         private bool _isEnabled;
 
         public HungerController(HungerConfig config, CharacterActionsObserver actionsObserver, PlayerMetricsModel playerMetricsModel)

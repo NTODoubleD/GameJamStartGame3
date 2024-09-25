@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: _consumptionLevels
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[Game.Gameplay.SurvivalMechanics.Frost.FrostLevel,
-        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Game.Gameplay.SurvivalMechanics.Frost.FrostLevel,
@@ -48,7 +48,7 @@ MonoBehaviour:
       Entry: 3
       Data: 0
     - Name: $v
-      Entry: 3
+      Entry: 4
       Data: 0
     - Name: 
       Entry: 8
@@ -60,7 +60,7 @@ MonoBehaviour:
       Entry: 3
       Data: 1
     - Name: $v
-      Entry: 3
+      Entry: 4
       Data: 0
     - Name: 
       Entry: 8
@@ -72,7 +72,7 @@ MonoBehaviour:
       Entry: 3
       Data: 2
     - Name: $v
-      Entry: 3
+      Entry: 4
       Data: 10
     - Name: 
       Entry: 8

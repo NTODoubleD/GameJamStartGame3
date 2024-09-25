@@ -45,7 +45,7 @@ namespace Game
                 EndGame();
         }
         
-        private void OnHealthChanged(int health)
+        private void OnHealthChanged(float health)
         {
             if (health <= 0)
                 EndGame();

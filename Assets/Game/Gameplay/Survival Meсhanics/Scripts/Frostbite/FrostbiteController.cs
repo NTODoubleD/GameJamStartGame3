@@ -12,12 +12,12 @@ namespace Game.Gameplay.SurvivalMeсhanics.Frostbite
             _metricsModel = metricsModel;
         }
 
-        protected override void SubscribeOnMetric(System.Action<int> handler)
+        protected override void SubscribeOnMetric(System.Action<float> handler)
         {
             _metricsModel.HeatResistanceChanged += handler;
         }
 
-        protected override void UnsubscribeFromMetric(System.Action<int> handler)
+        protected override void UnsubscribeFromMetric(System.Action<float> handler)
         {
             _metricsModel.HeatResistanceChanged -= handler;
         }

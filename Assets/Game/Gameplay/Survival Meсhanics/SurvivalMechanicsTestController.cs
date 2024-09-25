@@ -9,11 +9,11 @@ namespace Game.Gameplay.Survival_Meсhanics
 {
     public class SurvivalMechanicsTestController : SerializedMonoBehaviour
     {
-        [ShowInInspector] private int _health => _playerMetricsModel.Health;
-        [ShowInInspector] private int _heatResistance => _playerMetricsModel.HeatResistance;
-        [ShowInInspector] private int _hunger => _playerMetricsModel.Hunger;
-        [ShowInInspector] private int _thirst => _playerMetricsModel.Thirst;
-        [ShowInInspector] private int _endurance => _playerMetricsModel.Endurance;
+        [ShowInInspector] private float _health => _playerMetricsModel.Health;
+        [ShowInInspector] private float _heatResistance => _playerMetricsModel.HeatResistance;
+        [ShowInInspector] private float _hunger => _playerMetricsModel.Hunger;
+        [ShowInInspector] private float _thirst => _playerMetricsModel.Thirst;
+        [ShowInInspector] private float _endurance => _playerMetricsModel.Endurance;
 
         private PlayerMetricsModel _playerMetricsModel;
         private FrostController _frostController;

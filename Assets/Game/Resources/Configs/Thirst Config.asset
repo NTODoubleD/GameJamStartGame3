@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c66161a82342c1a0b0fb74625db822, type: 3}
-  m_Name: Hunger Config
+  m_Script: {fileID: 11500000, guid: fdca61040a844eda98b366e05332334d, type: 3}
+  m_Name: Thirst Config
   m_EditorClassIdentifier: 
   _consumptions:
   - 1

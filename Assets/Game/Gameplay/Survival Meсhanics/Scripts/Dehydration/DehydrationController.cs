@@ -14,12 +14,12 @@ namespace Game.Gameplay.SurvivalMeсhanics.Dehydration
             _metricsModel = metricsModel;
         }
 
-        protected override void SubscribeOnMetric(Action<int> handler)
+        protected override void SubscribeOnMetric(Action<float> handler)
         {
             _metricsModel.ThirstChanged += handler;
         }
 
-        protected override void UnsubscribeFromMetric(Action<int> handler)
+        protected override void UnsubscribeFromMetric(Action<float> handler)
         {
             _metricsModel.ThirstChanged -= handler;
         }

@@ -5,11 +5,11 @@ namespace Game.Gameplay.SurvivalMechanics
 {
     public class PlayerMetricsModel : IHeatResistable
     {
-        private int _health;
-        private int _heatResistance;
-        private int _hunger;
-        private int _thirst;
-        private int _endurance;
+        private float _health;
+        private float _heatResistance;
+        private float _hunger;
+        private float _thirst;
+        private float _endurance;
 
         public PlayerMetricsModel(PlayerMetricsConfig config)
         {
@@ -20,7 +20,7 @@ namespace Game.Gameplay.SurvivalMechanics
             _endurance = config.Endurance;
         }
         
-        public int Health
+        public float Health
         {
             get => _health;
             set
@@ -34,7 +34,7 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
         
-        public int HeatResistance
+        public float HeatResistance
         {
             get => _heatResistance;
             set
@@ -48,7 +48,7 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
         
-        public int Hunger
+        public float Hunger
         {
             get => _hunger;
             set
@@ -62,7 +62,7 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
         
-        public int Thirst
+        public float Thirst
         {
             get => _thirst;
             set
@@ -76,7 +76,7 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
         
-        public int Endurance
+        public float Endurance
         {
             get => _endurance;
             set
@@ -90,10 +90,10 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
 
-        public event Action<int> HealthChanged;
-        public event Action<int> HeatResistanceChanged;
-        public event Action<int> HungerChanged;
-        public event Action<int> ThirstChanged;
-        public event Action<int> EnduranceChanged;
+        public event Action<float> HealthChanged;
+        public event Action<float> HeatResistanceChanged;
+        public event Action<float> HungerChanged;
+        public event Action<float> ThirstChanged;
+        public event Action<float> EnduranceChanged;
     }
 }

@@ -12,7 +12,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
         private readonly PlayerMetricsModel _playerMetricsModel;
         private readonly CharacterMovementSettings _characterMovementSettings;
 
-        private readonly Dictionary<string, int> _effectsDamage = new();
+        private readonly Dictionary<string, float> _effectsDamage = new();
 
         private CancellationTokenSource _cts;
         private bool _isEffectActive;
@@ -24,7 +24,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
             _characterMovementSettings = characterMovementSettings;
         }
 
-        public void AddEffect(string name, int damage)
+        public void AddEffect(string name, float damage)
         {
             _effectsDamage[name] = damage;
             Enable();
@@ -70,7 +70,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
         {
             while (!token.IsCancellationRequested && _playerMetricsModel.Health > 0)
             {
-                int damage = _effectsDamage.Keys.Sum(x => _effectsDamage[x]);
+                float damage = _effectsDamage.Keys.Sum(x => _effectsDamage[x]);
                 
                 _playerMetricsModel.Health -= damage;
                 await UniTask.Delay(1000, cancellationToken: token);

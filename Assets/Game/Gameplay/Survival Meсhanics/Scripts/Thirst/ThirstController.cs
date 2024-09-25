@@ -13,7 +13,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Thirst
         private readonly PlayerMetricsModel _playerMetricsModel;
 
         private CancellationTokenSource _cts;
-        private int _currentConsumption;
+        private float _currentConsumption;
         private bool _isEnabled;
 
         public ThirstController(ThirstConfig config, CharacterActionsObserver actionsObserver, PlayerMetricsModel playerMetricsModel)
