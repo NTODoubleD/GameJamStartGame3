@@ -1,6 +1,8 @@
 using DoubleDCore.Service;
+using Game.Gameplay.Character;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class CharacterMover : MonoService
 {
@@ -15,7 +17,15 @@ public class CharacterMover : MonoService
     [SerializeField] private float _minimalRotationDelta;
     [SerializeField] private bool _useGlobalForward;
 
+    private CharacterMovementSettings _settings;
+    
     public event UnityAction<float> SpeedChanged;
+
+    [Inject]
+    private void Init(CharacterMovementSettings settings)
+    {
+        _settings = settings;
+    }
 
     private void OnDisable()
     {
@@ -53,7 +63,7 @@ public class CharacterMover : MonoService
         var moveDirection = _orientation.forward * inputDir.y + _orientation.right * inputDir.x;
         var sprintMultiplier = isSprint? 2f: 1f;
         if (moveDirection != Vector3.zero)
-            _rigidbody.AddForce(moveDirection.normalized * (_movementSpeed * sprintMultiplier * 10f), ForceMode.Force);
+            _rigidbody.AddForce(moveDirection.normalized * (_movementSpeed * sprintMultiplier * 10f * _settings.SpeedMultiplyer), ForceMode.Force);
     }
 
     private void ControlSpeed()

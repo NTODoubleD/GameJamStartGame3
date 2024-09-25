@@ -32,17 +32,27 @@ namespace Game.Gameplay.SurvivalMechanics
         {
             _isEffectActive = true;
             _lowMetricEffectController.AddEffect(GetName(), _damage);
+            OnEffectActivated();
         }
 
         private void DeactivateEffect()
         {
             _isEffectActive = false;
             _lowMetricEffectController.RemoveEffect(GetName());
+            OnEffectDeactivated();
         }
         
         protected abstract void SubscribeOnMetric(Action<float> handler);
         protected abstract void UnsubscribeFromMetric(Action<float> handler);
         protected abstract string GetName();
+        
+        protected virtual void OnEffectActivated()
+        {
+        }
+        
+        protected virtual void OnEffectDeactivated()
+        {
+        }
         
         ~LowMetricController()
         {

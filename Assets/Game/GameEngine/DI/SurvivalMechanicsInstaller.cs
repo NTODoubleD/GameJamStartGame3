@@ -5,7 +5,9 @@ using Game.Gameplay.Survival_Metrics.Configs;
 using Game.Gameplay.SurvivalMechanics;
 using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.Gameplay.SurvivalMeсhanics.Dehydration;
+using Game.Gameplay.SurvivalMeсhanics.Endurance;
 using Game.Gameplay.SurvivalMeсhanics.Exhaustion;
+using Game.Gameplay.SurvivalMeсhanics.Fatigue;
 using Game.Gameplay.SurvivalMeсhanics.Frostbite;
 using Game.Gameplay.SurvivalMeсhanics.Hunger;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
@@ -18,6 +20,30 @@ namespace Game.GameEngine.DI
     {
         public override void InstallBindings()
         {
+            BindConfigs();
+
+            Container.BindInterfacesAndSelfTo<PlayerMetricsModel>().AsSingle();
+            Container.Bind<CharacterMovementSettings>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LowMetricEffectController>().AsSingle();
+            
+            BindControllers();
+        }
+
+        private void BindControllers()
+        {
+            Container.BindInterfacesAndSelfTo<FrostController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<FrostStarter>().AsSingle();
+            Container.Bind<FrostbiteController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HungerController>().AsSingle().NonLazy();
+            Container.Bind<ExhaustionController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ThirstController>().AsSingle().NonLazy();
+            Container.Bind<DehydrationController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnduranceController>().AsSingle().NonLazy();
+            Container.Bind<FatigueController>().AsSingle().NonLazy();
+        }
+
+        private void BindConfigs()
+        {
             var resourceContainer = Container.Resolve<IResourcesContainer>();
             var configsResource = resourceContainer.GetResource<ConfigsResource>();
             
@@ -27,6 +53,8 @@ namespace Game.GameEngine.DI
             HungerConfig hungerConfig = configsResource.GetConfig<HungerConfig>();
             ExhaustionConfig exhaustionConfig = configsResource.GetConfig<ExhaustionConfig>();
             ThirstConfig thirstConfig = configsResource.GetConfig<ThirstConfig>();
+            EnduranceConfig enduranceConfig = configsResource.GetConfig<EnduranceConfig>();
+            FatigueConfig fatigueConfig = configsResource.GetConfig<FatigueConfig>();
 
             Container.BindInstance(playerMetricsConfig).AsSingle();
             Container.BindInstance(frostConfig).AsSingle();
@@ -34,19 +62,8 @@ namespace Game.GameEngine.DI
             Container.BindInstance(hungerConfig).AsSingle();
             Container.BindInstance(exhaustionConfig).AsSingle();
             Container.BindInstance(thirstConfig).AsSingle();
-            
-            Container.BindInterfacesAndSelfTo<PlayerMetricsModel>().AsSingle();
-            Container.Bind<CharacterMovementSettings>().AsSingle();
-
-            Container.BindInterfacesAndSelfTo<LowMetricEffectController>().AsSingle();
-            
-            Container.BindInterfacesAndSelfTo<FrostController>().AsSingle();
-            Container.BindInterfacesAndSelfTo<FrostStarter>().AsSingle();
-            Container.Bind<FrostbiteController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<HungerController>().AsSingle().NonLazy();
-            Container.Bind<ExhaustionController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<ThirstController>().AsSingle().NonLazy();
-            Container.Bind<DehydrationController>().AsSingle().NonLazy();
+            Container.BindInstance(enduranceConfig).AsSingle();
+            Container.BindInstance(fatigueConfig).AsSingle();
         }
     }
 }
