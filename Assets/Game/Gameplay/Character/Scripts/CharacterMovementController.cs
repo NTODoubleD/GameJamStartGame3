@@ -1,19 +1,20 @@
+using DoubleDCore.Service;
 using Game.Gameplay.Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public class CharacterMovementController : MonoBehaviour
+public class CharacterMovementController : MonoService
 {
     [SerializeField] private CharacterMover _mover;
     [SerializeField] private CharacterAnimatorController _animatorController;
     
     private GameInput _inputController;
     private CharacterMovementSettings _movementSettings;
-
-    private Vector2 _inputDirection;
-    private bool _canMove = true;
-    private bool _isSprint;
+    
+    public Vector2 InputDirection { get; private set; }
+    public bool CanMove { get; private set; } = true;
+    public bool IsSprint { get; private set; }
 
     [Inject]
     private void Init(GameInput inputController, CharacterMovementSettings movementSettings)
@@ -47,31 +48,31 @@ public class CharacterMovementController : MonoBehaviour
     }
 
     private void OnSprintStart(InputAction.CallbackContext callbackContext) =>
-        _isSprint = true;
+        IsSprint = true;
 
     private void OnSprintStop(InputAction.CallbackContext callbackContext) =>
-        _isSprint = false;
+        IsSprint = false;
 
     private void FixedUpdate()
     {
-        if (_canMove)
-            _mover.Move(_inputDirection, _movementSettings.CanSprint && _isSprint);
+        if (CanMove)
+            _mover.Move(InputDirection, _movementSettings.CanSprint && IsSprint);
     }
 
     private void OnMove(InputAction.CallbackContext callbackContext)
     {
-        _inputDirection = callbackContext.ReadValue<Vector2>();
+        InputDirection = callbackContext.ReadValue<Vector2>();
     }
 
     private void OnInteractionAnimationStarted()
     {
-        _canMove = false;
+        CanMove = false;
         _mover.Move(Vector2.zero, false);
     }
 
     private void OnInteractionAnimationEnded()
     {
         _mover.Move(Vector2.zero, false);
-        _canMove = true;
+        CanMove = true;
     }
 }

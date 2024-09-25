@@ -1,25 +1,25 @@
 ﻿using System.Threading;
-using Cysharp.Threading.Tasks;
-using Game.Gameplay.Character;
 using Game.Gameplay.SurvivalMechanics;
+using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Frostbite
 {
     public class FrostbiteController
     {
         private readonly PlayerMetricsModel _playerMetricsModel;
-        private readonly CharacterMovementSettings _characterMovementSettings;
         private readonly FrostbiteConfig _config;
+        private readonly LowMetricEffectController _lowMetricEffectController;
 
         private CancellationTokenSource _cts;
         private bool _isEffectActive;
 
         public FrostbiteController(PlayerMetricsModel playerMetricsModel,
-            CharacterMovementSettings characterMovementSettings, FrostbiteConfig config)
+            FrostbiteConfig config, LowMetricEffectController lowMetricEffectController)
         {
             _playerMetricsModel = playerMetricsModel;
-            _characterMovementSettings = characterMovementSettings;
             _config = config;
+            _lowMetricEffectController = lowMetricEffectController;
+            
             _playerMetricsModel.HeatResistanceChanged += OnHeatResistanceChanged;
         }
         
@@ -33,33 +33,19 @@ namespace Game.Gameplay.SurvivalMeсhanics.Frostbite
 
         private void ActivateEffect()
         {
-            _cts = new CancellationTokenSource();
-            _characterMovementSettings.CanSprint = false;
-            ApplyDamageAsync(_cts.Token).Forget();
+            _isEffectActive = true;
+            _lowMetricEffectController.AddEffect(nameof(FrostbiteController), _config.Damage);
         }
 
         private void DeactivateEffect()
         {
-            _characterMovementSettings.CanSprint = true;
-            _cts.Cancel();
-            _cts.Dispose();
-        }
-
-        private async UniTask ApplyDamageAsync(CancellationToken token)
-        {
-            while (!token.IsCancellationRequested && _playerMetricsModel.Health > 0)
-            {
-                _playerMetricsModel.Health -= _config.Damage;
-                await UniTask.Delay(1000, cancellationToken: token);
-            }
+            _isEffectActive = false;
+            _lowMetricEffectController.RemoveEffect(nameof(FrostbiteController));
         }
         
         ~FrostbiteController()
         {
             _playerMetricsModel.HeatResistanceChanged -= OnHeatResistanceChanged;
-            
-            if (_cts != null)
-                _cts.Dispose();
         }
     }
 }

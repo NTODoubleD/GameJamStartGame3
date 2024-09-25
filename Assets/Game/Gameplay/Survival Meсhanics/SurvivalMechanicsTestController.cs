@@ -2,6 +2,7 @@
 using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.Gameplay.SurvivalMeсhanics.Frostbite;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using Zenject;
 
 namespace Game.Gameplay.Survival_Meсhanics
@@ -37,5 +38,13 @@ namespace Game.Gameplay.Survival_Meсhanics
         {
             _frostController.Disable();
         }
+
+        [PropertySpace]
+
+        [Button]
+        private void AddHunger(int value) => _playerMetricsModel.Hunger += value;
+        
+        [Button]
+        private void AddHeatResistance(int value) => _playerMetricsModel.HeatResistance += value;
     }
 }

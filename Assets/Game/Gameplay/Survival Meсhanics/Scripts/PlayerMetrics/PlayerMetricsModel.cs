@@ -3,7 +3,7 @@ using Game.Gameplay.Survival_Metrics.Configs;
 
 namespace Game.Gameplay.SurvivalMechanics
 {
-    public class PlayerMetricsModel
+    public class PlayerMetricsModel : IHeatResistable
     {
         private int _health;
         private int _heatResistance;

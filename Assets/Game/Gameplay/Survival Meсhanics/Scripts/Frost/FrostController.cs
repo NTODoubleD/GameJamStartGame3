@@ -1,20 +1,29 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Game.Gameplay.SurvivalMechanics.Frost
 {
-    public class FrostController
+    public class FrostController : IRealtimeSurvivalMechanic
     {
-        private readonly PlayerMetricsModel _model;
+        private readonly IEnumerable<IHeatResistable> _heatResistables;
         private readonly FrostConfig _frostConfig;
+        
+        private readonly HashSet<IHeatResistable> _whitelist = new();
 
         private CancellationTokenSource _cts;
         private bool _isEffectEnabled = false;
 
-        public FrostController(PlayerMetricsModel model, FrostConfig frostConfig)
+        public FrostController(IEnumerable<IHeatResistable> heatResistables, FrostConfig frostConfig)
         {
-            _model = model;
+            _heatResistables = heatResistables;
             _frostConfig = frostConfig;
+        }
+
+        public void Enable()
+        {
+            Enable(FrostLevel.Weak);
         }
 
         public void Enable(FrostLevel effectLevel)
@@ -33,6 +42,16 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             _cts?.Dispose();
             _isEffectEnabled = false;
         }
+
+        public bool AddToWhiteList(IHeatResistable heatResistable)
+        {
+            return _whitelist.Add(heatResistable);
+        }
+
+        public bool RemoveFromWhiteList(IHeatResistable heatResistable)
+        {
+            return _whitelist.Remove(heatResistable);
+        }
         
         private async UniTask DoFrostEffect(FrostLevel effectLevel, CancellationToken token)
         {
@@ -40,7 +59,14 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             
             while (!token.IsCancellationRequested)
             {
-                _model.HeatResistance -= effectValue;
+                foreach (var heatResistable in _heatResistables)
+                {
+                    if (_whitelist.Contains(heatResistable))
+                        continue;
+                    
+                    heatResistable.HeatResistance -= effectValue;
+                }
+                
                 await UniTask.Delay(1000, cancellationToken: token);
             }
         }
