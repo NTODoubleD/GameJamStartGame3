@@ -41,6 +41,7 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<LowMetricEffectController>().AsSingle();
             
             Container.BindInterfacesAndSelfTo<FrostController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<FrostStarter>().AsSingle();
             Container.Bind<FrostbiteController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<HungerController>().AsSingle().NonLazy();
             Container.Bind<ExhaustionController>().AsSingle().NonLazy();

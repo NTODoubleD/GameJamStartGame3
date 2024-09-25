@@ -49,7 +49,7 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
@@ -61,7 +61,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 4
-      Data: 0
+      Data: 0.7
     - Name: 
       Entry: 8
       Data: 
@@ -73,7 +73,112 @@ MonoBehaviour:
       Data: 2
     - Name: $v
       Entry: 4
-      Data: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _frostStartSettings
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[Game.Gameplay.SurvivalMechanics.Frost.FrostLevel,
+        Assembly-CSharp],[Game.Gameplay.SurvivalMechanics.Frost.FrostConfig+FrostSettings,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[Game.Gameplay.SurvivalMechanics.Frost.FrostLevel,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: Game.Gameplay.SurvivalMechanics.Frost.FrostConfig+FrostSettings, Assembly-CSharp
+    - Name: DayPeriod
+      Entry: 3
+      Data: 1
+    - Name: Duration
+      Entry: 3
+      Data: 180
+    - Name: StartDelays
+      Entry: 7
+      Data: 4|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 3
+    - Name: 
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 3
+      Data: 90
+    - Name: 
+      Entry: 3
+      Data: 120
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: Game.Gameplay.SurvivalMechanics.Frost.FrostConfig+FrostSettings, Assembly-CSharp
+    - Name: DayPeriod
+      Entry: 3
+      Data: 5
+    - Name: Duration
+      Entry: 3
+      Data: 120
+    - Name: StartDelays
+      Entry: 7
+      Data: 5|System.Int32[], mscorlib
+    - Name: 
+      Entry: 14
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
