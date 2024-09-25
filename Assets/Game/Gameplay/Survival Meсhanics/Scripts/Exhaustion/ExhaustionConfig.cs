@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Gameplay.Survival_Meсhanics.Scripts.Exhaustion
+namespace Game.Gameplay.SurvivalMeсhanics.Exhaustion
 {
     [CreateAssetMenu(fileName = "Exhaustion Config", menuName = "Configs/Exhaustion")]
     public class ExhaustionConfig : ScriptableObject

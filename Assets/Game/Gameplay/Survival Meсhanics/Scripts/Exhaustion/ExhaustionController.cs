@@ -1,49 +1,30 @@
 ﻿using Game.Gameplay.SurvivalMechanics;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
 
-namespace Game.Gameplay.Survival_Meсhanics.Scripts.Exhaustion
+namespace Game.Gameplay.SurvivalMeсhanics.Exhaustion
 {
-    public class ExhaustionController
+    public class ExhaustionController : LowMetricController
     {
-        private readonly PlayerMetricsModel _playerMetricsModel;
-        private readonly LowMetricEffectController _lowMetricEffectController;
-        private readonly ExhaustionConfig _config;
+        private readonly PlayerMetricsModel _metricsModel;
 
-        private bool _isEffectActive;
-
-        public ExhaustionController(PlayerMetricsModel playerMetricsModel,
-            LowMetricEffectController lowMetricEffectController, ExhaustionConfig config)
+        public ExhaustionController(PlayerMetricsModel metricsModel, ExhaustionConfig config, LowMetricEffectController lowMetricEffectController) : base(config.Damage, lowMetricEffectController)
         {
-            _playerMetricsModel = playerMetricsModel;
-            _lowMetricEffectController = lowMetricEffectController;
-            _config = config;
-
-            _playerMetricsModel.HungerChanged += OnHungerChanged;
+            _metricsModel = metricsModel;
         }
 
-        private void OnHungerChanged(int hunger)
+        protected override void SubscribeOnMetric(System.Action<int> handler)
         {
-            if (hunger <= 0 && _isEffectActive == false)
-                ActivateEffect();
-            else if (hunger > 0 && _isEffectActive)
-                DeactivateEffect();
+            _metricsModel.HungerChanged += handler;
         }
 
-        private void ActivateEffect()
+        protected override void UnsubscribeFromMetric(System.Action<int> handler)
         {
-            _isEffectActive = true;
-            _lowMetricEffectController.AddEffect(nameof(ExhaustionController), _config.Damage);
+            _metricsModel.HungerChanged -= handler;
         }
 
-        private void DeactivateEffect()
+        protected override string GetName()
         {
-            _isEffectActive = false;
-            _lowMetricEffectController.RemoveEffect(nameof(ExhaustionController));
-        }
-
-        ~ExhaustionController()
-        {
-            _playerMetricsModel.HungerChanged -= OnHungerChanged;
+            return nameof(ExhaustionController);
         }
     }
 }

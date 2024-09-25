@@ -1,51 +1,30 @@
-﻿using System.Threading;
-using Game.Gameplay.SurvivalMechanics;
+﻿using Game.Gameplay.SurvivalMechanics;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Frostbite
 {
-    public class FrostbiteController
+    public class FrostbiteController : LowMetricController
     {
-        private readonly PlayerMetricsModel _playerMetricsModel;
-        private readonly FrostbiteConfig _config;
-        private readonly LowMetricEffectController _lowMetricEffectController;
+        private readonly PlayerMetricsModel _metricsModel;
 
-        private CancellationTokenSource _cts;
-        private bool _isEffectActive;
-
-        public FrostbiteController(PlayerMetricsModel playerMetricsModel,
-            FrostbiteConfig config, LowMetricEffectController lowMetricEffectController)
+        public FrostbiteController(PlayerMetricsModel metricsModel, FrostbiteConfig config, LowMetricEffectController lowMetricEffectController) : base(config.Damage, lowMetricEffectController)
         {
-            _playerMetricsModel = playerMetricsModel;
-            _config = config;
-            _lowMetricEffectController = lowMetricEffectController;
-            
-            _playerMetricsModel.HeatResistanceChanged += OnHeatResistanceChanged;
-        }
-        
-        private void OnHeatResistanceChanged(int heatResistance)
-        {
-            if (heatResistance <= 0 && _isEffectActive == false)
-                ActivateEffect();
-            else if (heatResistance > 0 && _isEffectActive)
-                DeactivateEffect();
+            _metricsModel = metricsModel;
         }
 
-        private void ActivateEffect()
+        protected override void SubscribeOnMetric(System.Action<int> handler)
         {
-            _isEffectActive = true;
-            _lowMetricEffectController.AddEffect(nameof(FrostbiteController), _config.Damage);
+            _metricsModel.HeatResistanceChanged += handler;
         }
 
-        private void DeactivateEffect()
+        protected override void UnsubscribeFromMetric(System.Action<int> handler)
         {
-            _isEffectActive = false;
-            _lowMetricEffectController.RemoveEffect(nameof(FrostbiteController));
+            _metricsModel.HeatResistanceChanged -= handler;
         }
-        
-        ~FrostbiteController()
+
+        protected override string GetName()
         {
-            _playerMetricsModel.HeatResistanceChanged -= OnHeatResistanceChanged;
+            return nameof(FrostbiteController);
         }
     }
 }
