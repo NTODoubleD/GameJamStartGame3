@@ -1,6 +1,8 @@
 using System;
 using DoubleDCore.Attributes;
 using DoubleDCore.QuestsSystem.Data;
+using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace DoubleDCore.QuestsSystem.Base
@@ -32,9 +34,7 @@ namespace DoubleDCore.QuestsSystem.Base
                 ProgressChanged?.Invoke(this);
 
                 if (_currentProgress >= MaxProgress)
-                {
-                    QuestCompleted?.Invoke(this);
-                }
+                    PerformQuest();
             }
         }
 
@@ -44,6 +44,11 @@ namespace DoubleDCore.QuestsSystem.Base
         {
             Progress = progress;
             Status = status;
+        }
+
+        protected void PerformQuest()
+        {
+            QuestCompleted?.Invoke(this);
         }
 
         public abstract void Play();
@@ -58,5 +63,21 @@ namespace DoubleDCore.QuestsSystem.Base
         {
             _id = id;
         }
+
+#if UNITY_EDITOR
+        [Button("Change ID")]
+        private void UpdateID()
+        {
+            if (EditorUtility.DisplayDialog("Achtung!!!",
+                    "Are you sure you want to generate ID?", "Yes", "No") == false)
+                return;
+
+            Undo.RecordObject(this, "Change ID");
+
+            SetIdentifier(GenerateIdentifier());
+
+            EditorUtility.SetDirty(this);
+        }
+#endif
     }
 }

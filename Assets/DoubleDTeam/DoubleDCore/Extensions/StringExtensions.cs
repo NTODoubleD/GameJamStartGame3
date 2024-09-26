@@ -28,6 +28,9 @@ namespace DoubleDCore.Extensions
 
         public static string Color(this string text, Color color) =>
             $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{text}</color>";
+        
+        public static string Color(this string text, string hexCode) =>
+            $"<color=#{hexCode}>{text}</color>";
 
         public static string Italic(this string text) => "<i>" + text + "</i>";
 

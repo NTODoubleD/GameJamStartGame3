@@ -17,6 +17,8 @@ namespace Game.Gameplay.Deers
 
         private ItemStorage _storage;
 
+        public static event Action Ate;
+
         [Inject]
         private void Init(ItemStorage storage)
         {
@@ -52,6 +54,8 @@ namespace Game.Gameplay.Deers
                 _storage.RemoveItems(_feedItem, resultItemsCount);
                 deer.AnimatorController.StartEat();
                 _characterAnimatorController.AnimateFeeding(() => ApplyFeed(deer, resultItemsCount));
+
+                Ate?.Invoke();
             }
             else
             {
