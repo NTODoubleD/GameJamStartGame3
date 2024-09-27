@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Thirst Config
   m_EditorClassIdentifier: 
   _consumptions:
-  - 1
-  - 2
+  - 0.3
+  - 0.5

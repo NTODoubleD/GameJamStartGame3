@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789e4c5c3a6c41619ea091e74c846c6b, type: 3}
   m_Name: Frostbite Config
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 2

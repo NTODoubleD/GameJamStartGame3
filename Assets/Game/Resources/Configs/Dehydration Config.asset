@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea66020317364dab9415fca6cf2e8cd2, type: 3}
   m_Name: Dehydration Config
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 1.3

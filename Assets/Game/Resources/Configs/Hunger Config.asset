@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Hunger Config
   m_EditorClassIdentifier: 
   _consumptions:
-  - 1
-  - 2
+  - 0.4
+  - 0.6
