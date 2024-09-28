@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fcfe47d8aa54da5b84b5351d4a70c92, type: 3}
   m_Name: Cooked Meat
   m_EditorClassIdentifier: 
-  _id: item/meat/
+  _id: item/cookedmeat/
   _name:
     _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043D\u043E\u0435
       \u043C\u044F\u0441\u043E"
     _en: Cooked meat
+  _icon: {fileID: 0}
