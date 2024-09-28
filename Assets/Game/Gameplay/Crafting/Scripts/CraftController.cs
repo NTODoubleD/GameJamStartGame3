@@ -12,7 +12,7 @@ namespace Game.Gameplay.Crafting
             _storage = storage;
         }
         
-        public bool CanCraft(CraftingRecepie recepie, out int craftTimes)
+        public bool CanCraft(ICraftingRecepie recepie, out int craftTimes)
         {
             craftTimes = int.MaxValue;
             
@@ -28,7 +28,7 @@ namespace Game.Gameplay.Crafting
             return true;
         }
 
-        public void Craft(CraftingRecepie recepie, int craftTimes)
+        public void Craft(ICraftingRecepie recepie, int craftTimes)
         {
             foreach (var item in recepie.InputItems)
                 _storage.RemoveItems(item.Key, item.Value * craftTimes);

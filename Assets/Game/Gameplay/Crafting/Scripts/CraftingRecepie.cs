@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Game.Gameplay.Crafting
 {
     [CreateAssetMenu(fileName = "Crafting Recepie", menuName = "Crafting/Recepie")]
-    public class CraftingRecepie : SerializedScriptableObject
+    public class CraftingRecepie : SerializedScriptableObject, ICraftingRecepie
     {
         [OdinSerialize] private Dictionary<GameItemInfo, int> _outputItems = new();
         [OdinSerialize] private Dictionary<GameItemInfo, int> _inputItems = new();

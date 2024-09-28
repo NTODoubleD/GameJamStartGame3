@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Game.Infrastructure.Storage;
 using UnityEngine;
 
 namespace Game.Gameplay.Crafting
@@ -9,12 +10,14 @@ namespace Game.Gameplay.Crafting
     {
         private readonly CookingConfig _config;
         private readonly CraftController _craftController;
+        private readonly ItemStorage _itemStorage;
         private readonly Dictionary<FoodRecepie, float> _currentCookingTimes = new();
 
-        public CookingController(CookingConfig config, CraftController craftController)
+        public CookingController(CookingConfig config, CraftController craftController, ItemStorage itemStorage)
         {
             _config = config;
             _craftController = craftController;
+            _itemStorage = itemStorage;
         }
 
         public IReadOnlyCollection<CookingGroup> GetGroups() 
@@ -47,6 +50,7 @@ namespace Game.Gameplay.Crafting
                     _currentCookingTimes[recepie] = Time.deltaTime;
                 }
                 
+                _itemStorage.RemoveItems(recepie.FuelItem.Item, recepie.FuelItem.Count);
                 _craftController.Craft(recepie, 1);
             }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Gameplay.Crafting
 {
-    [CreateAssetMenu(menuName = "Cooking Config", fileName = "Configs/Cooking")]
+    [CreateAssetMenu(menuName = "Configs/Cooking", fileName = "Cooking Config")]
     public class CookingConfig : SerializedScriptableObject
     {
         [SerializeField] private CookingGroup[] _cookingGroups;

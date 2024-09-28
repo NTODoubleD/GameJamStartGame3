@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db13f6fb6a64f898b450edf672509e9, type: 3}
+  m_Name: Water Recepie
+  m_EditorClassIdentifier: 
+  _outputItem:
+    Item: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
+    Count: 1
+  _inputItem:
+    Item: {fileID: 11400000, guid: 731d60ce659a0d14d9aeb19c2db2d3db, type: 2}
+    Count: 2
+  _fuelItem:
+    Item: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+    Count: 2
