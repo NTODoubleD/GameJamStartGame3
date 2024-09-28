@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using DoubleDCore.Attributes;
 using DoubleDCore.Extensions;
 using DoubleDCore.GameResources.Base;
 using DoubleDCore.TranslationTools;
@@ -10,7 +9,7 @@ namespace Game.Infrastructure.Items
 {
     public abstract class ItemInfo : ScriptableObject, IResource
     {
-        [ReadOnlyProperty, SerializeField] private string _id;
+        [SerializeField] private string _id;
         [Space, SerializeField] private TranslatedText _name;
 
         public string ID => _id;

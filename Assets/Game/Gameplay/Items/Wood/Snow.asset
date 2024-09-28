@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fcfe47d8aa54da5b84b5351d4a70c92, type: 3}
   m_Name: Snow
   m_EditorClassIdentifier: 
-  _id: item/healgrass/
+  _id: item/snow/
   _name:
     _ru: "\u0421\u043D\u0435\u0433"
     _en: Snow
+  _icon: {fileID: 0}
