@@ -33,13 +33,13 @@ namespace Game.GameEngine.DI
         {
             Container.BindInterfacesAndSelfTo<FrostController>().AsSingle();
             Container.BindInterfacesAndSelfTo<FrostStarter>().AsSingle();
-            Container.Bind<FrostbiteController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<FrostbiteController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<HungerController>().AsSingle().NonLazy();
-            Container.Bind<ExhaustionController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<ExhaustionController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ThirstController>().AsSingle().NonLazy();
-            Container.Bind<DehydrationController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<DehydrationController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<EnduranceController>().AsSingle().NonLazy();
-            Container.Bind<FatigueController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
         }
 
         private void BindConfigs()

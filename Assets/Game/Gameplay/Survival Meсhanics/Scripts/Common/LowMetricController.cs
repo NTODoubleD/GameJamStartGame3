@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
+using Zenject;
 
 namespace Game.Gameplay.SurvivalMechanics
 {
-    public abstract class LowMetricController
+    public abstract class LowMetricController : IInitializable, IDisposable
     {
         private readonly float _damage;
         private readonly LowMetricEffectController _lowMetricEffectController;
@@ -16,8 +17,16 @@ namespace Game.Gameplay.SurvivalMechanics
         {
             _damage = damage;
             _lowMetricEffectController = lowMetricEffectController;
-            
+        }
+        
+        public void Initialize()
+        {
             SubscribeOnMetric(OnMetricChanged);
+        }
+        
+        public void Dispose()
+        {
+            UnsubscribeFromMetric(OnMetricChanged);
         }
         
         private void OnMetricChanged(float newValue)
@@ -52,11 +61,6 @@ namespace Game.Gameplay.SurvivalMechanics
         
         protected virtual void OnEffectDeactivated()
         {
-        }
-        
-        ~LowMetricController()
-        {
-            UnsubscribeFromMetric(OnMetricChanged);
         }
     }
 }

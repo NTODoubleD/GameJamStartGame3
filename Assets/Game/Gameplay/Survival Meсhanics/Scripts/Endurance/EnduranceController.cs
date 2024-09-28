@@ -12,29 +12,21 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
         private readonly EnduranceConfig _config;
         private readonly CharacterActionsObserver _actionsObserver;
         private readonly PlayerMetricsModel _playerMetricsModel;
-        private readonly DayCycleController _dayCycleController;
 
         private CancellationTokenSource _cts;
         private float _currentConsumption;
         private bool _isEnabled;
 
         public EnduranceController(EnduranceConfig config, CharacterActionsObserver actionsObserver,
-            PlayerMetricsModel playerMetricsModel, DayCycleController dayCycleController)
+            PlayerMetricsModel playerMetricsModel)
         {
             _config = config;
             _actionsObserver = actionsObserver;
             _playerMetricsModel = playerMetricsModel;
-            _dayCycleController = dayCycleController;
             _currentConsumption = _config.GetConsumption(ActionType.Constant);
             
             _actionsObserver.StartSprinting += OnStartSprinting;
             _actionsObserver.EndSprinting += OnEndSprinting;
-            _dayCycleController.DayEnded += OnDayEnded;
-        }
-
-        private void OnDayEnded()
-        {
-            _playerMetricsModel.Endurance += _config.RestoreDayValue;
         }
 
         public void Initialize()
@@ -82,7 +74,6 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
             
             _actionsObserver.StartSprinting -= OnStartSprinting;
             _actionsObserver.EndSprinting -= OnEndSprinting;
-            _dayCycleController.DayEnded -= OnDayEnded;
         }
     }
 }
