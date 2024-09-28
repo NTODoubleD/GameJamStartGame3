@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DoubleDCore.TranslationTools;
+using Game.Gameplay.Items;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,20 +10,25 @@ namespace Game.Gameplay.Crafting
     [CreateAssetMenu(menuName = "Configs/Cooking", fileName = "Cooking Config")]
     public class CookingConfig : SerializedScriptableObject
     {
-        [SerializeField] private CookingGroup[] _cookingGroups;
+        [SerializeField] private CraftingRecepie[] _recepies;
+        [SerializeField] private GameItemInfo _fuelItem;
+        [SerializeField] private float _fuelTimeAddition;
+        [SerializeField] private int _cookingPlaceCount;
         
-        public IReadOnlyCollection<CookingGroup> CookingGroups => _cookingGroups;
+        public IReadOnlyCollection<CraftingRecepie> Recepies => _recepies;
+        public int CookingPlaceCount => _cookingPlaceCount;
+        
+        public (GameItemInfo, float) GetFuelInfo() => (_fuelItem, _fuelTimeAddition);
+        
     }
 
     [Serializable]
     public class CookingGroup
     {
         [SerializeField] private TranslatedText _name;
-        [SerializeField] private FoodRecepie _recepie;
-        [SerializeField] private float _cookTime;
+        [SerializeField] private CraftingRecepie _recepie;
         
         public TranslatedText Name => _name;
-        public FoodRecepie Recepie => _recepie;
-        public float CookTime => _cookTime;
+        public CraftingRecepie Recepie => _recepie;
     }
 }

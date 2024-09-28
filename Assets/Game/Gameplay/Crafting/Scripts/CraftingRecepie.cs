@@ -11,8 +11,10 @@ namespace Game.Gameplay.Crafting
     {
         [OdinSerialize] private Dictionary<GameItemInfo, int> _outputItems = new();
         [OdinSerialize] private Dictionary<GameItemInfo, int> _inputItems = new();
+        [OdinSerialize] private float _craftTime;
         
         public IReadOnlyDictionary<GameItemInfo, int> OutputItems => _outputItems;
         public IReadOnlyDictionary<GameItemInfo, int> InputItems => _inputItems;
+        public float CraftTime => _craftTime;
     }
 }
