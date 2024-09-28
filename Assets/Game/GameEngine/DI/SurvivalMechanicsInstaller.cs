@@ -38,7 +38,8 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<ExhaustionController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<ThirstController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<DehydrationController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnduranceController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnduranceConsumptionController>().AsSingle().NonLazy();
+            Container.Bind<EnduranceRestoreController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
         }
 

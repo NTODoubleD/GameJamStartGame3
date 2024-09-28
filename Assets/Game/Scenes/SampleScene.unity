@@ -611,6 +611,7 @@ MonoBehaviour:
   - {fileID: 1890921522}
   - {fileID: 669792683}
   - {fileID: 2089670853}
+  - {fileID: 2089670858}
   - {fileID: 1271600452}
   - {fileID: 1271600454}
   - {fileID: 1890921521}
@@ -1013,7 +1014,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4388893}
+  m_AnchoredPosition: {x: 0, y: -4457025.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -2869,6 +2870,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4366878018296330, guid: 48d98ed1a3ee61c40b5e93ec9ce16e5f,
     type: 3}
   m_PrefabInstance: {fileID: 469567848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &484034640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5270761909592414018, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &490921142
 GameObject:
@@ -11945,6 +11952,11 @@ PrefabInstance:
       objectReference: {fileID: 1890921520}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
+      propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11972,7 +11984,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2089670853}
+      objectReference: {fileID: 2089670858}
+    - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2089670858}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12011,7 +12028,12 @@ PrefabInstance:
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndDay
+      value: Sleep
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Sleep
       objectReference: {fileID: 0}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -12046,12 +12068,12 @@ PrefabInstance:
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Game.Gameplay.DayCycle.DayCycleController, Assembly-CSharp
+      value: Game.Gameplay.DayCycle.SleepingController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Game.InputMaps.InputMapSwitcher, Assembly-CSharp
+      value: Game.Gameplay.DayCycle.SleepingController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -12072,6 +12094,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Gameplay.Buildings.TownHallBuilding, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[0].Action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -12860,6 +12887,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8876508}
+    - targetCorrespondingSourceObject: {fileID: 5270761909592414018, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2089670858}
     - targetCorrespondingSourceObject: {fileID: 7256926591778832432, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
@@ -14338,10 +14369,22 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 484034640}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0eff65b5a587c343a49118cfa43fdc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2089670858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484034640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de777744eda4c41a29c73700ec896b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2095774598

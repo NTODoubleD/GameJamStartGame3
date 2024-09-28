@@ -7,17 +7,18 @@ using Zenject;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Endurance
 {
-    public class EnduranceController : IRealtimeSurvivalMechanic, IInitializable
+    public class EnduranceConsumptionController : IRealtimeSurvivalMechanic, IInitializable
     {
         private readonly EnduranceConfig _config;
         private readonly CharacterActionsObserver _actionsObserver;
         private readonly PlayerMetricsModel _playerMetricsModel;
+        private readonly SleepingController _sleepingController;
 
         private CancellationTokenSource _cts;
         private float _currentConsumption;
         private bool _isEnabled;
 
-        public EnduranceController(EnduranceConfig config, CharacterActionsObserver actionsObserver,
+        public EnduranceConsumptionController(EnduranceConfig config, CharacterActionsObserver actionsObserver,
             PlayerMetricsModel playerMetricsModel)
         {
             _config = config;
@@ -67,7 +68,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
 
         private void OnEndSprinting() => _currentConsumption = _config.GetConsumption(ActionType.Constant);
         
-        ~EnduranceController()
+        ~EnduranceConsumptionController()
         {
             if (_isEnabled)
                 Disable();
