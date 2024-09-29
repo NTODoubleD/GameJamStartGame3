@@ -1,10 +1,13 @@
 ﻿using System;
 using Game.Gameplay.Survival_Metrics.Configs;
+using UnityEngine;
 
 namespace Game.Gameplay.SurvivalMechanics
 {
     public class PlayerMetricsModel : IHeatResistable
     {
+        private readonly float _maxValue;
+        
         private float _health;
         private float _heatResistance;
         private float _hunger;
@@ -18,6 +21,7 @@ namespace Game.Gameplay.SurvivalMechanics
             _hunger = config.Hunger;
             _thirst = config.Thirst;
             _endurance = config.Endurance;
+            _maxValue = config.MaxValue;
         }
         
         public float Health
@@ -25,11 +29,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _health;
             set
             {
-                if (value < 0)
-                    _health = 0;
-                else
-                    _health = value;
-                
+                _health = Mathf.Clamp(value, 0, _maxValue);
                 HealthChanged?.Invoke(_health);
             }
         }
@@ -39,11 +39,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _heatResistance;
             set
             {
-                if (value < 0)
-                    _heatResistance = 0;
-                else
-                    _heatResistance = value;
-                
+                _heatResistance = Mathf.Clamp(value, 0, _maxValue);
                 HeatResistanceChanged?.Invoke(_heatResistance);
             }
         }
@@ -53,11 +49,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _hunger;
             set
             {
-                if (value < 0)
-                    _hunger = 0;
-                else
-                    _hunger = value;
-                
+                _hunger = Mathf.Clamp(value, 0, _maxValue);
                 HungerChanged?.Invoke(_hunger);
             }
         }
@@ -67,11 +59,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _thirst;
             set
             {
-                if (value < 0)
-                    _thirst = 0;
-                else
-                    _thirst = value;
-                
+                _thirst = Mathf.Clamp(value, 0, _maxValue);
                 ThirstChanged?.Invoke(_thirst);
             }
         }
@@ -81,11 +69,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _endurance;
             set
             {
-                if (value < 0)
-                    _endurance = 0;
-                else
-                    _endurance = value;
-                
+                _endurance = Mathf.Clamp(value, 0, _maxValue);
                 EnduranceChanged?.Invoke(_endurance);
             }
         }

@@ -19,6 +19,7 @@ namespace Game.UI.Pages
         [SerializeField] private CanvasGroup _canvasGroup;
 
         private IQuestController _questController;
+        private int _currentQuestCount;
 
         [Inject]
         private void Init(IQuestController questController)
@@ -35,9 +36,12 @@ namespace Game.UI.Pages
         {
             _questController.QuestCompleted += OnQuestCompleted;
             _questController.QuestIssued += OnQuestIssued;
-
+            
             _canvasGroup.alpha = 0;
 
+            if (_currentQuestCount > 0)
+                _canvasGroup.DOFade(1, 1);
+            
             SetCanvasState(true);
         }
 
@@ -54,6 +58,7 @@ namespace Game.UI.Pages
             if (quest is not YakutQuest yakutQuest)
                 return;
 
+            _currentQuestCount++;
             yakutQuest.TaskProgressChanged += OnTaskStateChanged;
 
             await UniTask.WaitForSeconds(1.2f);
@@ -68,6 +73,7 @@ namespace Game.UI.Pages
             if (quest is not YakutQuest yakutQuest)
                 return;
 
+            _currentQuestCount--;
             yakutQuest.TaskProgressChanged -= OnTaskStateChanged;
 
             _canvasGroup.DOFade(0, 1);

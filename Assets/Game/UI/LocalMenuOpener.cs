@@ -1,4 +1,5 @@
-﻿using DoubleDCore.TimeTools;
+﻿using DoubleDCore.Service;
+using DoubleDCore.TimeTools;
 using DoubleDCore.UI.Base;
 using Game.UI.Pages;
 using UnityEngine;
@@ -7,7 +8,7 @@ using Zenject;
 
 namespace Game.UI
 {
-    public class LocalMenuOpener : MonoBehaviour
+    public class LocalMenuOpener : MonoService
     {
         private const float OpenDelay = 0.1f;
 

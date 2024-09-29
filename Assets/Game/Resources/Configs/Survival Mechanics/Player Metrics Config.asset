@@ -17,3 +17,4 @@ MonoBehaviour:
   _hunger: 100
   _thirst: 100
   _endurance: 100
+  _maxValue: 100

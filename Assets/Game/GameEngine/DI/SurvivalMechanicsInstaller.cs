@@ -56,6 +56,7 @@ namespace Game.GameEngine.DI
             ThirstConfig thirstConfig = configsResource.GetConfig<ThirstConfig>();
             EnduranceConfig enduranceConfig = configsResource.GetConfig<EnduranceConfig>();
             FatigueConfig fatigueConfig = configsResource.GetConfig<FatigueConfig>();
+            RestConfig restConfig = configsResource.GetConfig<RestConfig>();
 
             Container.BindInstance(playerMetricsConfig).AsSingle();
             Container.BindInstance(frostConfig).AsSingle();
@@ -65,6 +66,7 @@ namespace Game.GameEngine.DI
             Container.BindInstance(thirstConfig).AsSingle();
             Container.BindInstance(enduranceConfig).AsSingle();
             Container.BindInstance(fatigueConfig).AsSingle();
+            Container.BindInstance(restConfig).AsSingle();
         }
     }
 }

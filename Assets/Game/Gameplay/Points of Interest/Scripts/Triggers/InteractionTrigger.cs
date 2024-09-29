@@ -7,7 +7,7 @@ namespace Game.Gameplay.Interaction
     public class InteractionTrigger : MonoBehaviour
     {
         [SerializeField] private InteractiveObject _connectedObject;
-
+        
         public InteractiveObject ConnectedObject => _connectedObject;
 
         public event Action<InteractionTrigger> Entered;
