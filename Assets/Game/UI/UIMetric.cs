@@ -7,12 +7,10 @@ namespace Game.UI
     public class UIMetric : MonoBehaviour
     {
         [SerializeField] private Image _sliderImage;
-        [SerializeField] private Image _icon;
         [SerializeField] private UIFlickeringEffect _effect;
 
-        public void Initialize(Sprite icon, float startValue)
+        public void Initialize(float startValue)
         {
-            _icon.sprite = icon;
             Refresh(startValue);
         }
 

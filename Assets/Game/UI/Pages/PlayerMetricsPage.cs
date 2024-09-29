@@ -1,5 +1,4 @@
-﻿using DoubleDCore.ObjectPooling;
-using DoubleDCore.UI;
+﻿using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.SurvivalMechanics;
 using UnityEngine;
@@ -9,10 +8,11 @@ namespace Game.UI.Pages
 {
     public class PlayerMetricsPage : MonoPage, IUIPage
     {
-        [SerializeField] private UIMetric _prefab;
-        [SerializeField] private RectTransform _container;
-
-        private readonly Pooler<UIMetric> _uiMetricsPool = new();
+        [SerializeField] private UIMetric _health;
+        [SerializeField] private UIMetric _heatResistance;
+        [SerializeField] private UIMetric _hunger;
+        [SerializeField] private UIMetric _thirst;
+        [SerializeField] private UIMetric _endurance;
 
         private PlayerMetricsModel _playerMetrics;
 
@@ -24,34 +24,16 @@ namespace Game.UI.Pages
 
         public override void Initialize()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                var inst = Instantiate(_prefab, Vector3.zero, Quaternion.identity, _container);
-                _uiMetricsPool.Push(inst);
-            }
-
             Open();
         }
 
-        private UIMetric _health;
-        private UIMetric _heatResistance;
-        private UIMetric _hunger;
-        private UIMetric _thirst;
-        private UIMetric _endurance;
-
         public void Open()
         {
-            _health = _uiMetricsPool.Get();
-            _heatResistance = _uiMetricsPool.Get();
-            _hunger = _uiMetricsPool.Get();
-            _thirst = _uiMetricsPool.Get();
-            _endurance = _uiMetricsPool.Get();
-
-            _health.Initialize(null, _playerMetrics.Health);
-            _heatResistance.Initialize(null, _playerMetrics.HeatResistance);
-            _hunger.Initialize(null, _playerMetrics.Hunger);
-            _thirst.Initialize(null, _playerMetrics.Thirst);
-            _endurance.Initialize(null, _playerMetrics.Endurance);
+            _health.Initialize(_playerMetrics.Health);
+            _heatResistance.Initialize(_playerMetrics.HeatResistance);
+            _hunger.Initialize(_playerMetrics.Hunger);
+            _thirst.Initialize(_playerMetrics.Thirst);
+            _endurance.Initialize(_playerMetrics.Endurance);
 
             _playerMetrics.HealthChanged += OnHealthChanged;
             _playerMetrics.HeatResistanceChanged += OnHeatResistanceChanged;
@@ -69,12 +51,6 @@ namespace Game.UI.Pages
             _playerMetrics.HungerChanged -= OnHungerChanged;
             _playerMetrics.ThirstChanged -= OnThirstChanged;
             _playerMetrics.EnduranceChanged -= OnEnduranceChanged;
-
-            _uiMetricsPool.Return(_health);
-            _uiMetricsPool.Return(_heatResistance);
-            _uiMetricsPool.Return(_hunger);
-            _uiMetricsPool.Return(_thirst);
-            _uiMetricsPool.Return(_endurance);
 
             SetCanvasState(false);
         }
