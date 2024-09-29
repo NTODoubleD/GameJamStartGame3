@@ -67,13 +67,26 @@ namespace Game.Gameplay.Crafting
             return _craftController.CanCraft(recepie, out int _);
         }
 
-        public void AddToCooking(CraftingRecepie recepie)
+        public int AddToCooking(CraftingRecepie recepie)
         {
             foreach (var inputItem in recepie.InputItems)
                 _itemStorage.RemoveItems(inputItem.Key, inputItem.Value);
 
             _currentSlots[_nextFreeSlotIndex].Recepie = recepie;
-            _currentSlots[_nextFreeSlotIndex++].TimeLeft = recepie.CraftTime;
+            _currentSlots[_nextFreeSlotIndex].TimeLeft = recepie.CraftTime;
+            
+            int currentFreeSlotIndex = _nextFreeSlotIndex;
+            SetNextFreeSlot();
+            return currentFreeSlotIndex;
+        }
+
+        public void TakeCookedRecepie(int placeIndex)
+        {
+            foreach (var outputItem in _currentSlots[placeIndex].Recepie.OutputItems)
+                _itemStorage.AddItems(outputItem.Key, outputItem.Value);
+            
+            _currentSlots[placeIndex].Recepie = null;
+            SetNextFreeSlot();
         }
 
         private async UniTask CookAsync()
@@ -86,19 +99,13 @@ namespace Game.Gameplay.Crafting
 
                 for (int i = 0; i < _currentSlots.Length; i++)
                 {
-                    if (_currentSlots[i].Recepie == null)
+                    if (_currentSlots[i].Recepie == null || _currentSlots[i].TimeLeft <= 0)
                         continue;
                     
                     var cookingSlot = _currentSlots[i];
                     
                     if (cookingSlot.TimeLeft <= 0)
-                    {
-                        foreach (var outputItem in cookingSlot.Recepie.OutputItems)
-                            _itemStorage.AddItems(outputItem.Key, outputItem.Value);
-                        
-                        _currentSlots[i].Recepie = null;
                         Finished?.Invoke(i);
-                    }
                 }
                 
                 _cookTimeLeft -= Time.deltaTime;
@@ -116,9 +123,25 @@ namespace Game.Gameplay.Crafting
 
                 _currentSlots[i].Recepie = null;
             }
+            
+            SetNextFreeSlot();
 
             _isCooking = false;
             FuelEnded?.Invoke();
+        }
+
+        private void SetNextFreeSlot()
+        {
+            for (int i = 0; i < _currentSlots.Length; i++)
+            {
+                if (_currentSlots[i].Recepie == null)
+                {
+                    _nextFreeSlotIndex = i;
+                    return;
+                }
+            }
+            
+            _nextFreeSlotIndex = _currentSlots.Length;
         }
 
         public class CookingSlot
