@@ -41,6 +41,7 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<EnduranceConsumptionController>().AsSingle().NonLazy();
             Container.Bind<EnduranceRestoreController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
+            Container.Bind<HeatController>().AsSingle().NonLazy();
         }
 
         private void BindConfigs()
@@ -57,6 +58,7 @@ namespace Game.GameEngine.DI
             EnduranceConfig enduranceConfig = configsResource.GetConfig<EnduranceConfig>();
             FatigueConfig fatigueConfig = configsResource.GetConfig<FatigueConfig>();
             RestConfig restConfig = configsResource.GetConfig<RestConfig>();
+            HeatConfig heatConfig = configsResource.GetConfig<HeatConfig>();
 
             Container.BindInstance(playerMetricsConfig).AsSingle();
             Container.BindInstance(frostConfig).AsSingle();
@@ -67,6 +69,7 @@ namespace Game.GameEngine.DI
             Container.BindInstance(enduranceConfig).AsSingle();
             Container.BindInstance(fatigueConfig).AsSingle();
             Container.BindInstance(restConfig).AsSingle();
+            Container.BindInstance(heatConfig).AsSingle();
         }
     }
 }
