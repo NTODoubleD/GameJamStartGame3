@@ -26,6 +26,8 @@ namespace Game.Gameplay.Character
         private TriggerCanvas _firePlaceTriggerCanvas;
         private CinemachineVirtualCamera _characterCamera;
 
+        private Tweener _currentTweener;
+
         [Inject]
         private void Init(CharacterAnimatorController characterAnimatorController, LocalMenuOpener localMenuOpener,
             GameInput inputController, IUIManager uiManager, TriggerCanvas firePlaceTriggerCanvas,
@@ -46,10 +48,13 @@ namespace Game.Gameplay.Character
             _uiManager.ClosePage<ResourcePage>();
             _uiManager.ClosePage<QuestPage>();
             _uiManager.OpenPage<SittingPage>();
+            
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
 
             var transposer = _characterCamera.GetCinemachineComponent<CinemachineTransposer>();
             _outPosition = transposer.m_FollowOffset;
-            DOTween.To(() => transposer.m_FollowOffset, x => transposer.m_FollowOffset = x, _inPosition, _inDuration);
+            _currentTweener = DOTween.To(() => transposer.m_FollowOffset, x => transposer.m_FollowOffset = x, _inPosition, _inDuration);
             
             _characterAnimatorController.AnimateSitting();
             _firePlaceTriggerCanvas.SetActive(false);
@@ -64,8 +69,11 @@ namespace Game.Gameplay.Character
             _uiManager.OpenPage<ResourcePage>();
             _uiManager.OpenPage<QuestPage>();
             
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
+            
             var transposer = _characterCamera.GetCinemachineComponent<CinemachineTransposer>();
-            DOTween.To(() => transposer.m_FollowOffset, x => transposer.m_FollowOffset = x, _outPosition, _outDuration);
+            _currentTweener = DOTween.To(() => transposer.m_FollowOffset, x => transposer.m_FollowOffset = x, _outPosition, _outDuration);
             
             _characterAnimatorController.AnimateStanding();
             _firePlaceTriggerCanvas.SetActive(true);
