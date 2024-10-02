@@ -11,7 +11,6 @@ namespace Game.Gameplay.SurvivalMechanics
         private float _health;
         private float _heatResistance;
         private float _hunger;
-        private float _thirst;
         private float _endurance;
 
         public PlayerMetricsModel(PlayerMetricsConfig config)
@@ -19,7 +18,6 @@ namespace Game.Gameplay.SurvivalMechanics
             _health = config.Health;
             _heatResistance = config.HeatResistance;
             _hunger = config.Hunger;
-            _thirst = config.Thirst;
             _endurance = config.Endurance;
             _maxValue = config.MaxValue;
         }
@@ -54,16 +52,6 @@ namespace Game.Gameplay.SurvivalMechanics
             }
         }
         
-        public float Thirst
-        {
-            get => _thirst;
-            set
-            {
-                _thirst = Mathf.Clamp(value, 0, _maxValue);
-                ThirstChanged?.Invoke(_thirst);
-            }
-        }
-        
         public float Endurance
         {
             get => _endurance;
@@ -77,7 +65,6 @@ namespace Game.Gameplay.SurvivalMechanics
         public event Action<float> HealthChanged;
         public event Action<float> HeatResistanceChanged;
         public event Action<float> HungerChanged;
-        public event Action<float> ThirstChanged;
         public event Action<float> EnduranceChanged;
     }
 }

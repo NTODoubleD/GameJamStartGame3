@@ -9,15 +9,80 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2db13f6fb6a64f898b450edf672509e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0627b6321b9547758d4c2e21eb17018a, type: 3}
   m_Name: Meat Recepie
   m_EditorClassIdentifier: 
-  _outputItem:
-    Item: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
-    Count: 1
-  _inputItem:
-    Item: {fileID: 11400000, guid: 8f2ac3895293c6e40a31454ef6872a4c, type: 2}
-    Count: 1
-  _fuelItem:
-    Item: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-    Count: 2
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
+    - {fileID: 11400000, guid: 8f2ac3895293c6e40a31454ef6872a4c, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _outputItems
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[Game.Gameplay.Items.GameItemInfo,
+        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[Game.Gameplay.Items.GameItemInfo,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _inputItems
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[Game.Gameplay.Items.GameItemInfo,
+        Assembly-CSharp],[System.Int32, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 1
+    - Name: $v
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _craftTime
+      Entry: 4
+      Data: 0

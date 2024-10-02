@@ -13,20 +13,26 @@ namespace Game.Gameplay.Crafting
         private readonly CraftController _craftController;
         private readonly ItemStorage _itemStorage;
         private readonly CookingSlot[] _currentSlots;
-
+        
         private int _nextFreeSlotIndex;
-        private float _cookTimeLeft;
         private bool _isCooking;
+        
+        public float CookTimeLeft { get; private set; }
 
         public event Action<int> Finished;
-        public event Action FuelEnded;
+        public event Action CookingEnded;
+        public event Action CookingStarted;
 
         public CookingController(CookingConfig config, CraftController craftController, ItemStorage itemStorage)
         {
             _config = config;
             _craftController = craftController;
             _itemStorage = itemStorage;
+            
             _currentSlots = new CookingSlot[config.CookingPlaceCount];
+
+            for (int i = 0; i < config.CookingPlaceCount; i++)
+                _currentSlots[i] = new CookingSlot();
         }
 
         public IReadOnlyCollection<CraftingRecepie> GetRecepies() 
@@ -40,13 +46,13 @@ namespace Game.Gameplay.Crafting
         public void AddFuelItem()
         {
             _itemStorage.RemoveItems(_config.GetFuelInfo().Item1, 1);
-            _cookTimeLeft += _config.GetFuelInfo().Item2;
+            CookTimeLeft += _config.GetFuelInfo().Item2;
 
             if (_isCooking == false)
                 CookAsync().Forget();
         }
         
-        public float GetTimeLeftForCooking() => _cookTimeLeft;
+        public float GetTimeLeftForCooking() => CookTimeLeft;
 
         public float GetCookingTimeLeft(int placeIndex) 
             => _currentSlots[placeIndex].TimeLeft;
@@ -92,8 +98,9 @@ namespace Game.Gameplay.Crafting
         private async UniTask CookAsync()
         {
             _isCooking = true;
+            CookingStarted?.Invoke();
             
-            while (_cookTimeLeft > 0)
+            while (CookTimeLeft > 0)
             {
                 await UniTask.DelayFrame(1);
 
@@ -108,7 +115,7 @@ namespace Game.Gameplay.Crafting
                         Finished?.Invoke(i);
                 }
                 
-                _cookTimeLeft -= Time.deltaTime;
+                CookTimeLeft -= Time.deltaTime;
             }
             
             for (int i = 0; i < _currentSlots.Length; i++)
@@ -127,7 +134,7 @@ namespace Game.Gameplay.Crafting
             SetNextFreeSlot();
 
             _isCooking = false;
-            FuelEnded?.Invoke();
+            CookingEnded?.Invoke();
         }
 
         private void SetNextFreeSlot()

@@ -26,8 +26,6 @@ MonoBehaviour:
       _count: 2
     - _itemInfo: {fileID: 11400000, guid: 8f2ac3895293c6e40a31454ef6872a4c, type: 2}
       _count: 0
-    - _itemInfo: {fileID: 11400000, guid: 731d60ce659a0d14d9aeb19c2db2d3db, type: 2}
-      _count: 0
     - _itemInfo: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
       _count: 0
     - _itemInfo: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}

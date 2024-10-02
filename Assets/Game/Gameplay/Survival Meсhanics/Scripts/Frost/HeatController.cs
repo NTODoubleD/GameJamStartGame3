@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
+using Game.Gameplay.Crafting;
 
 namespace Game.Gameplay.SurvivalMechanics.Frost
 {
@@ -8,21 +9,37 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private readonly HeatZone _heatZone;
         private readonly PlayerMetricsModel _playerMetricsModel;
         private readonly HeatConfig _config;
+        private readonly CookingController _cookingController;
 
         private CancellationTokenSource _cts;
         private bool _isHeating;
 
-        public HeatController(HeatZone heatZone, PlayerMetricsModel playerMetricsModel, HeatConfig config)
+        public HeatController(HeatZone heatZone, PlayerMetricsModel playerMetricsModel,
+            HeatConfig config, CookingController cookingController)
         {
             _heatZone = heatZone;
             _playerMetricsModel = playerMetricsModel;
             _config = config;
-
-            _heatZone.Entered += OnPlayerEntered;
-            _heatZone.Exited += OnPlayerExited;
+            _cookingController = cookingController;
+            
+            _heatZone.Entered += StartHeating;
+            _heatZone.Exited += StopHeating;
+            _cookingController.CookingStarted += OnCookingStarted;
+            _cookingController.CookingEnded += OnCookingEnded;
         }
 
-        private void OnPlayerEntered()
+        private void OnCookingStarted()
+        {
+            _heatZone.IsEnabled = true;
+        }
+
+        private void OnCookingEnded()
+        {
+            _heatZone.IsEnabled = false;
+            StopHeating();
+        }
+
+        private void StartHeating()
         {
             if (_isHeating)
             {
@@ -35,7 +52,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             HeatAsync(_cts.Token).Forget();
         }
 
-        private void OnPlayerExited()
+        private void StopHeating()
         {
             if (_isHeating)
             {
@@ -56,8 +73,10 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
 
         ~HeatController()
         {
-            _heatZone.Entered -= OnPlayerEntered;
-            _heatZone.Exited -= OnPlayerExited;
+            _heatZone.Entered -= StartHeating;
+            _heatZone.Exited -= StopHeating;
+            _cookingController.CookingStarted -= OnCookingStarted;
+            _cookingController.CookingEnded -= OnCookingEnded;
 
             if (_isHeating)
             {

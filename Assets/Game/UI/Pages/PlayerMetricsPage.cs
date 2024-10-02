@@ -11,7 +11,6 @@ namespace Game.UI.Pages
         [SerializeField] private UIMetric _health;
         [SerializeField] private UIMetric _heatResistance;
         [SerializeField] private UIMetric _hunger;
-        [SerializeField] private UIMetric _thirst;
         [SerializeField] private UIMetric _endurance;
 
         private PlayerMetricsModel _playerMetrics;
@@ -32,13 +31,11 @@ namespace Game.UI.Pages
             _health.Initialize(_playerMetrics.Health);
             _heatResistance.Initialize(_playerMetrics.HeatResistance);
             _hunger.Initialize(_playerMetrics.Hunger);
-            _thirst.Initialize(_playerMetrics.Thirst);
             _endurance.Initialize(_playerMetrics.Endurance);
 
             _playerMetrics.HealthChanged += OnHealthChanged;
             _playerMetrics.HeatResistanceChanged += OnHeatResistanceChanged;
             _playerMetrics.HungerChanged += OnHungerChanged;
-            _playerMetrics.ThirstChanged += OnThirstChanged;
             _playerMetrics.EnduranceChanged += OnEnduranceChanged;
 
             SetCanvasState(true);
@@ -49,7 +46,6 @@ namespace Game.UI.Pages
             _playerMetrics.HealthChanged -= OnHealthChanged;
             _playerMetrics.HeatResistanceChanged -= OnHeatResistanceChanged;
             _playerMetrics.HungerChanged -= OnHungerChanged;
-            _playerMetrics.ThirstChanged -= OnThirstChanged;
             _playerMetrics.EnduranceChanged -= OnEnduranceChanged;
 
             SetCanvasState(false);
@@ -63,9 +59,6 @@ namespace Game.UI.Pages
 
         private void OnHungerChanged(float newValue) =>
             _hunger.Refresh(newValue);
-
-        private void OnThirstChanged(float newValue) =>
-            _thirst.Refresh(newValue);
 
         private void OnEnduranceChanged(float newValue) =>
             _endurance.Refresh(newValue);

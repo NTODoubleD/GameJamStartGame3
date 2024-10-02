@@ -21,14 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _cookingGroups:
-  - _name:
-      _ru: "\u0413\u043E\u0442\u043E\u0432\u043A\u0430 \u0435\u0434\u044B"
-      _en: Food cooking
-    _recepie: {fileID: 11400000, guid: 5db73d3b07f05c043815213709b7dfb0, type: 2}
-    _cookTime: 1
-  - _name:
-      _ru: "\u041A\u0438\u043F\u044F\u0447\u0435\u043D\u0438\u0435 \u0432\u043E\u0434\u044B"
-      _en: Water boiling
-    _recepie: {fileID: 11400000, guid: 205e3bae662692c4bb8c6a74fcf51cbd, type: 2}
-    _cookTime: 1
+  _recepies:
+  - {fileID: 11400000, guid: 5db73d3b07f05c043815213709b7dfb0, type: 2}
+  - {fileID: 11400000, guid: 205e3bae662692c4bb8c6a74fcf51cbd, type: 2}
+  _fuelItem: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+  _fuelTimeAddition: 10
+  _cookingPlaceCount: 4
