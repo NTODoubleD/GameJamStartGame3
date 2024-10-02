@@ -8,6 +8,7 @@ namespace Game.UI
     {
         [SerializeField] private Image _sliderImage;
         [SerializeField] private UIFlickeringEffect _effect;
+        [SerializeField] private Image _alert;
 
         public void Initialize(float startValue)
         {
@@ -22,6 +23,8 @@ namespace Game.UI
                 _effect.StartAnimation();
             else if (_effect.IsActive)
                 _effect.StopAnimation();
+            
+            _alert.gameObject.SetActive(Mathf.Approximately(newValue, 0));
         }
 
         private void SetSlider(float startValue)

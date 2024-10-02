@@ -10,18 +10,20 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private readonly PlayerMetricsModel _playerMetricsModel;
         private readonly HeatConfig _config;
         private readonly CookingController _cookingController;
+        private readonly FrostController _frostController;
 
         private CancellationTokenSource _cts;
         private bool _isHeating;
 
         public HeatController(HeatZone heatZone, PlayerMetricsModel playerMetricsModel,
-            HeatConfig config, CookingController cookingController)
+            HeatConfig config, CookingController cookingController, FrostController frostController)
         {
             _heatZone = heatZone;
             _playerMetricsModel = playerMetricsModel;
             _config = config;
             _cookingController = cookingController;
-            
+            _frostController = frostController;
+
             _heatZone.Entered += StartHeating;
             _heatZone.Exited += StopHeating;
             _cookingController.CookingStarted += OnCookingStarted;

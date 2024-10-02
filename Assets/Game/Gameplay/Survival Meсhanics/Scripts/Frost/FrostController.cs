@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
@@ -6,13 +7,16 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
 {
     public class FrostController : IRealtimeSurvivalMechanic
     {
+        public FrostLevel CurrentFrostLevel { get; private set; }
+        
         private readonly IEnumerable<IHeatResistable> _heatResistables;
         private readonly FrostConfig _frostConfig;
-        
         private readonly HashSet<IHeatResistable> _whitelist = new();
 
         private CancellationTokenSource _cts;
         private bool _isEffectEnabled = false;
+        
+        public event Action<FrostLevel> FrostLevelChanged; 
 
         public FrostController(IEnumerable<IHeatResistable> heatResistables, FrostConfig frostConfig)
         {
@@ -31,8 +35,11 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
                 Disable();
 
             _isEffectEnabled = true;
+            CurrentFrostLevel = effectLevel;
             _cts = new CancellationTokenSource();
-            DoFrostEffect(effectLevel, _cts.Token).Forget();
+            DoFrostEffect(_cts.Token).Forget();
+            
+            FrostLevelChanged?.Invoke(CurrentFrostLevel);
         }
 
         public void Disable()
@@ -52,9 +59,9 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             return _whitelist.Remove(heatResistable);
         }
         
-        private async UniTask DoFrostEffect(FrostLevel effectLevel, CancellationToken token)
+        private async UniTask DoFrostEffect(CancellationToken token)
         {
-            float effectValue = _frostConfig.GetConsumptionValue(effectLevel);
+            float effectValue = _frostConfig.GetConsumptionValue(CurrentFrostLevel);
             
             while (!token.IsCancellationRequested)
             {

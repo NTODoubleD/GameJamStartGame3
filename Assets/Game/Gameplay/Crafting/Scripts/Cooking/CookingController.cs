@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Game.Gameplay.Items;
+using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.Infrastructure.Storage;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Game.Gameplay.Crafting
         private readonly CookingConfig _config;
         private readonly CraftController _craftController;
         private readonly ItemStorage _itemStorage;
+        private readonly FrostController _frostController;
         private readonly CookingSlot[] _currentSlots;
         
         private int _nextFreeSlotIndex;
@@ -23,12 +25,14 @@ namespace Game.Gameplay.Crafting
         public event Action CookingEnded;
         public event Action CookingStarted;
 
-        public CookingController(CookingConfig config, CraftController craftController, ItemStorage itemStorage)
+        public CookingController(CookingConfig config, CraftController craftController,
+            ItemStorage itemStorage, FrostController frostController)
         {
             _config = config;
             _craftController = craftController;
             _itemStorage = itemStorage;
-            
+            _frostController = frostController;
+
             _currentSlots = new CookingSlot[config.CookingPlaceCount];
 
             for (int i = 0; i < config.CookingPlaceCount; i++)
@@ -41,8 +45,13 @@ namespace Game.Gameplay.Crafting
         public int GetCookingPlaceCount() => _config.CookingPlaceCount;
         public GameItemInfo GetFuelItemInfo() => _config.GetFuelInfo().Item1;
         public int GetFuelAmount() => _itemStorage.GetCount(_config.GetFuelInfo().Item1);
-        public bool CanAddFuelItem() => _itemStorage.GetCount(_config.GetFuelInfo().Item1) > 0;
         
+        public bool CanAddFuelItem()
+        {
+            return _itemStorage.GetCount(_config.GetFuelInfo().Item1) > 0 
+                   && _frostController.CurrentFrostLevel != FrostLevel.Strong;
+        }
+
         public void AddFuelItem()
         {
             _itemStorage.RemoveItems(_config.GetFuelInfo().Item1, 1);
@@ -50,6 +59,11 @@ namespace Game.Gameplay.Crafting
 
             if (_isCooking == false)
                 CookAsync().Forget();
+        }
+
+        public void StopCookingForced()
+        {
+            CookTimeLeft = 0;
         }
         
         public float GetTimeLeftForCooking() => CookTimeLeft;

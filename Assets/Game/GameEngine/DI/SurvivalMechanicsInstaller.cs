@@ -38,6 +38,7 @@ namespace Game.GameEngine.DI
             Container.Bind<EnduranceRestoreController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
             Container.Bind<HeatController>().AsSingle().NonLazy();
+            Container.Bind<FrostChangeObserver>().AsSingle().NonLazy();
         }
 
         private void BindConfigs()
