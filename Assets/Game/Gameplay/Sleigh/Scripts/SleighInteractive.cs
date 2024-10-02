@@ -11,12 +11,15 @@ namespace Game.Gameplay
     {
         private GameplayLocalStateMachine _stateMachine;
         private WorldMapController _worldMap;
+        private CursorInteractor _cursorInteractor;
 
         [Inject]
-        private void Init(GameplayLocalStateMachine stateMachine, WorldMapController worldMap)
+        private void Init(GameplayLocalStateMachine stateMachine, WorldMapController worldMap,
+            CursorInteractor cursorInteractor)
         {
             _stateMachine = stateMachine;
             _worldMap = worldMap;
+            _cursorInteractor = cursorInteractor;
         }
 
         public override void Interact()
@@ -33,6 +36,7 @@ namespace Game.Gameplay
         {
             _stateMachine.Enter<MapState>();
             _worldMap.Open();
+            _cursorInteractor.Open();
         }
     }
 }

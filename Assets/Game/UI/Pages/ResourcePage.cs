@@ -41,8 +41,8 @@ namespace Game.UI.Pages
 
         public void Open()
         {
-            _itemStorage.ItemAdded += OnItemAdded;
-            _itemStorage.ItemRemoved += OnItemRemoved;
+            _itemStorage.ItemAdded += OnItemChanged;
+            _itemStorage.ItemRemoved += OnItemChanged;
 
             foreach (var (itemInfo, count) in _itemStorage.Resources)
                 RefreshUIResource(itemInfo, count);
@@ -54,18 +54,13 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _itemStorage.ItemAdded -= OnItemAdded;
-            _itemStorage.ItemRemoved -= OnItemRemoved;
+            _itemStorage.ItemAdded -= OnItemChanged;
+            _itemStorage.ItemRemoved -= OnItemChanged;
         }
 
-        private void OnItemAdded(ItemInfo itemInfo, int newValue)
+        private void OnItemChanged(ItemInfo itemInfo, int newValue)
         {
-            RefreshUIResource(itemInfo, newValue);
-        }
-
-        private void OnItemRemoved(ItemInfo itemInfo, int newValue)
-        {
-            RefreshUIResource(itemInfo, newValue);
+            RefreshUIResource(itemInfo, _itemStorage.GetCount(itemInfo));
         }
 
         private void RefreshUIResource(ItemInfo itemInfo, int count)
@@ -78,7 +73,8 @@ namespace Game.UI.Pages
 
             var uiResource = _uiResources[gameItemInfo.ID];
 
-            uiResource.Refresh(gameItemInfo, count);
+            uiResource.Initialize(gameItemInfo);
+            uiResource.Refresh(count);
             uiResource.gameObject.SetActive(count != 0);
         }
     }

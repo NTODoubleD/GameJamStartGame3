@@ -22,7 +22,7 @@ namespace Game.Gameplay.Sleigh
 
         
         private readonly TranslatedText _labelText = new("Результат вылазки", "Expedition Result");
-        private readonly TranslatedText _headingText = new("Получено ресурсов:", "Resources Obtained:");
+        private readonly TranslatedText _headingText = new("Получено ресурсов:\n", "Resources Obtained:\n");
         
         [Inject]
         private void Init(IUIManager uiManager, ItemStorage itemStorage)
