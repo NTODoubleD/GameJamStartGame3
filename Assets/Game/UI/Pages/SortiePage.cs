@@ -7,6 +7,7 @@ using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
+using Game.WorldMap;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -91,8 +92,12 @@ namespace Game.UI.Pages
 
             var callback = new Dictionary<ItemInfo, int>();
 
-            for (int i = 0; i < _possibleResources.Count; i++)
-                callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+            // for (int i = 0; i < _possibleResources.Count; i++)
+            //     callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+
+            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
+            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
+            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
 
             Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }
@@ -205,6 +210,13 @@ namespace Game.UI.Pages
 
             _sliderUI.gameObject.SetActive(isSlider);
             _startSortieButton.gameObject.SetActive(isSlider);
+        }
+
+        private SortieResourceArgument _currenSortieContext;
+
+        public void SetResourcePriorities(SortieResourceArgument context)
+        {
+            _currenSortieContext = context;
         }
     }
 }

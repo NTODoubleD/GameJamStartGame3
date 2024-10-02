@@ -11,10 +11,6 @@ namespace Game.Infrastructure.Storage
 
         public IReadOnlyDictionary<ItemInfo, int> Resources => _items;
 
-        public ItemStorage()
-        {
-        }
-
         public ItemStorage(ItemStorageInfo info)
         {
             foreach (var keyPair in info.StartItems)
