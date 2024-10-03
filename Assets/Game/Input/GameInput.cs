@@ -317,6 +317,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""64f885c7-60f4-4279-8dd7-2bc666c7546b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -770,6 +779,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""079c7f88-616b-4e26-b996-966e4d4da1e6"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -932,6 +952,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_CloseMenu = m_UI.FindAction("CloseMenu", throwIfNotFound: true);
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
+        m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
         // Map
         m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
@@ -1096,6 +1117,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_CloseMenu;
     private readonly InputAction m_UI_Confirm;
+    private readonly InputAction m_UI_MousePosition;
     public struct UIActions
     {
         private @GameInput m_Wrapper;
@@ -1112,6 +1134,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @CloseMenu => m_Wrapper.m_UI_CloseMenu;
         public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
+        public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1157,6 +1180,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1197,6 +1223,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1299,6 +1328,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnCloseMenu(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
     public interface IMapActions
     {
