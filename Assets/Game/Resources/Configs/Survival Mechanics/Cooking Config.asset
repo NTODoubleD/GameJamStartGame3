@@ -25,5 +25,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5db73d3b07f05c043815213709b7dfb0, type: 2}
   - {fileID: 11400000, guid: 205e3bae662692c4bb8c6a74fcf51cbd, type: 2}
   _fuelItem: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-  _fuelTimeAddition: 10
+  _fuelTimeAddition: 36
   _cookingPlaceCount: 4
