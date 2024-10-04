@@ -66,7 +66,8 @@ namespace Game.Gameplay.Crafting
             CookTimeLeft = 0;
         }
         
-        public float GetTimeLeftForCooking() => CookTimeLeft;
+        public float GetTimeLeftForCooking() 
+            => CookTimeLeft;
 
         public float GetCookingTimeLeft(int placeIndex) 
             => _currentSlots[placeIndex].TimeLeft;
@@ -78,6 +79,9 @@ namespace Game.Gameplay.Crafting
             
             return currentTimeLeft / totalTime;
         }
+        
+        public CraftingRecepie GetCookingSlotCurrentRecepie(int slotIndex) 
+            => _currentSlots[slotIndex].Recepie;
 
         public bool CanAddToCooking(CraftingRecepie recepie)
         {
@@ -108,7 +112,7 @@ namespace Game.Gameplay.Crafting
             _currentSlots[placeIndex].Recepie = null;
             SetNextFreeSlot();
         }
-
+        
         private async UniTask CookAsync()
         {
             _isCooking = true;

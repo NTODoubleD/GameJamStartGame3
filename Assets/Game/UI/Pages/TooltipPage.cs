@@ -35,6 +35,9 @@ namespace Game.UI.Pages
 
         private void Update()
         {
+            if (!PageIsDisplayed)
+                return;
+            
             _mousePosition = _gameInput.UI.enabled ? _gameInput.UI.MousePosition.ReadValue<Vector2>() : _gameInput.Player.MousePosition.ReadValue<Vector2>();
             RectTransformUtility.ScreenPointToLocalPointInRectangle(_tooltipParent, _mousePosition, null, out _localMousePoint);
             _tooltipObject.localPosition = _localMousePoint;
