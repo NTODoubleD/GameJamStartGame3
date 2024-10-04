@@ -15,6 +15,12 @@ namespace Game.UI
             _image.sprite = item.Icon;
         }
 
+        public void Initialize(GameItemInfo item, int count)
+        {
+            Initialize(item);
+            Refresh(count);
+        }
+
         public void Refresh(int count)
         {
             _countText.text = count.ToString();

@@ -9,14 +9,26 @@ namespace Game.UI
 {
     public class UICookingSlot : MonoBehaviour
     {
-        [SerializeField] private Image _mealImage;
-        [SerializeField] private TMP_Text _mealCount;
+        [SerializeField] private UIResource _resourceView;
         [SerializeField] private Image _progressBar;
+        [SerializeField] private TMP_Text _progressText;
         [SerializeField] private Button _pickButton;
 
+        private TimeSpan _cachedTimeLeft;
+        
         public CraftingRecepie CurrentRecepie { get; private set; }
         
         public event Action<UICookingSlot> PickRequested;
+
+        private void OnEnable()
+        {
+            _pickButton.onClick.AddListener(OnButtonClicked);
+        }
+
+        private void OnDisable()
+        {
+            _pickButton.onClick.RemoveListener(OnButtonClicked);
+        }
 
         public void Init(CraftingRecepie recepie, float timeLeft)
         {
@@ -24,12 +36,10 @@ namespace Game.UI
 
             var mealItem = recepie.OutputItems.Keys.First();
             int mealCount = recepie.OutputItems[mealItem];
+            
+            _resourceView.Initialize(mealItem, mealCount);
+            _resourceView.gameObject.SetActive(true);
 
-            _mealImage.sprite = mealItem.Icon;
-            _mealCount.text = mealCount.ToString();
-
-            _mealImage.enabled = true;
-            _mealCount.enabled = true;
             Refresh(timeLeft);
         }
 
@@ -37,13 +47,22 @@ namespace Game.UI
         {
             float progressPart = 1 - timeLeft / CurrentRecepie.CraftTime;
             _progressBar.fillAmount = progressPart;
+
+            _cachedTimeLeft = TimeSpan.FromSeconds(timeLeft);
+            _progressText.text = $"{_cachedTimeLeft.Minutes:D1}:{_cachedTimeLeft.Seconds:D2}";
         }
 
         public void Clear()
         {
-            _mealImage.enabled = false;
-            _mealCount.enabled = false;
+            _resourceView.gameObject.SetActive(false);
+            _progressText.text = string.Empty;
+            _progressBar.fillAmount = 0;
             CurrentRecepie = null;
+        }
+
+        private void OnButtonClicked()
+        {
+            PickRequested?.Invoke(this);
         }
     }
 }

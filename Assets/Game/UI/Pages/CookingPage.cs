@@ -6,7 +6,6 @@ using DoubleDCore.UI.Base;
 using Game.Gameplay.Crafting;
 using ModestTree;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Game.UI.Pages
@@ -17,7 +16,6 @@ namespace Game.UI.Pages
         
         [Header("UI Setup")]
         [SerializeField] private UICookingSlot[] _cookingSlots;
-        [SerializeField] private Button _addFuelButton;
         [SerializeField] private UIFuelView _fuelView;
         [SerializeField] private Transform _recepiesRoot;
         
@@ -25,11 +23,13 @@ namespace Game.UI.Pages
         [SerializeField] private UICraftingRecepie _uiCraftingRecepiePrefab;
 
         private CookingController _cookingController;
+        private GameInput _inputController;
         
         [Inject]
-        private void Init(CookingController cookingController)
+        private void Init(CookingController cookingController, GameInput inputController)
         {
             _cookingController = cookingController;
+            _inputController = inputController;
         }
 
         public void Open()
@@ -44,6 +44,9 @@ namespace Game.UI.Pages
                 var recepieView = Instantiate(_uiCraftingRecepiePrefab, _recepiesRoot);
                 recepieView.Init(recepie);
                 recepieView.SetAvailable(_cookingController.CanAddToCooking(recepie));
+
+                recepieView.Clicked += OnRecepieClicked;
+                
                 _currentRecepieViews.Add(recepieView);
             }
 
@@ -60,10 +63,17 @@ namespace Game.UI.Pages
                 {
                     _cookingSlots[i].Clear();
                 }
+                
+                _cookingSlots[i].PickRequested += OnMealPickRequested;
             }
             
             _fuelView.SetButtonInteractable(_cookingController.CanAddFuelItem());
+            _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
+
+            _fuelView.AddFuelRequested += OnAddFuelRequested;
+            _cookingController.Interrupted += OnSlotInterrupted;
             
+            SetCanvasState(true);
             UpdateAsync().Forget();
         }
 
@@ -73,8 +83,9 @@ namespace Game.UI.Pages
             {
                 _fuelView.SetTimeLeft(_cookingController.CookTimeLeft);
                 UpdateCookingSlotsState();
+                UpdateRecepiesAvailable();
 
-                await UniTask.Delay(1000);
+                await UniTask.DelayFrame(1);
             }
         }
 
@@ -90,9 +101,45 @@ namespace Game.UI.Pages
             }
         }
 
+        private void UpdateRecepiesAvailable()
+        {
+            foreach (var recepieView in _currentRecepieViews)
+                recepieView.SetAvailable(_cookingController.CanAddToCooking(recepieView.RecepieData));
+        }
+
         public override void Close()
         {
+            _fuelView.AddFuelRequested -= OnAddFuelRequested;
+            _cookingController.Interrupted -= OnSlotInterrupted;
+
+            foreach (var recepieView in _currentRecepieViews)
+                recepieView.Clicked -= OnRecepieClicked;
             
+            for (int i = 0; i < _cookingSlots.Length; i++)
+                _cookingSlots[i].PickRequested -= OnMealPickRequested;
+            
+            SetCanvasState(false);
+            
+            _inputController.UI.Disable();
+            _inputController.Player.Enable();
+        }
+
+        private void OnAddFuelRequested()
+        {
+            if (_cookingController.CanAddFuelItem() == false)
+                throw new Exception("CAN'T ADD FUEL ITEM");
+            
+            _cookingController.AddFuelItem();
+            _fuelView.SetButtonInteractable(_cookingController.CanAddFuelItem());
+            _fuelView.SetTimeLeft(_cookingController.CookTimeLeft);
+            _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
+            
+            UpdateRecepiesAvailable();
+        }
+
+        private void OnSlotInterrupted(int slotIndex)
+        {
+            _cookingSlots[slotIndex].Clear();
         }
 
         private void OnRecepieClicked(CraftingRecepie recepie)
@@ -102,6 +149,9 @@ namespace Game.UI.Pages
 
             int slotIndex = _cookingController.AddToCooking(recepie);
             _cookingSlots[slotIndex].Init(recepie, recepie.CraftTime);
+            
+            UpdateRecepiesAvailable();
+
         }
 
         private void OnMealPickRequested(UICookingSlot slot)
@@ -118,6 +168,8 @@ namespace Game.UI.Pages
             
             _cookingController.TakeCookedRecepie(slotIndex);
             slot.Clear();
+            
+            UpdateRecepiesAvailable();
         }
     }
 }

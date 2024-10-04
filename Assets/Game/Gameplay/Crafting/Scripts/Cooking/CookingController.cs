@@ -21,7 +21,7 @@ namespace Game.Gameplay.Crafting
         
         public float CookTimeLeft { get; private set; }
 
-        public event Action<int> Finished;
+        public event Action<int> Interrupted;
         public event Action CookingEnded;
         public event Action CookingStarted;
 
@@ -87,6 +87,9 @@ namespace Game.Gameplay.Crafting
         {
             if (_nextFreeSlotIndex >= _currentSlots.Length)
                 return false;
+
+            if (CookTimeLeft <= 0)
+                return false;
             
             return _craftController.CanCraft(recepie, out int _);
         }
@@ -128,9 +131,7 @@ namespace Game.Gameplay.Crafting
                         continue;
                     
                     var cookingSlot = _currentSlots[i];
-                    
-                    if (cookingSlot.TimeLeft <= 0)
-                        Finished?.Invoke(i);
+                    cookingSlot.TimeLeft = Mathf.Max(0, cookingSlot.TimeLeft - Time.deltaTime);
                 }
                 
                 CookTimeLeft -= Time.deltaTime;
@@ -147,6 +148,7 @@ namespace Game.Gameplay.Crafting
                     _itemStorage.AddItems(outputItem.Key, outputItem.Value);
 
                 _currentSlots[i].Recepie = null;
+                Interrupted?.Invoke(i);
             }
             
             SetNextFreeSlot();
