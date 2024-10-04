@@ -12,13 +12,9 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - IS_ADD
+  - IS_SNOW
   - USE_AL
   - USE_DECAL
-  - USE_FOG
-  - USE_LS
-  - USE_RT
-  - USE_WC
   - _TESSELLATION_EDGE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -282,9 +278,9 @@ Material:
     - _GlossyReflections: 1
     - _HeightMultiplier: 0.5
     - _HeightScale: 1.15
-    - _ISADD: 1
+    - _ISADD: 0
     - _ISICE: 0
-    - _ISSNOW: 0
+    - _ISSNOW: 1
     - _IST: 0
     - _ISUNLIT: 0
     - _IceScale: 1
@@ -349,17 +345,17 @@ Material:
     - _TransitionScale: 0.65
     - _TransparencyValue: 1
     - _USEDECAL: 1
-    - _USEFOG: 1
+    - _USEFOG: 0
     - _USEINTER: 0
     - _USELOW: 0
-    - _USERT: 1
-    - _USEWC: 1
+    - _USERT: 0
+    - _USEWC: 0
     - _USEWT: 0
     - _UVSec: 0
     - _UpVector: 1
     - _UseAmbientLight: 1
     - _UsePR: 0
-    - _UseSunReflection: 1
+    - _UseSunReflection: 0
     - _UseVR: 0
     - _WireframeSmoothing: 1
     - _WireframeThickness: 1

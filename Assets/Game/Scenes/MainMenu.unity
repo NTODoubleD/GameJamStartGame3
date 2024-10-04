@@ -6123,6 +6123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraEffects
       objectReference: {fileID: 0}
+    - target: {fileID: 8282781474161655912, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8282781474161655913, guid: 8c88a45db87ca8b4d80bfbf7955aa24d,
         type: 3}
       propertyPath: m_LocalPosition.x

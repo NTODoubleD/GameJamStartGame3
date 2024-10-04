@@ -543,6 +543,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
         type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
+        type: 3}
       propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -893,6 +903,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PEPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 44135637975588892, guid: 5a4fe616869bd714c8d5a0685df4e384,
         type: 3}
