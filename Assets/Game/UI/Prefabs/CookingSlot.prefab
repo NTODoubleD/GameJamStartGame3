@@ -367,6 +367,8 @@ MonoBehaviour:
   _progressBar: {fileID: 3052100796227807452}
   _progressText: {fileID: 2598021423765701150}
   _pickButton: {fileID: 8689758978252802097}
+  _defaultProgressColor: {r: 0.27450982, g: 0.6509804, b: 0.8156863, a: 1}
+  _completedProgressColor: {r: 0.26032394, g: 0.735849, b: 0.2782527, a: 1}
 --- !u!1 &7084037787521645286
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,12 @@ namespace Game.UI
         [SerializeField] private TMP_Text _progressText;
         [SerializeField] private Button _pickButton;
 
+        [Header("Colors")] 
+        [SerializeField] private Color _defaultProgressColor;
+        [SerializeField] private Color _completedProgressColor;
+
         private TimeSpan _cachedTimeLeft;
+        private float _targetAmount;
         
         public CraftingRecepie CurrentRecepie { get; private set; }
         
@@ -50,6 +55,8 @@ namespace Game.UI
 
             _cachedTimeLeft = TimeSpan.FromSeconds(timeLeft);
             _progressText.text = $"{_cachedTimeLeft.Minutes:D1}:{_cachedTimeLeft.Seconds:D2}";
+
+            _progressBar.color = Mathf.Approximately(timeLeft, 0) ? _completedProgressColor : _defaultProgressColor;
         }
 
         public void Clear()

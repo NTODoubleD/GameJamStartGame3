@@ -65,20 +65,9 @@ namespace Game.Gameplay.Crafting
         {
             CookTimeLeft = 0;
         }
-        
-        public float GetTimeLeftForCooking() 
-            => CookTimeLeft;
 
         public float GetCookingTimeLeft(int placeIndex) 
             => _currentSlots[placeIndex].TimeLeft;
-
-        public float GetCookingTimeLeftPercentage(int placeIndex)
-        {
-            float currentTimeLeft = GetCookingTimeLeft(placeIndex);
-            float totalTime = _currentSlots[placeIndex].Recepie.CraftTime;
-            
-            return currentTimeLeft / totalTime;
-        }
         
         public CraftingRecepie GetCookingSlotCurrentRecepie(int slotIndex) 
             => _currentSlots[slotIndex].Recepie;
