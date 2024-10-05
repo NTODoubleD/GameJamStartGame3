@@ -81,7 +81,7 @@ namespace Game.UI.Pages
                 var button = _buttons[i];
                 var buttonInfo = context.Buttons[i];
 
-                if (buttonInfo.IsUnlock())
+                if ((buttonInfo.HasCondition && buttonInfo.ShowCondition == null) || buttonInfo.IsUnlock())
                     continue;
 
                 button.gameObject.SetActive(true);
