@@ -17,4 +17,4 @@ MonoBehaviour:
     _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D\u043D\u043E\u0435
       \u043C\u044F\u0441\u043E"
     _en: Cooked meat
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: d9cdde1e15817c04f978e98e6865221e, type: 3}

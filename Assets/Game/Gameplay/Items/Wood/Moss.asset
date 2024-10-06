@@ -16,3 +16,4 @@ MonoBehaviour:
   _name:
     _ru: "\u041C\u043E\u0445"
     _en: Moss
+  _icon: {fileID: 21300000, guid: 766a00ee1a2ae084d90a8da5d6a304ee, type: 3}

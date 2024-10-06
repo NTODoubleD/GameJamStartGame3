@@ -13,7 +13,7 @@ namespace Game.UI
         
         [SerializeField] private Button _clickButton;
         [SerializeField] private UIResource _resourceViewPrefab;
-        [SerializeField] private Image _arrowPrefab;
+        [SerializeField] private UICraftingArrow _arrowPrefab;
         [SerializeField] private Transform _resourcesRoot;
         
         public CraftingRecepie RecepieData { get; private set; }
@@ -43,7 +43,11 @@ namespace Game.UI
             RecepieData = recepie;
             
             AddResourceRange(RecepieData.InputItems);
-            _resourceViews.Add(Instantiate(_arrowPrefab, _resourcesRoot).gameObject);
+
+            var craftingArrow = Instantiate(_arrowPrefab, _resourcesRoot);
+            craftingArrow.Initialize(recepie.CraftTime);
+            _resourceViews.Add(craftingArrow.gameObject);
+            
             AddResourceRange(RecepieData.OutputItems);
         }
 

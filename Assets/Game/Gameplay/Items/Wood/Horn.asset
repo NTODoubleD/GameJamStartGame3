@@ -16,3 +16,4 @@ MonoBehaviour:
   _name:
     _ru: "\u0420\u043E\u0433\u0430"
     _en: Horns
+  _icon: {fileID: 21300000, guid: 443de4c4dba9c3c4396efa22bfad4379, type: 3}

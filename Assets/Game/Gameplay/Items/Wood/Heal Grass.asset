@@ -16,3 +16,4 @@ MonoBehaviour:
   _name:
     _ru: "\u041B\u0435\u0447\u0435\u0431\u043D\u0430\u044F \u0422\u0440\u0430\u0432\u0430"
     _en: Heal Grass
+  _icon: {fileID: 21300000, guid: 754b7b9a3d997614da729d8f7baa1ac4, type: 3}

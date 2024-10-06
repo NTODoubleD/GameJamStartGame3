@@ -16,3 +16,4 @@ MonoBehaviour:
   _name:
     _ru: "\u0414\u0435\u0440\u0435\u0432\u043E"
     _en: Wood
+  _icon: {fileID: 21300000, guid: d0d9b10648d531e44bc6022f62bcac7d, type: 3}

@@ -155,7 +155,7 @@ MonoBehaviour:
   _clickButton: {fileID: 6857864112958222181}
   _resourceViewPrefab: {fileID: 1044806056763702080, guid: 0d057f089be17de408c516c7a07b8b70,
     type: 3}
-  _arrowPrefab: {fileID: 2134884636558409850, guid: 29d0a9705e46dd849a7243885f586598,
+  _arrowPrefab: {fileID: 7090705558231178421, guid: 29d0a9705e46dd849a7243885f586598,
     type: 3}
   _resourcesRoot: {fileID: 8144650647329149746}
 --- !u!1 &8858772056758504484
