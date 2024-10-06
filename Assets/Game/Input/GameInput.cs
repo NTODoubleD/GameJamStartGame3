@@ -80,6 +80,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""InventoryOpen"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a38f68e-73ae-4cf6-bd86-538844c30244"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +210,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aecbd277-73ef-4a47-8615-5f4645675e54"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryOpen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -326,6 +346,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""InventoryClose"",
+                    ""type"": ""Button"",
+                    ""id"": ""b0b63202-e45c-4554-b3ea-7104a4c31111"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -790,6 +819,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""739b4e27-70dd-4aab-ba36-d0bfbf0642b8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InventoryClose"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -938,6 +978,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_InventoryOpen = m_Player.FindAction("InventoryOpen", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -953,6 +994,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_CloseMenu = m_UI.FindAction("CloseMenu", throwIfNotFound: true);
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
         m_UI_MousePosition = m_UI.FindAction("MousePosition", throwIfNotFound: true);
+        m_UI_InventoryClose = m_UI.FindAction("InventoryClose", throwIfNotFound: true);
         // Map
         m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
@@ -1025,6 +1067,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_InventoryOpen;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1035,6 +1078,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @InventoryOpen => m_Wrapper.m_Player_InventoryOpen;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1062,6 +1106,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @InventoryOpen.started += instance.OnInventoryOpen;
+            @InventoryOpen.performed += instance.OnInventoryOpen;
+            @InventoryOpen.canceled += instance.OnInventoryOpen;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1084,6 +1131,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @InventoryOpen.started -= instance.OnInventoryOpen;
+            @InventoryOpen.performed -= instance.OnInventoryOpen;
+            @InventoryOpen.canceled -= instance.OnInventoryOpen;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1118,6 +1168,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_CloseMenu;
     private readonly InputAction m_UI_Confirm;
     private readonly InputAction m_UI_MousePosition;
+    private readonly InputAction m_UI_InventoryClose;
     public struct UIActions
     {
         private @GameInput m_Wrapper;
@@ -1135,6 +1186,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @CloseMenu => m_Wrapper.m_UI_CloseMenu;
         public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
         public InputAction @MousePosition => m_Wrapper.m_UI_MousePosition;
+        public InputAction @InventoryClose => m_Wrapper.m_UI_InventoryClose;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1183,6 +1235,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @InventoryClose.started += instance.OnInventoryClose;
+            @InventoryClose.performed += instance.OnInventoryClose;
+            @InventoryClose.canceled += instance.OnInventoryClose;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -1226,6 +1281,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @InventoryClose.started -= instance.OnInventoryClose;
+            @InventoryClose.performed -= instance.OnInventoryClose;
+            @InventoryClose.canceled -= instance.OnInventoryClose;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -1313,6 +1371,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnInventoryOpen(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1329,6 +1388,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnCloseMenu(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnInventoryClose(InputAction.CallbackContext context);
     }
     public interface IMapActions
     {
