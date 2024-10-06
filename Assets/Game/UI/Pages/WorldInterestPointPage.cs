@@ -63,8 +63,10 @@ namespace Game.UI.Pages
 
         private void UpdateWidgetPosition(Vector3 interestPointPosition)
         {
-            _widgetRoot.anchoredPosition = _camera.WorldToScreenPoint(interestPointPosition);
+            _widgetRoot.anchoredPosition = _camera.WorldToScreenPoint(interestPointPosition) / Canvas.scaleFactor;
+
             var cameraPosition = _camera.transform.position;
+
             _widgetRoot.localScale = Vector3.one *
                                      (_scaleFactor /
                                       Vector2.Distance(
