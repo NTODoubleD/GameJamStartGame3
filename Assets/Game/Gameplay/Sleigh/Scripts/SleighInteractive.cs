@@ -1,4 +1,6 @@
-﻿using Game.Gameplay.Interaction;
+﻿using System.Collections.Generic;
+using Game.Gameplay.Interaction;
+using Game.Gameplay.SurvivalMeсhanics.Fatigue;
 using Game.UI.Pages;
 using Game.WorldMap;
 using Infrastructure;
@@ -12,19 +14,27 @@ namespace Game.Gameplay
         private GameplayLocalStateMachine _stateMachine;
         private WorldMapController _worldMap;
         private CursorInteractor _cursorInteractor;
+        private FatigueRadialButtonsHelper _helper;
 
         [Inject]
         private void Init(GameplayLocalStateMachine stateMachine, WorldMapController worldMap,
-            CursorInteractor cursorInteractor)
+            CursorInteractor cursorInteractor, FatigueRadialButtonsHelper helper)
         {
             _stateMachine = stateMachine;
             _worldMap = worldMap;
             _cursorInteractor = cursorInteractor;
+            _helper = helper;
         }
 
         public override void Interact()
         {
-            UIManager.OpenPage<RadialMenuPage, RadialMenuArgument>(GetRadialMenuArgument());
+            var argument = GetRadialMenuArgument();
+
+            if (_helper.IsFatigueEffectActive())
+                argument.Buttons = new List<RadialButtonInfo>() 
+                    { _helper.GetTiredButtonInfo() };
+        
+            UIManager.OpenPage<RadialMenuPage, RadialMenuArgument>(argument);
         }
 
         public void OpenSortiePage()

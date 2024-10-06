@@ -906,6 +906,7 @@ MonoBehaviour:
   - {fileID: 1890921514}
   - {fileID: 1442707020}
   - {fileID: 1721345985}
+  - {fileID: 1774537540}
   - {fileID: 613878517}
   - {fileID: 613878518}
 --- !u!114 &69701618
@@ -1643,7 +1644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2807168.8}
+  m_AnchoredPosition: {x: 0, y: -3007015.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -9527,7 +9528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1370979}
+  m_AnchoredPosition: {x: 0, y: 1480849.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -15333,6 +15334,84 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1766601198}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1774537537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774537538}
+  - component: {fileID: 1774537540}
+  - component: {fileID: 1774537539}
+  m_Layer: 0
+  m_Name: '[FATIGUE]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774537538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774537537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 752491430}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774537539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774537537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b8c18f610447419610d1034fa38953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1774537540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774537537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd79c46c6504df1bbef3c955a8c7433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fatigueButton:
+    Name: "\u0412\u044B \u0443\u0441\u0442\u0430\u043B\u0438"
+    EnName: You are tired
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1774537539}
+          m_TargetAssemblyTypeName: Game.UI.ExitRadialMenu, Assembly-CSharp
+          m_MethodName: Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
 --- !u!1 &1783468963
 GameObject:
   m_ObjectHideFlags: 0
@@ -16771,17 +16850,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _interactiveObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 800224989}
+      objectReference: {fileID: 1890921527}
     - target: {fileID: 1143328946506485183, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactiveObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 1187642123}
+      objectReference: {fileID: 800224989}
     - target: {fileID: 1143328946506485183, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactiveObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 1890921511}
+      objectReference: {fileID: 1187642123}
     - target: {fileID: 1143328946506485183, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactiveObjects.Array.data[3]
@@ -16796,7 +16875,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _interactiveObjects.Array.data[5]
       value: 
-      objectReference: {fileID: 5375850530510015300}
+      objectReference: {fileID: 1890921512}
     - target: {fileID: 1143328946506485183, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactiveObjects.Array.data[10]
@@ -16826,7 +16905,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _interactiveObjects.Array.data[21]
       value: 
-      objectReference: {fileID: 1890921511}
+      objectReference: {fileID: 0}
     - target: {fileID: 1143328946506485183, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactiveObjects.Array.data[22]
@@ -19666,6 +19745,7 @@ PrefabInstance:
     - {fileID: 5058916622712661586, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
     - {fileID: 7154805261319809939, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
     - {fileID: 7554200561430231336, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
+    - {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7846831538797987572, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
     - {fileID: 949558942951742290, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
@@ -19818,7 +19898,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 16398015}
+    - targetCorrespondingSourceObject: {fileID: 1367227022721814767, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1774537538}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5068165435231610944, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1890921527}
     - targetCorrespondingSourceObject: {fileID: 5068165435231610944, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
@@ -19992,18 +20080,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1271600453}
   m_SourcePrefab: {fileID: 100100000, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
---- !u!114 &1890921511 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7208731160363924718, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1890921510}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890921513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0eb5f101fba3f49b55bfcff8793791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1890921512 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -20144,6 +20220,126 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b8c18f610447419610d1034fa38953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1890921527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890921513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bc69532ed749ddbb87beb1131a4d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: "\u042E\u0440\u0442\u0430"
+  _enName: Yurt
+  _distanceToInteract: 3
+  _interactedByTrigger: 1
+  _operations:
+  - Name: "\u041F\u043E\u0441\u043F\u0430\u0442\u044C"
+    EnName: Sleep
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2089670858}
+          m_TargetAssemblyTypeName: Game.Gameplay.DayCycle.SleepingController, Assembly-CSharp
+          m_MethodName: Sleep
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
+  - Name: "\u0412\u044B\u0439\u0442\u0438"
+    EnName: Exit
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1890921523}
+          m_TargetAssemblyTypeName: Game.UI.ExitRadialMenu, Assembly-CSharp
+          m_MethodName: Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
+  - Name: "\u0423\u043B\u0443\u0447\u0448\u0438\u0442\u044C"
+    EnName: Upgrade
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1150849463}
+          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.TownHallBuilding, Assembly-CSharp
+          m_MethodName: OpenUpgradePage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 1
+    ShowCondition: {fileID: 1890921520}
+  - Name: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
+    EnName: Resources
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1150849463}
+          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.TownHallBuilding, Assembly-CSharp
+          m_MethodName: OpenResourcePage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
+  - Name: "\u041F\u043E\u0433\u0440\u0435\u0442\u044C\u0441\u044F"
+    EnName: Warm up
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1086681813}
+          m_TargetAssemblyTypeName: "Game.Gameplay.SurvivalMe\u0441hanics.Endurance.RestController,
+            Assembly-CSharp"
+          m_MethodName: StartResting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 0
+    ShowCondition: {fileID: 0}
+  _viewUpgrader: {fileID: 2146639741}
+  _sleepActionIndex: 0
 --- !u!1 &1896446668
 GameObject:
   m_ObjectHideFlags: 0
@@ -22343,6 +22539,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2141252549}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2146639741 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6320560113101651125, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc223f7ec4afc574795ad00827ff82b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &518831671395398833
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23432,7 +23640,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _connectedObject
       value: 
-      objectReference: {fileID: 1890921511}
+      objectReference: {fileID: 1890921527}
     - target: {fileID: 5631842067730766418, guid: dc0fac1c152d4574fb9afee87fee9a6e,
         type: 3}
       propertyPath: m_LocalPosition.x

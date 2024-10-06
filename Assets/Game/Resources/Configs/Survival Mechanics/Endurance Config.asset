@@ -71,3 +71,4 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  _restoreDayValue: 100

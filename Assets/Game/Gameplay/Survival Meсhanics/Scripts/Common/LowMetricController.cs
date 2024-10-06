@@ -11,7 +11,8 @@ namespace Game.Gameplay.SurvivalMechanics
         private readonly LowMetricEffectController _lowMetricEffectController;
 
         private CancellationTokenSource _cts;
-        private bool _isEffectActive;
+        
+        public bool IsEffectActive { get; private set; }
 
         public LowMetricController(float damage, LowMetricEffectController lowMetricEffectController)
         {
@@ -31,22 +32,22 @@ namespace Game.Gameplay.SurvivalMechanics
         
         private void OnMetricChanged(float newValue)
         {
-            if (newValue <= 0 && _isEffectActive == false)
+            if (newValue <= 0 && IsEffectActive == false)
                 ActivateEffect();
-            else if (newValue > 0 && _isEffectActive)
+            else if (newValue > 0 && IsEffectActive)
                 DeactivateEffect();
         }
 
         private void ActivateEffect()
         {
-            _isEffectActive = true;
+            IsEffectActive = true;
             _lowMetricEffectController.AddEffect(GetName(), _damage);
             OnEffectActivated();
         }
 
         private void DeactivateEffect()
         {
-            _isEffectActive = false;
+            IsEffectActive = false;
             _lowMetricEffectController.RemoveEffect(GetName());
             OnEffectDeactivated();
         }

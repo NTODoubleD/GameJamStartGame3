@@ -1,8 +1,11 @@
-﻿using DoubleDCore.TranslationTools.Data;
+﻿using System.Collections.Generic;
+using DoubleDCore.TranslationTools.Data;
 using Game.Gameplay.Interaction;
+using Game.Gameplay.SurvivalMeсhanics.Fatigue;
 using Game.UI.Pages;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Gameplay
 {
@@ -10,7 +13,15 @@ namespace Game.Gameplay
     {
         [SerializeField] private Deer _deer;
 
+        private FatigueRadialButtonsHelper _helper;
+        
         public UnityEvent Interacted;
+    
+        [Inject]
+        private void Init(FatigueRadialButtonsHelper helper)
+        {
+            _helper = helper;
+        }
 
         protected override RadialMenuArgument GetRadialMenuArgument()
         {
@@ -25,7 +36,13 @@ namespace Game.Gameplay
 
         public override void Interact()
         {
-            UIManager.OpenPage<RadialMenuPage, RadialMenuArgument>(GetRadialMenuArgument());
+            var argument = GetRadialMenuArgument();
+
+            if (_helper.IsFatigueEffectActive())
+                argument.Buttons = new List<RadialButtonInfo>() 
+                    { _helper.GetTiredButtonInfo() };
+        
+            UIManager.OpenPage<RadialMenuPage, RadialMenuArgument>(argument);
             Interacted?.Invoke();
         }
     }

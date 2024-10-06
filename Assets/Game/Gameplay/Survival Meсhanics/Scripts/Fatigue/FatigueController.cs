@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Game.Gameplay.Character;
 using Game.Gameplay.SurvivalMechanics;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
+using Game.UI.Pages;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Fatigue
 {

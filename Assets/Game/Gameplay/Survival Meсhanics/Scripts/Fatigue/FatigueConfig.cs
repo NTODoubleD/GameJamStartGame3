@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DoubleDCore.TranslationTools;
+using UnityEngine;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Fatigue
 {
