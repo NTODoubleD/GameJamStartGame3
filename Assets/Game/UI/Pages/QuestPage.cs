@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DoubleDCore.Extensions;
@@ -34,20 +35,26 @@ namespace Game.UI.Pages
 
         public void Open()
         {
+            if (PageIsDisplayed)
+                return;
+
             _questController.QuestCompleted += OnQuestCompleted;
             _questController.QuestIssued += OnQuestIssued;
-            
+
             _canvasGroup.alpha = 0;
 
             if (_currentQuestCount > 0)
-                _canvasGroup.DOFade(1, 1);
-            
+                _canvasGroup.DOFade(1, 0.4f);
+
             SetCanvasState(true);
         }
 
         public override void Close()
         {
-            SetCanvasState(false);
+            if (PageIsDisplayed == false)
+                return;
+            
+            _canvasGroup.DOFade(0, 0.4f).OnComplete(() => SetCanvasState(false));
 
             _questController.QuestCompleted -= OnQuestCompleted;
             _questController.QuestIssued -= OnQuestIssued;
@@ -65,7 +72,7 @@ namespace Game.UI.Pages
 
             UpdateInformation(yakutQuest);
 
-            _canvasGroup.DOFade(1, 1);
+            _canvasGroup.DOFade(1, 0.4f);
         }
 
         private void OnQuestCompleted(IQuest quest)
@@ -76,7 +83,7 @@ namespace Game.UI.Pages
             _currentQuestCount--;
             yakutQuest.TaskProgressChanged -= OnTaskStateChanged;
 
-            _canvasGroup.DOFade(0, 1);
+            _canvasGroup.DOFade(0, 0.4f);
         }
 
         private void OnTaskStateChanged(YakutQuest yakutQuest)

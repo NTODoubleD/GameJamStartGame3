@@ -89,6 +89,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AdditionalInfoOpen"",
+                    ""type"": ""Button"",
+                    ""id"": ""12cf7575-9b70-4a03-baac-decd3b13be7a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,6 +232,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""InventoryOpen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6436cde8-1cb0-4b2d-a35d-69dba23796dc"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdditionalInfoOpen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -235,6 +255,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""15da7427-8aaf-4eab-ab89-c8a90fe34df3"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AdditionalInfoOpen"",
+                    ""type"": ""Button"",
+                    ""id"": ""36810e8d-5f65-4da0-91eb-922da95898ac"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -830,6 +859,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""InventoryClose"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afc97061-74f9-47bd-bea0-3cf680e5e67e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdditionalInfoOpen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -979,9 +1019,11 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_InventoryOpen = m_Player.FindAction("InventoryOpen", throwIfNotFound: true);
+        m_Player_AdditionalInfoOpen = m_Player.FindAction("AdditionalInfoOpen", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        m_UI_AdditionalInfoOpen = m_UI.FindAction("AdditionalInfoOpen", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
@@ -1068,6 +1110,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_InventoryOpen;
+    private readonly InputAction m_Player_AdditionalInfoOpen;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1079,6 +1122,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @InventoryOpen => m_Wrapper.m_Player_InventoryOpen;
+        public InputAction @AdditionalInfoOpen => m_Wrapper.m_Player_AdditionalInfoOpen;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1109,6 +1153,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @InventoryOpen.started += instance.OnInventoryOpen;
             @InventoryOpen.performed += instance.OnInventoryOpen;
             @InventoryOpen.canceled += instance.OnInventoryOpen;
+            @AdditionalInfoOpen.started += instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.performed += instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.canceled += instance.OnAdditionalInfoOpen;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1134,6 +1181,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @InventoryOpen.started -= instance.OnInventoryOpen;
             @InventoryOpen.performed -= instance.OnInventoryOpen;
             @InventoryOpen.canceled -= instance.OnInventoryOpen;
+            @AdditionalInfoOpen.started -= instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.performed -= instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.canceled -= instance.OnAdditionalInfoOpen;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1156,6 +1206,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Navigate;
+    private readonly InputAction m_UI_AdditionalInfoOpen;
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
     private readonly InputAction m_UI_Point;
@@ -1174,6 +1225,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         private @GameInput m_Wrapper;
         public UIActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+        public InputAction @AdditionalInfoOpen => m_Wrapper.m_UI_AdditionalInfoOpen;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @Point => m_Wrapper.m_UI_Point;
@@ -1199,6 +1251,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
+            @AdditionalInfoOpen.started += instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.performed += instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.canceled += instance.OnAdditionalInfoOpen;
             @Submit.started += instance.OnSubmit;
             @Submit.performed += instance.OnSubmit;
             @Submit.canceled += instance.OnSubmit;
@@ -1245,6 +1300,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
             @Navigate.canceled -= instance.OnNavigate;
+            @AdditionalInfoOpen.started -= instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.performed -= instance.OnAdditionalInfoOpen;
+            @AdditionalInfoOpen.canceled -= instance.OnAdditionalInfoOpen;
             @Submit.started -= instance.OnSubmit;
             @Submit.performed -= instance.OnSubmit;
             @Submit.canceled -= instance.OnSubmit;
@@ -1372,10 +1430,12 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnEscape(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnInventoryOpen(InputAction.CallbackContext context);
+        void OnAdditionalInfoOpen(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
+        void OnAdditionalInfoOpen(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);

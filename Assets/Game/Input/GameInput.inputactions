@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AdditionalInfoOpen",
+                    "type": "Button",
+                    "id": "12cf7575-9b70-4a03-baac-decd3b13be7a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,6 +210,17 @@
                     "action": "InventoryOpen",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6436cde8-1cb0-4b2d-a35d-69dba23796dc",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdditionalInfoOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -213,6 +233,15 @@
                     "type": "PassThrough",
                     "id": "15da7427-8aaf-4eab-ab89-c8a90fe34df3",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AdditionalInfoOpen",
+                    "type": "Button",
+                    "id": "36810e8d-5f65-4da0-91eb-922da95898ac",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -806,6 +835,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InventoryClose",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afc97061-74f9-47bd-bea0-3cf680e5e67e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdditionalInfoOpen",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

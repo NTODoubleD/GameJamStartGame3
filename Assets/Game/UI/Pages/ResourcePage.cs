@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Items;
@@ -13,6 +14,7 @@ namespace Game.UI.Pages
     {
         [SerializeField] private UIResource _prefab;
         [SerializeField] private RectTransform _container;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
         private ItemStorage _itemStorage;
 
@@ -35,12 +37,13 @@ namespace Game.UI.Pages
 
                 _uiResources.Add(gameItemInfo.ID, inst);
             }
-
-            Open();
         }
 
         public void Open()
         {
+            if (PageIsDisplayed)
+                return;
+            
             _itemStorage.ItemAdded += OnItemChanged;
             _itemStorage.ItemRemoved += OnItemChanged;
 
@@ -48,11 +51,15 @@ namespace Game.UI.Pages
                 RefreshUIResource(itemInfo, count);
 
             SetCanvasState(true);
+            _canvasGroup.DOFade(1, 0.4f);
         }
 
         public override void Close()
         {
-            SetCanvasState(false);
+            if (PageIsDisplayed == false)
+                return;
+            
+            _canvasGroup.DOFade(0, 0.4f).OnComplete(() => SetCanvasState(false));
 
             _itemStorage.ItemAdded -= OnItemChanged;
             _itemStorage.ItemRemoved -= OnItemChanged;
