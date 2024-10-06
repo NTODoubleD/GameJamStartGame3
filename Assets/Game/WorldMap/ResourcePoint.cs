@@ -1,5 +1,6 @@
 ﻿using System;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.DayCycle;
 using Game.Gameplay.Items;
 using Game.UI.Pages;
 using Infrastructure;
@@ -17,17 +18,20 @@ namespace Game.WorldMap
         private GameplayLocalStateMachine _stateMachine;
         private WorldMapController _worldMap;
         private CursorInteractor _cursorInteractor;
+        private DayCycleController _cycleController;
 
         public SortieResourceArgument SortieResource => _sortieResource;
 
         [Inject]
         private void Init(IUIManager uiManager, GameplayLocalStateMachine stateMachine,
-            WorldMapController worldMapController, CursorInteractor cursorInteractor)
+            WorldMapController worldMapController, CursorInteractor cursorInteractor,
+            DayCycleController cycleController)
         {
             _uiManager = uiManager;
             _stateMachine = stateMachine;
             _worldMap = worldMapController;
             _cursorInteractor = cursorInteractor;
+            _cycleController = cycleController;
         }
 
         public override void Interact()
@@ -49,13 +53,20 @@ namespace Game.WorldMap
             _uiManager.ClosePage<WorldInterestPointPage>();
 
             _stateMachine.Enter<PlayerMovingState>();
-            _worldMap.Close();
             _cursorInteractor.Close();
+
+            _cycleController.DayStarted += CloseWorldMap;
 
             var sortiePage = _uiManager.GetPage<SortiePage>();
 
             sortiePage.SetResourcePriorities(context);
             sortiePage.StartSortie();
+        }
+
+        private void CloseWorldMap()
+        {
+            _cycleController.DayStarted -= CloseWorldMap;
+            _worldMap.Close();
         }
     }
 

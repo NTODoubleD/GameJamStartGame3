@@ -879,7 +879,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""8f357ca5-7c06-4014-be4a-aae009f03511"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
