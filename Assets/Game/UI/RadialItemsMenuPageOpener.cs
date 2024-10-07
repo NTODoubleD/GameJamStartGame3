@@ -1,4 +1,5 @@
 ﻿using DoubleDCore.UI.Base;
+using Game.Gameplay.SurvivalMeсhanics.Hunger;
 using UnityEngine.InputSystem;
 
 namespace Game.UI.Pages
@@ -7,13 +8,16 @@ namespace Game.UI.Pages
     {
         private readonly GameInput _gameInput;
         private readonly IUIManager _uiManager;
-        
+        private readonly EatingController _eatingController;
+
         private bool _isOpened;
 
-        public RadialItemsMenuPageOpener(GameInput gameInput, IUIManager uiManager)
+        public RadialItemsMenuPageOpener(GameInput gameInput, IUIManager uiManager, 
+            EatingController eatingController)
         {
             _gameInput = gameInput;
             _uiManager = uiManager;
+            _eatingController = eatingController;
 
             _gameInput.Player.InventoryOpen.performed += OnInventoryOpenRequested;
             _gameInput.UI.InventoryClose.performed += OnInventoryCloseRequested;
@@ -25,7 +29,8 @@ namespace Game.UI.Pages
                 return;
             
             _isOpened = true;
-            _uiManager.OpenPage<RadialItemsMenuPage>();
+            _uiManager.OpenPage<RadialItemsMenuPage, RadialItemsMenuArgument>(new RadialItemsMenuArgument 
+                { ItemUseAction = _eatingController.TryEat});
             
             _gameInput.Player.Disable();
             _gameInput.UI.Enable();

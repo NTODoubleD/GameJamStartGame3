@@ -32,7 +32,7 @@ namespace Game.UI.Pages
                 _text.gameObject.SetActive(true);
                 _heatResistanceMetric.gameObject.SetActive(true);
                 
-                _heatResistanceMetric.Refresh(_playerMetrics.HeatResistance);
+                _heatResistanceMetric.Refresh(_playerMetrics.HeatResistance, true);
             });
             
             SetCanvasState(true);

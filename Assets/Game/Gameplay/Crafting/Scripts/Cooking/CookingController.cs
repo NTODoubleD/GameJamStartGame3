@@ -128,13 +128,13 @@ namespace Game.Gameplay.Crafting
             
             for (int i = 0; i < _currentSlots.Length; i++)
             {
-                if (_currentSlots[i].Recepie == null)
+                if (_currentSlots[i].Recepie == null || _currentSlots[i].TimeLeft <= 0)
                     continue;
                     
                 var cookingSlot = _currentSlots[i];
                 
-                foreach (var outputItem in cookingSlot.Recepie.InputItems)
-                    _itemStorage.AddItems(outputItem.Key, outputItem.Value);
+                foreach (var inputItem in cookingSlot.Recepie.InputItems)
+                    _itemStorage.AddItems(inputItem.Key, inputItem.Value);
 
                 _currentSlots[i].Recepie = null;
                 Interrupted?.Invoke(i);

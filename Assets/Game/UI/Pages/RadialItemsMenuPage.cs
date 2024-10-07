@@ -3,13 +3,14 @@ using DG.Tweening;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Items;
+using Game.Gameplay.SurvivalMeсhanics.Hunger;
 using Game.Infrastructure.Storage;
 using UnityEngine;
 using Zenject;
 
 namespace Game.UI.Pages
 {
-    public class RadialItemsMenuPage : MonoPage, IUIPage
+    public class RadialItemsMenuPage : MonoPage, IPayloadPage<RadialItemsMenuArgument>
     {
         [SerializeField] private RadialSlot[] _radialSlots;
         [SerializeField] private Transform _slotsRoot;
@@ -18,7 +19,8 @@ namespace Game.UI.Pages
 
         private ItemStorage _itemStorage;
         private Tweener _currentTweener;
-
+        private RadialItemsMenuArgument _currentArgument;
+        
         [Inject]
         private void Init(ItemStorage itemStorage)
         {
@@ -31,8 +33,13 @@ namespace Game.UI.Pages
                 radialSlot.View.Initialize(new RadialMenuSlotPresenter(radialSlot.Item, _itemStorage));
         }
 
-        public void Open()
+        public void Open(RadialItemsMenuArgument argument)
         {
+            _currentArgument = argument;
+            
+            foreach (var radialSlot in _radialSlots)
+                radialSlot.View.Clicked += OnSlotClicked;
+            
             SetCanvasState(true);
 
             if (_currentTweener != null && _currentTweener.IsActive())
@@ -49,6 +56,14 @@ namespace Game.UI.Pages
             _currentTweener = _slotsRoot.DOScale(0, _transitDuration)
                 .SetEase(Ease.InBack)
                 .OnComplete(() => SetCanvasState(false));
+            
+            foreach (var radialSlot in _radialSlots)
+                radialSlot.View.Clicked -= OnSlotClicked;
+        }
+        
+        private void OnSlotClicked(GameItemInfo item)
+        {
+            _currentArgument.ItemUseAction?.Invoke(item);
         }
 
         [Serializable]
@@ -57,5 +72,11 @@ namespace Game.UI.Pages
             public UIRadialMenuSlot View;
             public GameItemInfo Item;
         }
+    }
+
+    [Serializable]
+    public class RadialItemsMenuArgument
+    {
+        public Action<GameItemInfo> ItemUseAction;
     }
 }
