@@ -19386,6 +19386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sensitivity: 100
+  _dragSensitivity: 60
   _cameraCollider: {fileID: 1569132945}
   _animationDuration: 1
   _zoomDistance: 30

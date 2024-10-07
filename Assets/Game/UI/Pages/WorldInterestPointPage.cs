@@ -46,7 +46,7 @@ namespace Game.UI.Pages
             SetCanvasState(false);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
             if (!PageIsDisplayed)
                 return;

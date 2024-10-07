@@ -903,6 +903,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DragClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca988dd9-2966-4266-9392-3ca1938ead00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1004,6 +1013,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""966367d5-a4be-4f22-82bb-4fdc36c80a00"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DragClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1042,6 +1062,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
         m_Map_Point = m_Map.FindAction("Point", throwIfNotFound: true);
         m_Map_Click = m_Map.FindAction("Click", throwIfNotFound: true);
+        m_Map_DragClick = m_Map.FindAction("DragClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1366,6 +1387,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Map_Move;
     private readonly InputAction m_Map_Point;
     private readonly InputAction m_Map_Click;
+    private readonly InputAction m_Map_DragClick;
     public struct MapActions
     {
         private @GameInput m_Wrapper;
@@ -1373,6 +1395,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Map_Move;
         public InputAction @Point => m_Wrapper.m_Map_Point;
         public InputAction @Click => m_Wrapper.m_Map_Click;
+        public InputAction @DragClick => m_Wrapper.m_Map_DragClick;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1391,6 +1414,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
+            @DragClick.started += instance.OnDragClick;
+            @DragClick.performed += instance.OnDragClick;
+            @DragClick.canceled += instance.OnDragClick;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
@@ -1404,6 +1430,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
+            @DragClick.started -= instance.OnDragClick;
+            @DragClick.performed -= instance.OnDragClick;
+            @DragClick.canceled -= instance.OnDragClick;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -1455,5 +1484,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+        void OnDragClick(InputAction.CallbackContext context);
     }
 }
