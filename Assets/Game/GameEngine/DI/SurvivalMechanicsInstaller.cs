@@ -39,6 +39,7 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
             Container.Bind<HeatController>().AsSingle().NonLazy();
             Container.Bind<FrostChangeObserver>().AsSingle().NonLazy();
+            Container.Bind<EatingController>().AsSingle();
         }
 
         private void BindConfigs()
@@ -55,6 +56,7 @@ namespace Game.GameEngine.DI
             FatigueConfig fatigueConfig = configsResource.GetConfig<FatigueConfig>();
             RestConfig restConfig = configsResource.GetConfig<RestConfig>();
             HeatConfig heatConfig = configsResource.GetConfig<HeatConfig>();
+            EatingConfig eatingConfig = configsResource.GetConfig<EatingConfig>();
 
             Container.BindInstance(playerMetricsConfig).AsSingle();
             Container.BindInstance(frostConfig).AsSingle();
@@ -65,6 +67,7 @@ namespace Game.GameEngine.DI
             Container.BindInstance(fatigueConfig).AsSingle();
             Container.BindInstance(restConfig).AsSingle();
             Container.BindInstance(heatConfig).AsSingle();
+            Container.BindInstance(eatingConfig).AsSingle();
         }
     }
 }

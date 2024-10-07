@@ -19,7 +19,7 @@ namespace Game.UI
 
         public void Initialize(float startValue)
         {
-            Refresh(startValue);
+            Refresh(startValue, true);
         }
 
         private void Awake()
@@ -43,9 +43,9 @@ namespace Game.UI
             }
         }
 
-        public void Refresh(float newValue)
+        public void Refresh(float newValue, bool force = false)
         {
-            SetSlider(newValue);
+            SetSlider(newValue, force);
 
             if (newValue < 30)
                 _effect.StartAnimation();
@@ -55,10 +55,13 @@ namespace Game.UI
             _alert.gameObject.SetActive(Mathf.Approximately(newValue, 0));
         }
 
-        private void SetSlider(float startValue)
+        private void SetSlider(float startValue, bool force)
         {
             var normalizedValue = Mathf.Clamp01(startValue / 100);
             _targetValue = normalizedValue;
+
+            if (force)
+                _sliderImage.fillAmount = _targetValue;
         }
         
         private enum SliderUpdateType

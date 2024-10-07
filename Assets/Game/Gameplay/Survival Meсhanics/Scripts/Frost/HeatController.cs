@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.Gameplay.Crafting;
+using Game.Gameplay.DayCycle;
 
 namespace Game.Gameplay.SurvivalMechanics.Frost
 {
@@ -10,24 +11,31 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private readonly PlayerMetricsModel _playerMetricsModel;
         private readonly HeatConfig _config;
         private readonly CookingController _cookingController;
-        private readonly FrostController _frostController;
+        private readonly SleepingController _sleepingController;
 
         private CancellationTokenSource _cts;
         private bool _isHeating;
 
         public HeatController(HeatZone heatZone, PlayerMetricsModel playerMetricsModel,
-            HeatConfig config, CookingController cookingController, FrostController frostController)
+            HeatConfig config, CookingController cookingController,
+            SleepingController sleepingController)
         {
             _heatZone = heatZone;
             _playerMetricsModel = playerMetricsModel;
             _config = config;
             _cookingController = cookingController;
-            _frostController = frostController;
+            _sleepingController = sleepingController;
 
             _heatZone.Entered += StartHeating;
             _heatZone.Exited += StopHeating;
             _cookingController.CookingStarted += OnCookingStarted;
             _cookingController.CookingEnded += OnCookingEnded;
+            _sleepingController.SleepCalled += OnSleepCalled;
+        }
+        
+        private void OnSleepCalled()
+        {
+            _playerMetricsModel.HeatResistance = _config.HeatRestoreValue;
         }
 
         private void OnCookingStarted()
@@ -79,6 +87,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             _heatZone.Exited -= StopHeating;
             _cookingController.CookingStarted -= OnCookingStarted;
             _cookingController.CookingEnded -= OnCookingEnded;
+            _sleepingController.SleepCalled -= OnSleepCalled;
 
             if (_isHeating)
             {
