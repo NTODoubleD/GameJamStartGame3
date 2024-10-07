@@ -9558,7 +9558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3586422.5}
+  m_AnchoredPosition: {x: 0, y: 3468227}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -11796,6 +11796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lower Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062812053250925296, guid: 43491a33aa4c9984b808f54cbf870176,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22072,7 +22077,7 @@ PrefabInstance:
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Name
-      value: ---TEST WORLD---
+      value: '---TEST WORLD---'
       objectReference: {fileID: 0}
     - target: {fileID: 1582540542896697077, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -22099,6 +22104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _radius
       value: 5.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787068986528990786, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: useUpdatedRotation
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1812832261114307900, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -22279,6 +22289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090044324828501904, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: useUpdatedRotation
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113087363793105074, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -22660,6 +22675,11 @@ PrefabInstance:
     - target: {fileID: 3322488115410015932, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337322126554976270, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: useUpdatedRotation
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3394063084326431398, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -28356,6 +28376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Upper Slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062812053250925296, guid: 43491a33aa4c9984b808f54cbf870176,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
