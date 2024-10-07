@@ -1644,7 +1644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7201936}
+  m_AnchoredPosition: {x: 0, y: -7267830.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -5246,7 +5246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20.099976, y: 15.899994}
+  m_AnchoredPosition: {x: 20.099976, y: 15.900024}
   m_SizeDelta: {x: 370, y: 66}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &513120117
@@ -9479,7 +9479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 3855418.5}
+  m_AnchoredPosition: {x: 0, y: 3889529.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -24371,7 +24371,7 @@ PrefabInstance:
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -25319,26 +25319,6 @@ MonoBehaviour:
           m_CallState: 2
     HasCondition: 1
     ShowCondition: {fileID: 1890921520}
-  - Name: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
-    EnName: Resources
-    Image: {fileID: 0}
-    Action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1150849463}
-          m_TargetAssemblyTypeName: Game.Gameplay.Buildings.TownHallBuilding, Assembly-CSharp
-          m_MethodName: OpenResourcePage
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    HasCondition: 0
-    ShowCondition: {fileID: 0}
   - Name: "\u041F\u043E\u0433\u0440\u0435\u0442\u044C\u0441\u044F"
     EnName: Warm up
     Image: {fileID: 0}

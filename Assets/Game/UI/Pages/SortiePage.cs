@@ -92,12 +92,12 @@ namespace Game.UI.Pages
 
             var callback = new Dictionary<ItemInfo, int>();
 
-            // for (int i = 0; i < _possibleResources.Count; i++)
-            //     callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+            for (int i = 0; i < _possibleResources.Count; i++)
+                callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
 
-            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
-            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
-            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
+            // callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
+            // callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
+            // callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
 
             Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }

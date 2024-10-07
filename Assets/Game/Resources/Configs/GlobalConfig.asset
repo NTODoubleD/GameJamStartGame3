@@ -29,7 +29,7 @@ MonoBehaviour:
     - _itemInfo: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
       _count: 0
     - _itemInfo: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
-      _count: 0
+      _count: 5
   <LyricsSceneName>k__BackingField: Lyrics
   <GameSceneName>k__BackingField: SampleScene
   <MainMenuSceneName>k__BackingField: MainMenu
