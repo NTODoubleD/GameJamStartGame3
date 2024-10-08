@@ -52,21 +52,20 @@ namespace Game.WorldMap
         {
             _uiManager.ClosePage<WorldInterestPointPage>();
 
-            _stateMachine.Enter<PlayerMovingState>();
-            _cursorInteractor.Close();
-
             _cycleController.DayStarted += CloseWorldMap;
 
             var sortiePage = _uiManager.GetPage<SortiePage>();
 
             sortiePage.SetResourcePriorities(context);
-            sortiePage.StartSortie();
+            _uiManager.OpenPage<SortiePage>();
         }
 
         private void CloseWorldMap()
         {
             _cycleController.DayStarted -= CloseWorldMap;
+
             _worldMap.Close();
+            _cursorInteractor.Close();
         }
     }
 

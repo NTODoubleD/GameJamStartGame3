@@ -59,9 +59,11 @@ namespace Game.UI.Pages
             SwitchSubMenu(false);
 
             _inputController.Player.Disable();
+            _inputController.Map.Disable();
+
             _inputController.UI.Enable();
 
-            _continueClickButton.onClick.AddListener(ContinueOnClicked);
+            _continueClickButton.onClick.AddListener(StartSortie);
 
             _herdExplorer.Reset();
             _herdExplorer.ChosenChanged += OnUserChosenChanged;
@@ -78,12 +80,14 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _continueClickButton.onClick.RemoveListener(ContinueOnClicked);
+            _continueClickButton.onClick.RemoveListener(StartSortie);
 
             _herdExplorer.ChosenChanged -= OnUserChosenChanged;
 
             _inputController.UI.Disable();
-            _inputController.Player.Enable();
+
+            _inputController.Map.Enable();
+            //_inputController.Player.Enable();
         }
 
         public void StartSortie()
@@ -92,12 +96,12 @@ namespace Game.UI.Pages
 
             var callback = new Dictionary<ItemInfo, int>();
 
-            for (int i = 0; i < _possibleResources.Count; i++)
-                callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+            // for (int i = 0; i < _possibleResources.Count; i++)
+            //     callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
 
-            // callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
-            // callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
-            // callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
+            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
+            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
+            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
 
             Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }
