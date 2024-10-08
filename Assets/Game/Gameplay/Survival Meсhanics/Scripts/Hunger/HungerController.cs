@@ -2,7 +2,6 @@
 using Cysharp.Threading.Tasks;
 using Game.Gameplay.Character;
 using Game.Gameplay.SurvivalMechanics;
-using UnityEngine;
 using Zenject;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Hunger
@@ -12,16 +11,19 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
         private readonly HungerConfig _config;
         private readonly CharacterActionsObserver _actionsObserver;
         private readonly PlayerMetricsModel _playerMetricsModel;
+        private readonly HungerModel _hungerModel;
 
         private CancellationTokenSource _cts;
         private float _currentConsumption;
         private bool _isEnabled;
 
-        public HungerController(HungerConfig config, CharacterActionsObserver actionsObserver, PlayerMetricsModel playerMetricsModel)
+        public HungerController(HungerConfig config, CharacterActionsObserver actionsObserver, 
+            PlayerMetricsModel playerMetricsModel, HungerModel hungerModel)
         {
             _config = config;
             _actionsObserver = actionsObserver;
             _playerMetricsModel = playerMetricsModel;
+            _hungerModel = hungerModel;
             _currentConsumption = _config.GetConsumption(1);
             
             _actionsObserver.StartSprinting += OnStartSprinting;
@@ -57,7 +59,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
         {
             while (!token.IsCancellationRequested)
             {
-                _playerMetricsModel.Hunger -= _currentConsumption;
+                _playerMetricsModel.Hunger -= _currentConsumption * _hungerModel.ConsumptionMultiplyer;
                 await UniTask.Delay(1000, cancellationToken: token);
             }
         }

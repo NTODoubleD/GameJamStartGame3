@@ -10,6 +10,7 @@ using Game.Gameplay.SurvivalMeсhanics.Fatigue;
 using Game.Gameplay.SurvivalMeсhanics.Frostbite;
 using Game.Gameplay.SurvivalMeсhanics.Hunger;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
+using Game.Gameplay.SurvivalMeсhanics.Thirst;
 using Zenject;
 
 namespace Game.GameEngine.DI
@@ -21,6 +22,8 @@ namespace Game.GameEngine.DI
             BindConfigs();
 
             Container.BindInterfacesAndSelfTo<PlayerMetricsModel>().AsSingle();
+            Container.Bind<HungerModel>().AsSingle();
+            
             Container.Bind<CharacterMovementSettings>().AsSingle();
             Container.BindInterfacesAndSelfTo<LowMetricEffectController>().AsSingle();
             
@@ -39,7 +42,8 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
             Container.Bind<HeatController>().AsSingle().NonLazy();
             Container.Bind<FrostChangeObserver>().AsSingle().NonLazy();
-            Container.Bind<EatingController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EatingController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<ThirstController>().AsSingle();
         }
 
         private void BindConfigs()
@@ -57,6 +61,7 @@ namespace Game.GameEngine.DI
             RestConfig restConfig = configsResource.GetConfig<RestConfig>();
             HeatConfig heatConfig = configsResource.GetConfig<HeatConfig>();
             EatingConfig eatingConfig = configsResource.GetConfig<EatingConfig>();
+            ThirstConfig thirstConfig = configsResource.GetConfig<ThirstConfig>();
 
             Container.BindInstance(playerMetricsConfig).AsSingle();
             Container.BindInstance(frostConfig).AsSingle();
@@ -68,6 +73,7 @@ namespace Game.GameEngine.DI
             Container.BindInstance(restConfig).AsSingle();
             Container.BindInstance(heatConfig).AsSingle();
             Container.BindInstance(eatingConfig).AsSingle();
+            Container.BindInstance(thirstConfig).AsSingle();
         }
     }
 }
