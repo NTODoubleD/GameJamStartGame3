@@ -18,6 +18,7 @@ namespace Game.GameEngine.DI
             Container.BindInstance(additionalInfoOpenConfig).AsSingle();
             
             Container.Bind<TooltipController>().AsSingle();
+            Container.Bind<RadialMenuItemsUseObserver>().AsSingle();
             Container.Bind<RadialItemsMenuPageOpener>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<AdditionalInfoOpener>().AsSingle().NonLazy();
         }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Game.Gameplay.Items;
+using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
 using Game.Gameplay.SurvivalMechanics;
 using Game.Infrastructure.Storage;
 
 namespace Game.Gameplay.SurvivalMeсhanics.Hunger
 {
-    public class EatingController
+    public class EatingController : IGameItemUseObserver
     {
         private readonly ItemStorage _itemStorage;
         private readonly EatingConfig _eatingConfig;
@@ -24,14 +25,15 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
                 _food.Add(foodItem);
         }
         
-        public void TryEat(GameItemInfo food)
+
+        public void OnItemUsed(GameItemInfo itemInfo)
         {
-            if (_food.Contains(food) == false || _itemStorage.GetCount(food) == 0)
+            if (_food.Contains(itemInfo) == false || _itemStorage.GetCount(itemInfo) == 0)
                 return;
 
-            float restoreValue = _eatingConfig.GetRestoreValue(food);
+            float restoreValue = _eatingConfig.GetRestoreValue(itemInfo);
             _playerMetricsModel.Hunger += restoreValue;
-            _itemStorage.RemoveItems(food, 1);
+            _itemStorage.RemoveItems(itemInfo, 1);
         }
     }
 }
