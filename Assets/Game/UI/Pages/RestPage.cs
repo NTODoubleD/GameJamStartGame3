@@ -26,6 +26,7 @@ namespace Game.UI.Pages
         public void Open()
         {
             _playerMetrics.HeatResistanceChanged += OnHeatResistanceChanged;
+            _heatResistanceMetric.gameObject.SetActive(false);
 
             _background.DOFade(0.6f, 1).OnComplete(() =>
             {
