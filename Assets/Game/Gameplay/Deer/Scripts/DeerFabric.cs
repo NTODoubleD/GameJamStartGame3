@@ -27,7 +27,7 @@ namespace Game.Gameplay.Scripts
         [SerializeField] private DeerNames _en;
 
         [Header("Start Spawn Settings")] [SerializeField]
-        private int _startCount;
+        private List<StartDeerInfo> _startDeerInfos;
 
         private WalkablePlane _walkablePlane;
         private DiContainer _diContainer;
@@ -55,8 +55,11 @@ namespace Game.Gameplay.Scripts
 
         private void Start()
         {
-            for (int i = 0; i < _startCount; i++)
-                CreateDeer(age: DeerAge.Adult);
+            foreach (var deerInfo in _startDeerInfos)
+            {
+                for (int i = 0; i < deerInfo.Count; i++)
+                    CreateDeer(age: deerInfo.Age);
+            }
         }
 
         public void CreateDeer(DeerInfo deerInfo)
@@ -125,6 +128,16 @@ namespace Game.Gameplay.Scripts
         {
             [field: SerializeField] public TextAsset Male { get; private set; }
             [field: SerializeField] public TextAsset Female { get; private set; }
+        }
+
+        [Serializable]
+        private class StartDeerInfo
+        {
+            [SerializeField] private DeerAge _age;
+            [SerializeField] private int _count;
+
+            public DeerAge Age => _age;
+            public int Count => _count;
         }
     }
 }

@@ -123,7 +123,7 @@ namespace Game.Gameplay
 
         private int _age = 0;
 
-        private Dictionary<int, DeerAge> _ageTable = new()
+        private readonly Dictionary<int, DeerAge> _ageTable = new()
         {
             { 2, DeerAge.Adult },
             { 5, DeerAge.Old },
