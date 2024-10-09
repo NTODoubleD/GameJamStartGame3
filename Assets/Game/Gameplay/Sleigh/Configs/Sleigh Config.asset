@@ -37,3 +37,7 @@ MonoBehaviour:
       _levels: 20000000240000002800000034000000
     - _item: {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
       _levels: 02000000030000000400000005000000
+  _description:
+    _ru: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u043B\u0435\u043D\u0435\u0439
+      \u0432 \u0443\u043F\u0440\u044F\u0436\u043A\u0435"
+    _en: Number of deers in a team

@@ -2,6 +2,7 @@ using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
 using System;
 using System.Collections.Generic;
+using Game.Gameplay.Items;
 using UnityEngine;
 using Zenject;
 
@@ -36,7 +37,7 @@ namespace Game.Gameplay.Buildings
     {
         [SerializeField] private ItemCount[] _neccessaryItems;
 
-        private Dictionary<ItemInfo, int> _itemsDictionary;
+        private Dictionary<GameItemInfo, int> _itemsDictionary;
 
         private ItemStorage _itemStorage;
 
@@ -46,7 +47,7 @@ namespace Game.Gameplay.Buildings
             _itemStorage = itemStorage;
         }
 
-        public IReadOnlyDictionary<ItemInfo, int> NeccessaryItems
+        public IReadOnlyDictionary<GameItemInfo, int> NeccessaryItems
         {
             get
             {
@@ -79,10 +80,10 @@ namespace Game.Gameplay.Buildings
         [Serializable]
         private class ItemCount
         {
-            [SerializeField] private ItemInfo _itemInfo;
+            [SerializeField] private GameItemInfo _itemInfo;
             [SerializeField] private int _count;
 
-            public ItemInfo ItemInfo => _itemInfo;
+            public GameItemInfo ItemInfo => _itemInfo;
             public int Count => _count;
         }
     }

@@ -1,10 +1,22 @@
-﻿using UnityEngine;
+﻿using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
+using UnityEngine;
 
 namespace Game.Gameplay.Buildings
 {
-    public abstract class LevelsConfig<T> : ScriptableObject
+    public interface ILevelsConfig
+    {
+        string Description { get; }
+        string GetStatsNumericValue(int level);
+        bool CanShowStatsNumericValue();
+    }
+    
+    public abstract class LevelsConfig<T> : ScriptableObject, ILevelsConfig
     {
         [SerializeField] private T[] _levelStats;
+        [SerializeField] private TranslatedText _description;
+        
+        public string Description => _description.GetText();
 
         public T GetStatsAt(int level)
         {
@@ -13,5 +25,8 @@ namespace Game.Gameplay.Buildings
 
             return _levelStats[index];
         }
+
+        public abstract string GetStatsNumericValue(int level);
+        public bool CanShowStatsNumericValue() => true;
     }
 }

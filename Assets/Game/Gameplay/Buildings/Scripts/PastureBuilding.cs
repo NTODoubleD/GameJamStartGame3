@@ -31,5 +31,10 @@ namespace Game.Gameplay.Buildings
             _walkablePlane.transform.localPosition = _levelsConfig.GetStatsAt(CurrentLevel).CenterPoint;
             _walkablePlane.SetWidth(_levelsConfig.GetStatsAt(CurrentLevel).Width);
         }
+
+        public override ILevelsConfig GetLevelsConfig()
+        {
+            return _levelsConfig;
+        }
     }
 }

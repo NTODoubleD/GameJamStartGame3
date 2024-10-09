@@ -8,5 +8,10 @@ namespace Game.Gameplay.Buildings
         {
             UIManager.OpenPage<CookingPage>();
         }
+
+        public override ILevelsConfig GetLevelsConfig()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

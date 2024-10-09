@@ -124,6 +124,8 @@ namespace Game.Gameplay.Buildings
         protected virtual void OnUpgraded()
         {
         }
+        
+        public abstract ILevelsConfig GetLevelsConfig();
 
         private UpgradeMenuArgument GetUpgradeMenuArgument()
         {

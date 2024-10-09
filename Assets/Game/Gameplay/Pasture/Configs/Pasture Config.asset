@@ -40,3 +40,6 @@ MonoBehaviour:
       _capacity: 8
     _centerPoint: {x: -5.24, y: 0, z: -11.7}
     _width: 24.5
+  _description:
+    _ru: "\u0412\u043C\u0435\u0441\u0442\u0438\u043C\u043E\u0441\u0442\u044C \u043E\u043B\u0435\u043D\u0435\u0439"
+    _en: Deer capacity
