@@ -160,7 +160,7 @@ MonoBehaviour:
       Data: 5
     - Name: Duration
       Entry: 3
-      Data: 120
+      Data: 30
     - Name: StartDelays
       Entry: 7
       Data: 5|System.Int32[], mscorlib
