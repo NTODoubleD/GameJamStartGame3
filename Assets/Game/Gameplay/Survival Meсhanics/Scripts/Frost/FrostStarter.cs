@@ -13,6 +13,9 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         
         private readonly FrostConfig.FrostSettings _strongFrostSettings;
         private readonly FrostConfig.FrostSettings _averageFrostSettings;
+        
+        public float CurrentFrostTimeLeft { get; private set; }
+        public float CurrentFrostDuration { get; private set; }
 
         public FrostStarter(FrostController frostController, DayCycleController dayCycleController,
             FrostConfig frostConfig)
@@ -53,10 +56,17 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
                 settings.StartDelays[Random.Range(0, settings.StartDelays.Length)] * 1000);
                 
             _frostController.Enable(frostLevel);
-                
-            await UniTask.Delay(settings.Duration * 1000);
+            CurrentFrostDuration = settings.Duration;
+            CurrentFrostTimeLeft = CurrentFrostDuration;
+
+            while (CurrentFrostTimeLeft > 0)
+            {
+                await UniTask.NextFrame();
+                CurrentFrostTimeLeft = Mathf.Max(0, CurrentFrostTimeLeft - Time.deltaTime);
+            }
             
             _frostController.Enable(FrostLevel.Weak);
+            
         }
         
         ~FrostStarter()
