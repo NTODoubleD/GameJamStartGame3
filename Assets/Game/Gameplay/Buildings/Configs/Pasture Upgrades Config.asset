@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Pasture Upgrades Config
   m_EditorClassIdentifier: 
   _levels:
-  - _dayDuration: 2
+  - _dayDuration: 1
     _upgradeConditions:
     - rid: 2519371056581443584
     - rid: 2519371035595243528
-  - _dayDuration: 3
+  - _dayDuration: 1
     _upgradeConditions:
     - rid: 2519371056581443585
     - rid: 2519371035595243530
@@ -29,13 +29,13 @@ MonoBehaviour:
       data:
         _neccessaryItems:
         - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-          _count: 15
+          _count: 10
     - rid: 2519371035595243530
       type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
       data:
         _neccessaryItems:
         - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-          _count: 30
+          _count: 20
     - rid: 2519371056581443584
       type: {class: TownHallUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
       data:

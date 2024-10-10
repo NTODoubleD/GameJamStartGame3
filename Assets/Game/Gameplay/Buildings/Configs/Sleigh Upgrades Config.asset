@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Sleigh Upgrades Config
   m_EditorClassIdentifier: 
   _levels:
-  - _dayDuration: 2
+  - _dayDuration: 1
     _upgradeConditions:
     - rid: 2519371056581443586
     - rid: 2519371035595243528
-  - _dayDuration: 3
+  - _dayDuration: 2
     _upgradeConditions:
     - rid: 2519371056581443587
     - rid: 2519371035595243530
@@ -29,17 +29,17 @@ MonoBehaviour:
       data:
         _neccessaryItems:
         - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-          _count: 20
+          _count: 15
         - _itemInfo: {fileID: 11400000, guid: 9868b408a6f3c054193aa958fe2e6c29, type: 2}
-          _count: 14
+          _count: 5
     - rid: 2519371035595243530
       type: {class: ResourcesUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
       data:
         _neccessaryItems:
         - _itemInfo: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
-          _count: 30
+          _count: 20
         - _itemInfo: {fileID: 11400000, guid: 9868b408a6f3c054193aa958fe2e6c29, type: 2}
-          _count: 21
+          _count: 10
     - rid: 2519371056581443586
       type: {class: TownHallUpgradeCondition, ns: Game.Gameplay.Buildings, asm: Assembly-CSharp}
       data:
