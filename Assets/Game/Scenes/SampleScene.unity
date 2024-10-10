@@ -1464,6 +1464,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1292579618}
     m_Modifications:
+    - target: {fileID: 5023056205699064011, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 766a00ee1a2ae084d90a8da5d6a304ee,
+        type: 3}
     - target: {fileID: 6329616890263730557, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
         type: 3}
       propertyPath: m_Name
@@ -2122,7 +2128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14643493}
+  m_AnchoredPosition: {x: 0, y: -15886948}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -7178,6 +7184,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1292579618}
     m_Modifications:
+    - target: {fileID: 5023056205699064011, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 754b7b9a3d997614da729d8f7baa1ac4,
+        type: 3}
     - target: {fileID: 6329616890263730557, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
         type: 3}
       propertyPath: m_Name
@@ -12456,7 +12468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7497617}
+  m_AnchoredPosition: {x: 0, y: 8189778}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -15201,7 +15213,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3be8ddfefd82d4c46aacf35c0e709d9d, type: 2}
+  - {fileID: 2100000, guid: 8cdae757a17ff5e439a67baef4cec59b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15225,8 +15237,8 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MinParticleSize: 0.75
+  m_MaxParticleSize: 10
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -32426,6 +32438,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1292579618}
     m_Modifications:
+    - target: {fileID: 5023056205699064011, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d0d9b10648d531e44bc6022f62bcac7d,
+        type: 3}
     - target: {fileID: 6329616890263730557, guid: 748dd12bfc9a31748b55c2d9d3f7ca18,
         type: 3}
       propertyPath: m_Name
