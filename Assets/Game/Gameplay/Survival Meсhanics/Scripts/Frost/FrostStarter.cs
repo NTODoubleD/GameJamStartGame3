@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
 using Game.Gameplay.DayCycle;
 using UnityEngine;
 using Zenject;
@@ -13,6 +14,10 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         
         private readonly FrostConfig.FrostSettings _strongFrostSettings;
         private readonly FrostConfig.FrostSettings _averageFrostSettings;
+
+        private CancellationTokenSource _cts;
+        private bool _isCtsDisposed = true;
+        private int _daysFromLastStrongFrost;
         
         public float CurrentFrostTimeLeft { get; private set; }
         public float CurrentFrostDuration { get; private set; }
@@ -37,41 +42,67 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
 
         private void OnDayStarted()
         {
-            StartFrostAsync().Forget();
+            _daysFromLastStrongFrost++;
+
+            if (_isCtsDisposed == false)
+            {
+                _cts.Cancel();
+                _cts.Dispose();
+                _isCtsDisposed = true;
+            }
+
+            _isCtsDisposed = false;
+            _cts = new CancellationTokenSource();
+            StartFrostAsync(_cts.Token).Forget();
         }
 
-        private async UniTask StartFrostAsync()
+        private async UniTask StartFrostAsync(CancellationToken token)
         {
             _frostController.Enable(FrostLevel.Weak);
 
-            if (_dayCycleController.CurrentDay % _strongFrostSettings.DayPeriod == 0)
-                await ProceedFrostAsync(_strongFrostSettings, FrostLevel.Strong);
+            if (_daysFromLastStrongFrost >= _strongFrostSettings.DayPeriod)
+            {
+                await ProceedFrostAsync(_strongFrostSettings, FrostLevel.Strong, token);
+            }
             else if (_dayCycleController.CurrentDay % _averageFrostSettings.DayPeriod == 0)
-                await ProceedFrostAsync(_averageFrostSettings, FrostLevel.Average);
+            {
+                await ProceedFrostAsync(_averageFrostSettings, FrostLevel.Average, token);
+            }
         }
         
-        private async UniTask ProceedFrostAsync(FrostConfig.FrostSettings settings, FrostLevel frostLevel)
+        private async UniTask ProceedFrostAsync(FrostConfig.FrostSettings settings, FrostLevel frostLevel, CancellationToken token)
         {
             await UniTask.Delay(
-                settings.StartDelays[Random.Range(0, settings.StartDelays.Length)] * 1000);
-                
+                settings.StartDelays[Random.Range(0, settings.StartDelays.Length)] * 1000, cancellationToken: token);
+            
+            if (token.IsCancellationRequested)
+                return;
+
+            if (frostLevel == FrostLevel.Strong)
+                _daysFromLastStrongFrost = 0;
+            
             _frostController.Enable(frostLevel);
             CurrentFrostDuration = settings.Duration;
             CurrentFrostTimeLeft = CurrentFrostDuration;
 
-            while (CurrentFrostTimeLeft > 0)
+            while (CurrentFrostTimeLeft > 0 && !token.IsCancellationRequested)
             {
-                await UniTask.NextFrame();
+                await UniTask.NextFrame(cancellationToken: token);
                 CurrentFrostTimeLeft = Mathf.Max(0, CurrentFrostTimeLeft - Time.deltaTime);
             }
             
             _frostController.Enable(FrostLevel.Weak);
-            
         }
         
         ~FrostStarter()
         {
             _dayCycleController.DayStarted -= OnDayStarted;
+            
+            if (_isCtsDisposed == false)
+            {
+                _cts.Cancel();
+                _cts.Dispose();
+            }
         }
     }
 }
