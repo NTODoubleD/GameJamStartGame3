@@ -3,8 +3,6 @@ using DoubleDCore.UI.Base;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Items;
 using Game.UI.Pages;
-using Infrastructure;
-using Infrastructure.GameplayStates;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +13,6 @@ namespace Game.WorldMap
         [SerializeField] private SortieResourceArgument _sortieResource;
 
         private IUIManager _uiManager;
-        private GameplayLocalStateMachine _stateMachine;
         private WorldMapController _worldMap;
         private CursorInteractor _cursorInteractor;
         private DayCycleController _cycleController;
@@ -23,12 +20,11 @@ namespace Game.WorldMap
         public SortieResourceArgument SortieResource => _sortieResource;
 
         [Inject]
-        private void Init(IUIManager uiManager, GameplayLocalStateMachine stateMachine,
-            WorldMapController worldMapController, CursorInteractor cursorInteractor,
+        private void Init(IUIManager uiManager, WorldMapController worldMapController,
+            CursorInteractor cursorInteractor,
             DayCycleController cycleController)
         {
             _uiManager = uiManager;
-            _stateMachine = stateMachine;
             _worldMap = worldMapController;
             _cursorInteractor = cursorInteractor;
             _cycleController = cycleController;
