@@ -19,9 +19,11 @@ namespace Game.UI.Data
     public class TrainingTip
     {
         [SerializeField] private VideoClip _video;
+        [SerializeField] private Sprite _image;
         [SerializeField] private TranslatedText _text;
 
         public VideoClip Video => _video;
+        public Sprite Image => _image;
         public string Text => _text.GetText();
     }
 }

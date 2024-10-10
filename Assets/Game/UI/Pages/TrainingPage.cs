@@ -5,6 +5,7 @@ using DoubleDCore.UI.Base;
 using Game.UI.Data;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace Game.UI.Pages
@@ -12,6 +13,7 @@ namespace Game.UI.Pages
     public class TrainingPage : MonoPage, IPayloadPage<TrainingPageArgument>
     {
         [SerializeField] private VideoPlayer _videoPlayer;
+        [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private ClickButton _rightButton;
         [SerializeField] private ClickButton _leftButton;
@@ -89,11 +91,20 @@ namespace Game.UI.Pages
 
             _videoPlayer.Stop();
             _videoPlayer.frame = 0;
+            _videoPlayer.clip = null;
+
+            _image.sprite = null;
 
             var tip = _context.TrainingTips[index];
 
+            _videoPlayer.gameObject.SetActive(_context.TrainingTips[index].Video);
+            _image.gameObject.SetActive(_context.TrainingTips[index].Image);
+
             _videoPlayer.clip = tip.Video;
             _videoPlayer.Play();
+
+            _image.sprite = tip.Image;
+
             _text.text = tip.Text;
 
             foreach (var uiDot in _dotsPool)
