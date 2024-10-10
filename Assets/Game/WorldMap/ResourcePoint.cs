@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Items;
 using Game.UI.Pages;
@@ -16,18 +18,20 @@ namespace Game.WorldMap
         private WorldMapController _worldMap;
         private CursorInteractor _cursorInteractor;
         private DayCycleController _cycleController;
+        private SleighBuildingReference _sleighBuilding;
 
         public SortieResourceArgument SortieResource => _sortieResource;
 
         [Inject]
         private void Init(IUIManager uiManager, WorldMapController worldMapController,
-            CursorInteractor cursorInteractor,
-            DayCycleController cycleController)
+            CursorInteractor cursorInteractor, DayCycleController cycleController,
+            SleighBuildingReference sleighBuilding)
         {
             _uiManager = uiManager;
             _worldMap = worldMapController;
             _cursorInteractor = cursorInteractor;
             _cycleController = cycleController;
+            _sleighBuilding = sleighBuilding;
         }
 
         public override void Interact()
@@ -39,6 +43,7 @@ namespace Game.WorldMap
             {
                 Name = Name,
                 SortieResource = _sortieResource,
+                SleighLevel = _sleighBuilding.SleighBuilding.CurrentLevel - 1,
                 Position = transform.position,
                 StartSortieCallback = StartSortie
             });
@@ -77,6 +82,14 @@ namespace Game.WorldMap
     public class ResourcePriority
     {
         [field: SerializeField] public GameItemInfo Item { get; private set; }
-        [field: Range(0, 10), SerializeField] public int Priority { get; private set; }
+        [field: SerializeField] public int[] Count { get; private set; } = new int[3];
+
+        public int GetCount(int slightLevel)
+        {
+            if (slightLevel < 0 || slightLevel >= Count.Length)
+                return 0;
+
+            return Count[slightLevel];
+        }
     }
 }

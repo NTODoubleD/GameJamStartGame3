@@ -56,9 +56,9 @@ namespace Game.UI.Pages
 
         private void SetResourcePriorities(InterestPointArgument context)
         {
-            _wood.Refresh(context.SortieResource.Wood.Priority);
-            _moss.Refresh(context.SortieResource.Moss.Priority);
-            _healGrass.Refresh(context.SortieResource.HealGrass.Priority);
+            _wood.Refresh(context.SortieResource.Wood.GetCount(context.SleighLevel));
+            _moss.Refresh(context.SortieResource.Moss.GetCount(context.SleighLevel));
+            _healGrass.Refresh(context.SortieResource.HealGrass.GetCount(context.SleighLevel));
         }
 
         private void UpdateWidgetPosition(Vector3 interestPointPosition)
@@ -85,6 +85,7 @@ namespace Game.UI.Pages
         public string Name;
 
         public SortieResourceArgument SortieResource;
+        public int SleighLevel;
 
         public Vector3 Position;
         public Action<SortieResourceArgument> StartSortieCallback;

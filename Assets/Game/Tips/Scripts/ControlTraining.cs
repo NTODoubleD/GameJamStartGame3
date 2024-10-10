@@ -1,16 +1,14 @@
 ﻿using Cysharp.Threading.Tasks;
 using DoubleDCore.UI.Base;
-using Game.UI.Data;
 using Game.UI.Pages;
 using UnityEngine;
 using Zenject;
 
-namespace Game
+namespace Game.Tips
 {
-    public class TrainingController : MonoBehaviour
+    public class ControlTraining : MonoBehaviour
     {
         [SerializeField] private float _trainingDelay;
-        [SerializeField] private TrainingPageArgument _trainingPageArgument;
 
         private IUIManager _uiManager;
         private GameInput _gameInput;
@@ -25,8 +23,6 @@ namespace Game
         private async void Start()
         {
             await UniTask.WaitForSeconds(_trainingDelay);
-
-            _uiManager.OpenPage<TrainingPage, TrainingPageArgument>(_trainingPageArgument);
 
             _uiManager.OpenPage<ControlTipPage, ControlTipArgument>(new ControlTipArgument(0, IsWasdCompleted));
         }

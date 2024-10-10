@@ -24,6 +24,7 @@ namespace Game.Gameplay.Buildings
         private Dictionary<ItemInfo, int[]> _itemLevelsDictionary;
 
         public int DeerCapacity => _deerCapacity;
+
         public IReadOnlyDictionary<ItemInfo, int[]> ItemCountLevels
         {
             get

@@ -5,6 +5,7 @@ using DoubleDCore.TranslationTools;
 using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.Buildings;
 using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
 using Game.WorldMap;
@@ -37,6 +38,7 @@ namespace Game.UI.Pages
         public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
 
         private GameInput _inputController;
+        private SleighBuildingReference _sleighBuilding;
 
         private readonly List<UIResourceProperty> _resourceSliders = new();
 
@@ -44,9 +46,10 @@ namespace Game.UI.Pages
         private List<ItemInfo> _possibleResources;
 
         [Inject]
-        private void Init(GameInput inputController)
+        private void Init(GameInput inputController, SleighBuildingReference sleighBuilding)
         {
             _inputController = inputController;
+            _sleighBuilding = sleighBuilding;
         }
 
         public override void Initialize()
@@ -99,9 +102,11 @@ namespace Game.UI.Pages
             // for (int i = 0; i < _possibleResources.Count; i++)
             //     callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
 
-            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.Priority);
-            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.Priority);
-            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.Priority);
+            int sleighLevel = _sleighBuilding.SleighBuilding.CurrentLevel - 1;
+
+            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.GetCount(sleighLevel));
+            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.GetCount(sleighLevel));
+            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.GetCount(sleighLevel));
 
             Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }

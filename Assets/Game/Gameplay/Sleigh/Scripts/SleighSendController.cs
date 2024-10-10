@@ -63,17 +63,20 @@ namespace Game.Gameplay.Sleigh
         {
             Dictionary<ItemInfo, int> resultItemsCount = new Dictionary<ItemInfo, int>();
 
-            foreach (var keyPair in itemLevels)
-            {
-                if (keyPair.Value == 0)
-                {
-                    resultItemsCount.Add(keyPair.Key, 0);
-                    continue;
-                }
+            // foreach (var keyPair in itemLevels)
+            // {
+            //     if (keyPair.Value == 0)
+            //     {
+            //         resultItemsCount.Add(keyPair.Key, 0);
+            //         continue;
+            //     }
+            //
+            //     int[] counts = _sleigh.GetItemLevelCounts(keyPair.Key);
+            //     resultItemsCount.Add(keyPair.Key, counts[keyPair.Value - 1]);
+            // }
 
-                int[] counts = _sleigh.GetItemLevelCounts(keyPair.Key);
-                resultItemsCount.Add(keyPair.Key, counts[keyPair.Value - 1]);
-            }
+            foreach (var (item, count) in itemLevels)
+                resultItemsCount.Add(item, count);
 
             _receiveController.SetReceiveInfo(resultItemsCount);
             _dayCycleController.EndDay();
