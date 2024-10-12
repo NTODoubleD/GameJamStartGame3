@@ -27,7 +27,7 @@ namespace Game.Quests
         private void UiManagerOnPageOpened(IPage page)
         {
             if (page is TPageType)
-                PerformQuest();
+                Progress = 1;
         }
     }
 }

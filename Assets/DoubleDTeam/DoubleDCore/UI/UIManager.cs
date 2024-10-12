@@ -90,6 +90,7 @@ namespace DoubleDCore.UI
             var page = GetPage<TPage>();
 
             page.Open();
+            PageOpened?.Invoke(page);
         }
 
         public void OpenPage<TPage, TPayload>(TPayload context) where TPage : class, IPayloadPage<TPayload>
@@ -103,6 +104,7 @@ namespace DoubleDCore.UI
             var page = GetPage<TPage>();
 
             page.Open(context);
+            PageOpened?.Invoke(page);
         }
 
         public void ClosePage<TPage>() where TPage : class, IPage
@@ -114,8 +116,21 @@ namespace DoubleDCore.UI
             }
 
             var page = GetPage<TPage>();
-
+            
             page.Close();
+            PageClosed?.Invoke(page);
+        }
+
+        public void ClosePage(IPage page)
+        {
+            if (ContainsPage(page) == false)
+            {
+                Debug.LogError($"Page {page.GetType().Name} not close. Unregistered page");
+                return;
+            }
+            
+            page.Close();
+            PageClosed?.Invoke(page);
         }
 
         public void ResetPages()
