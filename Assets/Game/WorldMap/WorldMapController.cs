@@ -3,6 +3,7 @@ using DG.Tweening;
 using DoubleDCore.Service;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
+using Game.Tips.Triggers;
 using Game.UI.Pages;
 using Infrastructure;
 using Infrastructure.GameplayStates;
@@ -16,6 +17,7 @@ namespace Game.WorldMap
     {
         [SerializeField] private ParticleSystem _effect;
         [SerializeField] private CanvasGroup _whiteScreen;
+        [SerializeField] private InvokedTrainingTrigger _trainingTrigger;
 
         [SerializeField] private GameObject[] _objects;
 
@@ -71,7 +73,7 @@ namespace Game.WorldMap
                 _cursorInteractor.Open();
 
                 _effect.Stop();
-                _whiteScreen.DOFade(0, 1);
+                _whiteScreen.DOFade(0, 1).OnComplete(_trainingTrigger.CallTraining);
             });
         }
 

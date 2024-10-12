@@ -17,8 +17,16 @@ namespace Game.Tips
             _gameInput = gameInput;
         }
 
+        private bool _isPlayerInput;
+        private bool _isMapInput;
+        private bool _isUIInput;
+
         public void StartTraining(TrainingInfo context)
         {
+            _isPlayerInput = _gameInput.Player.enabled;
+            _isMapInput = _gameInput.Map.enabled;
+            _isUIInput = _gameInput.UI.enabled;
+
             _gameInput.Player.Disable();
             _gameInput.Map.Disable();
 
@@ -33,10 +41,16 @@ namespace Game.Tips
 
         private void OnStopTraining()
         {
-            _gameInput.Player.Enable();
-            _gameInput.Map.Enable();
+            if (_isPlayerInput)
+                _gameInput.Player.Enable();
 
-            _gameInput.UI.Disable();
+            if (_isMapInput)
+                _gameInput.Map.Enable();
+
+            if (_isUIInput)
+                _gameInput.UI.Enable();
+            else
+                _gameInput.UI.Disable();
         }
     }
 }
