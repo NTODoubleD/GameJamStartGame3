@@ -5,6 +5,7 @@ using Game.Infrastructure.Items;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DoubleDCore.Service;
+using Game.Gameplay.Items;
 using Game.UI.Pages;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Game.Gameplay.Sleigh
         [SerializeField] private PastureBuilding _pasture;
         [SerializeField] private SleighReceiveController _receiveController;
         [SerializeField] private DayCycleController _dayCycleController;
-        [SerializeField] private ItemInfo[] _possibleResources;
+        [SerializeField] private GameItemInfo[] _possibleResources;
         [SerializeField] private int _levelsToDistribute = 4;
 
         private async void Start()
@@ -60,9 +61,9 @@ namespace Game.Gameplay.Sleigh
             _sendView.Initialize(_sleigh.DeerCapacity, _pasture.DeerCount, _possibleResources, _levelsToDistribute);
         }
 
-        private void Send(IReadOnlyDictionary<ItemInfo, int> itemLevels, int amountDeer)
+        private void Send(IReadOnlyDictionary<GameItemInfo, int> itemLevels, int amountDeer)
         {
-            Dictionary<ItemInfo, int> resultItemsCount = new Dictionary<ItemInfo, int>();
+            Dictionary<GameItemInfo, int> resultItemsCount = new Dictionary<GameItemInfo, int>();
 
             // foreach (var keyPair in itemLevels)
             // {

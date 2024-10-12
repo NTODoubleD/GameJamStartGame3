@@ -22,15 +22,6 @@ namespace Game.Gameplay.Buildings
             _itemStorage = itemStorage;
         }
 
-        public void OpenResourcePage()
-        {
-            UIManager.OpenPage<ResourceWatcherPage, ResourcePageArgument>(new ResourcePageArgument()
-            {
-                Label = _labelText.GetText(),
-                Resource = new Dictionary<ItemInfo, int>(_itemStorage.Resources)
-            });
-        }
-
         public override ILevelsConfig GetLevelsConfig()
         {
             return _levelsConfig;

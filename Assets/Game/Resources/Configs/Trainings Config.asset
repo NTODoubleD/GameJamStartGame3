@@ -18,3 +18,7 @@ MonoBehaviour:
   _heatingInfo: {fileID: 11400000, guid: 51dbb5aad23a7fc4ab3346751c4fe898, type: 2}
   _cookingInfo: {fileID: 11400000, guid: b5ce03ec605fac84e86f2e686489954b, type: 2}
   _waterInfo: {fileID: 11400000, guid: 5c9a8976a255bde429a3feaec09fec51, type: 2}
+  _sleepInfo: {fileID: 11400000, guid: afb8738a852783847b6cd9ed3d3b21b3, type: 2}
+  _deerCutInfo: {fileID: 11400000, guid: f7a4e4505cd8f9644815681b7acf3a04, type: 2}
+  _upgradeInfo: {fileID: 11400000, guid: ec990867131c8994f8b7ade90343e04e, type: 2}
+  _strongFrostInfo: {fileID: 11400000, guid: 7954d6dc543bf69469d30209fd13f9a6, type: 2}

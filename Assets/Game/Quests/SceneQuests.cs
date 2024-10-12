@@ -12,6 +12,9 @@ namespace Game.Quests
         [SerializeField] private YakutSubTask _heatVisitYurtSubTask;
         [SerializeField] private YakutQuest _cookingQuest;
         [SerializeField] private YakutQuest _waterQuest;
+        [SerializeField] private YakutQuest _sleepQuest;
+        [SerializeField] private YakutQuest _deerCuttingQuest;
+        [SerializeField] private YakutQuest _firstUpgradeQuest;
         
         public YakutQuest TravelQuest => _travelQuest;
         public YakutQuest ResourcesQuest => _resourcesQuest;
@@ -19,5 +22,8 @@ namespace Game.Quests
         public YakutSubTask HeatVisitYurtSubTask => _heatVisitYurtSubTask;
         public YakutQuest CookingQuest => _cookingQuest;
         public YakutQuest WaterQuest => _waterQuest;
+        public YakutQuest SleepQuest => _sleepQuest;
+        public YakutQuest DeerCuttingQuest => _deerCuttingQuest;
+        public YakutQuest FirstUpgradeQuest => _firstUpgradeQuest;
     }
 }

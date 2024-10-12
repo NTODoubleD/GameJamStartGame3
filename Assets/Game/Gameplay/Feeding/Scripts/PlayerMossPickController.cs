@@ -1,3 +1,4 @@
+using System;
 using Game.Gameplay.Interaction;
 using Game.Infrastructure.Items;
 using Game.Infrastructure.Storage;
@@ -16,6 +17,9 @@ namespace Game.Gameplay.Feeding
         private ItemStorage _storage;
 
         public bool IsMossPicked { get; private set; }
+
+        public event Action MossTaken; 
+        public event Action MossPut; 
 
         [Inject]
         private void Init(ItemStorage storage)
@@ -49,6 +53,7 @@ namespace Game.Gameplay.Feeding
         {
             IsMossPicked = false;
             _playerMoleView.Disable();
+            MossPut?.Invoke();
         }
 
         private void PickMoss()
@@ -59,6 +64,7 @@ namespace Game.Gameplay.Feeding
             IsMossPicked = true;
             //_objectsWatcher.enabled = false;
             _characterAnimatorController.AnimatePickingUp();
+            MossTaken?.Invoke();
         }
 
         private void OnStartedActualPicking()

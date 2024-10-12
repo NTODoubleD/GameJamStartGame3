@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
   m_Name: StrongFrost
   m_EditorClassIdentifier: 
-  _trainingTips: []
+  _trainingTips:
+  - _video: {fileID: 0}
+    _image: {fileID: 0}
+    _text:
+      _ru: Too cold
+      _en: no translation

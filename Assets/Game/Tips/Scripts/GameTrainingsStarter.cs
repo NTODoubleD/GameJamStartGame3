@@ -5,6 +5,7 @@ using DoubleDCore.QuestsSystem.Base;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Sleigh;
+using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.Quests;
 using Game.Quests.Base;
 using Game.Tips.Configs;
@@ -28,15 +29,19 @@ namespace Game.Tips
         private readonly SceneQuests _sceneQuests;
         private readonly IUIManager _uiManager;
         private readonly DayCycleController _dayCycleController;
+        private readonly FrostController _frostController;
+        private readonly GameInput _gameInput;
 
         private bool _isDayStarted = true;
         private bool _isHikeResultPageOpened = false;
         private bool _isRestPageOpened;
         private bool _isCookingPageOpened;
+        private bool _isRadialItemsMenuOpened;
         
         public GameTrainingsStarter(GameTrainingsConfig config, GameTrainingController trainingController,
             IQuestController questController, SceneQuests sceneQuests, 
-            IUIManager uiManager, DayCycleController dayCycleController)
+            IUIManager uiManager, DayCycleController dayCycleController,
+            FrostController frostController, GameInput gameInput)
         {
             _config = config;
             _trainingController = trainingController;
@@ -44,6 +49,8 @@ namespace Game.Tips
             _sceneQuests = sceneQuests;
             _uiManager = uiManager;
             _dayCycleController = dayCycleController;
+            _frostController = frostController;
+            _gameInput = gameInput;
 
             _questStartTrainings = new Dictionary<IQuest, TrainingInfo>()
             {
@@ -51,6 +58,9 @@ namespace Game.Tips
                 {_sceneQuests.ResourcesQuest, _config.InterfaceInfo},
                 {_sceneQuests.CookingQuest, _config.CookingInfo},
                 {_sceneQuests.WaterQuest, _config.WaterInfo},
+                {_sceneQuests.SleepQuest, _config.SleepInfo},
+                {_sceneQuests.DeerCuttingQuest, _config.DeerCutInfo},
+                {_sceneQuests.FirstUpgradeQuest, _config.UpgradeInfo}
             };
             
             _questTaskCompleteTrainings = new Dictionary<IQuest, TrainingInfo>()
@@ -62,8 +72,12 @@ namespace Game.Tips
             _trainingConditions = new Dictionary<TrainingInfo, Func<bool>>()
             {
                 { _config.InterfaceInfo, () => _isDayStarted && !_isHikeResultPageOpened },
+                { _config.UpgradeInfo, () => _isDayStarted && !_isHikeResultPageOpened },
                 { _config.CookingInfo, () => !_isRestPageOpened },
                 { _config.WaterInfo, () => !_isCookingPageOpened },
+                { _config.DeerCutInfo, () => _isDayStarted },
+                { _config.SleepInfo, () => !_isRadialItemsMenuOpened },
+                { _config.StrongFrostInfo, () => _gameInput.Player.enabled && _isDayStarted }
             };
 
             _questController.QuestIssued += OnQuestIssued;
@@ -72,8 +86,9 @@ namespace Game.Tips
             _uiManager.PageClosed += OnPageClosed;
             _dayCycleController.DayStarted += OnDayStarted;
             _dayCycleController.DayEnded += OnDayEnded;
+            _frostController.FrostLevelChanged += OnFrostLevelChanged;
         }
-        
+
         public void Tick()
         {
             if (_delayedTrainings.Count == 0)
@@ -89,6 +104,12 @@ namespace Game.Tips
                 StartTraining(_delayedTrainings.Dequeue());
             }
         }
+        
+        private void OnFrostLevelChanged(FrostLevel level)
+        {
+            if (level == FrostLevel.Strong)
+                StartTraining(_config.StrongFrostInfo);
+        }
 
         private void OnPageOpened(IPage page)
         {
@@ -98,6 +119,8 @@ namespace Game.Tips
                 _isRestPageOpened = true;
             else if (page is CookingPage)
                 _isCookingPageOpened = true;
+            else if (page is RadialItemsMenuPage)
+                _isRadialItemsMenuOpened = true;
         }
         
         private void OnPageClosed(IPage page)
@@ -108,6 +131,8 @@ namespace Game.Tips
                 _isRestPageOpened = false;
             else if (page is CookingPage)
                 _isCookingPageOpened = false;
+            else if (page is RadialItemsMenuPage)
+                _isRadialItemsMenuOpened = false;
         }
 
         private void OnDayStarted()
@@ -170,6 +195,7 @@ namespace Game.Tips
             _uiManager.PageClosed -= OnPageClosed;
             _dayCycleController.DayStarted -= OnDayStarted;
             _dayCycleController.DayEnded -= OnDayEnded;
+            _frostController.FrostLevelChanged -= OnFrostLevelChanged;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DoubleDCore.UI.Base;
 using Game.UI.Data;
 using Game.UI.Pages;
+using UnityEngine;
 using Zenject;
 
 namespace Game.Tips
@@ -32,6 +33,8 @@ namespace Game.Tips
 
             _gameInput.UI.Enable();
 
+            Time.timeScale = 0;
+
             _uiManager.OpenPage<TrainingPage, TrainingPageArgument>(new TrainingPageArgument
             {
                 TrainingInfo = context,
@@ -51,6 +54,8 @@ namespace Game.Tips
                 _gameInput.UI.Enable();
             else
                 _gameInput.UI.Disable();
+            
+            Time.timeScale = 1;
         }
     }
 }

@@ -30,6 +30,9 @@ namespace Game.UI.Pages
 
         public override void Initialize()
         {
+            _questController.QuestCompleted += OnQuestCompleted;
+            _questController.QuestIssued += OnQuestIssued;
+            
             Open();
         }
 
@@ -37,9 +40,6 @@ namespace Game.UI.Pages
         {
             if (PageIsDisplayed)
                 return;
-
-            _questController.QuestCompleted += OnQuestCompleted;
-            _questController.QuestIssued += OnQuestIssued;
 
             _canvasGroup.alpha = 0;
 
@@ -55,9 +55,6 @@ namespace Game.UI.Pages
                 return;
             
             _canvasGroup.DOFade(0, 0.4f).OnComplete(() => SetCanvasState(false));
-
-            _questController.QuestCompleted -= OnQuestCompleted;
-            _questController.QuestIssued -= OnQuestIssued;
         }
 
         private async void OnQuestIssued(IQuest quest)
@@ -111,6 +108,13 @@ namespace Game.UI.Pages
             }
 
             _subText.text = string.Join("\n", subTaskTexts);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _questController.QuestCompleted -= OnQuestCompleted;
+            _questController.QuestIssued -= OnQuestIssued;
         }
     }
 }

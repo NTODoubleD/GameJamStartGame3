@@ -1281,8 +1281,8 @@ MonoBehaviour:
   - {fileID: 69701617}
   - {fileID: 69701620}
   - {fileID: 69701621}
-  - {fileID: 69701622}
   - {fileID: 69701623}
+  - {fileID: 69701622}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2070,7 +2070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4827113}
+  m_AnchoredPosition: {x: 0, y: -6472067.5}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -2469,6 +2469,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146880415}
   m_CullTransparentMesh: 1
+--- !u!1 &147318209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147318210}
+  - component: {fileID: 147318211}
+  m_Layer: 0
+  m_Name: DeerKilling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &147318210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147318209}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2063262838}
+  - {fileID: 2066911100}
+  - {fileID: 1929332814}
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147318211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147318209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/deerkilling
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0420\u0430\u0437\u0434\u0435\u043B\u043A\u0430 \u043E\u043B\u0435\u043D\u0435\u0439"
+    _en: Deer cutting
+  _subTasks:
+  - {fileID: 2063262839}
+  - {fileID: 1929332815}
+  - {fileID: 2066911101}
 --- !u!1 &149003532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,7 +4231,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -4187,6 +4249,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!224 &222974009 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4491267669323007724, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &228756171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4742,8 +4810,8 @@ MonoBehaviour:
     _ru: "\u041F\u043E\u0445\u043E\u0434"
     _en: Hike
   _subTasks:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 716158955}
+  - {fileID: 901227998}
 --- !u!1001 &268232593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4993,16 +5061,20 @@ Transform:
   - {fileID: 256275313}
   - {fileID: 1649805913}
   - {fileID: 1415168573}
+  - {fileID: 1150250734}
   - {fileID: 171686698}
   - {fileID: 1163625126}
   - {fileID: 1859193575}
   - {fileID: 1527997636}
-  - {fileID: 1883807075}
+  - {fileID: 147318210}
   - {fileID: 1425852437}
   - {fileID: 2047836199}
   - {fileID: 92381276}
   - {fileID: 748059426}
   - {fileID: 53638712}
+  - {fileID: 1295163549}
+  - {fileID: 1367562024}
+  - {fileID: 1337828694}
   m_Father: {fileID: 664448051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &285538915
@@ -5024,8 +5096,20 @@ MonoBehaviour:
   - {fileID: 256275314}
   - {fileID: 1649805915}
   - {fileID: 1415168574}
+  - {fileID: 1150250736}
   - {fileID: 171686701}
   - {fileID: 1163625127}
+  - {fileID: 1859193577}
+  - {fileID: 1527997637}
+  - {fileID: 147318211}
+  - {fileID: 1425852438}
+  - {fileID: 2047836200}
+  - {fileID: 92381277}
+  - {fileID: 748059427}
+  - {fileID: 53638713}
+  - {fileID: 1295163551}
+  - {fileID: 1367562026}
+  - {fileID: 1337828696}
 --- !u!114 &285538916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5044,6 +5128,9 @@ MonoBehaviour:
   _heatVisitYurtSubTask: {fileID: 2049629251}
   _cookingQuest: {fileID: 1163625127}
   _waterQuest: {fileID: 1859193577}
+  _sleepQuest: {fileID: 1527997637}
+  _deerCuttingQuest: {fileID: 147318211}
+  _firstUpgradeQuest: {fileID: 92381277}
 --- !u!1 &298756050
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,6 +5187,7 @@ MonoBehaviour:
     _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043C\u044F\u0441\u043E"
     _en: Cook meat
   _resource: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
+  _countResourcesBefore: 0
 --- !u!114 &301106042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1646954411159464556, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -6050,6 +6138,83 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 360821084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &362690499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 362690500}
+  - component: {fileID: 362690502}
+  - component: {fileID: 362690503}
+  m_Layer: 0
+  m_Name: Conditions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &362690500
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362690499}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 222974009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 57.339336, y: -224.75761}
+  m_SizeDelta: {x: 585.3213, y: 0}
+  m_Pivot: {x: -0.000000031664968, y: 0.9999997}
+--- !u!114 &362690502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362690499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &362690503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362690499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
 --- !u!1 &374875263 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8270836152428895908, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -12972,7 +13137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10544693}
+  m_AnchoredPosition: {x: 0, y: 11447635}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -13642,6 +13807,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141574626}
   m_CullTransparentMesh: 1
+--- !u!1 &1150250733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150250734}
+  - component: {fileID: 1150250736}
+  - component: {fileID: 1150250735}
+  m_Layer: 0
+  m_Name: MossBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150250734
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150250733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150250735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150250733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7bd64cad4344638e91d0146a1bf39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u0435 \u043C\u043E\u0445 \u043E\u0431\u0440\u0430\u0442\u043D\u043E"
+    _en: Put moss back
+  _moss: {fileID: 1315803209}
+--- !u!114 &1150250736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150250733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/mossback
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0412\u0441\u0435\u043C\u0443 \u0441\u0432\u043E\u0435 \u043C\u0435\u0441\u0442\u043E"
+    _en: There's a place for everything
+  _subTasks:
+  - {fileID: 1150250735}
 --- !u!114 &1150849463 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5322400594369925862, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -14023,8 +14270,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2011564992}
-        m_TargetAssemblyTypeName: Game.UI.Pages.CookingPage, Assembly-CSharp
+      - m_Target: {fileID: 2011564997}
+        m_TargetAssemblyTypeName: Game.UI.MonoPageCloser, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
         m_Arguments:
@@ -14780,6 +15027,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228324957}
   m_CullTransparentMesh: 1
+--- !u!1 &1232495852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232495853}
+  - component: {fileID: 1232495854}
+  m_Layer: 0
+  m_Name: Meat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232495853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232495852}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859193575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1232495854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232495852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f2cd0c06ab4d74a648dc47e2000499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u0421\u044A\u0435\u0441\u0442\u044C \u043C\u044F\u0441\u043E"
+    _en: Eat meat
+  _itemInfo: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
 --- !u!1 &1239200301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5900602211511873407, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -15424,6 +15727,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!1 &1295163548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1295163549}
+  - component: {fileID: 1295163551}
+  - component: {fileID: 1295163550}
+  m_Layer: 0
+  m_Name: SmallHerd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1295163549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295163548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1295163550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295163548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320a42c43d9f4743af7df80d12b53345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 11
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041E\u043B\u0435\u043D\u0435\u0439 \u0432 \u0441\u0442\u0430\u0434\u0435"
+    _en: Deer in the herd
+--- !u!114 &1295163551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295163548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/smallherd
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u043E\u0435 \u0441\u0442\u0430\u0434\u043E"
+    _en: Small herd
+  _subTasks:
+  - {fileID: 1295163550}
 --- !u!4 &1304115991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4452397543049347936, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -15512,6 +15896,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1315088426}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315803209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1347615123839609870, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b6b094f13cd94459b6fc348a4e8754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1316823574
 GameObject:
   m_ObjectHideFlags: 0
@@ -15959,6 +16355,87 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1337828693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337828694}
+  - component: {fileID: 1337828696}
+  - component: {fileID: 1337828695}
+  m_Layer: 0
+  m_Name: BigHerd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1337828694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337828693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337828695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337828693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320a42c43d9f4743af7df80d12b53345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 30
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041E\u043B\u0435\u043D\u0435\u0439 \u0432 \u0441\u0442\u0430\u0434\u0435"
+    _en: Deer in the herd
+--- !u!114 &1337828696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337828693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/bigherd
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0411\u043E\u043B\u044C\u0448\u043E\u0435 \u0441\u0442\u0430\u0434\u043E"
+    _en: Big herd
+  _subTasks:
+  - {fileID: 1337828695}
 --- !u!1 &1338536535 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5710980338622683042, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -15980,6 +16457,87 @@ MonoBehaviour:
   _text:
     _ru: "\u041C\u0435\u043D\u044E"
     _en: Menu
+--- !u!1 &1367562023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1367562024}
+  - component: {fileID: 1367562026}
+  - component: {fileID: 1367562025}
+  m_Layer: 0
+  m_Name: MediumHerd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1367562024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367562023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367562025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367562023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320a42c43d9f4743af7df80d12b53345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 18
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041E\u043B\u0435\u043D\u0435\u0439 \u0432 \u0441\u0442\u0430\u0434\u0435"
+    _en: Deer in the herd
+--- !u!114 &1367562026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367562023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/mediumherd
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0421\u0440\u0435\u0434\u043D\u0435\u0435 \u0441\u0442\u0430\u0434\u043E"
+    _en: Average herd
+  _subTasks:
+  - {fileID: 1367562025}
 --- !u!1 &1373360186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8446118478587328378, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -21253,7 +21811,7 @@ MonoBehaviour:
   _taskName:
     _ru: "\u0412\u0437\u044F\u0442\u044C \u043C\u043E\u0445"
     _en: Take the moss
-  _moss: {fileID: 800224989}
+  _moss: {fileID: 1315803209}
 --- !u!114 &1415168576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21489,12 +22047,13 @@ MonoBehaviour:
     _description:
       _ru: no translation
       _en: no translation
-    _maxProgress: 20
+    _maxProgress: 15
     _questLayer: 0
   _taskName:
-    _ru: "\u0414\u043E\u0431\u044B\u0442\u044C \u0434\u0435\u0440\u0435\u0432\u043E"
-    _en: Get a wood
+    _ru: "\u0414\u0435\u0440\u0435\u0432\u043E"
+    _en: Wood
   _resource: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
+  _countResourcesBefore: 0
 --- !u!1 &1426181917
 GameObject:
   m_ObjectHideFlags: 0
@@ -24568,7 +25127,7 @@ MonoBehaviour:
     _ru: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
     _en: Resources
   _subTasks:
-  - {fileID: 0}
+  - {fileID: 1649805914}
 --- !u!1001 &1651312777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27004,9 +27563,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1859193575}
   - component: {fileID: 1859193577}
-  - component: {fileID: 1859193576}
   m_Layer: 0
-  m_Name: Water
+  m_Name: WaterQuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27024,33 +27582,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1232495853}
+  - {fileID: 1929243076}
   m_Father: {fileID: 285538914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1859193576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1859193574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f2cd0c06ab4d74a648dc47e2000499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: 
-  _questInfo:
-    _sprite: {fileID: 0}
-    _description:
-      _ru: no translation
-      _en: no translation
-    _maxProgress: 1
-    _questLayer: 0
-  _taskName:
-    _ru: no translation
-    _en: no translation
-  _itemInfo: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
 --- !u!114 &1859193577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27072,10 +27608,12 @@ MonoBehaviour:
     _maxProgress: 1
     _questLayer: 0
   _header:
-    _ru: "\u0421\u043E\u043D"
-    _en: Sleep
+    _ru: "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0432\u043E\u043B\u043A\u0430
+      \u043D\u0435 \u043A\u043E\u0440\u043C\u0438..."
+    _en: No matter how much you feed the wolf...
   _subTasks:
-  - {fileID: 1859193576}
+  - {fileID: 1232495854}
+  - {fileID: 1929243077}
 --- !u!1 &1870748353
 GameObject:
   m_ObjectHideFlags: 0
@@ -27343,89 +27881,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881785518}
   m_CullTransparentMesh: 1
---- !u!1 &1883807074
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1883807075}
-  - component: {fileID: 1883807076}
-  - component: {fileID: 1883807077}
-  m_Layer: 0
-  m_Name: Camping
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1883807075
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883807074}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 285538914}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883807076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883807074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: quest/camping
-  _questInfo:
-    _sprite: {fileID: 0}
-    _description:
-      _ru: no translation
-      _en: no translation
-    _maxProgress: 1
-    _questLayer: 0
-  _header:
-    _ru: "\u0412 \u043F\u043E\u0445\u043E\u0434"
-    _en: Camping
-  _subTasks:
-  - {fileID: 1883807077}
---- !u!114 &1883807077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883807074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6655d9cab4b14b98b43dfe37063a41a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: 
-  _questInfo:
-    _sprite: {fileID: 0}
-    _description:
-      _ru: no translation
-      _en: no translation
-    _maxProgress: 1
-    _questLayer: 0
-  _taskName:
-    _ru: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\u0441\u044F \u0432
-      \u043F\u043E\u0445\u043E\u0434 \u043D\u0430 \u0441\u0430\u043D\u044F\u0445"
-    _en: Go on a sledge hike
-  _sortiePage: {fileID: 1176313995}
 --- !u!1 &1890781457
 GameObject:
   m_ObjectHideFlags: 0
@@ -28341,7 +28796,7 @@ PrefabInstance:
     - target: {fileID: 2528208599008220218, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 72.9
       objectReference: {fileID: 0}
     - target: {fileID: 2528208599008220218, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -28622,7 +29077,7 @@ PrefabInstance:
     - target: {fileID: 3111261076770020166, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 51.8576
       objectReference: {fileID: 0}
     - target: {fileID: 3111261076770020166, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -29433,6 +29888,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5362120166272089624, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _headingText
+      value: 
+      objectReference: {fileID: 2036813742}
+    - target: {fileID: 5362120166272089624, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _resourcesRoot
+      value: 
+      objectReference: {fileID: 362690500}
+    - target: {fileID: 5362120166272089624, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _resourceViewPrefab
+      value: 
+      objectReference: {fileID: 2078506908911455107, guid: b3417c456e67f484196fbf003e3ff4e3,
+        type: 3}
     - target: {fileID: 5369045503233044636, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _characterMover
@@ -29795,14 +30266,7 @@ PrefabInstance:
     - target: {fileID: 6783142807143864984, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_text
-      value: 'TextTextTextText
-
-        Text
-
-        TextTextText
-
-
-        Text'
+      value: TextTextTextText
       objectReference: {fileID: 0}
     - target: {fileID: 6846666223240332307, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -29878,7 +30342,7 @@ PrefabInstance:
     - target: {fileID: 7001367624022558437, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 66.666664
       objectReference: {fileID: 0}
     - target: {fileID: 7001367624022558437, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -31073,6 +31537,10 @@ PrefabInstance:
         type: 3}
       insertIndex: 2
       addedObject: {fileID: 1180108503}
+    - targetCorrespondingSourceObject: {fileID: 4491267669323007724, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 362690500}
     - targetCorrespondingSourceObject: {fileID: 1367227022721814767, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
@@ -32164,6 +32632,119 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de73403e1d741088463f70e7152ad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1929243075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929243076}
+  - component: {fileID: 1929243077}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929243076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929243075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859193575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929243077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929243075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f2cd0c06ab4d74a648dc47e2000499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u0412\u044B\u043F\u0438\u0442\u044C \u0432\u043E\u0434\u044B"
+    _en: Drink water
+  _itemInfo: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
+--- !u!1 &1929332813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929332814}
+  - component: {fileID: 1929332815}
+  m_Layer: 0
+  m_Name: Horns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929332814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929332813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147318210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929332815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929332813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a98b7d12a8e451b90c489167ee90c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 2
+    _questLayer: 0
+  _taskName:
+    _ru: "\u0420\u043E\u0433\u0430"
+    _en: Horns
+  _resource: {fileID: 11400000, guid: 9868b408a6f3c054193aa958fe2e6c29, type: 2}
+  _countResourcesBefore: 0
 --- !u!1 &1932694237
 GameObject:
   m_ObjectHideFlags: 0
@@ -32739,6 +33320,7 @@ GameObject:
   - component: {fileID: 2011564994}
   - component: {fileID: 2011564993}
   - component: {fileID: 2011564992}
+  - component: {fileID: 2011564997}
   m_Layer: 0
   m_Name: CookingPage
   m_TagString: Untagged
@@ -32865,6 +33447,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 800
   m_TargetDisplay: 0
+--- !u!114 &2011564997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011564990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b737ac624a1040a58922600d416be934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _page: {fileID: 2011564992}
 --- !u!1001 &2013399542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33315,6 +33910,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db60f5472b8544ebb593a6a5117b8125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2036813742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6783142807143864984, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036813736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047836198
 GameObject:
   m_ObjectHideFlags: 0
@@ -33369,8 +33976,8 @@ MonoBehaviour:
     _maxProgress: 1
     _questLayer: 0
   _header:
-    _ru: "\u0415\u0449\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u044B"
-    _en: More resources
+    _ru: "\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430"
+    _en: Preparation
   _subTasks:
   - {fileID: 2047836201}
 --- !u!114 &2047836201
@@ -33391,12 +33998,13 @@ MonoBehaviour:
     _description:
       _ru: no translation
       _en: no translation
-    _maxProgress: 7
+    _maxProgress: 5
     _questLayer: 0
   _taskName:
     _ru: "\u0414\u043E\u0431\u044B\u0442\u044C \u0448\u043A\u0443\u0440\u0443"
     _en: Get a skin
   _resource: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
+  _countResourcesBefore: 0
 --- !u!1 &2049629247
 GameObject:
   m_ObjectHideFlags: 0
@@ -33597,6 +34205,120 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2062487696}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2063262837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063262838}
+  - component: {fileID: 2063262839}
+  m_Layer: 0
+  m_Name: Skin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2063262838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063262837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147318210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2063262839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063262837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a98b7d12a8e451b90c489167ee90c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/skin
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u0428\u043A\u0443\u0440\u0430"
+    _en: Skin
+  _resource: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
+  _countResourcesBefore: 0
+--- !u!1 &2066911099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066911100}
+  - component: {fileID: 2066911101}
+  m_Layer: 0
+  m_Name: Meat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2066911100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066911099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 147318210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2066911101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066911099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a98b7d12a8e451b90c489167ee90c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/meat
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 4
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041C\u044F\u0441\u043E"
+    _en: Meat
+  _resource: {fileID: 11400000, guid: 8f2ac3895293c6e40a31454ef6872a4c, type: 2}
+  _countResourcesBefore: 0
 --- !u!1 &2069307466
 GameObject:
   m_ObjectHideFlags: 0
@@ -34184,9 +34906,10 @@ MonoBehaviour:
     _maxProgress: 4
     _questLayer: 0
   _taskName:
-    _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043C\u044F\u0441\u043E"
-    _en: Cook meat
+    _ru: "\u0412\u0441\u043A\u0438\u043F\u044F\u0442\u0438\u0442\u044C \u0432\u043E\u0434\u0443"
+    _en: Boil water
   _resource: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
+  _countResourcesBefore: 0
 --- !u!1001 &2111887502
 PrefabInstance:
   m_ObjectHideFlags: 0

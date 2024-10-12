@@ -21,6 +21,12 @@ namespace Game.UI
                 .Color(currentCount >= neccessaryCount ? Color.green : Color.red);
         }
 
+        public void Initialize(GameItemInfo resourceInfo, string count)
+        {
+            _icon.sprite = resourceInfo.Icon;
+            _resourcesText.text = count;
+        }
+
         public void Initialize(string textDescription)
         {
             _icon.enabled = false;

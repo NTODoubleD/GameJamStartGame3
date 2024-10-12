@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace Game.Quests
 {
-    public class TakeMossTask : YakutSubTask
+    public class PutMossTask : YakutSubTask
     {
         [SerializeField] private PlayerMossPickController _moss;
 
         public override void Play()
         {
-            _moss.MossTaken += OnMossTaken;
+            _moss.MossPut += OnMossPut;
         }
 
         public override void Close()
         {
-            _moss.MossTaken -= OnMossTaken;
+            _moss.MossPut -= OnMossPut;
         }
 
-        private void OnMossTaken()
+        private void OnMossPut()
         {
             Progress = 1;
         }

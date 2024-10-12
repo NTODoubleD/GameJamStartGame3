@@ -10,7 +10,10 @@ namespace Game.Quests
 
         public override void Play()
         {
-            _playerListener.TriggerEnter += ListenerOnTriggerEnter;
+            if (_playerListener.IsTargetInTrigger())
+                Progress = 1;
+            else
+                _playerListener.TriggerEnter += ListenerOnTriggerEnter;
         }
 
         public override void Close()

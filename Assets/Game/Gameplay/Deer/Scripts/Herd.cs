@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DoubleDCore.Service;
 using Zenject;
@@ -17,6 +18,8 @@ namespace Game.Gameplay.Scripts
             .Where(d => d.DeerInfo.Age == DeerAge.Adult)
             .Where(d => d.DeerInfo.Status == DeerStatus.Standard)
             .ToList();
+
+        public event Action<int> HerdCountChanged;
 
         [Inject]
         private void Init(DeerFabric deerFabric)
@@ -38,12 +41,16 @@ namespace Game.Gameplay.Scripts
         {
             _currentHerd.Add(deer);
             deer.Died += OnDied;
+            
+            HerdCountChanged?.Invoke(_currentHerd.Count);
         }
 
         private void OnDied(Deer deer)
         {
             deer.Died -= OnDied;
             _currentHerd.Remove(deer);
+            
+            HerdCountChanged?.Invoke(_currentHerd.Count);
         }
     }
 }

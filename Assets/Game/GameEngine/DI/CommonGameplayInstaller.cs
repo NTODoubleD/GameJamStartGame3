@@ -1,11 +1,10 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
-using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
-using Game.Quests.Base;
 using Game.Tips;
 using Game.Tips.Configs;
-using UnityEngine;
 using Zenject;
+using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
+using Game.Quests.Tasks;
 
 namespace Game.GameEngine.DI
 {
@@ -13,6 +12,9 @@ namespace Game.GameEngine.DI
     {
         public override void InstallBindings()
         {
+            foreach (var task in FindObjectsOfType<ConsumeItemTask>())
+                Container.Bind<IGameItemUseObserver>().To<ConsumeItemTask>().FromInstance(task).AsCached();
+
             BindConfigs();
             Container.BindInterfacesAndSelfTo<GameTrainingsStarter>().AsSingle().NonLazy();
         }

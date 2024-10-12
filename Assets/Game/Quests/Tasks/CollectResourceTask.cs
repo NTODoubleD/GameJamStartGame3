@@ -9,6 +9,7 @@ namespace Game.Quests
     public class CollectResourceTask : YakutSubTask
     {
         [SerializeField] private ItemInfo _resource;
+        [SerializeField] private bool _countResourcesBefore;
 
         private ItemStorage _storage;
 
@@ -22,7 +23,8 @@ namespace Game.Quests
         {
             _storage.ItemAdded += OnItemAdded;
 
-            OnItemAdded(_resource, _storage.GetCount(_resource));
+            if (_countResourcesBefore)
+                OnItemAdded(_resource, _storage.GetCount(_resource));
         }
 
         public override void Close()
