@@ -1247,7 +1247,7 @@ MonoBehaviour:
   - {fileID: 1890921522}
   - {fileID: 669792676}
   - {fileID: 669792683}
-  - {fileID: 0}
+  - {fileID: 1443713431}
   - {fileID: 2089670853}
   - {fileID: 2089670858}
   - {fileID: 1271600452}
@@ -2070,7 +2070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -4774402}
+  m_AnchoredPosition: {x: 0, y: -4827113}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -4995,6 +4995,7 @@ Transform:
   - {fileID: 1415168573}
   - {fileID: 171686698}
   - {fileID: 1163625126}
+  - {fileID: 1859193575}
   - {fileID: 1527997636}
   - {fileID: 1883807075}
   - {fileID: 1425852437}
@@ -5042,7 +5043,7 @@ MonoBehaviour:
   _deerCarePastureSubTask: {fileID: 1632896394}
   _heatVisitYurtSubTask: {fileID: 2049629251}
   _cookingQuest: {fileID: 1163625127}
-  _waterQuest: {fileID: 1883807076}
+  _waterQuest: {fileID: 1859193577}
 --- !u!1 &298756050
 GameObject:
   m_ObjectHideFlags: 0
@@ -12971,7 +12972,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10517043}
+  m_AnchoredPosition: {x: 0, y: 10544693}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -21198,7 +21199,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 1632896391}]
+  m_Children:
+  - {fileID: 1632896391}
   m_Father: {fileID: 285538914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415168574
@@ -21647,6 +21649,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0547338dca3e08e478aff9600a690501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1443713431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5967847325279805510, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2962b3bb5b6e130479ee1a8a1c16fac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1453037413
@@ -26980,6 +26994,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc968d0648049cda38ae385a59eabaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1859193574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1859193575}
+  - component: {fileID: 1859193577}
+  - component: {fileID: 1859193576}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1859193575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859193576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f2cd0c06ab4d74a648dc47e2000499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: no translation
+    _en: no translation
+  _itemInfo: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
+--- !u!114 &1859193577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859193574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/water
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0421\u043E\u043D"
+    _en: Sleep
+  _subTasks:
+  - {fileID: 1859193576}
 --- !u!1 &1870748353
 GameObject:
   m_ObjectHideFlags: 0
@@ -27973,7 +28069,7 @@ PrefabInstance:
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Name
-      value: '---TEST WORLD---'
+      value: ---TEST WORLD---
       objectReference: {fileID: 0}
     - target: {fileID: 1582540542896697077, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
