@@ -4,6 +4,7 @@ using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
 using Game;
 using Game.Infrastructure.Storage;
+using Game.Tips;
 using Infrastructure.GameplayStates;
 using Zenject;
 
@@ -27,6 +28,7 @@ namespace Infrastructure.States
             var config = _resourcesContainer.GetResource<ConfigsResource>().GetConfig<GlobalConfig>();
 
             _container.Bind<ItemStorage>().FromInstance(new ItemStorage(config.TestInfo)).AsCached();
+            _container.Bind<GameTrainingController>().AsCached();
 
             var stateMachine = CreateLocalStateMachine();
 
@@ -38,6 +40,7 @@ namespace Infrastructure.States
         public void Exit()
         {
             _container.Unbind<ItemStorage>();
+            _container.Unbind<GameTrainingController>();
             _container.Unbind<GameplayLocalStateMachine>();
         }
 

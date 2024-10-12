@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DoubleDCore.Service;
 using DoubleDCore.UI;
@@ -16,7 +17,6 @@ namespace Game.WorldMap
     {
         [SerializeField] private ParticleSystem _effect;
         [SerializeField] private CanvasGroup _whiteScreen;
-
         [SerializeField] private GameObject[] _objects;
 
         private GameplayLocalStateMachine _stateMachine;
@@ -24,6 +24,8 @@ namespace Game.WorldMap
         private CursorInteractor _cursorInteractor;
         private GameInput _gameInput;
         private IUIManager _uiManager;
+
+        public event Action Opened;
 
         [Inject]
         private void Init(GameplayLocalStateMachine stateMachine, EventSystemProvider eventSystemProvider,
@@ -45,6 +47,8 @@ namespace Game.WorldMap
         {
             foreach (var o in _objects)
                 o.SetActive(true);
+            
+            Opened?.Invoke();
         }
 
         public void Close()

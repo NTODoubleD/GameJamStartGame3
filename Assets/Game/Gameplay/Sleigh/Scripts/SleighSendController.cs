@@ -4,12 +4,13 @@ using Game.Gameplay.DayCycle;
 using Game.Infrastructure.Items;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using DoubleDCore.Service;
 using Game.UI.Pages;
 using UnityEngine;
 
 namespace Game.Gameplay.Sleigh
 {
-    public class SleighSendController : MonoBehaviour
+    public class SleighSendController : MonoService
     {
         [SerializeField] private SortiePage _sendView;
         [SerializeField] private SleighBuilding _sleigh;

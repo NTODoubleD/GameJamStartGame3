@@ -1,5 +1,4 @@
-﻿using System;
-using DoubleDCore.Tween.Effects;
+﻿using DoubleDCore.Tween.Effects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +9,13 @@ namespace Game.UI
         [SerializeField] private Image _sliderImage;
         [SerializeField] private UIFlickeringEffect _effect;
         [SerializeField] private Image _alert;
-        
-        [Header("Slider Settings")]
-        [SerializeField] private float _sliderSpeed = 0.1f;
+
+        [Header("Slider Settings")] [SerializeField]
+        private float _sliderSpeed = 0.1f;
+
         [SerializeField] private SliderUpdateType _updateType;
+        [SerializeField] private float _impactThreshold = 30;
+        [SerializeField] private Gradient _impactColor;
 
         private float _targetValue;
 
@@ -28,19 +30,31 @@ namespace Game.UI
             _targetValue = _sliderImage.fillAmount;
         }
 
+        private float _oldValue = 0;
+
         private void Update()
         {
-            switch (_updateType)
+            float lerpValue = _updateType switch
             {
-                case SliderUpdateType.Lerp:
-                    _sliderImage.fillAmount =
-                        Mathf.Lerp(_sliderImage.fillAmount, _targetValue, _sliderSpeed * Time.deltaTime);
-                    break;
-                case SliderUpdateType.MoveTowards:
-                    _sliderImage.fillAmount =
-                        Mathf.MoveTowards(_sliderImage.fillAmount, _targetValue, _sliderSpeed * Time.deltaTime);
-                    break;
-            }
+                SliderUpdateType.Lerp => Mathf.Lerp(_sliderImage.fillAmount, _targetValue,
+                    _sliderSpeed * Time.deltaTime),
+
+                SliderUpdateType.MoveTowards => Mathf.MoveTowards(_sliderImage.fillAmount, _targetValue,
+                    _sliderSpeed * Time.deltaTime),
+
+                _ => 0f
+            };
+
+            _sliderImage.fillAmount = lerpValue;
+
+            float delta = lerpValue - _oldValue;
+            _oldValue = lerpValue;
+
+            delta = Mathf.Clamp(delta, -_impactThreshold, _impactThreshold);
+
+            float progress = (delta + _impactThreshold) / (_impactThreshold * 2);
+
+            _sliderImage.color = _impactColor.Evaluate(progress);
         }
 
         public void Refresh(float newValue, bool force = false)
@@ -51,7 +65,7 @@ namespace Game.UI
                 _effect.StartAnimation();
             else if (_effect.IsActive)
                 _effect.StopAnimation();
-            
+
             _alert.gameObject.SetActive(Mathf.Approximately(newValue, 0));
         }
 
@@ -63,7 +77,7 @@ namespace Game.UI
             if (force)
                 _sliderImage.fillAmount = _targetValue;
         }
-        
+
         private enum SliderUpdateType
         {
             Lerp,

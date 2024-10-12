@@ -76,14 +76,17 @@ namespace Game.UI.Pages
         private void StartTraining()
         {
             for (int i = 0; i < _dotsPool.Count; i++)
-                _dotsPool[i].gameObject.SetActive(_context.TrainingTips.Count > 1 && _context.TrainingTips.Count > i);
+            {
+                _dotsPool[i].gameObject.SetActive(_context.TrainingInfo.TrainingTips.Count > 1 &&
+                                                  _context.TrainingInfo.TrainingTips.Count > i);
+            }
 
             SetTip(0);
         }
 
         private void SetTip(int index)
         {
-            if (index < 0 || index >= _context.TrainingTips.Count)
+            if (index < 0 || index >= _context.TrainingInfo.TrainingTips.Count)
                 return;
 
             if (index == _currentTipIndex)
@@ -95,10 +98,10 @@ namespace Game.UI.Pages
 
             _image.sprite = null;
 
-            var tip = _context.TrainingTips[index];
+            var tip = _context.TrainingInfo.TrainingTips[index];
 
-            _videoPlayer.gameObject.SetActive(_context.TrainingTips[index].Video);
-            _image.gameObject.SetActive(_context.TrainingTips[index].Image);
+            _videoPlayer.gameObject.SetActive(_context.TrainingInfo.TrainingTips[index].Video);
+            _image.gameObject.SetActive(_context.TrainingInfo.TrainingTips[index].Image);
 
             _videoPlayer.clip = tip.Video;
             _videoPlayer.Play();
@@ -113,8 +116,8 @@ namespace Game.UI.Pages
             _currentTipIndex = index;
 
             _leftButton.gameObject.SetActive(_currentTipIndex > 0);
-            _rightButton.gameObject.SetActive(_currentTipIndex < _context.TrainingTips.Count - 1);
-            _closeButton.gameObject.SetActive(_currentTipIndex == _context.TrainingTips.Count - 1);
+            _rightButton.gameObject.SetActive(_currentTipIndex < _context.TrainingInfo.TrainingTips.Count - 1);
+            _closeButton.gameObject.SetActive(_currentTipIndex == _context.TrainingInfo.TrainingTips.Count - 1);
 
             _dotsPool[_currentTipIndex].SetHighlight(true);
         }
@@ -131,7 +134,15 @@ namespace Game.UI.Pages
 
         private void OnClose()
         {
+            _context.OnClose?.Invoke();
+
             Close();
         }
+    }
+
+    public class TrainingPageArgument
+    {
+        public TrainingInfo TrainingInfo;
+        public Action OnClose;
     }
 }

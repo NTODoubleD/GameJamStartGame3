@@ -1215,6 +1215,7 @@ GameObject:
   - component: {fileID: 69701620}
   - component: {fileID: 69701621}
   - component: {fileID: 69701622}
+  - component: {fileID: 69701623}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -1246,6 +1247,7 @@ MonoBehaviour:
   - {fileID: 1890921522}
   - {fileID: 669792676}
   - {fileID: 669792683}
+  - {fileID: 0}
   - {fileID: 2089670853}
   - {fileID: 2089670858}
   - {fileID: 1271600452}
@@ -1259,6 +1261,7 @@ MonoBehaviour:
   - {fileID: 1442707020}
   - {fileID: 1721345985}
   - {fileID: 1774537540}
+  - {fileID: 285538916}
   - {fileID: 613878517}
   - {fileID: 613878518}
 --- !u!114 &69701618
@@ -1279,6 +1282,7 @@ MonoBehaviour:
   - {fileID: 69701620}
   - {fileID: 69701621}
   - {fileID: 69701622}
+  - {fileID: 69701623}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1346,6 +1350,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6157edc80ad4395907f042479aa2b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &69701623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69701616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b796b07a2fa4e0f92407a7e3501f998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &70006547
@@ -3153,6 +3169,64 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &174032911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174032912}
+  - component: {fileID: 174032913}
+  m_Layer: 0
+  m_Name: VisitMoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174032912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174032911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &174032913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174032911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visitmoss
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043C\u0435\u0441\u0442\u043E
+      \u0441 \u0437\u0430\u043F\u0430\u0441\u0430\u043C\u0438 \u043C\u0445\u0430"
+    _en: Explore place with moss
+  _subTasks:
+  - {fileID: 1990691975}
 --- !u!1 &181256610
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,6 +4693,66 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!1 &256275312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256275313}
+  - component: {fileID: 256275314}
+  m_Layer: 0
+  m_Name: Travel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256275313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256275312}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 716158954}
+  - {fileID: 901227997}
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256275314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256275312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/travel
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041F\u043E\u0445\u043E\u0434"
+    _en: Hike
+  _subTasks:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &268232593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4840,6 +4974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 285538914}
   - component: {fileID: 285538915}
+  - component: {fileID: 285538916}
   m_Layer: 0
   m_Name: '[QUESTS]'
   m_TagString: Untagged
@@ -4860,9 +4995,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 174032912}
+  - {fileID: 2077713326}
+  - {fileID: 776146075}
   - {fileID: 741122741}
-  - {fileID: 1527997636}
+  - {fileID: 256275313}
+  - {fileID: 1649805913}
   - {fileID: 1415168573}
+  - {fileID: 1527997636}
   - {fileID: 1883807075}
   - {fileID: 1425852437}
   - {fileID: 2047836199}
@@ -4884,15 +5024,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sequence:
-  - {fileID: 741122742}
-  - {fileID: 1527997637}
+  - {fileID: 174032913}
+  - {fileID: 2077713327}
+  - {fileID: 776146076}
+  - {fileID: 256275314}
+  - {fileID: 1649805915}
   - {fileID: 1415168574}
+  - {fileID: 1527997637}
   - {fileID: 1883807076}
   - {fileID: 1425852438}
   - {fileID: 2047836200}
   - {fileID: 92381277}
   - {fileID: 748059427}
   - {fileID: 53638713}
+--- !u!114 &285538916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285538913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f042309e5403459098e79e4b77733311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _travelQuest: {fileID: 256275314}
+  _resourcesQuest: {fileID: 1649805915}
+  _deerCarePastureSubTask: {fileID: 0}
 --- !u!114 &301106042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1646954411159464556, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -7383,6 +7542,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &525451590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2668445604383350633, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &531776069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7930,7 +8095,7 @@ GameObject:
   - component: {fileID: 550598806}
   - component: {fileID: 550598805}
   m_Layer: 0
-  m_Name: VisitPasture
+  m_Name: VisitPastureTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9209,6 +9374,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715982340}
   m_CullTransparentMesh: 1
+--- !u!1 &716158953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 716158954}
+  - component: {fileID: 716158955}
+  m_Layer: 0
+  m_Name: GoToHike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &716158954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716158953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 256275313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &716158955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716158953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e5c8c6076d4335baa44c7423f3bd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/gotohike
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C\u0441\u044F \u0432
+      \u043F\u043E\u0445\u043E\u0434 \u043D\u0430 \u0441\u0430\u043D\u044F\u0445"
+    _en: Go on a sleigh ride
 --- !u!1 &729414668
 GameObject:
   m_ObjectHideFlags: 0
@@ -9335,7 +9556,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 741122741}
-  - component: {fileID: 741122742}
   m_Layer: 0
   m_Name: CampInspection
   m_TagString: Untagged
@@ -9361,33 +9581,6 @@ Transform:
   - {fileID: 550598804}
   m_Father: {fileID: 285538914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &741122742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 741122740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _id: quest/campinspection
-  _questInfo:
-    _sprite: {fileID: 0}
-    _description:
-      _ru: no translation
-      _en: no translation
-    _maxProgress: 1
-    _questLayer: 0
-  _header:
-    _ru: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043B\u0430\u0433\u0435\u0440\u044C"
-    _en: Explore the camp
-  _subTasks:
-  - {fileID: 1990691975}
-  - {fileID: 1508264609}
-  - {fileID: 550598807}
 --- !u!1001 &746054329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10100,6 +10293,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &776146074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776146075}
+  - component: {fileID: 776146076}
+  m_Layer: 0
+  m_Name: VisitSleigh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &776146075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776146074}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776146076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776146074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visitmoss
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0441\u0430\u043D\u0438"
+    _en: Explore sleigh
+  _subTasks:
+  - {fileID: 1508264609}
 --- !u!82 &779569986 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8480487547977510576, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -11103,6 +11353,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc0e242b6144e2ab29842d3731cc991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &901227996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901227997}
+  - component: {fileID: 901227998}
+  m_Layer: 0
+  m_Name: ChooseDirection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901227997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901227996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 256275313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901227998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901227996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ac792ce4a74a9cb6a0818004a7f2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/choosedirection
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0435"
+    _en: Select direction
 --- !u!4 &902775846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5631842067730766418, guid: dc0fac1c152d4574fb9afee87fee9a6e,
@@ -12918,7 +13223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 17648314}
+  m_AnchoredPosition: {x: 0, y: 10522568}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -24718,6 +25023,87 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1644164248}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1649805912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649805913}
+  - component: {fileID: 1649805915}
+  - component: {fileID: 1649805914}
+  m_Layer: 0
+  m_Name: ResourcesUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1649805913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649805912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1649805914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649805912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad08721d0f94322a8798b99a2400c19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041D\u0430\u0436\u0430\u0442\u044C \u201CTab\u201D"
+    _en: Press "Tab"
+--- !u!114 &1649805915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649805912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/resourcesui
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
+    _en: Resources
+  _subTasks:
+  - {fileID: 0}
 --- !u!1001 &1651312777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29366,6 +29752,16 @@ PrefabInstance:
       propertyPath: _interactedByTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5164049384534907686, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2095988323}
+    - target: {fileID: 5164049384534907686, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.UI.MonoPageCloser, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5166844623629682890, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -30545,7 +30941,17 @@ PrefabInstance:
       objectReference: {fileID: 1890921519}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -30565,9 +30971,19 @@ PrefabInstance:
       objectReference: {fileID: 613878517}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1890921512}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -30582,6 +30998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToMapState
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CallTraining
       objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -30600,8 +31021,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Game.Tips.Triggers.UnityEventTrainingTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
       propertyPath: _operations.Array.data[3].Action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Gameplay.SleighInteractive, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: _operations.Array.data[1].Action.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8128534378211924957, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -31244,6 +31675,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 763579164}
+    - targetCorrespondingSourceObject: {fileID: 2668445604383350633, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2095988323}
     - targetCorrespondingSourceObject: {fileID: 6209023971810400054, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       insertIndex: -1
@@ -32512,7 +32947,7 @@ GameObject:
   - component: {fileID: 1990691977}
   - component: {fileID: 1990691976}
   m_Layer: 0
-  m_Name: VisitMoch
+  m_Name: VisitMochTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33619,6 +34054,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2077713325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2077713326}
+  - component: {fileID: 2077713327}
+  m_Layer: 0
+  m_Name: VisitPasture
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2077713326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077713325}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2077713327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077713325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visitpasture
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u043F\u0430\u0441\u0442\u0431\u0438\u0449\u0435"
+    _en: Explore pasture
+  _subTasks:
+  - {fileID: 550598807}
 --- !u!1 &2080574097
 GameObject:
   m_ObjectHideFlags: 0
@@ -33982,12 +34474,25 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 525451590}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66340839c07b43d38a6c318d9cedda73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2095988323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525451590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b737ac624a1040a58922600d416be934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _page: {fileID: 2095988317}
 --- !u!1001 &2111887502
 PrefabInstance:
   m_ObjectHideFlags: 0

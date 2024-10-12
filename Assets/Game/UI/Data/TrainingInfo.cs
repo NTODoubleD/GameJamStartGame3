@@ -7,8 +7,8 @@ using UnityEngine.Video;
 
 namespace Game.UI.Data
 {
-    [CreateAssetMenu(menuName = "Tip/Create TrainingPageArgument", fileName = "TrainingPageArgument", order = 0)]
-    public class TrainingPageArgument : ScriptableObject
+    [CreateAssetMenu(menuName = "Tip/Create TrainingInfo", fileName = "TrainingInfo", order = 0)]
+    public class TrainingInfo : ScriptableObject
     {
         [SerializeField] private List<TrainingTip> _trainingTips;
 
