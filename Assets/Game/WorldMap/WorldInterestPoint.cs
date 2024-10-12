@@ -12,5 +12,16 @@ namespace Game.WorldMap
         public string Name => _name.GetText();
 
         public abstract void Interact();
+
+        private void OnDrawGizmos()
+        {
+            var sphereCollider = GetComponent<SphereCollider>();
+
+            if (sphereCollider == false)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, sphereCollider.radius);
+        }
     }
 }
