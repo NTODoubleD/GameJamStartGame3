@@ -15,3 +15,6 @@ MonoBehaviour:
   _interfaceInfo: {fileID: 11400000, guid: 86cc27722dbca4c408e1e92cf7f17a65, type: 2}
   _sleighInfo: {fileID: 11400000, guid: 52895305baca17543a2da3e79bb20e9d, type: 2}
   _deerCareInfo: {fileID: 11400000, guid: e6f0a04825c0e984e812103a4df57ce2, type: 2}
+  _heatingInfo: {fileID: 11400000, guid: 51dbb5aad23a7fc4ab3346751c4fe898, type: 2}
+  _cookingInfo: {fileID: 11400000, guid: b5ce03ec605fac84e86f2e686489954b, type: 2}
+  _waterInfo: {fileID: 11400000, guid: 5c9a8976a255bde429a3feaec09fec51, type: 2}

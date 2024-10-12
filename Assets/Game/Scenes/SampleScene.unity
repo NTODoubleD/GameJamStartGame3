@@ -3092,6 +3092,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 165526669}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &171686697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171686698}
+  - component: {fileID: 171686701}
+  - component: {fileID: 171686702}
+  m_Layer: 0
+  m_Name: Frost
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171686698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171686697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2049629248}
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171686701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171686697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/frost
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u041C\u043E\u0440\u043E\u0437"
+    _en: Frost
+  _subTasks:
+  - {fileID: 2049629251}
+  - {fileID: 171686702}
+--- !u!114 &171686702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171686697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b459630338ef4626b411a99c48af5483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u043E\u0433\u0440\u0435\u0442\u044C\u0441\u044F"
+    _en: Warm up
 --- !u!1 &172813800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5002,6 +5085,8 @@ Transform:
   - {fileID: 256275313}
   - {fileID: 1649805913}
   - {fileID: 1415168573}
+  - {fileID: 171686698}
+  - {fileID: 1163625126}
   - {fileID: 1527997636}
   - {fileID: 1883807075}
   - {fileID: 1425852437}
@@ -5030,13 +5115,8 @@ MonoBehaviour:
   - {fileID: 256275314}
   - {fileID: 1649805915}
   - {fileID: 1415168574}
-  - {fileID: 1527997637}
-  - {fileID: 1883807076}
-  - {fileID: 1425852438}
-  - {fileID: 2047836200}
-  - {fileID: 92381277}
-  - {fileID: 748059427}
-  - {fileID: 53638713}
+  - {fileID: 171686701}
+  - {fileID: 1163625127}
 --- !u!114 &285538916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5051,7 +5131,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _travelQuest: {fileID: 256275314}
   _resourcesQuest: {fileID: 1649805915}
-  _deerCarePastureSubTask: {fileID: 0}
+  _deerCarePastureSubTask: {fileID: 1632896394}
+  _heatVisitYurtSubTask: {fileID: 2049629251}
+  _cookingQuest: {fileID: 1163625127}
+  _waterQuest: {fileID: 1883807076}
+--- !u!1 &298756050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298756051}
+  - component: {fileID: 298756052}
+  m_Layer: 0
+  m_Name: MeatResource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &298756051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298756050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163625126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298756052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298756050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a98b7d12a8e451b90c489167ee90c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/meatresource
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 4
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043C\u044F\u0441\u043E"
+    _en: Cook meat
+  _resource: {fileID: 11400000, guid: 9373709fb7803e84094d8dc613cecdb1, type: 2}
 --- !u!114 &301106042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1646954411159464556, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -13223,7 +13362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10522568}
+  m_AnchoredPosition: {x: 0, y: 10517043}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -14324,6 +14463,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157364939}
   m_CullTransparentMesh: 1
+--- !u!1 &1163625125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163625126}
+  - component: {fileID: 1163625127}
+  m_Layer: 0
+  m_Name: Cooking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1163625126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163625125}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1250421501}
+  - {fileID: 298756051}
+  - {fileID: 2099657621}
+  m_Father: {fileID: 285538914}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1163625127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163625125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c325d584404e9c83c126f6715373fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/cooking
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _header:
+    _ru: "\u0415\u0434\u0430 \u0438 \u0432\u043E\u0434\u0430"
+    _en: Food and water
+  _subTasks:
+  - {fileID: 1250421504}
+  - {fileID: 298756052}
+  - {fileID: 2099657622}
 --- !u!4 &1168294100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5631535338237666594, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -15032,6 +15233,97 @@ MonoBehaviour:
   _text:
     _ru: "\u0417\u0430\u043A\u0440\u044B\u0442\u044C"
     _en: Close
+--- !u!1 &1250421500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1250421501}
+  - component: {fileID: 1250421504}
+  - component: {fileID: 1250421503}
+  - component: {fileID: 1250421502}
+  m_Layer: 0
+  m_Name: VisitFireplace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1250421501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250421500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.28, y: 0, z: 1.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163625126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250421502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250421500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205b0c30414e408db6cea776cab6a94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1250421503
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250421500}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1250421504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250421500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d0d105d7724b50a4ceb6427d353db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visitfireplace
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u043A\u043E\u0441\u0442\u0440\u0443"
+    _en: Go to fireplace
+  _playerListener: {fileID: 1250421502}
 --- !u!1001 &1267709467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21389,7 +21681,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children: [{fileID: 1632896391}]
   m_Father: {fileID: 285538914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415168574
@@ -21416,6 +21708,7 @@ MonoBehaviour:
     _ru: "\u0423\u0445\u043E\u0434 \u0437\u0430 \u043E\u043B\u0435\u043D\u044F\u043C\u0438"
     _en: Deer care
   _subTasks:
+  - {fileID: 1632896394}
   - {fileID: 1415168575}
   - {fileID: 1415168576}
 --- !u!114 &1415168575
@@ -24918,6 +25211,97 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!1 &1632896390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632896391}
+  - component: {fileID: 1632896394}
+  - component: {fileID: 1632896393}
+  - component: {fileID: 1632896392}
+  m_Layer: 0
+  m_Name: VisitPastureDeerTask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1632896391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632896390}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.49, y: 0, z: -10.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1415168573}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1632896392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632896390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205b0c30414e408db6cea776cab6a94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1632896393
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632896390}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 9
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1632896394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632896390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d0d105d7724b50a4ceb6427d353db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visitpasturedeertask
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u043F\u0430\u0441\u0442\u0431\u0438\u0449\u0443"
+    _en: Go to Pasture
+  _playerListener: {fileID: 1632896392}
 --- !u!1 &1635384411
 GameObject:
   m_ObjectHideFlags: 0
@@ -28522,7 +28906,7 @@ PrefabInstance:
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Name
-      value: ---TEST WORLD---
+      value: '---TEST WORLD---'
       objectReference: {fileID: 0}
     - target: {fileID: 1582540542896697077, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -33850,6 +34234,97 @@ MonoBehaviour:
     _ru: "\u0414\u043E\u0431\u044B\u0442\u044C \u0448\u043A\u0443\u0440\u0443"
     _en: Get a skin
   _resource: {fileID: 11400000, guid: ffef0d2202fa59e4a82ec829e210798b, type: 2}
+--- !u!1 &2049629247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049629248}
+  - component: {fileID: 2049629251}
+  - component: {fileID: 2049629250}
+  - component: {fileID: 2049629249}
+  m_Layer: 0
+  m_Name: VisitYurt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2049629248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049629247}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.27, y: 0, z: 1.89}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 171686698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049629249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049629247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205b0c30414e408db6cea776cab6a94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &2049629250
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049629247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2049629251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049629247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d0d105d7724b50a4ceb6427d353db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/visityurt
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 1
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u043E\u0434\u043E\u0439\u0442\u0438 \u043A \u044E\u0440\u0442\u0435"
+    _en: Go to Yurt
+  _playerListener: {fileID: 2049629249}
 --- !u!1001 &2062487696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34493,6 +34968,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _page: {fileID: 2095988317}
+--- !u!1 &2099657620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099657621}
+  - component: {fileID: 2099657622}
+  m_Layer: 0
+  m_Name: WaterResource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099657621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099657620}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163625126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099657622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099657620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a98b7d12a8e451b90c489167ee90c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: quest/waterresource
+  _questInfo:
+    _sprite: {fileID: 0}
+    _description:
+      _ru: no translation
+      _en: no translation
+    _maxProgress: 4
+    _questLayer: 0
+  _taskName:
+    _ru: "\u041F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043C\u044F\u0441\u043E"
+    _en: Cook meat
+  _resource: {fileID: 11400000, guid: de5965f8769e54f4289c942cfc0fc34d, type: 2}
 --- !u!1001 &2111887502
 PrefabInstance:
   m_ObjectHideFlags: 0
