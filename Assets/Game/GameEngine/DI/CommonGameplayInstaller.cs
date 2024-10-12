@@ -1,7 +1,10 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
+using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
+using Game.Quests.Base;
 using Game.Tips;
 using Game.Tips.Configs;
+using UnityEngine;
 using Zenject;
 
 namespace Game.GameEngine.DI

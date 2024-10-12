@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DoubleDCore.QuestsSystem;
 using DoubleDCore.QuestsSystem.Base;
 using DoubleDCore.UI.Base;
@@ -15,6 +16,7 @@ namespace Game.Tips
 {
     public class GameTrainingsStarter : ITickable
     {
+        private readonly Dictionary<TrainingInfo, Func<bool>> _trainingConditions;
         private readonly Dictionary<IQuest, TrainingInfo> _questStartTrainings;
         private readonly Dictionary<IQuest, TrainingInfo> _questTaskCompleteTrainings;
         private readonly Dictionary<TrainingInfo, bool> _showedTrainings = new();
@@ -29,6 +31,8 @@ namespace Game.Tips
 
         private bool _isDayStarted = true;
         private bool _isHikeResultPageOpened = false;
+        private bool _isRestPageOpened;
+        private bool _isCookingPageOpened;
         
         public GameTrainingsStarter(GameTrainingsConfig config, GameTrainingController trainingController,
             IQuestController questController, SceneQuests sceneQuests, 
@@ -45,11 +49,21 @@ namespace Game.Tips
             {
                 {_sceneQuests.TravelQuest, _config.SleighInfo},
                 {_sceneQuests.ResourcesQuest, _config.InterfaceInfo},
+                {_sceneQuests.CookingQuest, _config.CookingInfo},
+                {_sceneQuests.WaterQuest, _config.WaterInfo},
             };
             
             _questTaskCompleteTrainings = new Dictionary<IQuest, TrainingInfo>()
             {
                 {_sceneQuests.DeerCarePastureSubTask, _config.DeerCareInfo},
+                {_sceneQuests.HeatVisitYurtSubTask, _config.HeatingInfo},
+            };
+
+            _trainingConditions = new Dictionary<TrainingInfo, Func<bool>>()
+            {
+                { _config.InterfaceInfo, () => _isDayStarted && !_isHikeResultPageOpened },
+                { _config.CookingInfo, () => !_isRestPageOpened },
+                { _config.WaterInfo, () => !_isCookingPageOpened },
             };
 
             _questController.QuestIssued += OnQuestIssued;
@@ -65,20 +79,35 @@ namespace Game.Tips
             if (_delayedTrainings.Count == 0)
                 return;
 
-            if (_isDayStarted && !_isHikeResultPageOpened)
+            if (_trainingConditions.ContainsKey(_delayedTrainings.Peek()))
+            {
+                if (_trainingConditions[_delayedTrainings.Peek()].Invoke())
+                    StartTraining(_delayedTrainings.Dequeue());
+            }
+            else
+            {
                 StartTraining(_delayedTrainings.Dequeue());
+            }
         }
 
         private void OnPageOpened(IPage page)
         {
             if (page is ResourceWatcherPage)
                 _isHikeResultPageOpened = true;
+            else if (page is RestPage)
+                _isRestPageOpened = true;
+            else if (page is CookingPage)
+                _isCookingPageOpened = true;
         }
         
         private void OnPageClosed(IPage page)
         {
             if (page is ResourceWatcherPage)
                 _isHikeResultPageOpened = false;
+            else if (page is RestPage)
+                _isRestPageOpened = false;
+            else if (page is CookingPage)
+                _isCookingPageOpened = false;
         }
 
         private void OnDayStarted()
@@ -123,7 +152,7 @@ namespace Game.Tips
             if (_showedTrainings.ContainsKey(trainingInfo))
                 return;
             
-            if (_isDayStarted == false || _isHikeResultPageOpened)
+            if (_trainingConditions.ContainsKey(trainingInfo) && !_trainingConditions[trainingInfo].Invoke())
             {
                 _delayedTrainings.Enqueue(trainingInfo);
                 return;
