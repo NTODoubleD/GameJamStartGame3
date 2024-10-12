@@ -1247,7 +1247,7 @@ MonoBehaviour:
   - {fileID: 1890921522}
   - {fileID: 669792676}
   - {fileID: 669792683}
-  - {fileID: 527355512}
+  - {fileID: 0}
   - {fileID: 2089670853}
   - {fileID: 2089670858}
   - {fileID: 1271600452}
@@ -2070,7 +2070,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5397717.5}
+  m_AnchoredPosition: {x: 0, y: -4774402}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -4742,8 +4742,8 @@ MonoBehaviour:
     _ru: "\u041F\u043E\u0445\u043E\u0434"
     _en: Hike
   _subTasks:
-  - {fileID: 716158955}
-  - {fileID: 901227998}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &268232593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7503,18 +7503,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1890921510}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &527355512 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5967847325279805510, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1890921510}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2962b3bb5b6e130479ee1a8a1c16fac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &531776069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12983,7 +12971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10869056}
+  m_AnchoredPosition: {x: 0, y: 10517043}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -21210,8 +21198,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1632896391}
+  m_Children: [{fileID: 1632896391}]
   m_Father: {fileID: 285538914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415168574
@@ -24567,7 +24554,7 @@ MonoBehaviour:
     _ru: "\u0420\u0435\u0441\u0443\u0440\u0441\u044B"
     _en: Resources
   _subTasks:
-  - {fileID: 1649805914}
+  - {fileID: 0}
 --- !u!1001 &1651312777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27986,7 +27973,7 @@ PrefabInstance:
     - target: {fileID: 1526937654465566037, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Name
-      value: ---TEST WORLD---
+      value: '---TEST WORLD---'
       objectReference: {fileID: 0}
     - target: {fileID: 1582540542896697077, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}

@@ -55,6 +55,38 @@ MonoBehaviour:
   _effect: {fileID: 3060045646454476710}
   _alert: {fileID: 6626858915370901363}
   _sliderSpeed: 0.5
+  _updateType: 0
+  _impactThreshold: 0.0003
+  _impactColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 0, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 1, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 32768
+    ctime1: 65535
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &3312987629984231274
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,27 +178,27 @@ MonoBehaviour:
   _playOnAwake: 0
   _duration: 1
   _fromColor: {r: 1, g: 1, b: 1, a: 1}
-  _toColor: {r: 1, g: 0.64705884, b: 0.64705884, a: 1}
+  _toColor: {r: 0.8156863, g: 0.27450982, b: 0.2901961, a: 1}
   _curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 5.6851363
-      outSlope: 5.6851363
-      tangentMode: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.025406342
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -1.6269593
-      outSlope: -1.6269593
-      tangentMode: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.050922513
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
