@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eating
   m_EditorClassIdentifier: 
   _trainingTips:
-  - _video: {fileID: 0}
+  - _video: {fileID: 32900000, guid: dfde562fe27fcaa4794a1fcd661340a5, type: 3}
     _image: {fileID: 0}
     _text:
       _ru: Eat

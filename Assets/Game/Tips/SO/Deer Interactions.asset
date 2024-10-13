@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Deer Interactions
   m_EditorClassIdentifier: 
   _trainingTips:
-  - _video: {fileID: 0}
+  - _video: {fileID: 32900000, guid: 9b2496899bd2d5643960e14ff7d49e1a, type: 3}
     _image: {fileID: 0}
     _text:
-      _ru: Deers
+      _ru: "\u041A\u043E\u0440\u043C\u0438 \u043E\u043B\u0435\u043D\u0435\u0439\n"
+      _en: no translation
+  - _video: {fileID: 32900000, guid: 8d8b45d407226ef4281e87d8a0aad141, type: 3}
+    _image: {fileID: 0}
+    _text:
+      _ru: "\u041B\u0435\u0447\u0438 \u043E\u043B\u0435\u043D\u0435\u0439"
       _en: no translation
