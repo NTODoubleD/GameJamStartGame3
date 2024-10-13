@@ -3,6 +3,7 @@ using DoubleDCore.GameResources.Base;
 using DoubleDCore.UI.Base;
 using Infrastructure;
 using Infrastructure.States;
+using UnityEngine;
 using Zenject;
 
 namespace Game.UI
@@ -21,6 +22,7 @@ namespace Game.UI
 
         protected override void OnButtonClicked()
         {
+            Time.timeScale = 1;
             _stateMachine.Enter<LoadSceneState, LoadScenePayload>(
                 new LoadScenePayload(_config.MainMenuSceneName,
                     AfterLoad: () => _stateMachine.Enter<MainMenuState>()));
