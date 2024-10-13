@@ -47,6 +47,9 @@ namespace Game.UI
 
             _sliderImage.fillAmount = lerpValue;
 
+            if (_targetValue < 0.3f)
+                return;
+
             float delta = lerpValue - _oldValue;
             _oldValue = lerpValue;
 

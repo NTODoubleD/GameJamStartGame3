@@ -56,7 +56,7 @@ MonoBehaviour:
   _alert: {fileID: 6626858915370901363}
   _sliderSpeed: 0.5
   _updateType: 0
-  _impactThreshold: 0.0003
+  _impactThreshold: 0.0005
   _impactColor:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playOnAwake: 0
   _duration: 1
-  _fromColor: {r: 1, g: 1, b: 1, a: 1}
+  _fromColor: {r: 0.8156863, g: 0.27450982, b: 0.2901961, a: 1}
   _toColor: {r: 0.8156863, g: 0.27450982, b: 0.2901961, a: 1}
   _curve:
     serializedVersion: 2
