@@ -21,6 +21,7 @@ namespace Game.UI.Pages
 
         private IQuestController _questController;
         private int _currentQuestCount;
+        private Tweener _currentTweener;
 
         [Inject]
         private void Init(IQuestController questController)
@@ -69,7 +70,10 @@ namespace Game.UI.Pages
 
             UpdateInformation(yakutQuest);
 
-            _canvasGroup.DOFade(1, 0.4f);
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
+            
+            _currentTweener = _canvasGroup.DOFade(1, 0.4f);
         }
 
         private void OnQuestCompleted(IQuest quest)
@@ -80,7 +84,10 @@ namespace Game.UI.Pages
             _currentQuestCount--;
             yakutQuest.TaskProgressChanged -= OnTaskStateChanged;
 
-            _canvasGroup.DOFade(0, 0.4f).SetDelay(0.8f);
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
+            
+            _currentTweener = _canvasGroup.DOFade(0, 0.4f).SetDelay(0.8f);
         }
 
         private void OnTaskStateChanged(YakutQuest yakutQuest)
