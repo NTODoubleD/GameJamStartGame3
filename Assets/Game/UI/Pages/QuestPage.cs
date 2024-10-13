@@ -80,7 +80,7 @@ namespace Game.UI.Pages
             _currentQuestCount--;
             yakutQuest.TaskProgressChanged -= OnTaskStateChanged;
 
-            _canvasGroup.DOFade(0, 0.4f);
+            _canvasGroup.DOFade(0, 0.4f).SetDelay(0.8f);
         }
 
         private void OnTaskStateChanged(YakutQuest yakutQuest)
