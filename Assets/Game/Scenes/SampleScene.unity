@@ -2399,7 +2399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -11274679}
+  m_AnchoredPosition: {x: 0, y: -11278207}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -14686,7 +14686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 14100985}
+  m_AnchoredPosition: {x: 0, y: 14101150}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -29113,7 +29113,6 @@ GameObject:
   - component: {fileID: 1806057643}
   - component: {fileID: 1806057642}
   - component: {fileID: 1806057646}
-  - component: {fileID: 1806057647}
   m_Layer: 0
   m_Name: PlayerMetricsPage
   m_TagString: Untagged
@@ -32040,7 +32039,7 @@ PrefabInstance:
     - target: {fileID: 4600321173025057215, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4600883936452760511, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -32301,7 +32300,7 @@ PrefabInstance:
     - target: {fileID: 5168413715008828340, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5177938156750009359, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
