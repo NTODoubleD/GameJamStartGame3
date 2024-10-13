@@ -48,7 +48,7 @@ namespace Game.UI.Pages
 
             foreach (var (itemInfo, amount) in context.Resource)
             {
-                var amountText = $" - {amount}";
+                var amountText = $" + {amount}";
                 amountText = amountText.Color(amount > 0 ? Color.green : Color.red);
 
                 var resourceView = Instantiate(_resourceViewPrefab, _resourcesRoot);

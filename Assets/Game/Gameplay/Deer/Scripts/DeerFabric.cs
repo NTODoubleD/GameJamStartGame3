@@ -70,8 +70,8 @@ namespace Game.Gameplay.Scripts
                 _container);
 
             _interactiveObjectsWatcher.AddObjectToWatch(inst.DeerInteractive);
-            inst.Initialize<DeerRandomWalkState>(deerInfo);
             inst.DeerMeshing.SetMaterial(_deerMaterials[Random.Range(0, _deerMaterials.Length)]);
+            inst.Initialize<DeerRandomWalkState>(deerInfo);
 
             Created?.Invoke(inst);
         }

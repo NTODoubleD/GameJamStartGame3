@@ -8,6 +8,7 @@ using Game.Gameplay.SurvivalMeсhanics.Endurance;
 using Game.Gameplay.SurvivalMeсhanics.Exhaustion;
 using Game.Gameplay.SurvivalMeсhanics.Fatigue;
 using Game.Gameplay.SurvivalMeсhanics.Frostbite;
+using Game.Gameplay.SurvivalMeсhanics.Health;
 using Game.Gameplay.SurvivalMeсhanics.Hunger;
 using Game.Gameplay.SurvivalMeсhanics.PlayerMetrics;
 using Game.Gameplay.SurvivalMeсhanics.Thirst;
@@ -39,6 +40,7 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<ExhaustionController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<EnduranceConsumptionController>().AsSingle().NonLazy();
             Container.Bind<EnduranceRestoreController>().AsSingle().NonLazy();
+            Container.Bind<HealthRestoreController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<FatigueController>().AsSingle().NonLazy();
             Container.Bind<HeatController>().AsSingle().NonLazy();
             Container.Bind<FrostChangeObserver>().AsSingle().NonLazy();

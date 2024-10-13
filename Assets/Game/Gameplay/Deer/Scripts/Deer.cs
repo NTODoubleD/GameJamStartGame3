@@ -66,8 +66,14 @@ namespace Game.Gameplay
 
             _navMeshAgent.speed = deerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
 
-            if (deerInfo.Age == DeerAge.Adult)
-                _age = 2;
+            foreach (var ageDays in _ageTable.Keys)
+            {
+                if (_ageTable[ageDays] == deerInfo.Age)
+                {
+                    _age = ageDays;
+                    break;
+                }
+            }
 
             deerInfo.AgeDays = _age;
 

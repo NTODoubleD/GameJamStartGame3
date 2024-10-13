@@ -6,7 +6,7 @@ namespace Game.Gameplay.SurvivalMechanics
 {
     public class PlayerMetricsModel : IHeatResistable
     {
-        private readonly float _maxValue;
+        public readonly float MaxValue;
         
         private float _health;
         private float _heatResistance;
@@ -19,7 +19,7 @@ namespace Game.Gameplay.SurvivalMechanics
             _heatResistance = config.HeatResistance;
             _hunger = config.Hunger;
             _endurance = config.Endurance;
-            _maxValue = config.MaxValue;
+            MaxValue = config.MaxValue;
         }
         
         public float Health
@@ -27,7 +27,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _health;
             set
             {
-                _health = Mathf.Clamp(value, 0, _maxValue);
+                _health = Mathf.Clamp(value, 0, MaxValue);
                 HealthChanged?.Invoke(_health);
             }
         }
@@ -37,7 +37,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _heatResistance;
             set
             {
-                _heatResistance = Mathf.Clamp(value, 0, _maxValue);
+                _heatResistance = Mathf.Clamp(value, 0, MaxValue);
                 HeatResistanceChanged?.Invoke(_heatResistance);
             }
         }
@@ -47,7 +47,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _hunger;
             set
             {
-                _hunger = Mathf.Clamp(value, 0, _maxValue);
+                _hunger = Mathf.Clamp(value, 0, MaxValue);
                 HungerChanged?.Invoke(_hunger);
             }
         }
@@ -57,7 +57,7 @@ namespace Game.Gameplay.SurvivalMechanics
             get => _endurance;
             set
             {
-                _endurance = Mathf.Clamp(value, 0, _maxValue);
+                _endurance = Mathf.Clamp(value, 0, MaxValue);
                 EnduranceChanged?.Invoke(_endurance);
             }
         }

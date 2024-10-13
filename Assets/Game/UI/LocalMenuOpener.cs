@@ -48,6 +48,8 @@ namespace Game.UI
             _timer.Start(OpenDelay);
 
             _isOpen = true;
+
+            Time.timeScale = 0;
         }
 
         private void Close(InputAction.CallbackContext callbackContext)
@@ -63,6 +65,8 @@ namespace Game.UI
             _timer.Start(OpenDelay);
 
             _isOpen = false;
+            
+            Time.timeScale = 1;
         }
     }
 }
