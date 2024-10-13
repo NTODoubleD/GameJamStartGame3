@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Buildings;
 using Game.Gameplay.DayCycle;
@@ -34,8 +33,13 @@ namespace Game.WorldMap
             _sleighBuilding = sleighBuilding;
         }
 
+        private bool _isDisplayed;
+
         public override void Interact()
         {
+            if (_isDisplayed)
+                return;
+
             if (_uiManager.GetPage<WorldInterestPointPage>().IsDisplayed)
                 _uiManager.ClosePage<WorldInterestPointPage>();
 
@@ -47,6 +51,18 @@ namespace Game.WorldMap
                 Position = transform.position,
                 StartSortieCallback = StartSortie
             });
+
+            _isDisplayed = true;
+            _uiManager.PageClosed += OnPageClosed;
+        }
+
+        private void OnPageClosed(IPage page)
+        {
+            if (page is not WorldInterestPointPage)
+                return;
+
+            _isDisplayed = false;
+            _uiManager.PageClosed -= OnPageClosed;
         }
 
         private void StartSortie(SortieResourceArgument context)
