@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Game.Gameplay.Items;
 using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
@@ -19,6 +20,9 @@ namespace Game.Gameplay.SurvivalMeсhanics.Thirst
         private readonly HashSet<GameItemInfo> _waterResources = new();
 
         private float _effectTimeLeft;
+
+        public event Action EffectStarted;
+        public event Action EffectEnded;
 
         public ThirstController(ThirstConfig config, HungerModel model,
             ItemStorage itemStorage, ExhaustionController exhaustionController)
@@ -52,6 +56,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Thirst
         
         private async UniTask ApplyThirstAsync()
         {
+            EffectStarted?.Invoke();
             _model.ConsumptionMultiplyer *= _config.FoodConsumptionMultiplyer;
             
             while (_effectTimeLeft > 0 && _exhaustionController.IsEffectActive == false)
@@ -62,6 +67,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Thirst
 
             _effectTimeLeft = 0;
             _model.ConsumptionMultiplyer /= _config.FoodConsumptionMultiplyer;
+            EffectEnded?.Invoke();
         }
     }
 }
