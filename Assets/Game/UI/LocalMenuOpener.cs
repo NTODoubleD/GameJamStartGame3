@@ -38,7 +38,7 @@ namespace Game.UI
             _inputController.UI.CloseMenu.performed -= Close;
         }
 
-        private void Open(InputAction.CallbackContext callbackContext)
+        public void Open()
         {
             if (_timer.IsWorked)
                 return;
@@ -52,7 +52,7 @@ namespace Game.UI
             Time.timeScale = 0;
         }
 
-        private void Close(InputAction.CallbackContext callbackContext)
+        public void Close()
         {
             if (_timer.IsWorked || _isOpen == false)
                 return;
@@ -67,6 +67,16 @@ namespace Game.UI
             _isOpen = false;
             
             Time.timeScale = 1;
+        }
+
+        private void Open(InputAction.CallbackContext callbackContext)
+        {
+            Open();
+        }
+
+        private void Close(InputAction.CallbackContext callbackContext)
+        {
+            Close();
         }
     }
 }
