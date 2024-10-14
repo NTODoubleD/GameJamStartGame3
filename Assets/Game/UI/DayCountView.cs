@@ -1,4 +1,6 @@
-﻿using Game.Gameplay.DayCycle;
+﻿using DoubleDCore.TranslationTools;
+using DoubleDCore.TranslationTools.Extensions;
+using Game.Gameplay.DayCycle;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -10,7 +12,9 @@ namespace Game.UI
         [SerializeField] private TMP_Text _text;
 
         private DayCycleController _dayCycleController;
-        
+
+        private readonly TranslatedText _translatedText = new("День {0}", "Day {0}");
+
         [Inject]
         private void Init(DayCycleController dayCycleController)
         {
@@ -35,7 +39,7 @@ namespace Game.UI
 
         private void Refresh(int day)
         {
-            _text.text = $"{day} день";
+            _text.text = string.Format(_translatedText.GetText(), day);
         }
     }
 }

@@ -1628,7 +1628,6 @@ GameObject:
   - component: {fileID: 71809946}
   - component: {fileID: 71809949}
   - component: {fileID: 71809948}
-  - component: {fileID: 71809947}
   m_Layer: 0
   m_Name: Day Text
   m_TagString: Untagged
@@ -1655,21 +1654,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0000076294, y: 55}
   m_SizeDelta: {x: 355.4039, y: 71.64819}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &71809947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71809945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce47e04e83793b459a3d1f4a7f2435e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text:
-    _ru: "\u041F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u0442\u044C \u043A\u0440\u043E\u0432\u044C?"
-    _en: Show blood?
 --- !u!114 &71809948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2685,7 +2669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -13958045}
+  m_AnchoredPosition: {x: 0, y: -14105591}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &109155445
@@ -15764,7 +15748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 15427539}
+  m_AnchoredPosition: {x: 0, y: 15508190}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1039759388
@@ -33347,32 +33331,32 @@ PrefabInstance:
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 93.33333
       objectReference: {fileID: 0}
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2612467361612775574, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -93.33333
       objectReference: {fileID: 0}
     - target: {fileID: 2631755293433055821, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -33588,7 +33572,7 @@ PrefabInstance:
     - target: {fileID: 3077517106888203445, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_Spacing
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3111261076770020166, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -33814,6 +33798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011531493263504628, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4017531637136231513, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -34669,7 +34658,7 @@ PrefabInstance:
     - target: {fileID: 5989831175439759978, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -139.99998
+      value: -199.99998
       objectReference: {fileID: 0}
     - target: {fileID: 5989831175439759978, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -34730,7 +34719,7 @@ PrefabInstance:
     - target: {fileID: 6418568519678201230, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 6418568519678201230, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
