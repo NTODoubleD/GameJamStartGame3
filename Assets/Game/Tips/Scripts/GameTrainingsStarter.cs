@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DoubleDCore.QuestsSystem;
 using DoubleDCore.QuestsSystem.Base;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.DayCycle;
-using Game.Gameplay.Sleigh;
 using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.Quests;
 using Game.Quests.Base;
@@ -55,7 +53,6 @@ namespace Game.Tips
             _questStartTrainings = new Dictionary<IQuest, TrainingInfo>()
             {
                 {_sceneQuests.TravelQuest, _config.SleighInfo},
-                {_sceneQuests.ResourcesQuest, _config.InterfaceInfo},
                 {_sceneQuests.CookingQuest, _config.CookingInfo},
                 {_sceneQuests.WaterQuest, _config.WaterInfo},
                 {_sceneQuests.SleepQuest, _config.SleepInfo},
@@ -71,7 +68,6 @@ namespace Game.Tips
 
             _trainingConditions = new Dictionary<TrainingInfo, Func<bool>>()
             {
-                { _config.InterfaceInfo, () => _isDayStarted && !_isHikeResultPageOpened },
                 { _config.UpgradeInfo, () => _isDayStarted && !_isHikeResultPageOpened },
                 { _config.CookingInfo, () => !_isRestPageOpened },
                 { _config.WaterInfo, () => !_isCookingPageOpened },
