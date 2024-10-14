@@ -32,7 +32,7 @@ namespace Game.UI
             _selfTween?.Kill();
             _selfTween = _rectTransform
                 .DOSizeDelta(isHighlighted ? _toSize : _fromSize, _duration)
-                .SetEase(_animationCurve);
+                .SetEase(_animationCurve).SetUpdate(true);
         }
 
         protected override void OnEnable()

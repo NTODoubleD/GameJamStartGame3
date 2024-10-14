@@ -1,4 +1,5 @@
-﻿using DoubleDCore.UI.Base;
+﻿using DG.Tweening;
+using DoubleDCore.UI.Base;
 using Game.UI.Data;
 using Game.UI.Pages;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace Game.Tips
 
             _gameInput.UI.Enable();
 
-            Time.timeScale = 0;
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 1f).SetUpdate(true);
 
             _uiManager.OpenPage<TrainingPage, TrainingPageArgument>(new TrainingPageArgument
             {
@@ -54,8 +55,8 @@ namespace Game.Tips
                 _gameInput.UI.Enable();
             else
                 _gameInput.UI.Disable();
-            
-            Time.timeScale = 1;
+
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 1f).SetUpdate(true);
         }
     }
 }

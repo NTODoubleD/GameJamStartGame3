@@ -85,7 +85,12 @@ namespace Game.Сompass
             if (quest is not VisitAreaTask visitAreaTask)
                 return;
 
-            _targets.Find(y => y.Equals(visitAreaTask)).QuestCompleted -= OnTaskCompleted;
+            var target = _targets.Find(t => t.Equals(visitAreaTask));
+
+            if (target is null)
+                return;
+
+            target.QuestCompleted -= OnTaskCompleted;
             _targets.Remove(visitAreaTask);
         }
     }

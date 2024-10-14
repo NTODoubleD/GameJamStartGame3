@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.UI.Data;
@@ -13,11 +14,13 @@ namespace Game.UI.Pages
     public class TrainingPage : MonoPage, IPayloadPage<TrainingPageArgument>
     {
         [SerializeField] private VideoPlayer _videoPlayer;
+        [SerializeField] private RawImage _videoPlayerImage;
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _text;
         [SerializeField] private ClickButton _rightButton;
         [SerializeField] private ClickButton _leftButton;
         [SerializeField] private ClickButton _closeButton;
+        [SerializeField] private TrainingPageAnimator _animator;
         [SerializeField] private List<UIDot> _dotsPool;
 
         private TrainingPageArgument _context;
@@ -46,6 +49,8 @@ namespace Game.UI.Pages
             }
 
             _context = context;
+
+            _animator.StartOpenAnimation();
 
             StartTraining();
 
@@ -92,6 +97,8 @@ namespace Game.UI.Pages
             if (index == _currentTipIndex)
                 return;
 
+            StartContentAnimation();
+
             _videoPlayer.Stop();
             _videoPlayer.frame = 0;
             _videoPlayer.clip = null;
@@ -136,7 +143,23 @@ namespace Game.UI.Pages
         {
             _context.OnClose?.Invoke();
 
-            Close();
+            _animator.StartCloseAnimation(Close);
+        }
+
+        private void StartContentAnimation()
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(_image.DOFade(0, 0))
+                .Append(_text.DOFade(0, 0))
+                .Append(_videoPlayerImage.DOFade(0, 0));
+
+            sequence.Play().SetUpdate(true).OnComplete(() =>
+            {
+                _image.DOFade(1, 0.5f).SetUpdate(true);
+                _videoPlayerImage.DOFade(1, 0.5f).SetUpdate(true);
+                _text.DOFade(1, 1f).SetUpdate(true);
+            });
         }
     }
 
