@@ -10,7 +10,10 @@ namespace Game.Quests
 
         public override void Play()
         {
-            _building.Upgraded += BuildingOnUpgraded;
+            if (_building.CurrentLevel > 1)
+                Progress = 1;
+            else
+                _building.Upgraded += BuildingOnUpgraded;
         }
 
         public override void Close()

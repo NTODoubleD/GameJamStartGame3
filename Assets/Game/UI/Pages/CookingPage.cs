@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Crafting;
+using Game.Gameplay.SurvivalMechanics.Frost;
 using ModestTree;
 using UnityEngine;
 using Zenject;
@@ -24,12 +25,15 @@ namespace Game.UI.Pages
 
         private CookingController _cookingController;
         private GameInput _inputController;
+        private FrostController _frostController;
         
         [Inject]
-        private void Init(CookingController cookingController, GameInput inputController)
+        private void Init(CookingController cookingController, 
+            GameInput inputController, FrostController frostController)
         {
             _cookingController = cookingController;
             _inputController = inputController;
+            _frostController = frostController;
         }
 
         public void Open()
@@ -67,11 +71,12 @@ namespace Game.UI.Pages
                 _cookingSlots[i].PickRequested += OnMealPickRequested;
             }
             
-            _fuelView.SetButtonInteractable(_cookingController.CanAddFuelItem());
+            UpdateFuelButton();
             _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
 
             _fuelView.AddFuelRequested += OnAddFuelRequested;
             _cookingController.Interrupted += OnSlotInterrupted;
+            _frostController.FrostLevelChanged += OnFrostLevelChanged;
             
             SetCanvasState(true);
             UpdateAsync().Forget();
@@ -87,6 +92,12 @@ namespace Game.UI.Pages
 
                 await UniTask.DelayFrame(1);
             }
+        }
+
+        private void UpdateFuelButton()
+        {
+            bool isInteractable = _cookingController.CanAddFuelItem(out string errorText);
+            _fuelView.SetFuelButtonInfo(isInteractable, errorText);
         }
 
         private void UpdateCookingSlotsState()
@@ -111,6 +122,7 @@ namespace Game.UI.Pages
         {
             _fuelView.AddFuelRequested -= OnAddFuelRequested;
             _cookingController.Interrupted -= OnSlotInterrupted;
+            _frostController.FrostLevelChanged -= OnFrostLevelChanged;
 
             foreach (var recepieView in _currentRecepieViews)
                 recepieView.Clicked -= OnRecepieClicked;
@@ -126,15 +138,20 @@ namespace Game.UI.Pages
 
         private void OnAddFuelRequested()
         {
-            if (_cookingController.CanAddFuelItem() == false)
+            if (_cookingController.CanAddFuelItem(out string _) == false)
                 throw new Exception("CAN'T ADD FUEL ITEM");
             
             _cookingController.AddFuelItem();
-            _fuelView.SetButtonInteractable(_cookingController.CanAddFuelItem());
+            UpdateFuelButton();
             _fuelView.SetTimeLeft(_cookingController.CookTimeLeft);
             _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
             
             UpdateRecepiesAvailable();
+        }
+
+        private void OnFrostLevelChanged(FrostLevel obj)
+        {
+            UpdateFuelButton();
         }
 
         private void OnSlotInterrupted(int slotIndex)
@@ -151,7 +168,6 @@ namespace Game.UI.Pages
             _cookingSlots[slotIndex].Init(recepie, recepie.CraftTime);
             
             UpdateRecepiesAvailable();
-
         }
 
         private void OnMealPickRequested(UICookingSlot slot)

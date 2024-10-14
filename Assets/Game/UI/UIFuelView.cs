@@ -9,13 +9,20 @@ namespace Game.UI
     public class UIFuelView : MonoBehaviour
     {
         [SerializeField] private Button _addFuelButton;
+        [SerializeField] private TMP_Text _fuelButtonText;
         [SerializeField] private TMP_Text _timeLeft;
         [SerializeField] private Image _resourceIcon;
         [SerializeField] private TMP_Text _resourceCount;
 
         private TimeSpan _cachedTimeLeft;
+        private string _fuelButtonDefaultText;
         
         public event Action AddFuelRequested;
+
+        private void Awake()
+        {
+            _fuelButtonDefaultText = _fuelButtonText.text;
+        }
 
         private void OnEnable()
         {
@@ -27,9 +34,10 @@ namespace Game.UI
             _addFuelButton.onClick.RemoveListener(OnButtonClicked);
         }
 
-        public void SetButtonInteractable(bool isInteractable)
+        public void SetFuelButtonInfo(bool isInteractable, string text = null)
         {
             _addFuelButton.interactable = isInteractable;
+            _fuelButtonText.text = text == null ? _fuelButtonDefaultText : text;
         }
 
         public void SetTimeLeft(float timeLeft)

@@ -46,10 +46,23 @@ namespace Game.Gameplay.Crafting
         public GameItemInfo GetFuelItemInfo() => _config.GetFuelInfo().Item1;
         public int GetFuelAmount() => _itemStorage.GetCount(_config.GetFuelInfo().Item1);
         
-        public bool CanAddFuelItem()
+        public bool CanAddFuelItem(out string errorText)
         {
-            return _itemStorage.GetCount(_config.GetFuelInfo().Item1) > 0 
-                   && _frostController.CurrentFrostLevel != FrostLevel.Strong;
+            errorText = null;
+            
+            if (_itemStorage.GetCount(_config.GetFuelInfo().Item1) == 0)
+            {
+                errorText = "Нету ресурса";
+                return false;
+            }
+
+            if (_frostController.CurrentFrostLevel == FrostLevel.Strong)
+            {
+                errorText = "Идёт буря";
+                return false;
+            }
+
+            return true;
         }
 
         public void AddFuelItem()
