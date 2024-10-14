@@ -7,7 +7,7 @@ namespace Game.UI
 {
     public class HungerSliderController : MonoBehaviour
     {
-        private const float DEGREE_OFFSET = 0.4f;
+        private const float DEGREE_OFFSET = 0.15f;
         
         [SerializeField] private StatusSliderView _statusSliderView;
         
