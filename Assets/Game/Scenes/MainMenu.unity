@@ -5934,7 +5934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.2"
+  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6024,8 +6024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text:
-    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.5.1"
-    _en: Alpha v0.5.1
+    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.5.2"
+    _en: Alpha v0.5.2
 --- !u!1 &2102724532
 GameObject:
   m_ObjectHideFlags: 0
