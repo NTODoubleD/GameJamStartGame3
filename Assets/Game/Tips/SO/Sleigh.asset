@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trainingTips:
   - _video: {fileID: 0}
-    _image: {fileID: 0}
+    _image: {fileID: 21300000, guid: 352b72b4fcdba9842b7773187452ae7d, type: 3}
     _text:
       _ru: "\u041A\u0430\u0440\u0442\u0430 - \u0438\u043D\u0441\u0442\u0440\u0443\u043C\u0435\u043D\u0442
-        \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0430\u043D\u0438\u044F \u0432\u044B\u043B\u0430\u0437\u043A\u0438"
+        \u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F
+        \u0432\u044B\u043B\u0430\u0437\u043A\u0438"
       _en: no translation
   - _video: {fileID: 32900000, guid: 9676bdcefcbc43347893e7e7da846eab, type: 3}
     _image: {fileID: 0}
@@ -29,6 +30,6 @@ MonoBehaviour:
     _image: {fileID: 0}
     _text:
       _ru: "\u0412\u044B\u0431\u0435\u0440\u0438 \u0442\u043E\u0447\u043A\u0443,
-        \u0432\u044B\u0431\u0435\u0440\u0438 \u043E\u043B\u0435\u043D\u0438\u044F
-        \u0438 \u0432\u043F\u0435\u0440\u0435\u0434"
+        \u0432\u044B\u0431\u0435\u0440\u0438 \u043E\u043B\u0435\u043D\u044F \u0438
+        \u0432\u043F\u0435\u0440\u0435\u0434"
       _en: no translation
