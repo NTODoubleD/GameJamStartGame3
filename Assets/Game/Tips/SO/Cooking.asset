@@ -16,11 +16,10 @@ MonoBehaviour:
   - _video: {fileID: 32900000, guid: 4a4a76a817b833c4dbdd2be848742695, type: 3}
     _image: {fileID: 0}
     _text:
-      _ru: "\u0413\u043E\u0442\u043E\u0432\u043A\u0430 \u043E\u0447\u0435\u043D\u044C
-        \u0432\u0430\u0436\u043D\u0430 \u0434\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430"
+      _ru: "\u0415\u0434\u0443 \u043D\u0443\u0436\u043D\u043E \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C"
       _en: no translation
   - _video: {fileID: 32900000, guid: dfde562fe27fcaa4794a1fcd661340a5, type: 3}
     _image: {fileID: 0}
     _text:
-      _ru: "\u0415\u0434\u0430"
+      _ru: "\u0415\u0434\u0430 \u0443\u0442\u043E\u043B\u044F\u0435\u0442 \u0433\u043E\u043B\u043E\u0434"
       _en: no translation
