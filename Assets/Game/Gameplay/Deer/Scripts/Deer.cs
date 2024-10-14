@@ -66,8 +66,14 @@ namespace Game.Gameplay
 
             _navMeshAgent.speed = deerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
 
-            if (deerInfo.Age == DeerAge.Adult)
-                _age = 2;
+            foreach (var ageDays in _ageTable.Keys)
+            {
+                if (_ageTable[ageDays] == deerInfo.Age)
+                {
+                    _age = ageDays;
+                    break;
+                }
+            }
 
             deerInfo.AgeDays = _age;
 
@@ -81,7 +87,7 @@ namespace Game.Gameplay
             _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
             _deerStateMachine.BindState(new DeerCutState(gameObject));
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this, randomWalkConfig));
-            _deerStateMachine.BindState(new DeerInteractedByPlayerState(_player, transform));
+            _deerStateMachine.BindState(new DeerInteractedByPlayerState(_player, transform, DeerInfo));
 
             _deerStateMachine.GetState<DeerIdleState>().Completed += OnIdleCompleted;
             _deerStateMachine.GetState<DeerRandomWalkState>().Completed += OnWalkCompleted;
@@ -123,7 +129,7 @@ namespace Game.Gameplay
 
         private int _age = 0;
 
-        private Dictionary<int, DeerAge> _ageTable = new()
+        private readonly Dictionary<int, DeerAge> _ageTable = new()
         {
             { 2, DeerAge.Adult },
             { 5, DeerAge.Old },
@@ -191,6 +197,7 @@ namespace Game.Gameplay
             _deerStateMachine.Enter<DeerDieState>();
 
             DeerInfo.Status = DeerStatus.Killed;
+            DeerInfo.DieDay = _dayCycleController.CurrentDay;
 
             Died?.Invoke(this);
         }

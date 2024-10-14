@@ -19,5 +19,10 @@ namespace Game.Gameplay.Buildings
         {
             //_soundReactions.Play();
         }
+
+        public override ILevelsConfig GetLevelsConfig()
+        {
+            return _levelsConfig;
+        }
     }
 }

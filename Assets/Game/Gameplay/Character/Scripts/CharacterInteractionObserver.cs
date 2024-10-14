@@ -10,11 +10,13 @@ namespace Game.Gameplay.Character
         [SerializeField] private InteractiveObjectsWatcher _objectsWatcher;
 
         private SceneInteractionData _sceneInteractionData;
+        private TriggerInteractionController _triggerInteractionController;
 
         [Inject]
-        private void Construct(SceneInteractionData data)
+        private void Construct(SceneInteractionData data, TriggerInteractionController triggerInteractionController)
         {
             _sceneInteractionData = data;
+            _triggerInteractionController = triggerInteractionController;
         }
 
         private void OnEnable()
@@ -32,12 +34,14 @@ namespace Game.Gameplay.Character
         private void OnStartedInteraction()
         {
             _objectsWatcher.enabled = false;
+            _triggerInteractionController.IsEnabled = false;
             _sceneInteractionData.CurrentObject = null;
         }
 
         private void OnEndedInteraction()
         {
             _objectsWatcher.enabled = true;
+            _triggerInteractionController.IsEnabled = true;
         }
     }
 }

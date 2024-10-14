@@ -22,6 +22,7 @@ namespace DoubleDCore.UI.Base
         public void OpenPage<TPage, TPayload>(TPayload context) where TPage : class, IPayloadPage<TPayload>;
 
         public void ClosePage<TPage>() where TPage : class, IPage;
+        public void ClosePage(IPage page);
 
         public void ResetPages();
 

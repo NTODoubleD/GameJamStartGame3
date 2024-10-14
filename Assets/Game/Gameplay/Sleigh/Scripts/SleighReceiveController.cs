@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using DoubleDCore.TranslationTools;
 using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.Items;
 using Game.UI.Pages;
 using UnityEngine;
 using Zenject;
@@ -15,14 +16,13 @@ namespace Game.Gameplay.Sleigh
     {
         [SerializeField] private DayCycleController _dayCycleController;
 
-        private IReadOnlyDictionary<ItemInfo, int> _currentResult;
+        private IReadOnlyDictionary<GameItemInfo, int> _currentResult;
 
         private IUIManager _uiManager;
         private ItemStorage _itemStorage;
-
         
         private readonly TranslatedText _labelText = new("Результат вылазки", "Expedition Result");
-        private readonly TranslatedText _headingText = new("Получено ресурсов:", "Resources Obtained:");
+        private readonly TranslatedText _headingText = new("Получено ресурсов:\n", "Resources Obtained:\n");
         
         [Inject]
         private void Init(IUIManager uiManager, ItemStorage itemStorage)
@@ -56,13 +56,13 @@ namespace Game.Gameplay.Sleigh
             {
                 Label = _labelText.GetText(),
                 TextHeading = _headingText.GetText(),
-                Resource = new Dictionary<ItemInfo, int>(_currentResult)
+                Resource = new Dictionary<GameItemInfo, int>(_currentResult)
             });
 
             _currentResult = null;
         }
 
-        public void SetReceiveInfo(IReadOnlyDictionary<ItemInfo, int> result)
+        public void SetReceiveInfo(IReadOnlyDictionary<GameItemInfo, int> result)
         {
             _currentResult = result;
         }

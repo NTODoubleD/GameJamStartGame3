@@ -18,7 +18,7 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
       _levels: 03000000040000000500000006000000
     - _item: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
-      _levels: 08000000090000000a0000000d000000
+      _levels: 0a0000000c0000000e00000010000000
     - _item: {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
       _levels: 01000000020000000300000004000000
   - _deerCapacity: 4
@@ -26,7 +26,7 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
       _levels: 06000000080000000a0000000c000000
     - _item: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
-      _levels: 1000000012000000140000001a000000
+      _levels: 1400000016000000180000001a000000
     - _item: {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
       _levels: 02000000030000000400000005000000
   - _deerCapacity: 10
@@ -34,6 +34,10 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: 95f7235c47c9c8844aa9ab9e1923dae2, type: 2}
       _levels: 0c000000100000001400000018000000
     - _item: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
-      _levels: 20000000240000002800000034000000
+      _levels: 1e00000022000000260000002a000000
     - _item: {fileID: 11400000, guid: 7c4d5551cd83de34899de6c83724f2cf, type: 2}
       _levels: 02000000030000000400000005000000
+  _description:
+    _ru: "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043E\u043B\u0435\u043D\u0435\u0439
+      \u0432 \u0443\u043F\u0440\u044F\u0436\u043A\u0435"
+    _en: Number of deers in a team

@@ -5,7 +5,7 @@ using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.Buildings;
-using Game.Infrastructure.Items;
+using Game.Gameplay.Items;
 using Game.Infrastructure.Storage;
 using TMPro;
 using UnityEngine;
@@ -16,8 +16,10 @@ namespace Game.UI.Pages
 {
     public class UpgradePage : MonoPage, IPayloadPage<UpgradeMenuArgument>
     {
+        [SerializeField] private UIUpgradeCondition _conditionPrefab;
+        [SerializeField] private Transform _conditionsRoot;
+        [SerializeField] private TextMeshProUGUI _upgradeDescription;
         [SerializeField] private TextMeshProUGUI _labelText;
-        [SerializeField] private TextMeshProUGUI _conditionText;
         [SerializeField] private TextMeshProUGUI _townLevelText;
         [SerializeField] private Button _upgradeButton;
 
@@ -26,6 +28,8 @@ namespace Game.UI.Pages
 
         [Space, SerializeField] private TownHallBuilding _townHallBuilding;
 
+        private readonly List<UIUpgradeCondition> _currentConditions = new();
+        
         private ItemStorage _itemStorage;
         private GameInput _inputController;
         private UpgradeMenuArgument _currentArgument;
@@ -65,7 +69,9 @@ namespace Game.UI.Pages
 
             _labelText.text = context.Label;
 
-            _conditionText.text = GetText(context);
+            FillConditions(context);
+
+            _upgradeDescription.text = GetUpgradeText(context);
 
             _townLevelText.text = string.Format(_thisLevelText.GetText(), context.UpgradableBuilding.CurrentLevel);
 
@@ -97,9 +103,13 @@ namespace Game.UI.Pages
 
         private readonly TranslatedText _urtLevel = new("Уровень юрты - ", "Yurt level - ");
 
-        private string GetText(UpgradeMenuArgument argument)
+        private void FillConditions(UpgradeMenuArgument argument)
         {
-            string result = "";
+            for (int i = 0; i < _currentConditions.Count; i++)
+                Destroy(_currentConditions[i].gameObject);
+            
+            _currentConditions.Clear();
+            
             var conditionVisitor = new ConditionVisitor();
 
             foreach (var condition in argument.Conditions)
@@ -107,23 +117,39 @@ namespace Game.UI.Pages
 
             if (conditionVisitor.TownLevel >= 0)
             {
-                result += _urtLevel.GetText() + $"{conditionVisitor.CurrentTownLevel} / {conditionVisitor.TownLevel}"
-                    .Color(conditionVisitor.CurrentTownLevel >= conditionVisitor.TownLevel
-                        ? Color.green
-                        : Color.red);
-                result += "\n";
-            }
+                var conditionObject = Instantiate(_conditionPrefab, _conditionsRoot);
 
+                string urtConditionDescription = 
+                    _urtLevel.GetText() + $"{conditionVisitor.CurrentTownLevel}/{conditionVisitor.TownLevel}"
+                        .Color(conditionVisitor.CurrentTownLevel >= conditionVisitor.TownLevel 
+                            ? Color.green 
+                            : Color.red);
+                
+                conditionObject.Initialize(urtConditionDescription);
+                _currentConditions.Add(conditionObject);
+            }
+            
             foreach (var (item, amount) in conditionVisitor.Items)
             {
-                int amountInStorage = _itemStorage.GetCount(item);
-
-                string text = $"{item.Name} - " + $"{amountInStorage} / {amount}\n"
-                    .Color(amountInStorage >= amount ? Color.green : Color.red);
-
-                result += text;
+                var conditionObject = Instantiate(_conditionPrefab, _conditionsRoot);
+                conditionObject.Initialize(item, _itemStorage.GetCount(item), amount);
+                _currentConditions.Add(conditionObject);
             }
+        }
 
+        private string GetUpgradeText(UpgradeMenuArgument argument)
+        {
+            var levelsConfig = argument.UpgradableBuilding.GetLevelsConfig();
+            int currentLevel = argument.UpgradableBuilding.CurrentLevel;
+            string result = $"{levelsConfig.Description}";
+
+            if (levelsConfig.CanShowStatsNumericValue())
+            {
+                result +=
+                    $": <color=#{ColorUtility.ToHtmlStringRGB(Color.green)}>{levelsConfig.GetStatsNumericValue(currentLevel)}</color>" +
+                    $" -> <color=#{ColorUtility.ToHtmlStringRGB(Color.green)}>{levelsConfig.GetStatsNumericValue(currentLevel + 1)}</color>";
+            }
+            
             return result;
         }
 
@@ -132,7 +158,7 @@ namespace Game.UI.Pages
             public int TownLevel { get; private set; } = -1;
             public int CurrentTownLevel { get; private set; } = -1;
 
-            public IReadOnlyDictionary<ItemInfo, int> Items { get; private set; }
+            public IReadOnlyDictionary<GameItemInfo, int> Items { get; private set; }
 
             public void Visit(TownHallUpgradeCondition condition)
             {

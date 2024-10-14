@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DoubleDCore.Extensions;
@@ -19,6 +20,8 @@ namespace Game.UI.Pages
         [SerializeField] private CanvasGroup _canvasGroup;
 
         private IQuestController _questController;
+        private int _currentQuestCount;
+        private Tweener _currentTweener;
 
         [Inject]
         private void Init(IQuestController questController)
@@ -28,25 +31,31 @@ namespace Game.UI.Pages
 
         public override void Initialize()
         {
+            _questController.QuestCompleted += OnQuestCompleted;
+            _questController.QuestIssued += OnQuestIssued;
+            
             Open();
         }
 
         public void Open()
         {
-            _questController.QuestCompleted += OnQuestCompleted;
-            _questController.QuestIssued += OnQuestIssued;
+            if (PageIsDisplayed)
+                return;
 
             _canvasGroup.alpha = 0;
+
+            if (_currentQuestCount > 0)
+                _canvasGroup.DOFade(1, 0.4f);
 
             SetCanvasState(true);
         }
 
         public override void Close()
         {
-            SetCanvasState(false);
-
-            _questController.QuestCompleted -= OnQuestCompleted;
-            _questController.QuestIssued -= OnQuestIssued;
+            if (PageIsDisplayed == false)
+                return;
+            
+            _canvasGroup.DOFade(0, 0.4f).OnComplete(() => SetCanvasState(false));
         }
 
         private async void OnQuestIssued(IQuest quest)
@@ -54,13 +63,17 @@ namespace Game.UI.Pages
             if (quest is not YakutQuest yakutQuest)
                 return;
 
+            _currentQuestCount++;
             yakutQuest.TaskProgressChanged += OnTaskStateChanged;
 
             await UniTask.WaitForSeconds(1.2f);
 
             UpdateInformation(yakutQuest);
 
-            _canvasGroup.DOFade(1, 1);
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
+            
+            _currentTweener = _canvasGroup.DOFade(1, 0.4f);
         }
 
         private void OnQuestCompleted(IQuest quest)
@@ -68,9 +81,13 @@ namespace Game.UI.Pages
             if (quest is not YakutQuest yakutQuest)
                 return;
 
+            _currentQuestCount--;
             yakutQuest.TaskProgressChanged -= OnTaskStateChanged;
 
-            _canvasGroup.DOFade(0, 1);
+            if (_currentTweener != null && _currentTweener.IsActive())
+                _currentTweener.Kill();
+            
+            _currentTweener = _canvasGroup.DOFade(0, 0.4f).SetDelay(0.8f);
         }
 
         private void OnTaskStateChanged(YakutQuest yakutQuest)
@@ -98,6 +115,13 @@ namespace Game.UI.Pages
             }
 
             _subText.text = string.Join("\n", subTaskTexts);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _questController.QuestCompleted -= OnQuestCompleted;
+            _questController.QuestIssued -= OnQuestIssued;
         }
     }
 }

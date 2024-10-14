@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Gameplay.Items;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +10,11 @@ namespace Game.Gameplay.Sleigh
 {
     public class SleighSendViewMock : MonoBehaviour, ISleighSendView
     {
-        [SerializeField] private ItemInfo[] _infos;
+        [SerializeField] private GameItemInfo[] _infos;
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
+        public event UnityAction<IReadOnlyDictionary<GameItemInfo, int>, int> Sended;
 
-        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<GameItemInfo> possibleResources,
             int levelsToDistribute)
         {
             Debug.Log(
@@ -23,7 +24,7 @@ namespace Game.Gameplay.Sleigh
         [Button]
         private void SendTest()
         {
-            Dictionary<ItemInfo, int> test = new()
+            Dictionary<GameItemInfo, int> test = new()
             {
                 { _infos[0], 2 },
                 { _infos[1], 1 },

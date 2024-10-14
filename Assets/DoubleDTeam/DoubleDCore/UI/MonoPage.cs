@@ -36,7 +36,7 @@ namespace DoubleDCore.UI
         {
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             Close();
         }

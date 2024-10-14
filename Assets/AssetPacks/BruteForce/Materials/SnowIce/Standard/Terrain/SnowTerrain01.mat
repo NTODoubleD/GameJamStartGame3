@@ -35,7 +35,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Control0:
-        m_Texture: {fileID: 4901155405178779946, guid: a1eb2156001ec7147b708fdef5c48b3c,
+        m_Texture: {fileID: -7717046926201568654, guid: a04d639edcddcc54888a14a937ca59aa,
           type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -383,7 +383,7 @@ Material:
     - _Splat5_STn: {r: 1, g: 1, b: 0, a: 1}
     - _Splat6_STn: {r: 1, g: 1, b: 0, a: 1}
     - _Splat7_STn: {r: 1, g: 1, b: 0, a: 1}
-    - _TerrainScale: {r: 100, g: 200, b: 100, a: 0}
+    - _TerrainScale: {r: 100, g: 600, b: 100, a: 0}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransitionColor: {r: 1, g: 1, b: 1, a: 1}
     - _WireframeColor: {r: 0, g: 0, b: 0, a: 1}

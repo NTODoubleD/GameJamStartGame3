@@ -7,15 +7,20 @@ namespace Game.Gameplay.States
     {
         private readonly Transform _player;
         private readonly Transform _deer;
+        private readonly DeerInfo _deerInfo;
 
-        public DeerInteractedByPlayerState(Transform player, Transform deer)
+        public DeerInteractedByPlayerState(Transform player, Transform deer, DeerInfo deerInfo)
         {
             _player = player;
             _deer = deer;
+            _deerInfo = deerInfo;
         }
         
         public void Enter()
         {
+            if (_deerInfo.IsDead)
+                return;
+            
             Vector3 playerXZ = _player.position;
             playerXZ.y = 0;
             

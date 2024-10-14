@@ -17,7 +17,7 @@ namespace DoubleDCore.Service
         public override void InstallBindings()
         {
             foreach (var monoService in _services)
-                Container.Bind(monoService.GetType()).FromInstance(monoService).AsSingle();
+                Container.Bind(monoService.GetType()).FromInstance(monoService).AsCached();
         }
 
         public void OnDestroy()

@@ -8,6 +8,11 @@ namespace Game.Gameplay.Buildings
     [CreateAssetMenu(fileName = "Sleight Config", menuName = "Buildings/Sleight Config")]
     public class SleighLevelsConfig : LevelsConfig<SleightLevelStat>
     {
+        public override string GetStatsNumericValue(int level)
+        {
+            var stat = GetStatsAt(level);
+            return stat.DeerCapacity.ToString();
+        }
     }
 
     [Serializable]
@@ -19,6 +24,7 @@ namespace Game.Gameplay.Buildings
         private Dictionary<ItemInfo, int[]> _itemLevelsDictionary;
 
         public int DeerCapacity => _deerCapacity;
+
         public IReadOnlyDictionary<ItemInfo, int[]> ItemCountLevels
         {
             get

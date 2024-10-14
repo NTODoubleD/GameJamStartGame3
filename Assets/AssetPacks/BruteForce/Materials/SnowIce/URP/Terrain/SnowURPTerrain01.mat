@@ -16,8 +16,8 @@ Material:
   - USE_AL
   - USE_FOG
   - USE_LS
-  - USE_RT
   - USE_WC
+  - USE_WT
   - _TESSELLATION_EDGE
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Control0:
-        m_Texture: {fileID: 4901155405178779946, guid: 50162458eb470a14aa2a16dce9bd44fd,
+        m_Texture: {fileID: -7717046926201568654, guid: a04d639edcddcc54888a14a937ca59aa,
           type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -267,9 +267,9 @@ Material:
     - _DetailBumpScale: 3.07
     - _DetailNormalMapScale: 1
     - _DisplacementColorMult: 0.9
-    - _DisplacementOffset: 0.1
+    - _DisplacementOffset: 0
     - _DisplacementShadowMult: 1.6
-    - _DisplacementStrength: 0.3
+    - _DisplacementStrength: 0
     - _DstBlend: 0
     - _EffectDisplacementStrength: 0.5
     - _Emission: 0.25
@@ -298,7 +298,7 @@ Material:
     - _LightIntensity: 1
     - _LightOffset: 0.245
     - _LittleSpecForce: 0.5
-    - _MainTexMult: 0.11
+    - _MainTexMult: 0.09
     - _Metallic: 0
     - _Metallic0: 0
     - _Metallic1: 0
@@ -309,7 +309,7 @@ Material:
     - _Metallic6: 0
     - _Metallic7: 0
     - _Mode: 0
-    - _NormalMultiplier: 0.47
+    - _NormalMultiplier: 0.6
     - _NormalRTDepth: 0.18
     - _NormalRTStrength: 4
     - _NormalScale: 0.766
@@ -349,16 +349,16 @@ Material:
     - _Tess: 6.7
     - _TessellationEdgeLength: 50
     - _TessellationUniform: 1
-    - _TransitionPower: 0.3
+    - _TransitionPower: 6.93
     - _TransitionScale: 13.7
     - _TransparencyValue: 1
     - _USEDECAL: 0
     - _USEFOG: 1
     - _USEINTER: 0
     - _USELOW: 0
-    - _USERT: 1
+    - _USERT: 0
     - _USEWC: 1
-    - _USEWT: 0
+    - _USEWT: 1
     - _UVSec: 0
     - _UpVector: 1
     - _UseAmbientLight: 1
@@ -370,16 +370,16 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0.65999997, b: 0.73, a: 1}
-    - _BotColor: {r: 0.576631, g: 0.7499591, b: 0.97900003, a: 1}
+    - _BotColor: {r: 0.74509805, g: 0.8901961, b: 0.92941177, a: 1}
     - _Color: {r: 0.8509804, g: 0.9608221, b: 1, a: 1}
     - _CracksStrength: {r: -1.04, g: 0.36, b: -0.25, a: 0.1}
     - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FogDirection: {r: 1, g: 0.3, b: 2, a: 0}
-    - _IceTint: {r: 0.51744187, g: 0.8081396, b: 1, a: 1}
-    - _IceTrail: {r: 0.4056604, g: 0.17573498, b: 0.017443415, a: 1}
+    - _IceTint: {r: 0.4627451, g: 0.57254905, b: 0.72156864, a: 1}
+    - _IceTrail: {r: 0.13333334, g: 0.13333334, b: 0.07450981, a: 1}
     - _MountColor: {r: 0.120717645, g: 0.121025234, b: 0.12156863, a: 1}
-    - _ParalaxColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ParalaxColor: {r: 0, g: 0.047058824, b: 0.1764706, a: 1}
     - _ParallaxStrength: {r: 0, g: 0.5, b: 0.25, a: 0.15}
     - _ProjectedShadowColor: {r: 0.42166796, g: 0.7136274, b: 0.90099996, a: 1}
     - _ReflectionColor: {r: 0, g: 0.099333376, b: 0.14899999, a: 0.8}
@@ -397,7 +397,7 @@ Material:
     - _Splat5_STn: {r: 1, g: 1, b: 0, a: 1}
     - _Splat6_STn: {r: 1, g: 1, b: 0, a: 1}
     - _Splat7_STn: {r: 1, g: 1, b: 0, a: 1}
-    - _TerrainScale: {r: 100, g: 200, b: 100, a: 0}
+    - _TerrainScale: {r: 100, g: 600, b: 100, a: 0}
     - _TopColor: {r: 1, g: 1, b: 1, a: 1}
     - _TransitionColor: {r: 1, g: 1, b: 1, a: 1}
     - _WireframeColor: {r: 0, g: 0, b: 0, a: 1}

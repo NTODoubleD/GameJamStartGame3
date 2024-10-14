@@ -5,8 +5,11 @@ using DoubleDCore.TranslationTools;
 using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.Buildings;
+using Game.Gameplay.Items;
 using Game.Gameplay.Sleigh;
 using Game.Infrastructure.Items;
+using Game.WorldMap;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,19 +36,21 @@ namespace Game.UI.Pages
         [Space, SerializeField] private RectTransform _herdUI;
         [SerializeField] private RectTransform _sliderUI;
 
-        public event UnityAction<IReadOnlyDictionary<ItemInfo, int>, int> Sended;
+        public event UnityAction<IReadOnlyDictionary<GameItemInfo, int>, int> Sended;
 
         private GameInput _inputController;
+        private SleighBuildingReference _sleighBuilding;
 
         private readonly List<UIResourceProperty> _resourceSliders = new();
 
         private int _deerCapacity;
-        private List<ItemInfo> _possibleResources;
+        private List<GameItemInfo> _possibleResources;
 
         [Inject]
-        private void Init(GameInput inputController)
+        private void Init(GameInput inputController, SleighBuildingReference sleighBuilding)
         {
             _inputController = inputController;
+            _sleighBuilding = sleighBuilding;
         }
 
         public override void Initialize()
@@ -58,9 +63,11 @@ namespace Game.UI.Pages
             SwitchSubMenu(false);
 
             _inputController.Player.Disable();
+            _inputController.Map.Disable();
+
             _inputController.UI.Enable();
 
-            _continueClickButton.onClick.AddListener(ContinueOnClicked);
+            _continueClickButton.onClick.AddListener(StartSortie);
 
             _herdExplorer.Reset();
             _herdExplorer.ChosenChanged += OnUserChosenChanged;
@@ -77,31 +84,39 @@ namespace Game.UI.Pages
         {
             SetCanvasState(false);
 
-            _continueClickButton.onClick.RemoveListener(ContinueOnClicked);
+            _continueClickButton.onClick.RemoveListener(StartSortie);
 
             _herdExplorer.ChosenChanged -= OnUserChosenChanged;
 
             _inputController.UI.Disable();
-            _inputController.Player.Enable();
+
+            _inputController.Map.Enable();
+            //_inputController.Player.Enable();
         }
 
         public void StartSortie()
         {
             Close();
 
-            var callback = new Dictionary<ItemInfo, int>();
+            var callback = new Dictionary<GameItemInfo, int>();
 
-            for (int i = 0; i < _possibleResources.Count; i++)
-                callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+            // for (int i = 0; i < _possibleResources.Count; i++)
+            //     callback.Add(_possibleResources[i], _resourceSliders[i].GetResourceAmount());
+
+            int sleighLevel = _sleighBuilding.SleighBuilding.CurrentLevel - 1;
+
+            callback.Add(_currenSortieContext.Wood.Item, _currenSortieContext.Wood.GetCount(sleighLevel));
+            callback.Add(_currenSortieContext.Moss.Item, _currenSortieContext.Moss.GetCount(sleighLevel));
+            callback.Add(_currenSortieContext.HealGrass.Item, _currenSortieContext.HealGrass.GetCount(sleighLevel));
 
             Sended?.Invoke(callback, _herdExplorer.GetChosenDeerAmount());
         }
 
-        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<ItemInfo> possibleResources,
+        public void Initialize(int deerCapacity, int currentDeerCount, IEnumerable<GameItemInfo> possibleResources,
             int levelsToDistribute)
         {
             _deerCapacity = deerCapacity;
-            _possibleResources = new List<ItemInfo>(possibleResources as ItemInfo[] ?? possibleResources.ToArray());
+            _possibleResources = new List<GameItemInfo>(possibleResources as GameItemInfo[] ?? possibleResources.ToArray());
 
             if (_resourceSliders.Count <= 0)
                 CreateSliders();
@@ -205,6 +220,13 @@ namespace Game.UI.Pages
 
             _sliderUI.gameObject.SetActive(isSlider);
             _startSortieButton.gameObject.SetActive(isSlider);
+        }
+
+        private SortieResourceArgument _currenSortieContext;
+
+        public void SetResourcePriorities(SortieResourceArgument context)
+        {
+            _currenSortieContext = context;
         }
     }
 }

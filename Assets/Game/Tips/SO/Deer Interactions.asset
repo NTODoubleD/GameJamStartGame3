@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
+  m_Name: Deer Interactions
+  m_EditorClassIdentifier: 
+  _trainingTips:
+  - _video: {fileID: 32900000, guid: 9b2496899bd2d5643960e14ff7d49e1a, type: 3}
+    _image: {fileID: 0}
+    _text:
+      _ru: "\u041A\u043E\u0440\u043C\u0438 \u043E\u043B\u0435\u043D\u0435\u0439\n"
+      _en: no translation
+  - _video: {fileID: 32900000, guid: 8d8b45d407226ef4281e87d8a0aad141, type: 3}
+    _image: {fileID: 0}
+    _text:
+      _ru: "\u041B\u0435\u0447\u0438 \u043E\u043B\u0435\u043D\u0435\u0439"
+      _en: no translation

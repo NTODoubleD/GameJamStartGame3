@@ -1,6 +1,7 @@
 using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game.Gameplay.Buildings
@@ -8,7 +9,11 @@ namespace Game.Gameplay.Buildings
     [CreateAssetMenu(fileName = "Pasture Config", menuName = "Buildings/Pasture Config")]
     public class PastureLevelsConfig : LevelsConfig<PastureLevelStat>
     {
-
+        public override string GetStatsNumericValue(int level)
+        {
+            var stat = GetStatsAt(level);
+            return stat.Capacities.Values.Sum().ToString();
+        }
     }
 
     [Serializable]

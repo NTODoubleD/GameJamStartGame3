@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using DoubleDCore.Service;
+using Game.Gameplay.SurvivalMechanics;
 using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
@@ -10,6 +12,7 @@ namespace Game.Gameplay.DayCycle
         [SerializeField] private DayChangeTransition _changeTransition;
 
         private GameInput _inputController;
+        private IEnumerable<IRealtimeSurvivalMechanic> _survivalMechanics;
 
         public int CurrentDay { get; private set; } = 1;
 
@@ -17,14 +20,18 @@ namespace Game.Gameplay.DayCycle
         public event UnityAction DayStarted;
 
         [Inject]
-        private void Init(GameInput inputController)
+        private void Init(GameInput inputController, IEnumerable<IRealtimeSurvivalMechanic> survivalMechanics)
         {
             _inputController = inputController;
+            _survivalMechanics = survivalMechanics;
         }
 
         public void EndDay()
         {
             _inputController.Disable();
+
+            foreach (var mechanic in _survivalMechanics)
+                mechanic.Disable();
 
             DayEnded?.Invoke();
             _changeTransition.Transit(StartDay);
@@ -33,6 +40,9 @@ namespace Game.Gameplay.DayCycle
         public void StartDay()
         {
             _inputController.Enable();
+            
+            foreach (var mechanic in _survivalMechanics)
+                mechanic.Enable();
 
             CurrentDay++;
             DayStarted?.Invoke();

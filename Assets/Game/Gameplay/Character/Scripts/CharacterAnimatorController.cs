@@ -1,9 +1,10 @@
 using DoubleDCore.Attributes;
+using DoubleDCore.Service;
 using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
-public class CharacterAnimatorController : MonoBehaviour
+public class CharacterAnimatorController : MonoService
 {
     [SerializeField, ReadOnlyProperty] private Animator _animator;
     [SerializeField] private CharacterMover _mover;
@@ -17,6 +18,8 @@ public class CharacterAnimatorController : MonoBehaviour
     private static readonly int Kill = Animator.StringToHash("Kill");
     private static readonly int Heal = Animator.StringToHash("Heal");
     private static readonly int Cut = Animator.StringToHash("Cut");
+    private static readonly int Sit = Animator.StringToHash("Sit");
+    private static readonly int Idle = Animator.StringToHash("Idle");
 
     private UnityAction _currentKillCallback;
     private UnityAction _currentHealCallback;
@@ -67,6 +70,18 @@ public class CharacterAnimatorController : MonoBehaviour
     {
         _currentCutCallback = endCallback;
         _animator.SetTrigger(Cut);
+    }
+    
+    public void AnimateSitting()
+    {
+        _animator.SetTrigger(Sit);
+        StartedInteraction?.Invoke();
+    }
+
+    public void AnimateStanding()
+    {
+        _animator.SetTrigger(Idle);
+        EndedInteraction?.Invoke();
     }
 
     #region ANIMATOR_EVENTS

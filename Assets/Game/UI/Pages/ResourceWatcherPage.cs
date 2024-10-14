@@ -2,7 +2,7 @@
 using DoubleDCore.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
-using Game.Infrastructure.Items;
+using Game.Gameplay.Items;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -12,8 +12,12 @@ namespace Game.UI.Pages
     public class ResourceWatcherPage : MonoPage, IPayloadPage<ResourcePageArgument>
     {
         [SerializeField] private TextMeshProUGUI _labelText;
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private TextMeshProUGUI _headingText;
+        [SerializeField] private UIUpgradeCondition _resourceViewPrefab;
+        [SerializeField] private Transform _resourcesRoot;
 
+        private readonly List<UIUpgradeCondition> _currentResourceViews = new();
+        
         private GameInput _inputController;
 
         [Inject]
@@ -29,25 +33,27 @@ namespace Game.UI.Pages
 
         public void Open(ResourcePageArgument context)
         {
+            for (int i = 0; i < _currentResourceViews.Count; i++)
+                Destroy(_currentResourceViews[i].gameObject);
+            
+            _currentResourceViews.Clear();
+            
             SetCanvasState(true);
 
             _inputController.Player.Disable();
             _inputController.UI.Enable();
 
             _labelText.text = context.Label;
-
-            _text.text = "";
-
-            if (string.IsNullOrEmpty(context.TextHeading) == false)
-                _text.text += context.TextHeading + "\n";
+            _headingText.text = context.TextHeading;
 
             foreach (var (itemInfo, amount) in context.Resource)
             {
-                var amountText = amount.ToString();
+                var amountText = $" + {amount}";
                 amountText = amountText.Color(amount > 0 ? Color.green : Color.red);
 
-                _text.text += $"{itemInfo.Name} - " + amountText;
-                _text.text += "\n";
+                var resourceView = Instantiate(_resourceViewPrefab, _resourcesRoot);
+                resourceView.Initialize(itemInfo, amountText);
+                _currentResourceViews.Add(resourceView);
             }
         }
 
@@ -63,7 +69,7 @@ namespace Game.UI.Pages
     public class ResourcePageArgument
     {
         public string Label;
-        public string TextHeading = "";
-        public Dictionary<ItemInfo, int> Resource;
+        public string TextHeading;
+        public Dictionary<GameItemInfo, int> Resource;
     }
 }
