@@ -87,7 +87,7 @@ namespace Game.Gameplay
             _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
             _deerStateMachine.BindState(new DeerCutState(gameObject));
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this, randomWalkConfig));
-            _deerStateMachine.BindState(new DeerInteractedByPlayerState(_player, transform));
+            _deerStateMachine.BindState(new DeerInteractedByPlayerState(_player, transform, DeerInfo));
 
             _deerStateMachine.GetState<DeerIdleState>().Completed += OnIdleCompleted;
             _deerStateMachine.GetState<DeerRandomWalkState>().Completed += OnWalkCompleted;
