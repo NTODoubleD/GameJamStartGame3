@@ -82,7 +82,6 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
             
             _uiManager.ClosePage<RestPage>();
             _uiManager.OpenPage<PlayerMetricsPage>();
-            _uiManager.OpenPage<ResourcePage>();
             _uiManager.OpenPage<QuestPage>();
             
             _player.SetActive(true);
