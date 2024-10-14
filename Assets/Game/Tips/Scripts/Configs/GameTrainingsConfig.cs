@@ -6,7 +6,6 @@ namespace Game.Tips.Configs
     [CreateAssetMenu(fileName = "Trainings Config", menuName = "Configs/Trainings")]
     public class GameTrainingsConfig : ScriptableObject
     {
-        [SerializeField] private TrainingInfo _interfaceInfo;
         [SerializeField] private TrainingInfo _sleighInfo;
         [SerializeField] private TrainingInfo _deerCareInfo;
         [SerializeField] private TrainingInfo _heatingInfo;
@@ -17,7 +16,6 @@ namespace Game.Tips.Configs
         [SerializeField] private TrainingInfo _upgradeInfo;
         [SerializeField] private TrainingInfo _strongFrostInfo;
         
-        public TrainingInfo InterfaceInfo => _interfaceInfo;
         public TrainingInfo SleighInfo => _sleighInfo;
         public TrainingInfo DeerCareInfo => _deerCareInfo;
         public TrainingInfo HeatingInfo => _heatingInfo;

@@ -19,3 +19,8 @@ MonoBehaviour:
       _ru: "\u0413\u043E\u0442\u043E\u0432\u043A\u0430 \u043E\u0447\u0435\u043D\u044C
         \u0432\u0430\u0436\u043D\u0430 \u0434\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430\u0430"
       _en: no translation
+  - _video: {fileID: 32900000, guid: dfde562fe27fcaa4794a1fcd661340a5, type: 3}
+    _image: {fileID: 0}
+    _text:
+      _ru: "\u0415\u0434\u0430"
+      _en: no translation

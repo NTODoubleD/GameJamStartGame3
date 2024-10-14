@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trainingTips:
   - _video: {fileID: 0}
+    _image: {fileID: 21300000, guid: 9c41919b29d36624e9151c07269a9bed, type: 3}
+    _text:
+      _ru: "\u041E\u043B\u0435\u043D\u044C \u043C\u043E\u0436\u0435\u0442 \u0443\u043C\u0435\u0440\u0435\u0442\u044C"
+      _en: no translation
+  - _video: {fileID: 32900000, guid: fd236ac72a5b27148a8bac959b9d4333, type: 3}
     _image: {fileID: 0}
     _text:
-      _ru: Cut
+      _ru: "\u0421\u043D\u0438\u043C\u0430\u0439 \u0448\u043A\u0443\u0440\u0443 \u0441
+        \u043E\u043B\u0435\u043D\u044F \u0434\u043B\u044F \u043F\u043E\u043B\u0443\u0447\u0435\u043D\u0438\u044F
+        \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432"
       _en: no translation
