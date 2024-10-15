@@ -8,18 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SnowURPTerrain01
-  m_Shader: {fileID: 4800000, guid: 06aa19b87b8aa174485b5a0ed989e1cb, type: 3}
+  m_Shader: {fileID: 4800000, guid: 814b9ac7dd7363740a6fca716c28912e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - IS_T
   - USE_AL
-  - USE_FOG
-  - USE_LS
   - USE_WC
-  - USE_WT
+  m_InvalidKeywords:
   - _TESSELLATION_EDGE
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -353,17 +350,17 @@ Material:
     - _TransitionScale: 13.7
     - _TransparencyValue: 1
     - _USEDECAL: 0
-    - _USEFOG: 1
+    - _USEFOG: 0
     - _USEINTER: 0
     - _USELOW: 0
     - _USERT: 0
     - _USEWC: 1
-    - _USEWT: 1
+    - _USEWT: 0
     - _UVSec: 0
     - _UpVector: 1
     - _UseAmbientLight: 1
     - _UsePR: 0
-    - _UseSunReflection: 1
+    - _UseSunReflection: 0
     - _UseVR: 0
     - _WireframeSmoothing: 1
     - _WireframeThickness: 1
