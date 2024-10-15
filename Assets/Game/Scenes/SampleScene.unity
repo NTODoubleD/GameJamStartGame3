@@ -4093,7 +4093,7 @@ PrefabInstance:
     - target: {fileID: 622850273237045010, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -16859134
+      value: -17139272
       objectReference: {fileID: 0}
     - target: {fileID: 783378972698259452, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -4345,6 +4345,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1787068986528990786, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: useUpdatedRotation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1945109876115987027, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4419,6 +4424,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292917238157524511, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292917238157524511, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2383288834449024648, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -4594,6 +4609,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3503388717644284572, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3503388717644284572, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3600649346138547788, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -5048,7 +5073,7 @@ PrefabInstance:
     - target: {fileID: 5353753445324468505, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17005096
+      value: 17159838
       objectReference: {fileID: 0}
     - target: {fileID: 5369045503233044636, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
