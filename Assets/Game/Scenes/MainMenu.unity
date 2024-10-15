@@ -6024,8 +6024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text:
-    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.5.3"
-    _en: Alpha v0.5.3
+    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.5.4"
+    _en: Alpha v0.5.4
 --- !u!1 &2102724532
 GameObject:
   m_ObjectHideFlags: 0

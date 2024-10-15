@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 8544182871761384251, guid: 5963d6d37117a30489f4782ac755d6b7,
         type: 3}
       propertyPath: m_Name
-      value: PEPlayer Variant
+      value: PEPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8544182871761384252, guid: 5963d6d37117a30489f4782ac755d6b7,
         type: 3}
@@ -26,12 +26,12 @@ PrefabInstance:
     - target: {fileID: 8544182871761384253, guid: 5963d6d37117a30489f4782ac755d6b7,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8544182871761384253, guid: 5963d6d37117a30489f4782ac755d6b7,
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8544182871761384254, guid: 5963d6d37117a30489f4782ac755d6b7,
         type: 3}
