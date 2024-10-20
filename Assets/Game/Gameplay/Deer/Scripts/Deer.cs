@@ -196,6 +196,7 @@ namespace Game.Gameplay
         {
             _deerStateMachine.Enter<DeerDieState>();
 
+            DeerInfo.StatusBeforeDeath = DeerInfo.Status;
             DeerInfo.Status = DeerStatus.Killed;
             DeerInfo.DieDay = _dayCycleController.CurrentDay;
 

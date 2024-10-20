@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.DayCycle;
 using Game.Notifications;
+using Sirenix.Utilities;
 using UnityEngine;
 using Zenject;
 
@@ -19,12 +21,16 @@ namespace Game.UI.Pages
         private readonly Dictionary<UINotification, float> _notificationsTimeLeft = new();
 
         private NotificationsConfig _config;
+        private DayCycleController _dayCycleController;
         private float _currentOpenDelay;
         
         [Inject]
-        private void Init(NotificationsConfig config)
+        private void Init(NotificationsConfig config, DayCycleController dayCycleController)
         {
             _config = config;
+            _dayCycleController = dayCycleController;
+
+            _dayCycleController.DayEnded += OnDayEnded;
         }
 
         public override void Initialize()
@@ -40,6 +46,12 @@ namespace Game.UI.Pages
         public override void Close()
         {
             SetCanvasState(false);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _dayCycleController.DayEnded -= OnDayEnded;
         }
 
         private void Update()
@@ -93,6 +105,15 @@ namespace Game.UI.Pages
             _notifications.Remove(notification);
             _notificationsTimeLeft.Remove(notification);
             notification.Close();
+        }
+
+        private void OnDayEnded()
+        {
+            _notificationsToRemove.Clear();
+            _notificationsToRemove.AddRange(_notifications);
+            
+            foreach (var notification in _notificationsToRemove)
+                Remove(notification);
         }
     }
 }

@@ -5,6 +5,7 @@ using Game.Tips;
 using Game.Tips.Configs;
 using Zenject;
 using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
+using Game.Notifications.Triggers;
 using Game.Quests.Tasks;
 
 namespace Game.GameEngine.DI
@@ -19,6 +20,8 @@ namespace Game.GameEngine.DI
             BindConfigs();
             Container.BindInterfacesAndSelfTo<GameTrainingsStarter>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<CameraZoomController>().AsSingle().NonLazy();
+
+            Container.Bind<DeerNotificationsController>().AsSingle().NonLazy();
         }
         
         private void BindConfigs()

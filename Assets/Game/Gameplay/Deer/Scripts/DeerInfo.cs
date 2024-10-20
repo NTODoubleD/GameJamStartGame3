@@ -12,6 +12,7 @@ namespace Game.Gameplay
         public int AgeDays;
         public bool IsDead;
         public int DieDay;
+        public DeerStatus StatusBeforeDeath = DeerStatus.None;
 
         private float _hungerDegree;
         private DeerStatus _status;

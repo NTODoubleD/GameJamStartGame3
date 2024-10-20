@@ -27,7 +27,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _expireTime
       Entry: 4
-      Data: 5
+      Data: 15
     - Name: _openDelay
       Entry: 4
       Data: 0.3
