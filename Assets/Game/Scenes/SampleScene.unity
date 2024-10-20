@@ -2368,6 +2368,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbe387e0f774bc6a20716f3e6cd38c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1179876536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4699627915089183290, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1890921510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1179876540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179876536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1de01f5cbf14edb9305092fec5bcc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text:
+    _ru: "\u0417\u0430\u043C\u0435\u0434\u043B\u0435\u043D\u0438\u0435 \u0433\u043E\u043B\u043E\u0434\u0430\u043D\u0438\u044F"
+    _en: Slowed hunger
 --- !u!114 &1187642123 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4020896383275161043, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
@@ -4316,7 +4337,7 @@ PrefabInstance:
     - target: {fileID: 622850273237045010, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -18679258
+      value: -19073398
       objectReference: {fileID: 0}
     - target: {fileID: 783378972698259452, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -5346,7 +5367,7 @@ PrefabInstance:
     - target: {fileID: 5353753445324468505, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17946022
+      value: 18154274
       objectReference: {fileID: 0}
     - target: {fileID: 5369045503233044636, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
@@ -5847,17 +5868,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _interactionTriggers.Array.data[0]
       value: 
-      objectReference: {fileID: 1814537793}
+      objectReference: {fileID: 778139702}
     - target: {fileID: 9050499932769369230, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactionTriggers.Array.data[1]
       value: 
-      objectReference: {fileID: 1225112063}
+      objectReference: {fileID: 818728758}
     - target: {fileID: 9050499932769369230, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactionTriggers.Array.data[2]
       value: 
-      objectReference: {fileID: 778139702}
+      objectReference: {fileID: 1225112063}
     - target: {fileID: 9050499932769369230, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
         type: 3}
       propertyPath: _interactionTriggers.Array.data[3]
@@ -5867,7 +5888,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _interactionTriggers.Array.data[4]
       value: 
-      objectReference: {fileID: 818728758}
+      objectReference: {fileID: 1814537793}
     m_RemovedComponents:
     - {fileID: 4598068288436355260, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
     m_RemovedGameObjects:
@@ -5886,6 +5907,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 99212172}
+    - targetCorrespondingSourceObject: {fileID: 4699627915089183290, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1179876540}
   m_SourcePrefab: {fileID: 100100000, guid: f7bdcbbec98a89e46bc97ed6c4e29a6b, type: 3}
 --- !u!114 &1890921512 stripped
 MonoBehaviour:
