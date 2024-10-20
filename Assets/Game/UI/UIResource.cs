@@ -1,4 +1,5 @@
-﻿using Game.Gameplay.Items;
+﻿using DoubleDCore.Tween.Effects;
+using Game.Gameplay.Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace Game.UI
     {
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _countText;
+        [SerializeField] private NumberFeedback _numberFeedback;
 
         public void Initialize(GameItemInfo item)
         {
@@ -24,6 +26,15 @@ namespace Game.UI
         public void Refresh(int count)
         {
             _countText.text = count.ToString();
+        }
+
+        public void PlayFeedback(int delta)
+        {
+            _numberFeedback.StartFeedback(delta, OnAnimationEnd);
+        }
+
+        private void OnAnimationEnd()
+        {
         }
     }
 }

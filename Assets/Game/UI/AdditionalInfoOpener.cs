@@ -39,13 +39,13 @@ namespace Game.UI.Pages
 
         private void OnAdditionalInfoOpenRequested(InputAction.CallbackContext _)
         {
-            _uiManager.OpenPage<ResourcePage>();
+            //_uiManager.OpenPage<ResourcePage>();
             _timeToClose = _config.OpenTime;
         }
         
         private void CloseAdditionalInfo()
         {
-            _uiManager.ClosePage<ResourcePage>();
+            //_uiManager.ClosePage<ResourcePage>();
         }
         
         ~AdditionalInfoOpener()

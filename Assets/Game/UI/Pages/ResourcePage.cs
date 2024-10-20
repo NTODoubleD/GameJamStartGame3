@@ -37,18 +37,20 @@ namespace Game.UI.Pages
 
                 _uiResources.Add(gameItemInfo.ID, inst);
             }
+
+            Open();
         }
 
         public void Open()
         {
             if (PageIsDisplayed)
                 return;
-            
-            _itemStorage.ItemAdded += OnItemChanged;
-            _itemStorage.ItemRemoved += OnItemChanged;
+
+            _itemStorage.ItemAdded += OnItemAdded;
+            _itemStorage.ItemRemoved += OnItemRemoved;
 
             foreach (var (itemInfo, count) in _itemStorage.Resources)
-                RefreshUIResource(itemInfo, count);
+                RefreshUIResource(itemInfo, count, 0);
 
             SetCanvasState(true);
             _canvasGroup.DOFade(1, 0.4f);
@@ -58,19 +60,29 @@ namespace Game.UI.Pages
         {
             if (PageIsDisplayed == false)
                 return;
-            
+
             _canvasGroup.DOFade(0, 0.4f).OnComplete(() => SetCanvasState(false));
 
-            _itemStorage.ItemAdded -= OnItemChanged;
-            _itemStorage.ItemRemoved -= OnItemChanged;
+            _itemStorage.ItemAdded -= OnItemAdded;
+            _itemStorage.ItemRemoved -= OnItemRemoved;
+        }
+
+        private void OnItemAdded(ItemInfo itemInfo, int delta)
+        {
+            OnItemChanged(itemInfo, delta);
+        }
+
+        private void OnItemRemoved(ItemInfo itemInfo, int delta)
+        {
+            OnItemChanged(itemInfo, -delta);
         }
 
         private void OnItemChanged(ItemInfo itemInfo, int newValue)
         {
-            RefreshUIResource(itemInfo, _itemStorage.GetCount(itemInfo));
+            RefreshUIResource(itemInfo, _itemStorage.GetCount(itemInfo), newValue);
         }
 
-        private void RefreshUIResource(ItemInfo itemInfo, int count)
+        private void RefreshUIResource(ItemInfo itemInfo, int count, int delta)
         {
             if (itemInfo is GameItemInfo gameItemInfo == false)
                 return;
@@ -82,7 +94,7 @@ namespace Game.UI.Pages
 
             uiResource.Initialize(gameItemInfo);
             uiResource.Refresh(count);
-            uiResource.gameObject.SetActive(count != 0);
+            uiResource.PlayFeedback(delta);
         }
     }
 }
