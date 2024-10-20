@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Zoom",
+                    "type": "PassThrough",
+                    "id": "9d0caba5-edf5-46c5-a810-0412d1643add",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -219,6 +228,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AdditionalInfoOpen",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50778471-f99c-40a0-8630-4fa3ddfef393",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -98,6 +98,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9d0caba5-edf5-46c5-a810-0412d1643add"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -241,6 +250,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AdditionalInfoOpen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50778471-f99c-40a0-8630-4fa3ddfef393"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1040,6 +1060,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_InventoryOpen = m_Player.FindAction("InventoryOpen", throwIfNotFound: true);
         m_Player_AdditionalInfoOpen = m_Player.FindAction("AdditionalInfoOpen", throwIfNotFound: true);
+        m_Player_Zoom = m_Player.FindAction("Zoom", throwIfNotFound: true);
         // Map
         m_Map = asset.FindActionMap("Map", throwIfNotFound: true);
         m_Map_Move = m_Map.FindAction("Move", throwIfNotFound: true);
@@ -1132,6 +1153,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_InventoryOpen;
     private readonly InputAction m_Player_AdditionalInfoOpen;
+    private readonly InputAction m_Player_Zoom;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -1144,6 +1166,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @InventoryOpen => m_Wrapper.m_Player_InventoryOpen;
         public InputAction @AdditionalInfoOpen => m_Wrapper.m_Player_AdditionalInfoOpen;
+        public InputAction @Zoom => m_Wrapper.m_Player_Zoom;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1177,6 +1200,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @AdditionalInfoOpen.started += instance.OnAdditionalInfoOpen;
             @AdditionalInfoOpen.performed += instance.OnAdditionalInfoOpen;
             @AdditionalInfoOpen.canceled += instance.OnAdditionalInfoOpen;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1205,6 +1231,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @AdditionalInfoOpen.started -= instance.OnAdditionalInfoOpen;
             @AdditionalInfoOpen.performed -= instance.OnAdditionalInfoOpen;
             @AdditionalInfoOpen.canceled -= instance.OnAdditionalInfoOpen;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1460,6 +1489,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnInventoryOpen(InputAction.CallbackContext context);
         void OnAdditionalInfoOpen(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
     public interface IMapActions
     {

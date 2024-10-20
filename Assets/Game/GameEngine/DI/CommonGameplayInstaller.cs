@@ -1,5 +1,6 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
+using Game.Gameplay.CharacterCamera;
 using Game.Tips;
 using Game.Tips.Configs;
 using Zenject;
@@ -17,6 +18,7 @@ namespace Game.GameEngine.DI
 
             BindConfigs();
             Container.BindInterfacesAndSelfTo<GameTrainingsStarter>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<CameraZoomController>().AsSingle().NonLazy();
         }
         
         private void BindConfigs()
@@ -25,8 +27,10 @@ namespace Game.GameEngine.DI
             var configsResource = resourceContainer.GetResource<ConfigsResource>();
             
             GameTrainingsConfig trainingsConfig = configsResource.GetConfig<GameTrainingsConfig>();
+            CameraZoomConfig zoomConfig = configsResource.GetConfig<CameraZoomConfig>();
             
             Container.BindInstance(trainingsConfig).AsSingle();
+            Container.BindInstance(zoomConfig).AsSingle();
         }
     }
 }

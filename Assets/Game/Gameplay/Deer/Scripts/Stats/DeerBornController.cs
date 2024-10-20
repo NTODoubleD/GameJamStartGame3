@@ -86,7 +86,7 @@ namespace Game.Gameplay.Deers
             for (int i = 0; i < youngDeerAmount; i++)
                 _fabric.CreateDeer();
 
-            SoundsManager.Instance.PlayNewbornOlen(Camera.main.transform.position);
+            SoundsManager.Instance.PlayNewbornOlen(UnityEngine.Camera.main.transform.position);
             DeerIsBorn?.Invoke();
         }
 
