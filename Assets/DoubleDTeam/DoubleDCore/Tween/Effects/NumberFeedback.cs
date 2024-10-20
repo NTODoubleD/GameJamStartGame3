@@ -29,7 +29,6 @@ namespace DoubleDCore.Tween.Effects
             _currentDelta += delta;
             SetText(_currentDelta);
 
-            Debug.Log(_isAnimating);
             if (_isAnimating)
                 return;
 

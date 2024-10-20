@@ -82,6 +82,7 @@ namespace Game.Gameplay.Character
         {
             _uiManager.ClosePage<SittingPage>();
             _uiManager.OpenPage<PlayerMetricsPage>();
+            _uiManager.OpenPage<ResourcePage>();
             _uiManager.OpenPage<QuestPage>();
 
             if (_currentTweener != null && _currentTweener.IsActive())

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Cysharp.Threading.Tasks;
 using DoubleDCore.UI.Base;
 using Game.Gameplay.SurvivalMechanics;
@@ -21,13 +20,13 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
         private RestConfig _config;
         private PlayerMetricsModel _playerMetrics;
         private FrostController _frostController;
-        
+
         private CancellationTokenSource _cts;
         private bool _isResting;
-        
+
         [Inject]
         private void Init(CharacterMover playerMover, LocalMenuOpener localMenuOpener,
-            GameInput inputController, IUIManager uiManager, RestConfig config, 
+            GameInput inputController, IUIManager uiManager, RestConfig config,
             PlayerMetricsModel playerMetricsModel, FrostController frostController)
         {
             _player = playerMover.gameObject;
@@ -45,14 +44,14 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
             _uiManager.ClosePage<ResourcePage>();
             _uiManager.ClosePage<QuestPage>();
             _uiManager.OpenPage<RestPage>();
-            
+
             _player.SetActive(false);
             _localMenuOpener.enabled = false;
             _inputController.UI.CloseMenu.performed += OnEscapePerfomed;
 
             _frostController.AddToWhiteList(_playerMetrics);
             _isResting = true;
-            
+
             _cts = new CancellationTokenSource();
             RestAsync(_cts.Token).Forget();
         }
@@ -79,14 +78,15 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
 
             _isResting = false;
             _frostController.RemoveFromWhiteList(_playerMetrics);
-            
+
             _uiManager.ClosePage<RestPage>();
             _uiManager.OpenPage<PlayerMetricsPage>();
+            _uiManager.OpenPage<ResourcePage>();
             _uiManager.OpenPage<QuestPage>();
-            
+
             _player.SetActive(true);
             _localMenuOpener.enabled = true;
-            
+
             _inputController.Player.Enable();
             _inputController.UI.Disable();
         }
