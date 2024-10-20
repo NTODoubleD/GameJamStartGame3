@@ -1,5 +1,6 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
+using Game.Notifications;
 using Game.UI;
 using Game.UI.Pages;
 using Zenject;
@@ -14,8 +15,10 @@ namespace Game.GameEngine.DI
             var configsResource = resourceContainer.GetResource<ConfigsResource>();
             
             AdditionalInfoOpenConfig additionalInfoOpenConfig = configsResource.GetConfig<AdditionalInfoOpenConfig>();
+            NotificationsConfig notificationsConfig = configsResource.GetConfig<NotificationsConfig>();
 
             Container.BindInstance(additionalInfoOpenConfig).AsSingle();
+            Container.BindInstance(notificationsConfig).AsSingle();
             
             Container.Bind<TooltipController>().AsSingle();
             Container.Bind<RadialMenuItemsUseObserver>().AsSingle();
