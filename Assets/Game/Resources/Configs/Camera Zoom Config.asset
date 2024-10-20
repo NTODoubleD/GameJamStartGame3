@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55982e318b24c069341fcabb507602b, type: 3}
   m_Name: Camera Zoom Config
   m_EditorClassIdentifier: 
-  _minimalPosition: {x: 0, y: 6.96, z: -3.94}
-  _maximalPosition: {x: 0, y: 14.84, z: -10.63}
+  _minimalPosition: {x: 0, y: 6.826667, z: -4.5333333}
+  _maximalPosition: {x: 0, y: 15.36, z: -10.2}
   _speed: {x: 0, y: 1, z: 1}
+  _changeSpeed: 1
