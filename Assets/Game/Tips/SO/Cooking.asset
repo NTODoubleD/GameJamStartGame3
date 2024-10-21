@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
   m_Name: Cooking
   m_EditorClassIdentifier: 
+  _trainingName:
+    _ru: "\u0413\u043E\u0442\u043E\u0432\u043A\u0430"
+    _en: no translation
   _trainingTips:
   - _video: {fileID: 32900000, guid: 4a4a76a817b833c4dbdd2be848742695, type: 3}
     _image: {fileID: 0}

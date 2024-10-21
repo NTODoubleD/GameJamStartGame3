@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
   m_Name: Sleeping
   m_EditorClassIdentifier: 
+  _trainingName:
+    _ru: "\u0412\u044B\u043D\u043E\u0441\u043B\u0438\u0432\u043E\u0441\u0442\u044C"
+    _en: no translation
   _trainingTips:
   - _video: {fileID: 32900000, guid: 27deabf7a9cd5d046965c0643dc1ea8f, type: 3}
     _image: {fileID: 0}

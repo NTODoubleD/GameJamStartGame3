@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
   m_Name: Sleigh
   m_EditorClassIdentifier: 
+  _trainingName:
+    _ru: "\u041A\u0430\u0440\u0442\u0430"
+    _en: no translation
   _trainingTips:
   - _video: {fileID: 0}
     _image: {fileID: 21300000, guid: 352b72b4fcdba9842b7773187452ae7d, type: 3}

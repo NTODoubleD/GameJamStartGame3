@@ -21,6 +21,8 @@ namespace Game.UI.Pages
         [SerializeField] private ClickButton _leftButton;
         [SerializeField] private ClickButton _closeButton;
         [SerializeField] private TrainingPageAnimator _animator;
+        [SerializeField] private RectTransform _widgetRect;
+        [SerializeField] private Vector2 _widgetPosition;
         [SerializeField] private List<UIDot> _dotsPool;
 
         private TrainingPageArgument _context;
@@ -50,7 +52,9 @@ namespace Game.UI.Pages
 
             _context = context;
 
-            _animator.StartOpenAnimation();
+            _widgetRect.anchoredPosition = _widgetPosition + _context.Offset;
+
+            _animator.StartOpenAnimation(_context.Animate);
 
             StartTraining();
 
@@ -124,7 +128,9 @@ namespace Game.UI.Pages
 
             _leftButton.gameObject.SetActive(_currentTipIndex > 0);
             _rightButton.gameObject.SetActive(_currentTipIndex < _context.TrainingInfo.TrainingTips.Count - 1);
-            _closeButton.gameObject.SetActive(_currentTipIndex == _context.TrainingInfo.TrainingTips.Count - 1);
+
+            _closeButton.gameObject.SetActive(_context.ShowCloseButton &&
+                                              _currentTipIndex == _context.TrainingInfo.TrainingTips.Count - 1);
 
             _dotsPool[_currentTipIndex].SetHighlight(true);
         }
@@ -143,7 +149,7 @@ namespace Game.UI.Pages
         {
             _context.OnClose?.Invoke();
 
-            _animator.StartCloseAnimation(Close);
+            _animator.StartCloseAnimation(Close, _context.Animate);
         }
 
         private void StartContentAnimation()
@@ -166,6 +172,9 @@ namespace Game.UI.Pages
     public class TrainingPageArgument
     {
         public TrainingInfo TrainingInfo;
+        public bool Animate = true;
+        public Vector2 Offset = Vector2.zero;
+        public bool ShowCloseButton = true;
         public Action OnClose;
     }
 }

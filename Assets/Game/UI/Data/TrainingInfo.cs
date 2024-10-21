@@ -10,8 +10,12 @@ namespace Game.UI.Data
     [CreateAssetMenu(menuName = "Tip/Create TrainingInfo", fileName = "TrainingInfo", order = 0)]
     public class TrainingInfo : ScriptableObject
     {
+        [SerializeField] private TranslatedText _trainingName;
+        [SerializeField] private bool _showInWiki = true;
         [SerializeField] private List<TrainingTip> _trainingTips;
 
+        public string Name => _trainingName.GetText();
+        public bool ShowedInWiki => _showInWiki;
         public IReadOnlyList<TrainingTip> TrainingTips => _trainingTips;
     }
 

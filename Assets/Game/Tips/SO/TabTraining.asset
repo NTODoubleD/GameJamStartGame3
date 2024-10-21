@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c07b52332ed4c81bbcf084812b9e7c3, type: 3}
   m_Name: TabTraining
   m_EditorClassIdentifier: 
+  _trainingName:
+    _ru: no translation
+    _en: no translation
+  _showInWiki: 0
   _trainingTips:
   - _video: {fileID: 32900000, guid: 50c0ad523c8f8bd41874220dd2139ce9, type: 3}
     _image: {fileID: 21300000, guid: 43534cba80307db4fbb392f45fbae4ed, type: 3}

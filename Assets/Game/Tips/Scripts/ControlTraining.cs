@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
 using DoubleDCore.UI.Base;
 using Game.UI.Pages;
 using UnityEngine;
@@ -20,11 +21,24 @@ namespace Game.Tips
             _gameInput = gameInput;
         }
 
+        private CancellationTokenSource _cancellationToken;
+
         private async void Start()
         {
+            _cancellationToken = new CancellationTokenSource();
+
             await UniTask.WaitForSeconds(_trainingDelay);
 
+            if (_cancellationToken.IsCancellationRequested)
+                return;
+
             _uiManager.OpenPage<ControlTipPage, ControlTipArgument>(new ControlTipArgument(0, IsWasdCompleted));
+        }
+
+        private void OnDestroy()
+        {
+            _cancellationToken.Cancel();
+            _cancellationToken.Dispose();
         }
 
         private bool IsWasdCompleted()
@@ -39,6 +53,9 @@ namespace Game.Tips
         private async void ExecuteNextTip()
         {
             await UniTask.WaitForSeconds(_trainingDelay);
+
+            if (_cancellationToken.IsCancellationRequested)
+                return;
 
             _uiManager.OpenPage<ControlTipPage, ControlTipArgument>(new ControlTipArgument(1, IsSprintCompleted));
         }
@@ -58,6 +75,9 @@ namespace Game.Tips
         private async void ClosePage()
         {
             await UniTask.WaitForSeconds(_trainingDelay);
+
+            if (_cancellationToken.IsCancellationRequested)
+                return;
 
             _uiManager.ClosePage<ControlTipPage>();
         }
