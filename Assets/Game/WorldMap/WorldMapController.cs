@@ -38,7 +38,7 @@ namespace Game.WorldMap
             _uiManager = uiManager;
         }
 
-        private void Awake()
+        private void Start()
         {
             Close();
         }
@@ -47,7 +47,7 @@ namespace Game.WorldMap
         {
             foreach (var o in _objects)
                 o.SetActive(true);
-            
+
             Opened?.Invoke();
         }
 

@@ -41,7 +41,7 @@ namespace Game.Сompass
             _questController.QuestIssued -= OnQuestIssued;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (HasTarget == false)
             {
