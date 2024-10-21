@@ -334,11 +334,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4351858303325143726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -20, y: 70}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -180, y: 0}
   m_SizeDelta: {x: 100, y: 50}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6548373553711569080
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 4530013386214904239}
   _increaseColor: {r: 0, g: 1, b: 0.3841746, a: 1}
   _decreaseColor: {r: 1, g: 0.36386806, b: 0, a: 1}
-  _animationOffset: {x: -20, y: 100}
+  _animationOffset: {x: -180, y: 0}
 --- !u!225 &4530013386214904239
 CanvasGroup:
   m_ObjectHideFlags: 0
