@@ -24,9 +24,5 @@ MonoBehaviour:
   - 'TIP: Moss is food for reindeer, and you can collect it in a pile near the shelter.'
   - 'FACT: If a reindeer is not healed, it will not be able to produce offspring.'
   - 'FACT: Calves do not get sick.'
-  - 'FACT: If a reindeer dies from illness, it cannot be butchered.'
-  - 'FACT: Sick reindeer cannot be harnessed to the sled.'
   - 'FACT: A pair of reindeer produces one calf overnight.'
-  - 'TIP: Load the sled with the correct number of reindeer, or you will incur a
-    penalty.'
   - 'TIP: Feed the reindeer moss, or they will die.'
