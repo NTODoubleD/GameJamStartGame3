@@ -33,12 +33,14 @@ namespace Game.UI.Pages
         private ItemStorage _itemStorage;
         private GameInput _inputController;
         private UpgradeMenuArgument _currentArgument;
+        private BuildingsLocator _buildingsLocator;
 
         [Inject]
-        private void Init(ItemStorage itemStorage, GameInput inputController)
+        private void Init(ItemStorage itemStorage, GameInput inputController, BuildingsLocator buildingsLocator)
         {
             _itemStorage = itemStorage;
             _inputController = inputController;
+            _buildingsLocator = buildingsLocator;
         }
 
         public override void Initialize()
@@ -110,7 +112,7 @@ namespace Game.UI.Pages
             
             _currentConditions.Clear();
             
-            var conditionVisitor = new ConditionVisitor();
+            var conditionVisitor = new ConditionVisitor(_buildingsLocator);
 
             foreach (var condition in argument.Conditions)
                 condition.Accept(conditionVisitor);
@@ -155,15 +157,21 @@ namespace Game.UI.Pages
 
         private class ConditionVisitor : IUpgradeConditionVisitor
         {
+            private TownHallBuilding _townHallBuilding;
+            
             public int TownLevel { get; private set; } = -1;
             public int CurrentTownLevel { get; private set; } = -1;
-
             public IReadOnlyDictionary<GameItemInfo, int> Items { get; private set; }
+
+            public ConditionVisitor(BuildingsLocator buildingsLocator)
+            {
+                _townHallBuilding = buildingsLocator.TownHall;
+            }
 
             public void Visit(TownHallUpgradeCondition condition)
             {
                 TownLevel = condition.NecessaryLevel;
-                CurrentTownLevel = TownHallLocator.Instance.TownHall.CurrentLevel;
+                CurrentTownLevel = _townHallBuilding.CurrentLevel;
             }
 
             public void Visit(ResourcesUpgradeCondition condition)

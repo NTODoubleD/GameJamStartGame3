@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Age Config", menuName = "Configs/DeerAge")]
     public class DeerAgeConfig : SerializedScriptableObject

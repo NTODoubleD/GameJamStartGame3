@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 723cfff6607a4294808e5de8f5283c93, type: 3}
+  m_Name: Deer Illnesses Config
+  m_EditorClassIdentifier: 
+  _illnessChance: 0.4
+  _bigFlockIllnessesCount: 2
+  _smallFlockIllnessesCount: 1
+  _bigFlockCount: 4
+  _easySickDays: 1
+  _deathSickDays: 3

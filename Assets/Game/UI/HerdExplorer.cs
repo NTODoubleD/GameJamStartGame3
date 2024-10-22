@@ -7,7 +7,7 @@ using DoubleDCore.GameResources.Base;
 using DoubleDCore.ObjectPooling;
 using Game.Gameplay;
 using Game.Gameplay.Scripts;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using UnityEngine;
 using Zenject;
 

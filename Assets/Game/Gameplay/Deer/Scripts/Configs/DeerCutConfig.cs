@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Cut Config", menuName = "Configs/DeerCut")]
     public class DeerCutConfig : SerializedScriptableObject

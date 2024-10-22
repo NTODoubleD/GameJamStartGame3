@@ -9092,7 +9092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 16234719}
+  m_AnchoredPosition: {x: 0, y: 16248608}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2627909407213038330
@@ -12193,7 +12193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15442926}
+  m_AnchoredPosition: {x: 0, y: -15472637}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7062876900310443833
@@ -26745,6 +26745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _townHall: {fileID: 5322400594369925862}
+  _pastureBuilding: {fileID: 0}
 --- !u!1 &6676131357736466356
 GameObject:
   m_ObjectHideFlags: 0
@@ -34640,14 +34641,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3183018735605806694}
-  - component: {fileID: 719783738508303292}
   - component: {fileID: 6151683576349087589}
   - component: {fileID: 4250968591320339830}
   - component: {fileID: 8311255871459092313}
-  - component: {fileID: 7269096313738698692}
-  - component: {fileID: 5083402040856218583}
   - component: {fileID: 2302950062350118648}
-  - component: {fileID: 3461151597664731305}
   m_Layer: 0
   m_Name: '[DEER INTERACTION CONTROLLERS]'
   m_TagString: Untagged
@@ -34670,19 +34667,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1367227022721814767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &719783738508303292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138326999667692794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e51b1d056a7e049a9214ab88f3445a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterAnimatorController: {fileID: 2050901229831194536}
 --- !u!114 &6151683576349087589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34732,43 +34716,6 @@ MonoBehaviour:
   _mossController: {fileID: 1347615123839609870}
   _feedItem: {fileID: 11400000, guid: cb16e0b808ca57740bb1d375e8480d03, type: 2}
   _hungerRegenerationPerItem: 0.2
---- !u!114 &7269096313738698692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138326999667692794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25727c99e3380684190930a1eb634ffb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _deerFabric: {fileID: 6662980169789879462}
-  _dayCycleController: {fileID: 7584658767840806107}
-  _healController: {fileID: 6151683576349087589}
-  _illnessChance: 0.4
-  _bigFlockIllnessesCount: 2
-  _smallFlockIllnessesCount: 1
-  _bigFlockCount: 4
-  _easySickDays: 1
-  _deathSickDays: 3
---- !u!114 &5083402040856218583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138326999667692794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e002856ca91aa42bdda6b126ca83f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _deerFabric: {fileID: 6662980169789879462}
-  _dayCycleController: {fileID: 7584658767840806107}
-  _hungerStep: 0.2
-  _minimalHungerDegree: 0.4
 --- !u!114 &2302950062350118648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34781,21 +34728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ba97633a6e4b2a9e6f233fe397d644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3461151597664731305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138326999667692794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981e547f45ae4b50a3b59a093cae9b17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dayCycleController: {fileID: 7584658767840806107}
-  _sleighSendController: {fileID: 5967847325279805510}
-  _pastureBuilding: {fileID: 8492483806132878630}
 --- !u!1 &9143205916038459510
 GameObject:
   m_ObjectHideFlags: 0
@@ -41173,7 +41105,7 @@ PrefabInstance:
     - target: {fileID: 1177891120578582791, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3786
+      value: 4236
       objectReference: {fileID: 0}
     - target: {fileID: 3859593385266019987, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}

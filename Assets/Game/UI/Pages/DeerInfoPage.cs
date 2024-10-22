@@ -7,7 +7,7 @@ using DoubleDCore.TranslationTools.Extensions;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.Gameplay;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

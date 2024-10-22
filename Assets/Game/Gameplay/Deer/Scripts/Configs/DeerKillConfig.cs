@@ -2,7 +2,7 @@
 using DoubleDCore.TranslationTools.Extensions;
 using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Killing Config", menuName = "Configs/Deer Killing")]
     public class DeerKillConfig : ScriptableObject

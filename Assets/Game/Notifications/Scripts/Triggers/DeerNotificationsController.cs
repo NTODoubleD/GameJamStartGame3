@@ -1,5 +1,6 @@
 ﻿using DoubleDCore.UI.Base;
 using Game.Gameplay;
+using Game.Gameplay.Configs;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
 using Game.UI.Pages;
@@ -13,16 +14,21 @@ namespace Game.Notifications.Triggers
         private readonly DayCycleController _dayCycleController;
         private readonly IUIManager _uiManager;
         private readonly Herd _herd;
+        private readonly DeerHungerConfig _deerHungerConfig;
+        private readonly DeerAgeConfig _deerAgeConfig;
 
         private NotificationsPage _notificationsPage;
 
         public DeerNotificationsController(DeerFabric deerFabric, 
-            DayCycleController dayCycleController, IUIManager uiManager, Herd herd)
+            DayCycleController dayCycleController, IUIManager uiManager, Herd herd,
+            DeerHungerConfig deerHungerConfig, DeerAgeConfig deerAgeConfig)
         {
             _deerFabric = deerFabric;
             _dayCycleController = dayCycleController;
             _uiManager = uiManager;
             _herd = herd;
+            _deerHungerConfig = deerHungerConfig;
+            _deerAgeConfig = deerAgeConfig;
 
             _dayCycleController.DayEnded += SubscribeToDeer;
             _dayCycleController.DayStarted += ShowDeerHunger;
@@ -58,9 +64,9 @@ namespace Game.Notifications.Triggers
 
             if (info.StatusBeforeDeath == DeerStatus.VerySick)
                 descText = $"Ваш олень {name} умер от болезни";
-            else if (info.AgeDays == 7)
+            else if (info.AgeDays == _deerAgeConfig.AgeTable[DeerAge.None])
                 descText = $"Ваш олень {name} умер от старости";
-            else if (info.HungerDegree < 0.4f)
+            else if (info.HungerDegree < _deerHungerConfig.MinimalHungerDegree)
                 descText = $"Ваш олень {name} умер от голода";
             else
                 return;
@@ -75,7 +81,7 @@ namespace Game.Notifications.Triggers
             
             foreach (var deer in _herd.CurrentHerd)
             {
-                if (Mathf.Approximately(deer.DeerInfo.HungerDegree, 0.4f))
+                if (Mathf.Approximately(deer.DeerInfo.HungerDegree, _deerHungerConfig.MinimalHungerDegree))
                 {
                     showWarning = true;
                     break;

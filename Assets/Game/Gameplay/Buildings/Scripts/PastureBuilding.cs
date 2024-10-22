@@ -8,7 +8,7 @@ namespace Game.Gameplay.Buildings
     public class PastureBuilding : UpgradableBuilding
     {
         [SerializeField] private PastureLevelsConfig _levelsConfig;
-
+        
         private Herd _herd;
         private WalkablePlane _walkablePlane;
 

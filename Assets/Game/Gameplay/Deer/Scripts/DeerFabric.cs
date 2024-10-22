@@ -7,7 +7,7 @@ using DoubleDCore.TranslationTools.Base;
 using DoubleDCore.TranslationTools.Data;
 using Game.Gameplay.AI;
 using Game.Gameplay.Interaction;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using Game.Gameplay.States;
 using UnityEngine;
 using UnityEngine.Events;

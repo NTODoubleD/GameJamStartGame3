@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Images Config", menuName = "Configs/DeerImagesConfig")]
     public class DeerImagesConfig : ScriptableObject

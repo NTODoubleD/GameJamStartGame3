@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Random Walk Config", menuName = "Configs/DeerRandomWalkConfig")]
     public class RandomWalkConfig : ScriptableObject

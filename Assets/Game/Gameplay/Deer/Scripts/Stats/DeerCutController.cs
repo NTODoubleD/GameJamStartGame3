@@ -1,30 +1,29 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
 using Game.Infrastructure.Storage;
-using DoubleDCore.Service;
 using Game.Gameplay.DayCycle;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerCutController : MonoService
+    public class DeerCutController
     {
-        private const float HUNGER_STEP = 0.2f;
-        
-        [SerializeField] private CharacterAnimatorController _characterAnimatorController;
+        private readonly CharacterAnimatorController _characterAnimatorController;
+        private readonly ItemStorage _storage;
+        private readonly DeerCutConfig _cutConfig;
+        private readonly DayCycleController _dayCycleController;
+        private readonly float _hungerStep;
 
-        private ItemStorage _storage;
-        private DeerCutConfig _cutConfig;
-        private DayCycleController _dayCycleController;
-
-        [Inject]
-        private void Init(ItemStorage storage, IResourcesContainer resourcesContainer, DayCycleController dayCycleController)
+        public DeerCutController(ItemStorage storage, IResourcesContainer resourcesContainer, 
+            DayCycleController dayCycleController, CharacterAnimatorController characterAnimatorController,
+            DeerHungerConfig deerHungerConfig)
         {
             _storage = storage;
             _cutConfig = resourcesContainer.GetResource<ConfigsResource>().GetConfig<DeerCutConfig>();
             _dayCycleController = dayCycleController;
+            _characterAnimatorController = characterAnimatorController;
+            _hungerStep = deerHungerConfig.HungerStep;
         }
 
         public bool CanCut(Deer deer)
@@ -55,7 +54,7 @@ namespace Game.Gameplay.Deers
             float hungerDegree = deerInfo.HungerDegree;
 
             if (Mathf.Approximately(hungerDegree, 1) && deerInfo.DieDay != _dayCycleController.CurrentDay)
-                hungerDegree -= HUNGER_STEP;
+                hungerDegree -= _hungerStep;
 
             var loot = _cutConfig.GetLoot(hungerDegree);
             

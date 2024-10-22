@@ -19,11 +19,19 @@ namespace Game.Gameplay.Buildings
     {
         [SerializeField] private int _necessaryLevel;
 
+        private TownHallBuilding _townHallBuilding;
+        
         public int NecessaryLevel => _necessaryLevel;
+        
+        [Inject]
+        private void Init(BuildingsLocator buildingsLocator)
+        {
+            _townHallBuilding = buildingsLocator.TownHall;
+        }
 
         bool IUpgradeCondition.IsCompleted()
         {
-            return TownHallLocator.Instance.TownHall.CurrentLevel >= _necessaryLevel;
+            return _townHallBuilding.CurrentLevel >= _necessaryLevel;
         }
 
         void IUpgradeCondition.Accept(IUpgradeConditionVisitor visitor)

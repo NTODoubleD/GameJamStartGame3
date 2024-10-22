@@ -2,7 +2,7 @@
 using System.Collections;
 using DoubleDCore.Automat.Base;
 using Game.Gameplay.AI;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;

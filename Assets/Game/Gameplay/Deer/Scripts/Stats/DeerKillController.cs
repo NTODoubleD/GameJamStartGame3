@@ -1,6 +1,6 @@
 using DoubleDCore.Service;
 using DoubleDCore.UI.Base;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using Game.UI.Pages;
 using UnityEngine;
 using Zenject;

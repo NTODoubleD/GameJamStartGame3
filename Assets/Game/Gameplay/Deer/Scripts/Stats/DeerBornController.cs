@@ -6,53 +6,35 @@ using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
 using Game.Gameplay.Sleigh;
 using UnityEngine;
-using Zenject;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerBornController : MonoBehaviour
+    public class DeerBornController
     {
-        [SerializeField] private DayCycleController _dayCycleController;
-        [SerializeField] private SleighSendController _sleighSendController;
+        private readonly DayCycleController _dayCycleController;
+        private readonly SleighSendController _sleighSendController;
+        private readonly PastureBuilding _pastureBuilding;
+        private readonly Herd _herd;
+        private readonly DeerFabric _fabric;
 
-        [Space, SerializeField] private PastureBuilding _pastureBuilding;
-
-        private Herd _herd;
-        private DeerFabric _fabric;
-
-        private List<Deer> _suitableDeerRemains;
         private readonly Stack<Tuple<Deer, Deer>> _pairs = new();
-
-        private Dictionary<int, int> BuildLevelToCapacityTable = new()
-        {
-            { 1, 3 },
-            { 2, 4 },
-            { 3, 5 }
-        };
+        private List<Deer> _suitableDeerRemains;
 
         public event Action DeerIsBorn;
-
-        [Inject]
-        private void Init(Herd herd, DeerFabric fabric)
+        
+        public DeerBornController(Herd herd, DeerFabric fabric, 
+            DayCycleController dayCycleController, SleighSendController sleighSendController,
+            BuildingsLocator buildingsLocator)
         {
             _herd = herd;
             _fabric = fabric;
-        }
-
-        private void OnEnable()
-        {
+            _dayCycleController = dayCycleController;
+            _sleighSendController = sleighSendController;
+            _pastureBuilding = buildingsLocator.PastureBuilding;
+            
             _dayCycleController.DayStarted += OnDayStarted;
             _dayCycleController.DayEnded += OnDayEnded;
-
             _sleighSendController.SleighStarted += OnSleighStarted;
-        }
-
-        private void OnDisable()
-        {
-            _dayCycleController.DayStarted -= OnDayStarted;
-            _dayCycleController.DayEnded -= OnDayEnded;
-
-            _sleighSendController.SleighStarted -= OnSleighStarted;
         }
 
         private void OnSleighStarted(int deerAmount)
@@ -74,7 +56,7 @@ namespace Game.Gameplay.Deers
         private void OnDayStarted()
         {
             var currentYoung = _herd.CurrentHerd.Count(d => d.DeerInfo.Age == DeerAge.Young);
-            var capacity = BuildLevelToCapacityTable[_pastureBuilding.CurrentLevel];
+            var capacity = _pastureBuilding.GetDeerCapacity(DeerAge.Young);
 
             var youngDeerAmount = Math.Clamp(capacity - currentYoung, 0, _pairs.Count);
 
@@ -86,7 +68,7 @@ namespace Game.Gameplay.Deers
             for (int i = 0; i < youngDeerAmount; i++)
                 _fabric.CreateDeer();
 
-            SoundsManager.Instance.PlayNewbornOlen(UnityEngine.Camera.main.transform.position);
+            SoundsManager.Instance.PlayNewbornOlen(Camera.main!.transform.position);
             DeerIsBorn?.Invoke();
         }
 
@@ -110,6 +92,14 @@ namespace Game.Gameplay.Deers
                 _suitableDeerRemains.Remove(males[i]);
                 _suitableDeerRemains.Remove(females[i]);
             }
+        }
+        
+        ~DeerBornController()
+        {
+            _dayCycleController.DayStarted -= OnDayStarted;
+            _dayCycleController.DayEnded -= OnDayEnded;
+
+            _sleighSendController.SleighStarted -= OnSleighStarted;
         }
     }
 }

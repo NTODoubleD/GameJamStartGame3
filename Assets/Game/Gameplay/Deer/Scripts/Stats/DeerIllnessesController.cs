@@ -2,55 +2,30 @@
 using Game.Gameplay.Scripts;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using Zenject;
+using Game.Gameplay.Configs;
 using Random = UnityEngine.Random;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeersIllnessController : MonoBehaviour
+    public class DeerIllnessesController
     {
         private readonly Dictionary<Deer, int> _deersIllnesses = new();
+        
+        private readonly DayCycleController _dayCycleController;
+        private readonly DeerHealController _healController;
+        private readonly Herd _herd;
+        private readonly DeerIllnessesConfig _config;
 
-        [SerializeField] private DeerFabric _deerFabric;
-        [SerializeField] private DayCycleController _dayCycleController;
-        [SerializeField] private DeerHealController _healController;
-
-        [Header("Cast Ill Settings")] [SerializeField]
-        private float _illnessChance = 0.2f;
-
-        [SerializeField] private int _bigFlockIllnessesCount = 2;
-        [SerializeField] private int _smallFlockIllnessesCount = 1;
-        [SerializeField] private int _bigFlockCount = 4;
-
-        [Header("Continue Ill Settings")] [SerializeField]
-        private int _easySickDays = 1;
-
-        [SerializeField] private int _deathSickDays = 3;
-
-        private Herd _herd;
-
-        [Inject]
-        private void Init(Herd herd)
+        public DeerIllnessesController(DayCycleController dayCycleController, DeerHealController healController,
+            Herd herd, DeerIllnessesConfig config)
         {
+            _dayCycleController = dayCycleController;
+            _healController = healController;
             _herd = herd;
-        }
+            _config = config;
 
-        private void OnEnable()
-        {
             _dayCycleController.DayStarted += OnDayStarted;
             _healController.Healed += OnDeerHealed;
-        }
-
-        private void OnDisable()
-        {
-            _dayCycleController.DayStarted -= OnDayStarted;
-            _healController.Healed -= OnDeerHealed;
-        }
-
-        private void OnDeerCreated(Deer deer)
-        {
-            deer.Died += OnDeerDied;
         }
 
         private void OnDayStarted()
@@ -62,9 +37,9 @@ namespace Game.Gameplay.Deers
         private void CastIllnesses()
         {
             List<Deer> possibleTargets = _herd.CurrentHerd.Where(deer => deer.DeerInfo.Age != DeerAge.Young).ToList();
-            int targetsToCastIllnessCount = possibleTargets.Count >= _bigFlockCount
-                ? _bigFlockIllnessesCount
-                : _smallFlockIllnessesCount;
+            int targetsToCastIllnessCount = possibleTargets.Count >= _config.BigFlockCount
+                ? _config.BigFlockIllnessesCount
+                : _config.SmallFlockIllnessesCount;
 
             possibleTargets = possibleTargets.Where(deer => deer.DeerInfo.Status == DeerStatus.Standard).ToList();
             int sickedCount = 0;
@@ -79,7 +54,7 @@ namespace Game.Gameplay.Deers
 
                 float castedChance = Random.Range(0f, 1f);
 
-                if (castedChance <= _illnessChance)
+                if (castedChance <= _config.IllnessChance)
                 {
                     deer.DeerInfo.Status = DeerStatus.Sick;
                     _deersIllnesses.Add(deer, 1);
@@ -95,22 +70,22 @@ namespace Game.Gameplay.Deers
                 int currentDaysCount = _deersIllnesses[deer];
                 currentDaysCount++;
 
-                if (currentDaysCount > _easySickDays)
+                if (currentDaysCount > _config.EasySickDays)
                     deer.DeerInfo.Status = DeerStatus.VerySick;
-                else if (currentDaysCount > _deathSickDays)
+                else if (currentDaysCount > _config.DeathSickDays)
                     deer.Die();
             }
-        }
-
-        private void OnDeerDied(Deer deer)
-        {
-            deer.Died -= OnDeerDied;
-            _deersIllnesses.Remove(deer);
         }
 
         private void OnDeerHealed(Deer deer)
         {
             _deersIllnesses.Remove(deer);
+        }
+        
+        ~DeerIllnessesController()
+        {
+            _dayCycleController.DayStarted -= OnDayStarted;
+            _healController.Healed -= OnDeerHealed;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Gameplay.Scripts.Configs
+namespace Game.Gameplay.Configs
 {
     [CreateAssetMenu(fileName = "Deer Random Idle Config", menuName = "Configs/DeerRandomIdleConfig")]
     public class RandomIdleConfig : ScriptableObject

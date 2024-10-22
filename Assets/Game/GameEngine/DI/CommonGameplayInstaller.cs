@@ -1,9 +1,5 @@
-﻿using DoubleDCore.Configuration;
-using DoubleDCore.GameResources.Base;
-using Game.Gameplay.CharacterCamera;
-using Game.Gameplay.Scripts.Configs;
+﻿using Game.Gameplay.CharacterCamera;
 using Game.Tips;
-using Game.Tips.Configs;
 using Zenject;
 using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
 using Game.Notifications.Triggers;
@@ -18,25 +14,10 @@ namespace Game.GameEngine.DI
             foreach (var task in FindObjectsOfType<ConsumeItemTask>())
                 Container.Bind<IGameItemUseObserver>().To<ConsumeItemTask>().FromInstance(task).AsCached();
 
-            BindConfigs();
             Container.BindInterfacesAndSelfTo<GameTrainingsStarter>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<CameraZoomController>().AsSingle().NonLazy();
 
             Container.Bind<DeerNotificationsController>().AsSingle().NonLazy();
-        }
-        
-        private void BindConfigs()
-        {
-            var resourceContainer = Container.Resolve<IResourcesContainer>();
-            var configsResource = resourceContainer.GetResource<ConfigsResource>();
-            
-            GameTrainingsConfig trainingsConfig = configsResource.GetConfig<GameTrainingsConfig>();
-            CameraZoomConfig zoomConfig = configsResource.GetConfig<CameraZoomConfig>();
-            DeerAgeConfig deerAgeConfig = configsResource.GetConfig<DeerAgeConfig>();
-            
-            Container.BindInstance(trainingsConfig).AsSingle();
-            Container.BindInstance(zoomConfig).AsSingle();
-            Container.BindInstance(deerAgeConfig).AsSingle();
         }
     }
 }

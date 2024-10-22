@@ -8,7 +8,7 @@ using DoubleDCore.UI.Base;
 using Game.Gameplay.AI;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
-using Game.Gameplay.Scripts.Configs;
+using Game.Gameplay.Configs;
 using Game.Gameplay.States;
 using Game.UI.Pages;
 using UnityEngine;

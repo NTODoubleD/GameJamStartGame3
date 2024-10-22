@@ -1,32 +1,25 @@
 ﻿using System.Collections.Generic;
 using Game.Gameplay.DayCycle;
 using Game.Gameplay.Scripts;
-using Game.Gameplay.Scripts.Configs;
-using UnityEngine;
-using Zenject;
+using Game.Gameplay.Configs;
 
 namespace Game.Gameplay.Deers
 {
-    public class DeerAgeController : MonoBehaviour
+    public class DeerAgeController
     {
         private const DeerAge DeathAge = DeerAge.None;
         
         private readonly HashSet<Deer> _deersToKill = new();
-        
-        private DayCycleController _dayCycleController;
-        private Herd _herd;
-        private DeerAgeConfig _config;
+        private readonly DayCycleController _dayCycleController;
+        private readonly Herd _herd;
+        private readonly DeerAgeConfig _config;
 
-        [Inject]
-        private void Init(DayCycleController dayCycleController, Herd herd, DeerAgeConfig config)
+        public DeerAgeController(DayCycleController dayCycleController, Herd herd, DeerAgeConfig config)
         {
             _dayCycleController = dayCycleController;
             _herd = herd;
             _config = config;
-        }
-
-        private void OnEnable()
-        {
+            
             _dayCycleController.DayStarted += AddAgeToDeer;
         }
 
@@ -62,8 +55,8 @@ namespace Game.Gameplay.Deers
             foreach (var deer in _deersToKill)
                 deer.Die();
         }
-
-        private void OnDisable()
+        
+        ~DeerAgeController()
         {
             _dayCycleController.DayStarted -= AddAgeToDeer;
         }
