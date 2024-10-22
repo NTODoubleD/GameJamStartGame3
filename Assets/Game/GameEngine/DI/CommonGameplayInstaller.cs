@@ -1,6 +1,7 @@
 ﻿using DoubleDCore.Configuration;
 using DoubleDCore.GameResources.Base;
 using Game.Gameplay.CharacterCamera;
+using Game.Gameplay.Scripts.Configs;
 using Game.Tips;
 using Game.Tips.Configs;
 using Zenject;
@@ -31,9 +32,11 @@ namespace Game.GameEngine.DI
             
             GameTrainingsConfig trainingsConfig = configsResource.GetConfig<GameTrainingsConfig>();
             CameraZoomConfig zoomConfig = configsResource.GetConfig<CameraZoomConfig>();
+            DeerAgeConfig deerAgeConfig = configsResource.GetConfig<DeerAgeConfig>();
             
             Container.BindInstance(trainingsConfig).AsSingle();
             Container.BindInstance(zoomConfig).AsSingle();
+            Container.BindInstance(deerAgeConfig).AsSingle();
         }
     }
 }

@@ -7,6 +7,7 @@ using DoubleDCore.TranslationTools.Base;
 using DoubleDCore.TranslationTools.Data;
 using Game.Gameplay.AI;
 using Game.Gameplay.Interaction;
+using Game.Gameplay.Scripts.Configs;
 using Game.Gameplay.States;
 using UnityEngine;
 using UnityEngine.Events;
@@ -31,6 +32,7 @@ namespace Game.Gameplay.Scripts
 
         private WalkablePlane _walkablePlane;
         private DiContainer _diContainer;
+        private DeerAgeConfig _ageConfig;
 
         private List<string> _deerMaleNames;
         private List<string> _deerFemaleNames;
@@ -40,8 +42,10 @@ namespace Game.Gameplay.Scripts
         public event UnityAction<Deer> Created;
 
         [Inject]
-        private void Init(WalkablePlane walkablePlane, DiContainer container, ILanguageProvider languageProvider)
+        private void Init(WalkablePlane walkablePlane, DiContainer container, 
+            ILanguageProvider languageProvider, DeerAgeConfig ageConfig)
         {
+            _ageConfig = ageConfig;
             _walkablePlane = walkablePlane;
 
             _diContainer = container;
@@ -87,6 +91,8 @@ namespace Game.Gameplay.Scripts
                 HungerDegree = hungeredDegree < 0 ? 1 : hungeredDegree,
                 Status = deerStatus == DeerStatus.None ? DeerStatus.Standard : deerStatus
             };
+            
+            deerInfo.AgeDays = _ageConfig.AgeTable[deerInfo.Age];
 
             if (gender == GenderType.None)
             {

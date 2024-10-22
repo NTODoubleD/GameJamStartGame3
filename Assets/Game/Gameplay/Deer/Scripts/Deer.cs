@@ -66,17 +66,6 @@ namespace Game.Gameplay
 
             _navMeshAgent.speed = deerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
 
-            foreach (var ageDays in _ageTable.Keys)
-            {
-                if (_ageTable[ageDays] == deerInfo.Age)
-                {
-                    _age = ageDays;
-                    break;
-                }
-            }
-
-            deerInfo.AgeDays = _age;
-
             _deerStateMachine = new StateMachine();
 
             var randomWalkConfig = _configsResource.GetConfig<RandomWalkConfig>();
@@ -117,43 +106,8 @@ namespace Game.Gameplay
             _uiManager.OpenPage<DeerInfoPage, DeerInfoPageArgument>(GetDeerInfoPageArgument());
         }
 
-        private void OnEnable()
+        public void UpdateStateByAge()
         {
-            _dayCycleController.DayStarted += AddAge;
-        }
-
-        private void OnDisable()
-        {
-            _dayCycleController.DayStarted -= AddAge;
-        }
-
-        private int _age = 0;
-
-        private readonly Dictionary<int, DeerAge> _ageTable = new()
-        {
-            { 2, DeerAge.Adult },
-            { 5, DeerAge.Old },
-            { 7, DeerAge.None }
-        };
-
-        public void AddAge()
-        {
-            if (DeerInfo.Status == DeerStatus.Killed)
-                return;
-            
-            _age++;
-
-            DeerInfo.AgeDays = _age;
-            if (_ageTable.ContainsKey(_age) == false)
-                return;
-
-            if (_ageTable[_age] == DeerAge.None)
-            {
-                Die();
-                return;
-            }
-
-            DeerInfo.Age = _ageTable[_age];
             _deerMeshing.ChangeMesh(DeerInfo.Age, DeerInfo.Gender);
             _navMeshAgent.speed = DeerInfo.Age == DeerAge.Young ? _childSpeed : _normalSpeed;
         }
