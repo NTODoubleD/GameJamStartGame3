@@ -449,9 +449,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 4530013386214904239}
-  _increaseColor: {r: 0, g: 1, b: 0.3841746, a: 1}
-  _decreaseColor: {r: 1, g: 0.36386806, b: 0, a: 1}
-  _animationOffset: {x: -180, y: 0}
+  _increaseColor: {r: 0.03246844, g: 1, b: 0, a: 1}
+  _decreaseColor: {r: 1, g: 0.009178653, b: 0, a: 1}
+  _animationOffset: {x: -200, y: 0}
+  _scaleFactor: 2
 --- !u!225 &4530013386214904239
 CanvasGroup:
   m_ObjectHideFlags: 0
