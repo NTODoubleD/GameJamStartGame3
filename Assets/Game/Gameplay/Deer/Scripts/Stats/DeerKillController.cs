@@ -13,11 +13,13 @@ namespace Game.Gameplay.Deers
         [SerializeField] private DeerKillConfig _deerKillConfig;
 
         private IUIManager _uiManager;
-        
+        private GameInput _gameInput;
+
         [Inject]
-        private void Init(IUIManager uiManager)
+        private void Init(IUIManager uiManager, GameInput gameInput)
         {
             _uiManager = uiManager;
+            _gameInput = gameInput;
         }
 
         public bool CanKill(Deer deer)
@@ -47,11 +49,17 @@ namespace Game.Gameplay.Deers
         private void CancelKilling(Deer deer)
         {
             deer.EnterWalkingState();
+
+            _gameInput.Player.Enable();
+            _gameInput.UI.Disable();
         }
 
         private void ApplyKill(Deer deer)
         {
             deer.Kill();
+
+            _gameInput.Player.Enable();
+            _gameInput.UI.Disable();
         }
     }
 }
