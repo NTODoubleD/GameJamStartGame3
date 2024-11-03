@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DoubleDCore.TranslationTools.Data;
 using Game;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ public class TutorialMenu : MonoBehaviour
     public Image Image;
 
     public GameObject TutorPanel;
-    
+
     private int _idCurrentTutorial;
     private int _idCurrentList;
 
@@ -27,7 +25,7 @@ public class TutorialMenu : MonoBehaviour
 
     public void StartTutorial(int id)
     {
-        if(id < 0 || id >= Tutorials.Count)
+        if (id < 0 || id >= Tutorials.Count)
             return;
         _idCurrentTutorial = id;
         _idCurrentList = 0;
@@ -60,7 +58,7 @@ public class TutorialMenu : MonoBehaviour
         _idCurrentList--;
         UpdatePage();
     }
-    
+
     public void UpdatePage()
     {
         TutorPanel.SetActive(true);
@@ -74,12 +72,13 @@ public class Tutorial
 {
     public List<TranslatableTutorialPart> Sprites;
 }
+
 [Serializable]
 public class TranslatableTutorialPart
 {
     public Sprite en;
     public Sprite ru;
 
-    public Sprite GetSprite() => 
+    public Sprite GetSprite() =>
         StaticLanguageProvider.GetLanguage() == LanguageType.Ru ? ru : en;
 }
