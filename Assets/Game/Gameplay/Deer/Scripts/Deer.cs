@@ -73,6 +73,7 @@ namespace Game.Gameplay
 
             _deerStateMachine.BindState(new DeerIdleState(this, randomIdleConfig));
             _deerStateMachine.BindState(new DeerEatsState(_deerStateMachine));
+            _deerStateMachine.BindState(new DeerPetState(_player, transform));
             _deerStateMachine.BindState(new DeerDieState(_animatorController, DeerInfo, _navMeshAgent));
             _deerStateMachine.BindState(new DeerCutState(gameObject));
             _deerStateMachine.BindState(new DeerRandomWalkState(_navMeshAgent, _walkablePlane, this, randomWalkConfig));
@@ -128,6 +129,14 @@ namespace Game.Gameplay
                 return;
 
             _deerStateMachine.Enter<DeerRandomWalkState>();
+        }
+
+        public void EnterPetState()
+        {
+            if (DeerInfo.Status == DeerStatus.Killed)
+                return;
+            
+            _deerStateMachine.Enter<DeerPetState>();
         }
 
         public void EnterUserInteractionState()

@@ -13,6 +13,7 @@ namespace Game.GameEngine.DI
             Container.Bind<DeerIllnessesController>().AsSingle().NonLazy();
             
             Container.Bind<DeerCutController>().AsSingle();
+            Container.Bind<DeerPetController>().AsSingle();
         }
     }
 }

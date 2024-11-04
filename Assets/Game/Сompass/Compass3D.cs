@@ -19,8 +19,6 @@ namespace Game.Сompass
 
         public override void SetActive(bool active)
         {
-            Debug.Log($"COMPASS IS {active}");
-            
             if (_currentTweener != null && _currentTweener.IsActive())
                 _currentTweener.Kill();
 

@@ -109,28 +109,28 @@ AnimatorStateMachine:
     m_Position: {x: 190, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8377317117868889580}
-    m_Position: {x: 380, y: 90, z: 0}
+    m_Position: {x: 390, y: 30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1376969905504983576}
     m_Position: {x: 560, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1018334919490733956}
-    m_Position: {x: 520, y: 380, z: 0}
+    m_Position: {x: 540, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 789818631262583932}
     m_Position: {x: -90, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3744559570147797349}
-    m_Position: {x: 530, y: 290, z: 0}
+    m_Position: {x: 550, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3213640503469827080}
     m_Position: {x: -130, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1465343111048859990}
-    m_Position: {x: 90, y: 430, z: 0}
+    m_Position: {x: 120, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -246525286399687350}
-    m_Position: {x: 340, y: 430, z: 0}
+    m_Position: {x: 370, y: 410, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -3257984943017313889}
@@ -309,8 +309,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.9817518
+  m_TransitionOffset: 0.02947436
+  m_ExitTime: 0.999218
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -461,7 +461,7 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: MiniPet
     m_Type: 9
@@ -800,8 +800,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.9782609
+  m_TransitionOffset: 0.02947436
+  m_ExitTime: 0.999218
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

@@ -20,11 +20,15 @@ public class CharacterAnimatorController : MonoService
     private static readonly int Cut = Animator.StringToHash("Cut");
     private static readonly int Sit = Animator.StringToHash("Sit");
     private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int BigPet = Animator.StringToHash("BigPet");
+    private static readonly int MiniPet = Animator.StringToHash("MiniPet");
 
     private UnityAction _currentKillCallback;
     private UnityAction _currentHealCallback;
     private UnityAction _currentFeedCallback;
     private UnityAction _currentCutCallback;
+    private UnityAction _currentMiniPetCallback;
+    private UnityAction _currentBigPetCallback;
 
     public event UnityAction StartedPickingUp;
     public event UnityAction PickedUp;
@@ -70,6 +74,18 @@ public class CharacterAnimatorController : MonoService
     {
         _currentCutCallback = endCallback;
         _animator.SetTrigger(Cut);
+    }
+
+    public void AnimateMiniPetting(UnityAction endCallback = null)
+    {
+        _currentMiniPetCallback = endCallback;
+        _animator.SetTrigger(MiniPet);
+    }
+    
+    public void AnimateBigPetting(UnityAction endCallback = null)
+    {
+        _currentBigPetCallback = endCallback;
+        _animator.SetTrigger(BigPet);
     }
     
     public void AnimateSitting()
@@ -117,6 +133,18 @@ public class CharacterAnimatorController : MonoService
     {
         _currentCutCallback?.Invoke();
         _currentCutCallback = null;
+    }
+    
+    public void OnMiniPettingEnded()
+    {
+        _currentMiniPetCallback?.Invoke();
+        _currentMiniPetCallback = null;
+    }
+    
+    public void OnBigPettingEnded()
+    {
+        _currentBigPetCallback?.Invoke();
+        _currentBigPetCallback = null;
     }
 
     public void OnStartedInteraction() =>

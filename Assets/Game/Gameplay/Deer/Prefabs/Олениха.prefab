@@ -354,6 +354,39 @@ MonoBehaviour:
           m_CallState: 2
     HasCondition: 1
     ShowCondition: {fileID: 4453041742389616488}
+  - Name: "\u041F\u043E\u0433\u043B\u0430\u0434\u0438\u0442\u044C"
+    EnName: Pet
+    Image: {fileID: 0}
+    Action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 717509723002654613}
+          m_TargetAssemblyTypeName: Game.Gameplay.Interaction.PetControllerEntryPoint,
+            Assembly-CSharp
+          m_MethodName: Pet
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1405855403181397833}
+          m_TargetAssemblyTypeName: Game.UI.ExitRadialMenu, Assembly-CSharp
+          m_MethodName: Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    HasCondition: 1
+    ShowCondition: {fileID: 717509723002654613}
   _outlines:
   - {fileID: 1921813294953060070}
   _deer: {fileID: 4152291097108346834}
@@ -4669,6 +4702,18 @@ PrefabInstance:
       addedObject: {fileID: 6306242534544555074}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2c863a120e954343a510518f0fcb60b, type: 3}
+--- !u!114 &717509723002654613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8375576435838280578, guid: d2c863a120e954343a510518f0fcb60b,
+    type: 3}
+  m_PrefabInstance: {fileID: 9063807809089678359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c0ad14629848caa51a0b52c9a90740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1298674473293155247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8056038836707403704, guid: d2c863a120e954343a510518f0fcb60b,
