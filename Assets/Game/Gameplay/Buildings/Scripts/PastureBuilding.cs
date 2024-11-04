@@ -21,9 +21,9 @@ namespace Game.Gameplay.Buildings
 
         public int DeerCount => _herd.SuitableDeer.Count;
 
-        public int GetDeerCapacity(DeerAge deerAge)
+        public int GetDeerCapacity()
         {
-            return _levelsConfig.GetStatsAt(CurrentLevel).Capacities[deerAge];
+            return _levelsConfig.GetStatsAt(CurrentLevel).Capacity;
         }
 
         protected override void OnUpgraded()

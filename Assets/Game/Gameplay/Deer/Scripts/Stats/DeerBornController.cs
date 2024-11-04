@@ -55,10 +55,10 @@ namespace Game.Gameplay.Deers
 
         private void OnDayStarted()
         {
-            var currentYoung = _herd.CurrentHerd.Count(d => d.DeerInfo.Age == DeerAge.Young);
-            var capacity = _pastureBuilding.GetDeerCapacity(DeerAge.Young);
+            var currentHerdCount = _herd.CurrentHerd.Count();
+            var capacity = _pastureBuilding.GetDeerCapacity();
 
-            var youngDeerAmount = Math.Clamp(capacity - currentYoung, 0, _pairs.Count);
+            var youngDeerAmount = Math.Clamp(capacity - currentHerdCount, 0, _pairs.Count);
 
             if (youngDeerAmount <= 0)
                 return;
