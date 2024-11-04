@@ -2,9 +2,11 @@
 using Cinemachine;
 using DG.Tweening;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.CharacterCamera;
 using Game.Gameplay.Interaction;
 using Game.UI;
 using Game.UI.Pages;
+using Game.Сompass;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -23,6 +25,7 @@ namespace Game.Gameplay.Character
         [SerializeField] private AnimatedAudio _mainThemeSoundSource;
 
         private Vector3 _outPosition;
+        private bool _previousCompassActiveState;
 
         private CharacterAnimatorController _characterAnimatorController;
         private LocalMenuOpener _localMenuOpener;
@@ -30,13 +33,16 @@ namespace Game.Gameplay.Character
         private IUIManager _uiManager;
         private TriggerCanvas _firePlaceTriggerCanvas;
         private CinemachineVirtualCamera _characterCamera;
+        private CameraZoomController _cameraZoomController;
+        private CompassController _compassController;
 
         private Tweener _currentTweener;
 
         [Inject]
         private void Init(CharacterAnimatorController characterAnimatorController, LocalMenuOpener localMenuOpener,
             GameInput inputController, IUIManager uiManager, TriggerCanvas firePlaceTriggerCanvas,
-            CinemachineVirtualCamera characterCamera)
+            CinemachineVirtualCamera characterCamera, CameraZoomController cameraZoomController, 
+            CompassController compassController)
         {
             _characterAnimatorController = characterAnimatorController;
             _localMenuOpener = localMenuOpener;
@@ -44,11 +50,16 @@ namespace Game.Gameplay.Character
             _uiManager = uiManager;
             _firePlaceTriggerCanvas = firePlaceTriggerCanvas;
             _characterCamera = characterCamera;
+            _cameraZoomController = cameraZoomController;
+            _compassController = compassController;
         }
 
         //UNITY EVENT
         public void StartSitting()
         {
+            _cameraZoomController.IsEnabled = false;
+            _compassController.IsBlocked = true;
+            
             _uiManager.ClosePage<PlayerMetricsPage>();
             _uiManager.ClosePage<ResourcePage>();
             _uiManager.ClosePage<QuestPage>();
@@ -80,6 +91,8 @@ namespace Game.Gameplay.Character
 
         private void StopSitting()
         {
+            _compassController.IsBlocked = false;
+            
             _uiManager.ClosePage<SittingPage>();
             _uiManager.OpenPage<PlayerMetricsPage>();
             _uiManager.OpenPage<ResourcePage>();
@@ -91,7 +104,7 @@ namespace Game.Gameplay.Character
             var transposer = _characterCamera.GetCinemachineComponent<CinemachineTransposer>();
             _currentTweener = DOTween
                 .To(() => transposer.m_FollowOffset, x => transposer.m_FollowOffset = x,
-                    _outPosition, _outDuration);
+                    _outPosition, _outDuration).OnComplete(() => { _cameraZoomController.IsEnabled = true; });
 
             _characterAnimatorController.AnimateStanding();
             _firePlaceTriggerCanvas.SetActive(true);

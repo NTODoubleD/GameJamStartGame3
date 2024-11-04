@@ -11,6 +11,8 @@ namespace Game.Gameplay.CharacterCamera
         private readonly CameraZoomConfig _config;
         private readonly GameInput _gameInput;
 
+        public bool IsEnabled = true;
+
         private Vector3 _targetVector;
 
         public CameraZoomController(CinemachineVirtualCamera characterCamera,
@@ -46,6 +48,9 @@ namespace Game.Gameplay.CharacterCamera
 
         public void Tick()
         {
+            if (IsEnabled == false)
+                return;
+            
             _transposer.m_FollowOffset =
                 Vector3.Lerp(_transposer.m_FollowOffset, _targetVector, _config.ChangeSpeed * Time.deltaTime);
         }

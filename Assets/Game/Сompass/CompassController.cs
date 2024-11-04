@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DoubleDCore.QuestsSystem.Base;
+using DoubleDCore.Service;
 using Game.Quests;
 using Game.Quests.Base;
 using UnityEngine;
@@ -7,12 +8,13 @@ using Zenject;
 
 namespace Game.Сompass
 {
-    public class CompassController : MonoBehaviour
+    public class CompassController : MonoService
     {
         [SerializeField] private CommpassView _view;
 
+        public bool IsBlocked;
+        
         private bool _compassActive;
-
         private bool CompassActive
         {
             get => _compassActive;
@@ -43,7 +45,7 @@ namespace Game.Сompass
 
         private void Update()
         {
-            if (HasTarget == false)
+            if (HasTarget == false || IsBlocked)
             {
                 if (CompassActive)
                     CompassActive = false;
