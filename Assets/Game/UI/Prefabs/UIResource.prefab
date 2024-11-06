@@ -330,13 +330,13 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4351858303325143726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 0}
+  m_AnchoredPosition: {x: -220, y: 0}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6548373553711569080
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -451,8 +451,33 @@ MonoBehaviour:
   _canvasGroup: {fileID: 4530013386214904239}
   _increaseColor: {r: 0.03246844, g: 1, b: 0, a: 1}
   _decreaseColor: {r: 1, g: 0.009178653, b: 0, a: 1}
-  _animationOffset: {x: -200, y: 0}
-  _scaleFactor: 2
+  _animationOffset: {x: -220, y: 0}
+  _scaleFactor: 1.5
+  _endScaleFactor: 0.8
+  _scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2.7730424
+      outSlope: 2.7730424
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05401262
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!225 &4530013386214904239
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ namespace DoubleDCore.Tween.Effects
         [SerializeField] private Color _decreaseColor;
         [SerializeField] private Vector2 _animationOffset;
         [SerializeField] private float _scaleFactor = 1.5f;
+        [SerializeField] private float _endScaleFactor = 0.8f;
+        [SerializeField] private AnimationCurve _scaleCurve;
 
         private TMP_Text _text;
 
@@ -66,18 +68,18 @@ namespace DoubleDCore.Tween.Effects
 
             await UniTask.WaitForSeconds(2f);
 
-            _text.rectTransform.DOLocalMove(Vector3.zero, 1).OnComplete(() => onEnd?.Invoke());
-            _text.rectTransform.DOScale(1, 1);
+            _text.rectTransform.DOLocalMove(Vector3.zero, 1).SetEase(_scaleCurve).OnComplete(() => onEnd?.Invoke());
+            _text.rectTransform.DOScale(_endScaleFactor, 1).SetEase(_scaleCurve);
             DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 0, 1f);
         }
 
         private async void DecreaseSequenceAnimation(Action onEnd = null)
         {
             _text.rectTransform.DOLocalMove(Vector3.zero, 0);
-            _text.rectTransform.DOScale(1, 0);
+            _text.rectTransform.DOScale(_endScaleFactor, 0);
 
-            _text.rectTransform.DOLocalMove(_animationOffset, 1);
-            _text.rectTransform.DOScale(_scaleFactor, 1);
+            _text.rectTransform.DOLocalMove(_animationOffset, 1).SetEase(_scaleCurve);
+            _text.rectTransform.DOScale(_scaleFactor, 1).SetEase(_scaleCurve);
 
             DOTween.To(() => _canvasGroup.alpha, x => _canvasGroup.alpha = x, 1, 1f);
 
