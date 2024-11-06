@@ -1,28 +1,33 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
 using Game.WorldMap;
-using TMPro;
 using UnityEngine;
 
 namespace Game.UI.Pages
 {
     public class WorldInterestPointPage : MonoPage, IPayloadPage<InterestPointArgument>
     {
-        [SerializeField] private TMP_Text _nameText;
         [SerializeField] private RectTransform _widgetRoot;
-        [SerializeField] private ClickButton _startSortieButton;
-
-        [Space, SerializeField] private UIResource _wood;
-        [SerializeField] private UIResource _moss;
-        [SerializeField] private UIResource _healGrass;
+        [SerializeField] private InterestPointWidget _prefab;
         [Range(0.01f, 500f), SerializeField] private float _scaleFactor;
+        [SerializeField] private float _worldWidgetOffsetDistance = 10f;
 
         private Camera _camera;
+
+        private readonly List<InterestPointWidget> _pool = new();
 
         public override void Initialize()
         {
             _camera = Camera.main;
+
+            for (int i = 0; i < 10; i++)
+            {
+                var widget = Instantiate(_prefab, _widgetRoot);
+                widget.SetActive(false);
+
+                _pool.Add(widget);
+            }
 
             SetCanvasState(false);
         }
@@ -31,18 +36,25 @@ namespace Game.UI.Pages
 
         public void Open(InterestPointArgument context)
         {
-            _nameText.text = context.Name;
-
-            SetResourcePriorities(context);
-
-            _startSortieButton.Clicked += StartSortie;
             _currentContext = context;
+
+            for (int i = 0; i < context.Points.Count; i++)
+            {
+                var point = context.Points[i];
+
+                var widget = _pool[i];
+                widget.SetInfo(point);
+                widget.SetActive(true);
+            }
+
             SetCanvasState(true);
         }
 
         public override void Close()
         {
-            _startSortieButton.Clicked -= StartSortie;
+            foreach (var interestPointWidget in _pool)
+                interestPointWidget.SetActive(false);
+
             SetCanvasState(false);
         }
 
@@ -51,36 +63,38 @@ namespace Game.UI.Pages
             if (!PageIsDisplayed)
                 return;
 
-            UpdateWidgetPosition(_currentContext.Position);
+            for (int i = 0; i < _currentContext.Points.Count; i++)
+            {
+                var point = _currentContext.Points[i];
+                var widget = _pool[i];
+
+                UpdateWidgetPosition(point.Position, widget);
+            }
         }
 
-        private void SetResourcePriorities(InterestPointArgument context)
+        private void UpdateWidgetPosition(Vector3 interestPointPosition, InterestPointWidget target)
         {
-            _wood.Refresh(context.SortieResource.Wood.GetCount(context.SleighLevel));
-            _moss.Refresh(context.SortieResource.Moss.GetCount(context.SleighLevel));
-            _healGrass.Refresh(context.SortieResource.HealGrass.GetCount(context.SleighLevel));
-        }
+            Vector3 widgetPosition = interestPointPosition + new Vector3(0, 0, -_worldWidgetOffsetDistance);
 
-        private void UpdateWidgetPosition(Vector3 interestPointPosition)
-        {
-            _widgetRoot.anchoredPosition = _camera.WorldToScreenPoint(interestPointPosition) / Canvas.scaleFactor;
+            target.RectTransform.anchoredPosition =
+                _camera.WorldToScreenPoint(widgetPosition) / Canvas.scaleFactor;
 
             var cameraPosition = _camera.transform.position;
 
-            _widgetRoot.localScale = Vector3.one *
-                                     (_scaleFactor /
-                                      Vector2.Distance(
-                                          new Vector2(cameraPosition.y, cameraPosition.z),
-                                          new Vector2(interestPointPosition.y, interestPointPosition.z)));
-        }
+            float scale = _scaleFactor / Vector2.Distance(
+                new Vector2(cameraPosition.y, cameraPosition.z),
+                new Vector2(widgetPosition.y, widgetPosition.z));
 
-        private void StartSortie()
-        {
-            _currentContext.StartSortieCallback?.Invoke(_currentContext.SortieResource);
+            target.RectTransform.localScale = Vector3.one * scale;
         }
     }
 
     public class InterestPointArgument
+    {
+        public IReadOnlyList<PointInfo> Points;
+    }
+
+    public class PointInfo
     {
         public string Name;
 
@@ -88,6 +102,5 @@ namespace Game.UI.Pages
         public int SleighLevel;
 
         public Vector3 Position;
-        public Action<SortieResourceArgument> StartSortieCallback;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using DoubleDCore.Service;
@@ -17,6 +19,7 @@ namespace Game.WorldMap
     {
         [SerializeField] private ParticleSystem _effect;
         [SerializeField] private CanvasGroup _whiteScreen;
+        [SerializeField] private List<ResourcePoint> _resourcePoints;
         [SerializeField] private GameObject[] _objects;
 
         private GameplayLocalStateMachine _stateMachine;
@@ -43,10 +46,15 @@ namespace Game.WorldMap
             Close();
         }
 
-        public void Open()
+        private void Open()
         {
             foreach (var o in _objects)
                 o.SetActive(true);
+
+            _uiManager.OpenPage<WorldInterestPointPage, InterestPointArgument>(new InterestPointArgument
+            {
+                Points = _resourcePoints.Select(r => r.GetPointInfo()).ToList()
+            });
 
             Opened?.Invoke();
         }

@@ -33,47 +33,29 @@ namespace Game.WorldMap
             _sleighBuilding = sleighBuilding;
         }
 
-        private bool _isDisplayed;
-
         public override void Interact()
         {
-            if (_isDisplayed)
-                return;
+            StartSortie();
+        }
 
-            if (_uiManager.GetPage<WorldInterestPointPage>().IsDisplayed)
-                _uiManager.ClosePage<WorldInterestPointPage>();
-
-            _uiManager.OpenPage<WorldInterestPointPage, InterestPointArgument>(new InterestPointArgument
+        public PointInfo GetPointInfo()
+        {
+            return new PointInfo
             {
                 Name = Name,
                 SortieResource = _sortieResource,
                 SleighLevel = _sleighBuilding.SleighBuilding.CurrentLevel - 1,
                 Position = transform.position,
-                StartSortieCallback = StartSortie
-            });
-
-            _isDisplayed = true;
-            _uiManager.PageClosed += OnPageClosed;
+            };
         }
 
-        private void OnPageClosed(IPage page)
+        private void StartSortie()
         {
-            if (page is not WorldInterestPointPage)
-                return;
-
-            _isDisplayed = false;
-            _uiManager.PageClosed -= OnPageClosed;
-        }
-
-        private void StartSortie(SortieResourceArgument context)
-        {
-            _uiManager.ClosePage<WorldInterestPointPage>();
-
             _cycleController.DayStarted += CloseWorldMap;
 
             var sortiePage = _uiManager.GetPage<SortiePage>();
 
-            sortiePage.SetResourcePriorities(context);
+            sortiePage.SetResourcePriorities(SortieResource);
             _uiManager.OpenPage<SortiePage>();
         }
 
