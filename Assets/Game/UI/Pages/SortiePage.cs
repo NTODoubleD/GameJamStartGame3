@@ -137,8 +137,8 @@ namespace Game.UI.Pages
             _dearAmountText.text = string.Format(_dearAmountTranslate.GetText(), chosenAmount, _deerCapacity);
 
             if (chosenAmount == _deerCapacity)
-                _dearAmountText.text = _dearAmountText.text.Color(UIColor.BlueForBlackColor);
-
+                _dearAmountText.text = _dearAmountText.text.Color(UIColor.BlueColorHex);
+            
             if (chosenAmount == 0)
                 _dearAmountText.text = _dearAmountText.text.Color(UIColor.WhiteColor);
 
