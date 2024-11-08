@@ -107,8 +107,8 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
                 if (_isPaused == false)
                     CurrentFrostTimeLeft = Mathf.Max(0, CurrentFrostTimeLeft - Time.deltaTime);
                 
-                if (frostLevel != FrostLevel.Weak)
-                    Debug.Log($"TIME LEFT FROM FROST {CurrentFrostTimeLeft}");
+                // if (frostLevel != FrostLevel.Weak)
+                //     Debug.Log($"TIME LEFT FROM FROST {CurrentFrostTimeLeft}");
             }
             
             _frostController.Enable(FrostLevel.Weak);
