@@ -16,6 +16,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
 
         private CancellationTokenSource _cts;
         private bool _isEffectActive;
+        private bool _isPaused;
 
         public LowMetricEffectController(PlayerMetricsModel playerMetricsModel,
             CharacterMovementSettings characterMovementSettings)
@@ -50,6 +51,16 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
                 DeactivateEffect();
         }
 
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            _isPaused = false;
+        }
+
         private void ActivateEffect()
         {
             _isEffectActive = true;
@@ -70,9 +81,12 @@ namespace Game.Gameplay.SurvivalMeсhanics.PlayerMetrics
         {
             while (!token.IsCancellationRequested && _playerMetricsModel.Health > 0)
             {
-                float damage = _effectsDamage.Keys.Sum(x => _effectsDamage[x]);
+                if (_isPaused == false)
+                {
+                    float damage = _effectsDamage.Keys.Sum(x => _effectsDamage[x]);
+                    _playerMetricsModel.Health -= damage;
+                }
                 
-                _playerMetricsModel.Health -= damage;
                 await UniTask.Delay(1000, cancellationToken: token);
             }
         }

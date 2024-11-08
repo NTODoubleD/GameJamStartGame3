@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Game.Gameplay.SurvivalMechanics.Frost
 {
     public class FrostController : IRealtimeSurvivalMechanic
     {
+        public bool IsEffectEnabled { get; private set; }  = false;
         public FrostLevel CurrentFrostLevel { get; private set; }
         
         private readonly IEnumerable<IHeatResistable> _heatResistables;
@@ -14,7 +16,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private readonly HashSet<IHeatResistable> _whitelist = new();
 
         private CancellationTokenSource _cts;
-        private bool _isEffectEnabled = false;
+        private bool _isPaused;
         
         public event Action<FrostLevel> FrostLevelChanged; 
 
@@ -31,10 +33,10 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
 
         public void Enable(FrostLevel effectLevel)
         {
-            if (_isEffectEnabled)
+            if (IsEffectEnabled)
                 Disable();
 
-            _isEffectEnabled = true;
+            IsEffectEnabled = true;
             CurrentFrostLevel = effectLevel;
             _cts = new CancellationTokenSource();
             DoFrostEffect(_cts.Token).Forget();
@@ -46,7 +48,17 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         {
             _cts?.Cancel();
             _cts?.Dispose();
-            _isEffectEnabled = false;
+            IsEffectEnabled = false;
+        }
+
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            _isPaused = false;
         }
 
         public bool AddToWhiteList(IHeatResistable heatResistable)
@@ -65,12 +77,15 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             
             while (!token.IsCancellationRequested)
             {
-                foreach (var heatResistable in _heatResistables)
+                if (_isPaused == false)
                 {
-                    if (_whitelist.Contains(heatResistable))
-                        continue;
+                    foreach (var heatResistable in _heatResistables)
+                    {
+                        if (_whitelist.Contains(heatResistable))
+                            continue;
                     
-                    heatResistable.HeatResistance -= effectValue;
+                        heatResistable.HeatResistance -= effectValue;
+                    }
                 }
                 
                 await UniTask.Delay(1000, cancellationToken: token);
@@ -79,7 +94,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         
         ~FrostController()
         {
-            if (_isEffectEnabled)
+            if (IsEffectEnabled)
                 Disable();
         }
     }

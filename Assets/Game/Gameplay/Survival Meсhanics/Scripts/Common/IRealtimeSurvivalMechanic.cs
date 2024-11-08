@@ -4,5 +4,7 @@
     {
         void Enable();
         void Disable();
+        void Pause();
+        void Unpause();
     }
 }

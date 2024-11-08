@@ -18,6 +18,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         private CancellationTokenSource _cts;
         private bool _isCtsDisposed = true;
         private int _daysFromLastStrongFrost;
+        private bool _isPaused;
         
         public float CurrentFrostTimeLeft { get; private set; }
         public float CurrentFrostDuration { get; private set; }
@@ -39,6 +40,16 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
         {
             OnDayStarted();
         }
+        
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            _isPaused = false;
+        }
 
         private void OnDayStarted()
         {
@@ -51,6 +62,7 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
                 _isCtsDisposed = true;
             }
 
+            _isPaused = false;
             _isCtsDisposed = false;
             _cts = new CancellationTokenSource();
             StartFrostAsync(_cts.Token).Forget();
@@ -75,6 +87,9 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             await UniTask.Delay(
                 settings.StartDelays[Random.Range(0, settings.StartDelays.Length)] * 1000, cancellationToken: token);
             
+            while (_isPaused)
+                await UniTask.NextFrame();
+            
             if (token.IsCancellationRequested)
                 return;
 
@@ -88,7 +103,12 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             while (CurrentFrostTimeLeft > 0 && !token.IsCancellationRequested)
             {
                 await UniTask.NextFrame(cancellationToken: token);
-                CurrentFrostTimeLeft = Mathf.Max(0, CurrentFrostTimeLeft - Time.deltaTime);
+                
+                if (_isPaused == false)
+                    CurrentFrostTimeLeft = Mathf.Max(0, CurrentFrostTimeLeft - Time.deltaTime);
+                
+                if (frostLevel != FrostLevel.Weak)
+                    Debug.Log($"TIME LEFT FROM FROST {CurrentFrostTimeLeft}");
             }
             
             _frostController.Enable(FrostLevel.Weak);

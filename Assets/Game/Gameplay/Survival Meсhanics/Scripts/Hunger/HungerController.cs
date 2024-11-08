@@ -16,6 +16,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
         private CancellationTokenSource _cts;
         private float _currentConsumption;
         private bool _isEnabled;
+        private bool _isPaused;
 
         public HungerController(HungerConfig config, CharacterActionsObserver actionsObserver, 
             PlayerMetricsModel playerMetricsModel, HungerModel hungerModel)
@@ -39,7 +40,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
         {
             if (_isEnabled)
                 Disable();
-            
+
             _isEnabled = true;
             _cts = new CancellationTokenSource();
             ApplyHungerAsync(_cts.Token).Forget();
@@ -54,12 +55,24 @@ namespace Game.Gameplay.SurvivalMeсhanics.Hunger
             _cts.Cancel();
             _cts.Dispose();
         }
-        
+
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            _isPaused = false;
+        }
+
         private async UniTask ApplyHungerAsync(CancellationToken token)
         {
             while (!token.IsCancellationRequested)
             {
-                _playerMetricsModel.Hunger -= _currentConsumption * _hungerModel.ConsumptionMultiplyer;
+                if (_isPaused == false)
+                    _playerMetricsModel.Hunger -= _currentConsumption * _hungerModel.ConsumptionMultiplyer;
+                
                 await UniTask.Delay(1000, cancellationToken: token);
             }
         }

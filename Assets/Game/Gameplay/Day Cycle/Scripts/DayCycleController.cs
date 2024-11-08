@@ -40,9 +40,12 @@ namespace Game.Gameplay.DayCycle
         public void StartDay()
         {
             _inputController.Enable();
-            
+
             foreach (var mechanic in _survivalMechanics)
+            {
+                mechanic.Unpause();
                 mechanic.Enable();
+            }
 
             CurrentDay++;
             DayStarted?.Invoke();

@@ -17,6 +17,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
         private CancellationTokenSource _cts;
         private float _currentConsumption;
         private bool _isEnabled;
+        private bool _isPaused;
 
         public EnduranceConsumptionController(EnduranceConfig config, CharacterActionsObserver actionsObserver,
             PlayerMetricsModel playerMetricsModel)
@@ -39,7 +40,7 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
         {
             if (_isEnabled)
                 Disable();
-            
+
             _isEnabled = true;
             _cts = new CancellationTokenSource();
             ApplyEnduranceAsync(_cts.Token).Forget();
@@ -54,12 +55,24 @@ namespace Game.Gameplay.SurvivalMeсhanics.Endurance
             _cts.Cancel();
             _cts.Dispose();
         }
-        
+
+        public void Pause()
+        {
+            _isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            _isPaused = false;
+        }
+
         private async UniTask ApplyEnduranceAsync(CancellationToken token)
         {
             while (!token.IsCancellationRequested)
             {
-                _playerMetricsModel.Endurance -= _currentConsumption;
+                if (_isPaused == false)
+                    _playerMetricsModel.Endurance -= _currentConsumption;
+                
                 await UniTask.Delay(1000, cancellationToken: token);
             }
         }

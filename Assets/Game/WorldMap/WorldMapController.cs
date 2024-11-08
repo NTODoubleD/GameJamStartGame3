@@ -6,6 +6,8 @@ using DG.Tweening;
 using DoubleDCore.Service;
 using DoubleDCore.UI;
 using DoubleDCore.UI.Base;
+using Game.Gameplay.SurvivalMechanics;
+using Game.Gameplay.SurvivalMechanics.Frost;
 using Game.UI.Pages;
 using Infrastructure;
 using Infrastructure.GameplayStates;
@@ -27,18 +29,23 @@ namespace Game.WorldMap
         private CursorInteractor _cursorInteractor;
         private GameInput _gameInput;
         private IUIManager _uiManager;
+        private IEnumerable<IRealtimeSurvivalMechanic> _survivalMechanics;
+        private FrostStarter _frostStarter;
 
         public event Action Opened;
 
         [Inject]
         private void Init(GameplayLocalStateMachine stateMachine, EventSystemProvider eventSystemProvider,
-            CursorInteractor cursorInteractor, GameInput gameInput, IUIManager uiManager)
+            CursorInteractor cursorInteractor, GameInput gameInput, IUIManager uiManager,
+            IEnumerable<IRealtimeSurvivalMechanic> survivalMechanics, FrostStarter frostStarter)
         {
             _stateMachine = stateMachine;
             _eventSystem = eventSystemProvider.EventSystem;
             _cursorInteractor = cursorInteractor;
             _gameInput = gameInput;
             _uiManager = uiManager;
+            _survivalMechanics = survivalMechanics;
+            _frostStarter = frostStarter;
         }
 
         private void Start()
@@ -55,7 +62,11 @@ namespace Game.WorldMap
             {
                 Points = _resourcePoints.Select(r => r.GetPointInfo()).ToList()
             });
-
+            
+            foreach (var mechanic in _survivalMechanics)
+                mechanic.Pause();
+            
+            _frostStarter.Pause();
             Opened?.Invoke();
         }
 
@@ -63,7 +74,11 @@ namespace Game.WorldMap
         {
             foreach (var o in _objects)
                 o.SetActive(false);
-
+            
+            foreach (var mechanic in _survivalMechanics)
+                mechanic.Unpause();
+            
+            _frostStarter.Unpause();
             _uiManager.ClosePage<WorldInterestPointPage>();
         }
 
