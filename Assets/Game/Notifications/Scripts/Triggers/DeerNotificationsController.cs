@@ -31,14 +31,21 @@ namespace Game.Notifications.Triggers
             _deerAgeConfig = deerAgeConfig;
 
             _dayCycleController.DayEnded += SubscribeToDeer;
+            _dayCycleController.DayStarted += UnsubscribeFromDeer;
             _dayCycleController.DayStarted += ShowDeerHunger;
             _dayCycleController.DayStarted += ShowDeerIllnesses;
         }
 
-        public void SubscribeToDeer()
+        private void UnsubscribeFromDeer()
         {
-            _dayCycleController.DayEnded -= SubscribeToDeer;
+            _deerFabric.Created -= OnDeerBorn;
             
+            foreach (var deer in _herd.CurrentHerd)
+                deer.Died -= OnDeerDied;
+        }
+
+        private void SubscribeToDeer()
+        {
             _deerFabric.Created += OnDeerBorn;
             
             foreach (var deer in _herd.CurrentHerd)
