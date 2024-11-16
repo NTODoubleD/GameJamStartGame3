@@ -34,7 +34,8 @@ namespace Game.Tips
 
             _gameInput.UI.Enable();
 
-            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 1f).SetUpdate(true);
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 1f)
+                .SetUpdate(true);
 
             _uiManager.OpenPage<TrainingPage, TrainingPageArgument>(new TrainingPageArgument
             {
@@ -56,7 +57,8 @@ namespace Game.Tips
             else
                 _gameInput.UI.Disable();
 
-            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 1f).SetUpdate(true);
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 1f)
+                .SetUpdate(true);
         }
     }
 }

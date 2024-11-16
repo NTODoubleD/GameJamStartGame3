@@ -54,7 +54,7 @@ namespace Game.UI.Pages
 
             _widgetRect.anchoredPosition = _widgetPosition + _context.Offset;
 
-            _animator.StartOpenAnimation(_context.Animate);
+            _animator.OpenAnimation(_context.Animate);
 
             StartTraining();
 
@@ -149,7 +149,7 @@ namespace Game.UI.Pages
         {
             _context.OnClose?.Invoke();
 
-            _animator.StartCloseAnimation(Close, _context.Animate);
+            _animator.CloseAnimation(Close, _context.Animate);
         }
 
         private void StartContentAnimation()

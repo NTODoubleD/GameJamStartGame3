@@ -17,7 +17,7 @@ namespace Game.UI
             _widget.alpha = 0;
         }
 
-        public void StartOpenAnimation(bool isAnimate = true)
+        public void OpenAnimation(bool isAnimate = true)
         {
             if (isAnimate == false)
             {
@@ -32,13 +32,13 @@ namespace Game.UI
 
             sequence
                 .Append(_widget.DOFade(0f, 0f))
-                .Append(_background.DOFade(1f, 2f))
+                .Append(_background.DOFade(1f, StandardAnimationDuration))
                 .Append(_widget.DOFade(1f, StandardAnimationDuration));
 
             sequence.Play().SetUpdate(true);
         }
 
-        public void StartCloseAnimation(Action onEnd, bool isAnimate = true)
+        public void CloseAnimation(Action onEnd, bool isAnimate = true)
         {
             if (isAnimate == false)
             {
