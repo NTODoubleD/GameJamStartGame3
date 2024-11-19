@@ -37,8 +37,12 @@ namespace DoubleDCore.Tween.Base
 
         protected abstract void OnStartAnimation();
 
-        protected abstract void OnStopAnimation();
+        protected virtual void OnStopAnimation()
+        {
+        }
 
-        protected abstract void OnCancelAnimation();
+        protected virtual void OnCancelAnimation()
+        {
+        }
     }
 }
