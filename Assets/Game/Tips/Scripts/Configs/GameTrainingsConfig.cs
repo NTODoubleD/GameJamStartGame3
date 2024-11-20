@@ -14,7 +14,6 @@ namespace Game.Tips.Configs
         [SerializeField] private TrainingInfo _sleepInfo;
         [SerializeField] private TrainingInfo _deerCutInfo;
         [SerializeField] private TrainingInfo _upgradeInfo;
-        [SerializeField] private TrainingInfo _strongFrostInfo;
         
         public TrainingInfo SleighInfo => _sleighInfo;
         public TrainingInfo DeerCareInfo => _deerCareInfo;
@@ -24,6 +23,5 @@ namespace Game.Tips.Configs
         public TrainingInfo SleepInfo => _sleepInfo;
         public TrainingInfo DeerCutInfo => _deerCutInfo;
         public TrainingInfo UpgradeInfo => _upgradeInfo;
-        public TrainingInfo StrongFrostInfo => _strongFrostInfo;
     }
 }

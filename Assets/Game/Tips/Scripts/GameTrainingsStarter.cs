@@ -73,7 +73,6 @@ namespace Game.Tips
                 { _config.WaterInfo, () => !_isCookingPageOpened },
                 { _config.DeerCutInfo, () => _isDayStarted },
                 { _config.SleepInfo, () => !_isRadialItemsMenuOpened },
-                { _config.StrongFrostInfo, () => _gameInput.Player.enabled && _isDayStarted }
             };
 
             _questController.QuestIssued += OnQuestIssued;
@@ -82,7 +81,6 @@ namespace Game.Tips
             _uiManager.PageClosed += OnPageClosed;
             _dayCycleController.DayStarted += OnDayStarted;
             _dayCycleController.DayEnded += OnDayEnded;
-            _frostController.FrostLevelChanged += OnFrostLevelChanged;
         }
 
         public void Tick()
@@ -99,12 +97,6 @@ namespace Game.Tips
             {
                 StartTraining(_delayedTrainings.Dequeue());
             }
-        }
-        
-        private void OnFrostLevelChanged(FrostLevel level)
-        {
-            if (level == FrostLevel.Strong)
-                StartTraining(_config.StrongFrostInfo);
         }
 
         private void OnPageOpened(IPage page)
@@ -191,7 +183,6 @@ namespace Game.Tips
             _uiManager.PageClosed -= OnPageClosed;
             _dayCycleController.DayStarted -= OnDayStarted;
             _dayCycleController.DayEnded -= OnDayEnded;
-            _frostController.FrostLevelChanged -= OnFrostLevelChanged;
         }
     }
 }

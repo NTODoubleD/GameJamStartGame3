@@ -1,4 +1,5 @@
-﻿using Game.Gameplay.CharacterCamera;
+﻿using Game.Feedbacks;
+using Game.Gameplay.CharacterCamera;
 using Game.Tips;
 using Zenject;
 using Game.Gameplay.Survival_Meсhanics.Scripts.Common;
@@ -18,6 +19,7 @@ namespace Game.GameEngine.DI
             Container.BindInterfacesAndSelfTo<CameraZoomController>().AsSingle().NonLazy();
 
             Container.Bind<DeerNotificationsController>().AsSingle().NonLazy();
+            Container.Bind<StormFeedback>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
