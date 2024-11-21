@@ -1,5 +1,6 @@
 using DoubleDCore.Attributes;
 using DoubleDCore.Service;
+using Game.Gameplay.Character;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public class CharacterAnimatorController : MonoService
 {
     [SerializeField, ReadOnlyProperty] private Animator _animator;
     [SerializeField] private CharacterMover _mover;
+    [SerializeField] private CharacterAudio _characterAudio;
     [SerializeField] private float _animationSpeedMultiplier;
 
     [SerializeField] private GameObject _axe;
@@ -81,13 +83,13 @@ public class CharacterAnimatorController : MonoService
         _currentMiniPetCallback = endCallback;
         _animator.SetTrigger(MiniPet);
     }
-    
+
     public void AnimateBigPetting(UnityAction endCallback = null)
     {
         _currentBigPetCallback = endCallback;
         _animator.SetTrigger(BigPet);
     }
-    
+
     public void AnimateSitting()
     {
         _animator.SetTrigger(Sit);
@@ -103,7 +105,7 @@ public class CharacterAnimatorController : MonoService
     #region ANIMATOR_EVENTS
 
     public void OnFootstep() =>
-        SoundsManager.PlayFootstepSound(transform.position);
+        _characterAudio.PlayFootstepSound();
 
     public void OnStartedPickingUp() =>
         StartedPickingUp?.Invoke();
@@ -134,13 +136,13 @@ public class CharacterAnimatorController : MonoService
         _currentCutCallback?.Invoke();
         _currentCutCallback = null;
     }
-    
+
     public void OnMiniPettingEnded()
     {
         _currentMiniPetCallback?.Invoke();
         _currentMiniPetCallback = null;
     }
-    
+
     public void OnBigPettingEnded()
     {
         _currentBigPetCallback?.Invoke();
