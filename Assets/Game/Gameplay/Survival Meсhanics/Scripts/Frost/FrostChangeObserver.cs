@@ -36,10 +36,12 @@ namespace Game.Gameplay.SurvivalMechanics.Frost
             else
             {
                 _uiManager.ClosePage<StrongFrostPage>();
-                _stormFeedback.StopAnimation();
+
+                if (_stormFeedback.IsActive)
+                    _stormFeedback.StopAnimation();
             }
         }
-        
+
         ~FrostChangeObserver()
         {
             _frostController.FrostLevelChanged -= OnFrostLevelChanged;

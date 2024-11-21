@@ -23,7 +23,7 @@ namespace Game.Feedbacks
             _snow.Play();
             _fog.Play();
 
-            _directionalLight.DOIntensity(_endIntensity, _blendTime).From(1f);
+            _directionalLight.DOIntensity(_endIntensity, _blendTime);
         }
 
         protected override void OnStopAnimation()
@@ -33,7 +33,7 @@ namespace Game.Feedbacks
             _snow.Stop();
             _fog.Stop();
 
-            _directionalLight.DOIntensity(1f, _blendTime).From(_endIntensity);
+            _directionalLight.DOIntensity(1f, _blendTime);
         }
 
         [Button]
