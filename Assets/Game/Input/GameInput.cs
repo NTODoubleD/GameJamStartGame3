@@ -305,6 +305,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3d0d8ca-3cc3-419b-9a71-6db254176059"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -415,6 +424,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DragClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12dfc2f5-2601-423b-af8b-89fb9bbcf7a3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1067,6 +1087,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Map_Point = m_Map.FindAction("Point", throwIfNotFound: true);
         m_Map_Click = m_Map.FindAction("Click", throwIfNotFound: true);
         m_Map_DragClick = m_Map.FindAction("DragClick", throwIfNotFound: true);
+        m_Map_Exit = m_Map.FindAction("Exit", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1259,6 +1280,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Map_Point;
     private readonly InputAction m_Map_Click;
     private readonly InputAction m_Map_DragClick;
+    private readonly InputAction m_Map_Exit;
     public struct MapActions
     {
         private @GameInput m_Wrapper;
@@ -1267,6 +1289,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Point => m_Wrapper.m_Map_Point;
         public InputAction @Click => m_Wrapper.m_Map_Click;
         public InputAction @DragClick => m_Wrapper.m_Map_DragClick;
+        public InputAction @Exit => m_Wrapper.m_Map_Exit;
         public InputActionMap Get() { return m_Wrapper.m_Map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1288,6 +1311,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @DragClick.started += instance.OnDragClick;
             @DragClick.performed += instance.OnDragClick;
             @DragClick.canceled += instance.OnDragClick;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IMapActions instance)
@@ -1304,6 +1330,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @DragClick.started -= instance.OnDragClick;
             @DragClick.performed -= instance.OnDragClick;
             @DragClick.canceled -= instance.OnDragClick;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IMapActions instance)
@@ -1497,6 +1526,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnPoint(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnDragClick(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -13,6 +13,7 @@ using Infrastructure;
 using Infrastructure.GameplayStates;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Game.WorldMap
@@ -62,10 +63,10 @@ namespace Game.WorldMap
             {
                 Points = _resourcePoints.Select(r => r.GetPointInfo()).ToList()
             });
-            
+
             foreach (var mechanic in _survivalMechanics)
                 mechanic.Pause();
-            
+
             _frostStarter.Pause();
             Opened?.Invoke();
         }
@@ -74,10 +75,10 @@ namespace Game.WorldMap
         {
             foreach (var o in _objects)
                 o.SetActive(false);
-            
+
             foreach (var mechanic in _survivalMechanics)
                 mechanic.Unpause();
-            
+
             _frostStarter.Unpause();
             _uiManager.ClosePage<WorldInterestPointPage>();
         }
@@ -99,11 +100,15 @@ namespace Game.WorldMap
 
                 _effect.Stop();
                 _whiteScreen.DOFade(0, 1);
+
+                _gameInput.Map.Exit.started += OnExit;
             });
         }
 
         public async void ToPlayerState()
         {
+            _gameInput.Map.Exit.started -= OnExit;
+
             _gameInput.Map.Disable();
             _cursorInteractor.Close();
             _eventSystem.enabled = false;
@@ -122,6 +127,11 @@ namespace Game.WorldMap
                 _effect.Stop();
                 _whiteScreen.DOFade(0, 1);
             });
+        }
+
+        private void OnExit(InputAction.CallbackContext context)
+        {
+            ToPlayerState();
         }
     }
 }
