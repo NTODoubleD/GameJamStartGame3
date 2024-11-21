@@ -16,10 +16,10 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 21300000, guid: 4c2b131ea40b96c45b6f7801dcd60869, type: 3}
-    - {fileID: 21300000, guid: 7507ed481bbb96a479d8a670f3f201bc, type: 3}
-    - {fileID: 21300000, guid: 33b115bf5efdfa04d8e2e0b70a6643cd, type: 3}
-    - {fileID: 21300000, guid: d46c417ddaec72849bd1f1e3e5a52acc, type: 3}
+    - {fileID: 21300000, guid: 52b9ca0d4f3a45a45bb7bd0fd56c1051, type: 3}
+    - {fileID: 21300000, guid: dff8c8a178046d04b8116f983f01fbc2, type: 3}
+    - {fileID: 21300000, guid: 166e540057a30824f8dec0b91dd96202, type: 3}
+    - {fileID: 21300000, guid: 8766009e7a47c2348a8783594293bd99, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -69,13 +69,13 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0.274509817
+      Data: 0.5019608
     - Name: 
       Entry: 4
-      Data: 0.6509804
+      Data: 0.858823538
     - Name: 
       Entry: 4
-      Data: 0.815686345
+      Data: 0.1882353
     - Name: 
       Entry: 4
       Data: 1
@@ -105,13 +105,13 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.858823538
     - Name: 
       Entry: 4
-      Data: 0.968627453
+      Data: 0.78039217
     - Name: 
       Entry: 4
-      Data: 0.321568638
+      Data: 0.1882353
     - Name: 
       Entry: 4
       Data: 1
@@ -141,13 +141,13 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 1
+      Data: 0.858823538
     - Name: 
       Entry: 4
-      Data: 0.321568638
+      Data: 0.78039217
     - Name: 
       Entry: 4
-      Data: 0.431372553
+      Data: 0.1882353
     - Name: 
       Entry: 4
       Data: 1
@@ -177,13 +177,13 @@ MonoBehaviour:
       Data: UnityEngine.Color, UnityEngine.CoreModule
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.854901969
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.2784314
     - Name: 
       Entry: 4
-      Data: 0
+      Data: 0.2784314
     - Name: 
       Entry: 4
       Data: 1

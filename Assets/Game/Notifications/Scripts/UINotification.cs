@@ -33,10 +33,8 @@ namespace Game.Notifications
         public void Initialize(Color color, Sprite icon, string title, string description)
         {
             _backFrame.color = color;
-            _exitButton.image.color = color;
 
             _icon.sprite = icon;
-            _icon.color = color;
 
             _title.text = title;
             _description.text = description;

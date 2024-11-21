@@ -57,7 +57,7 @@ namespace Game.Notifications.Triggers
             _notificationsPage = _uiManager.GetPage<NotificationsPage>();
             
             string name = deer.DeerInfo.Name;
-            _notificationsPage.AddNotification(NotificationType.Info, "Рождение оленя", $"У вас родился олень {name}");
+            _notificationsPage.AddNotification(NotificationType.Info, $"{name} появился на свет", $"У вас родился олень {name}");
         }
 
         private void OnDeerDied(Deer deer)
@@ -77,8 +77,8 @@ namespace Game.Notifications.Triggers
                 descText = $"Ваш олень {name} умер от голода";
             else
                 return;
-            
-            _notificationsPage.AddNotification(NotificationType.Death, "Смерть оленя", descText);
+
+            _notificationsPage.AddNotification(NotificationType.Death, $"{name} ушёл из жизни", descText);
         }
 
         private void ShowDeerHunger()
@@ -96,7 +96,7 @@ namespace Game.Notifications.Triggers
             }
             
             if (showWarning)
-                _notificationsPage.AddNotification(NotificationType.Error, "Олени голодают", "Ваши олени голодают, если их не покормить, они умрут");
+                _notificationsPage.AddNotification(NotificationType.Error, "Стадо голодает", "Ваши олени голодают, если их не покормить, они умрут");
         }
 
         private void ShowDeerIllnesses()
@@ -114,7 +114,7 @@ namespace Game.Notifications.Triggers
             }
             
             if (showWarning)
-                _notificationsPage.AddNotification(NotificationType.Error, "Олени болеют", "Ваши сильно болеют, если их не вылечить, они умрут");
+                _notificationsPage.AddNotification(NotificationType.Error, "Стадо болеет", "Ваши сильно болеют, если их не вылечить, они умрут");
         }
 
         ~DeerNotificationsController()
