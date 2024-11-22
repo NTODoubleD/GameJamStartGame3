@@ -5142,7 +5142,7 @@ PrefabInstance:
     - target: {fileID: 1177891120578582791, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3859593385266019987, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
@@ -6553,8 +6553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text:
-    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.5.4"
-    _en: Alpha v0.5.4
+    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.6.1"
+    _en: Alpha v0.6.1
 --- !u!1 &2102724532
 GameObject:
   m_ObjectHideFlags: 0
