@@ -5142,7 +5142,7 @@ PrefabInstance:
     - target: {fileID: 1177891120578582791, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 450
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 3859593385266019987, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
@@ -6463,7 +6463,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.3"
+  m_text: "\u0410\u043B\u044C\u0444\u0430 v0.2.4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6553,8 +6553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text:
-    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.6.2"
-    _en: Alpha v0.6.2
+    _ru: "\u0410\u043B\u044C\u0444\u0430 v0.6.3"
+    _en: Alpha v0.6.3
 --- !u!1 &2102724532
 GameObject:
   m_ObjectHideFlags: 0
