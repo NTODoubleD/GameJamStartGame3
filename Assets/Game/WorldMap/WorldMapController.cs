@@ -68,6 +68,9 @@ namespace Game.WorldMap
                 mechanic.Pause();
 
             _frostStarter.Pause();
+
+            _gameInput.Map.Exit.started += OnExit;
+
             Opened?.Invoke();
         }
 
@@ -81,6 +84,8 @@ namespace Game.WorldMap
 
             _frostStarter.Unpause();
             _uiManager.ClosePage<WorldInterestPointPage>();
+
+            _gameInput.Map.Exit.started -= OnExit;
         }
 
         public async void ToMapState()
@@ -100,15 +105,11 @@ namespace Game.WorldMap
 
                 _effect.Stop();
                 _whiteScreen.DOFade(0, 1);
-
-                _gameInput.Map.Exit.started += OnExit;
             });
         }
 
         public async void ToPlayerState()
         {
-            _gameInput.Map.Exit.started -= OnExit;
-
             _gameInput.Map.Disable();
             _cursorInteractor.Close();
             _eventSystem.enabled = false;

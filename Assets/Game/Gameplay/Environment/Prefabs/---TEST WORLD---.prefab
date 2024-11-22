@@ -7390,7 +7390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -206.91309, y: -28.951385}
+  m_AnchoredPosition: {x: -206.91309, y: -28.951416}
   m_SizeDelta: {x: 1243.6953, y: 295.51727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6435231203384114512
@@ -10054,7 +10054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 206.91309, y: 28.951385}
+  m_AnchoredPosition: {x: 206.91309, y: 28.951416}
   m_SizeDelta: {x: -1243.6952, y: -295.5173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8657501869275617116
@@ -13336,7 +13336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -27139454}
+  m_AnchoredPosition: {x: 0, y: -27812562}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7062876900310443833
@@ -15752,7 +15752,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -53.472717, y: -53.492676}
+  m_AnchoredPosition: {x: -53.472656, y: -53.492676}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5813879930613691652
@@ -27543,7 +27543,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.691
+  m_FillAmount: 0.779
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -27752,6 +27752,7 @@ MonoBehaviour:
   _timeLeft: {fileID: 7425178099957157362}
   _emptyCampVisual: {fileID: 5610102980381204686}
   _firingCampVisual: {fileID: 1636907428646214314}
+  _progressBar: {fileID: 7586642025500340188}
 --- !u!1 &6344974110633457097
 GameObject:
   m_ObjectHideFlags: 0
@@ -44193,7 +44194,7 @@ PrefabInstance:
     - target: {fileID: 1177891120578582791, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 7386
+      value: 7686
       objectReference: {fileID: 0}
     - target: {fileID: 1494064479535979009, guid: e9a615791141ba547a38ef200c17b8d4,
         type: 3}

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Gameplay.Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,43 +13,54 @@ namespace Game.UI
 
         [SerializeField] private GameObject _emptyCampVisual;
         [SerializeField] private GameObject _firingCampVisual;
-        
+
+        [SerializeField] private Image _progressBar;
+
         private TimeSpan _cachedTimeLeft;
         private string _fuelButtonDefaultText;
-        
-        public event Action AddFuelRequested;
 
+        public event Action AddFuelRequested;
 
         private void OnEnable()
         {
-            foreach (var button in _addFuelButtons) 
+            foreach (var button in _addFuelButtons)
                 button.onClick.AddListener(OnButtonClicked);
         }
 
         private void OnDisable()
         {
-            foreach (var button in _addFuelButtons) 
+            foreach (var button in _addFuelButtons)
                 button.onClick.RemoveListener(OnButtonClicked);
         }
 
         public void SetFuelButtonInfo(bool isInteractable, string text = null)
         {
-            foreach (var button in _addFuelButtons) 
+            foreach (var button in _addFuelButtons)
                 button.interactable = isInteractable;
         }
 
         public void SetTimeLeft(float timeLeft)
         {
-            _emptyCampVisual.SetActive(!(timeLeft > 0));
-            _firingCampVisual.SetActive(timeLeft > 0);
-            
             _cachedTimeLeft = TimeSpan.FromSeconds(timeLeft);
-            _timeLeft.text = $"{_cachedTimeLeft.Minutes:D1}:{_cachedTimeLeft.Seconds:D2}";
+
+            UpdateTime(timeLeft);
         }
 
         private void OnButtonClicked()
         {
             AddFuelRequested?.Invoke();
+        }
+
+        public void UpdateTime(float time)
+        {
+            _emptyCampVisual.SetActive(!(time > 0));
+            _firingCampVisual.SetActive(time > 0);
+
+            var tempTime = TimeSpan.FromSeconds(time);
+
+            _timeLeft.text = $"{tempTime.Minutes:D1}:{tempTime.Seconds:D2}";
+
+            _progressBar.fillAmount = time / (float)_cachedTimeLeft.TotalSeconds;
         }
     }
 }
