@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Game.Gameplay.Crafting;
 using TMPro;
@@ -9,7 +10,6 @@ namespace Game.UI
 {
     public class UICookingSlot : MonoBehaviour
     {
-        [SerializeField] private UIResource _resourceView;
         [SerializeField] private Image _progressBar;
         [SerializeField] private TMP_Text _progressText;
         [SerializeField] private Button _pickButton;
@@ -20,6 +20,10 @@ namespace Game.UI
 
         private TimeSpan _cachedTimeLeft;
         private float _targetAmount;
+
+        [Header("Ready|Unready")] 
+        [SerializeField] private UIResource ReadyResourceView;
+        [SerializeField] private UIResource UnReadyResourceView;
         
         public CraftingRecepie CurrentRecepie { get; private set; }
         
@@ -42,8 +46,14 @@ namespace Game.UI
             var mealItem = recepie.OutputItems.Keys.First();
             int mealCount = recepie.OutputItems[mealItem];
             
-            _resourceView.Initialize(mealItem, mealCount);
-            _resourceView.gameObject.SetActive(true);
+            var rawItem = recepie.InputItems.Count > 0 ?  recepie.InputItems.Keys.First() : mealItem;
+            var rawCount =  recepie.InputItems.Count > 0 ?  recepie.InputItems[rawItem] : mealCount;
+
+            ReadyResourceView.Initialize(mealItem, mealCount);
+            UnReadyResourceView.Initialize(rawItem, rawCount);
+
+            ReadyResourceView.gameObject.SetActive(true);
+            UnReadyResourceView.gameObject.SetActive(true);
 
             Refresh(timeLeft);
         }
@@ -57,11 +67,16 @@ namespace Game.UI
             _progressText.text = $"{_cachedTimeLeft.Minutes:D1}:{_cachedTimeLeft.Seconds:D2}";
 
             _progressBar.color = Mathf.Approximately(timeLeft, 0) ? _completedProgressColor : _defaultProgressColor;
+            
+            ReadyResourceView.gameObject.SetActive(Mathf.Approximately(timeLeft, 0));
+            UnReadyResourceView.gameObject.SetActive(!Mathf.Approximately(timeLeft, 0));
         }
 
         public void Clear()
-        {
-            _resourceView.gameObject.SetActive(false);
+        {            
+            ReadyResourceView.gameObject.SetActive(false);
+            UnReadyResourceView.gameObject.SetActive(false);
+            
             _progressText.text = string.Empty;
             _progressBar.fillAmount = 0;
             CurrentRecepie = null;

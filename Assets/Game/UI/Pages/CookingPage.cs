@@ -72,7 +72,6 @@ namespace Game.UI.Pages
             }
             
             UpdateFuelButton();
-            _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
 
             _fuelView.AddFuelRequested += OnAddFuelRequested;
             _cookingController.Interrupted += OnSlotInterrupted;
@@ -144,7 +143,6 @@ namespace Game.UI.Pages
             _cookingController.AddFuelItem();
             UpdateFuelButton();
             _fuelView.SetTimeLeft(_cookingController.CookTimeLeft);
-            _fuelView.SetFuelResourceInfo(_cookingController.GetFuelItemInfo(), _cookingController.GetFuelAmount(), 1);
             
             UpdateRecepiesAvailable();
         }

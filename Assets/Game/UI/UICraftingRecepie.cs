@@ -15,6 +15,8 @@ namespace Game.UI
         [SerializeField] private UIResource _resourceViewPrefab;
         [SerializeField] private UICraftingArrow _arrowPrefab;
         [SerializeField] private Transform _resourcesRoot;
+
+        private UICraftingArrow _arrowInstanced;
         
         public CraftingRecepie RecepieData { get; private set; }
 
@@ -44,9 +46,9 @@ namespace Game.UI
             
             AddResourceRange(RecepieData.InputItems);
 
-            var craftingArrow = Instantiate(_arrowPrefab, _resourcesRoot);
-            craftingArrow.Initialize(recepie.CraftTime);
-            _resourceViews.Add(craftingArrow.gameObject);
+            _arrowInstanced = Instantiate(_arrowPrefab, _resourcesRoot);
+            _arrowInstanced.Initialize(recepie.CraftTime);
+            _resourceViews.Add(_arrowInstanced.gameObject);
             
             AddResourceRange(RecepieData.OutputItems);
         }
@@ -64,6 +66,8 @@ namespace Game.UI
         public void SetAvailable(bool isAvailable)
         {
             _clickButton.interactable = isAvailable;
+            if(_arrowInstanced)
+                _arrowInstanced.SetVisualActive(isAvailable);
         }
 
         private void OnButtonClicked()

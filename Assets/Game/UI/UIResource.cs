@@ -25,6 +25,9 @@ namespace Game.UI
 
         public void Refresh(int count)
         {
+            if(!_countText)
+                return;
+            
             _countText.text = count.ToString();
         }
 
